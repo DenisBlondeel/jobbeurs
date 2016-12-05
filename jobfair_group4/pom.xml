@@ -18,7 +18,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
-		<finalName>NameOfYourApplication</finalName>
+		<finalName>jobfair_groep4</finalName>
 	</build>
 
 	<dependencies>
