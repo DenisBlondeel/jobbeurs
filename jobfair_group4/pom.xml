@@ -30,7 +30,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
-		<finalName>jobfair_groep4</finalName>
+		<finalName>jobfair_group4</finalName>
 	</build>
 
 	<dependencies>
