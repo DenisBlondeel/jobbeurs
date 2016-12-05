@@ -22,7 +22,8 @@
 	<body>
 		<h1 class="text-center">Hello World</h1>
 		<h1>test ! </h1>
-		<a href="index.html"><i class="fa fa-home" aria-hidden="true"></i></a>
+		<a href="index.jsp"><i class="fa fa-home" aria-hidden="true"></i></a>
+		<a href="imgmap.html">hemisfeer</a>
 
 		<!-- jQuery -->
 		<script src="//code.jquery.com/jquery.js"></script>
