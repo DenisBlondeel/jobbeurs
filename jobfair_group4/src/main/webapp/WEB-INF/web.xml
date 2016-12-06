@@ -1,35 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:jsp="http://java.sun.com/xml/ns/javaee/jsp"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
-	version="3.0">
-	<jsp-config>
-		<jsp-property-group>
-			<url-pattern>*.jsp</url-pattern>
-			<scripting-invalid>true</scripting-invalid>
-		</jsp-property-group>
-	</jsp-config>
-	<welcome-file-list>
-		<welcome-file>index.jsp</welcome-file>
-	</welcome-file-list>
-	<context-param>
-		<param-name>url</param-name>
-		<param-value>jdbc:postgresql://gegevensbanken.khleuven.be:51617/hackaton</param-value>
-	</context-param>
-	<context-param>
-		<param-name>user</param-name>
-		<param-value>local_hackaton_6</param-value>
-	</context-param>
-	<context-param>
-		<param-name>password</param-name>
-		<param-value>eeZaetohnie7thoh</param-value>
-	</context-param>
-	<context-param>
-		<param-name>ssl</param-name>
-		<param-value>true</param-value>
-	</context-param>
-	<context-param>
-		<param-name>sslfactory</param-name>
-		<param-value>org.postgresql.ssl.NonValidatingFactory</param-value>
-	</context-param>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:jsp="http://java.sun.com/xml/ns/javaee/jsp" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+  <jsp-config>
+    <jsp-property-group>
+      <url-pattern>*.jsp</url-pattern>
+      <scripting-invalid>true</scripting-invalid>
+    </jsp-property-group>
+  </jsp-config>
+  <welcome-file-list>
+    <welcome-file>Controller</welcome-file>
+  </welcome-file-list>
 </web-app>
