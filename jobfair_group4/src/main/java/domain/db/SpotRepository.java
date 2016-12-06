@@ -69,7 +69,7 @@ public class SpotRepository {
 	
 	public List<Spot> getAll(){
 	List<Spot> list = new ArrayList<Spot>();
-	String sql = "Select * FROM jobfair_group4.spot";
+	String sql = "Select * FROM jobfair_group4.spots";
 	try{
 		statement = connection.prepareStatement(sql);
 		ResultSet results = statement.executeQuery();
