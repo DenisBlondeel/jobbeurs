@@ -36,6 +36,9 @@ public class Controller extends HttpServlet {
 		
 		switch(action)
 		{
+		case "showopt":
+			destination = showOptions(request, response);
+			break;
 		case "spotoptions":
 			destination = spotOptions(request, response);
 			break;
@@ -47,6 +50,12 @@ public class Controller extends HttpServlet {
 		view.forward(request, response);
 	}
 
+	private String showOptions(HttpServletRequest request, HttpServletResponse response) {
+		String spot = request.getParameter("id");
+		request.setAttribute("spotnr", spot);
+		return "spotoptions.jsp";
+	}
+
 	private String spotOptions(HttpServletRequest request, HttpServletResponse response) {
 		int chairs = Integer.parseInt(request.getParameter("chairs"));
 		int tables = Integer.parseInt(request.getParameter("tables"));
@@ -55,6 +64,8 @@ public class Controller extends HttpServlet {
 			electricity = true;
 		}
 		String extra = request.getParameter("extra");
+		String spot = request.getParameter("id");
+		request.setAttribute("spotnr", spot);
 		request.setAttribute("reserved", "Uw plaats werd gereserveerd.");
 		return "index.jsp";
 	}
