@@ -1,5 +1,6 @@
 package ui.controller.handler;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
@@ -7,7 +8,7 @@ import domain.service.SpotService;
 
 public class HandlerFactory {
 
-	private Map<String, RequestHandler> handlers;
+	private Map<String, RequestHandler> handlers = new HashMap<>();
 
 	public HandlerFactory(Properties properties, SpotService service) {
 		for(Object key : properties.keySet()) {
