@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import com.thoughtworks.selenium.webdriven.commands.Close;
+
 import domain.model.Spot;
 import domain.model.User;
 
@@ -28,6 +30,14 @@ public class SpotRepository {
 			} catch (Exception e) {
 			throw new DbException(e.getMessage(), e);
 			}
+	}
+	
+	public void close() {
+		try {
+			connection.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+		}
 	}
 	
 	public Spot get(String spotID)

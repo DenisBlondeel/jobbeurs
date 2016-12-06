@@ -25,10 +25,6 @@
 		<param-value>eeZaetohnie7thoh</param-value>
 	</context-param>
 	<context-param>
-		<param-name>currentSchema</param-name>
-		<param-value>jobfair_group4</param-value>
-	</context-param>
-	<context-param>
 		<param-name>ssl</param-name>
 		<param-value>true</param-value>
 	</context-param>
