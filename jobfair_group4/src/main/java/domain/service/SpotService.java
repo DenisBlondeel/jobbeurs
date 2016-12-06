@@ -24,6 +24,10 @@ public class SpotService {
 		return spotRepository.get(spotId);
 	}
 	
+	public List<Spot> getAll(){
+		return spotRepository.getAll();
+	}
+	
 	public List<Spot> getFreeSpot()
 	{
 		return spotRepository.getFreeSpots();

@@ -1,17 +1,39 @@
 package ui.controller;
 
 import java.io.IOException;
+import java.util.Enumeration;
+import java.util.List;
+import java.util.Properties;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import domain.model.Spot;
+import domain.service.SpotService;
+
 @WebServlet("/Controller")
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private SpotService spotservice;
+	
+	
+	@Override
+	public void init() throws ServletException{
+		super.init();
+		ServletContext context = getServletContext();
+		Properties properties = new Properties();
+		Enumeration<String> parameterNames = context.getInitParameterNames();
+		while(parameterNames.hasMoreElements()){
+			String propertyName = parameterNames.nextElement();
+			properties.setProperty(propertyName, context.getInitParameter(propertyName));
+		}
+		spotservice = new SpotService(properties);
+	}
 
 	public Controller() {
 		super();
@@ -42,12 +64,22 @@ public class Controller extends HttpServlet {
 		case "spotoptions":
 			destination = spotOptions(request, response);
 			break;
+		case "spots":
+			destination = getSpots(request, response);
+			break;
 			default:
 			destination = "index.jsp";
+			
 		}
 		
 		RequestDispatcher view = request.getRequestDispatcher(destination);
 		view.forward(request, response);
+	}
+
+	private String getSpots(HttpServletRequest request, HttpServletResponse response) {
+		List<Spot> spots = spotservice.getAll();
+		request.setAttribute("spots", spots);
+		return "spotoverview.jsp";
 	}
 
 	private String showOptions(HttpServletRequest request, HttpServletResponse response) {
