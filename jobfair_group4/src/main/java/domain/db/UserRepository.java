@@ -75,17 +75,17 @@ public class UserRepository {
 			if (result.next() && result.getString("userId").equals(user.getUserID())) {
 				throw new IllegalArgumentException("User bestaat al");
 			} else {
-				sql = "INSERT INTO \"r0589873_Web3\".person (userid, companyName, contactName, email, password, salt, firstName, lastName, role) "
+				sql = "INSERT INTO jobfair_group4.users (userID, companyName, contactName, email, password, salt, role) "
 						+ "Values (?, ?, ?, ?, ?, ?, ?)";
 				try {
 					statement = connection.prepareStatement(sql);
 
 					statement.setString(1, user.getUserID());
-					statement.setString(2, user.getEmail());
-					statement.setString(3, user.getPassword());
-					statement.setString(4, user.getSalt());
-					//statement.setString(5, user.getFirstName());
-					//statement.setString(6, user.getLastName());
+					statement.setString(2, user.getCompanyName());
+					statement.setString(3, user.getContactName());
+					statement.setString(4, user.getEmail());
+					statement.setString(5, user.getPassword());
+					statement.setString(6, user.getSalt());
 					statement.setString(7, user.getRole().toString());
 
 					statement.executeUpdate();
