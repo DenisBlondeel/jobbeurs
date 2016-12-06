@@ -4,12 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Plaats ${spot}</title>
+<title>Plaats ${spotnr}</title>
 </head>
 <body>
 
 <main>
-	<h1>Opties voor plaats ${spot}: </h1>
+	<h1>Opties voor plaats ${spotnr}: </h1>
 	<form method="POST" action="Controller?action=spotoptions" novalidate="novalidate">
 		<label for="chairs">Aantal stoelen: </label><br>
 			<input type="radio" name="chairs" value="0" checked> 0<br>
