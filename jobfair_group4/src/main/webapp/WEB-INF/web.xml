@@ -14,7 +14,7 @@
 	</welcome-file-list>
 	<context-param>
 		<param-name>url</param-name>
-		<param-value>jdbc:postgresql://gegevensbanken.khleuven.be:51617/hackaton</param-value>
+		<param-value>jdbc:postgresql://gegevensbanken.khleuven.be:51617/hacakton</param-value>
 	</context-param>
 	<context-param>
 		<param-name>user</param-name>
