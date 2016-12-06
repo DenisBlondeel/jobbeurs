@@ -64,7 +64,7 @@ public class Controller extends HttpServlet {
 			electricity = true;
 		}
 		String extra = request.getParameter("extra");
-		String spot = request.getParameter("spotnr");
+		String spot = request.getParameter("id");
 		request.setAttribute("spotnr", spot);
 		request.setAttribute("reserved", "Uw plaats werd gereserveerd.");
 		return "index.jsp";

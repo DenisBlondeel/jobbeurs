@@ -10,7 +10,7 @@
 
 <main>
 	<h1>Opties voor plaats ${spotnr}: </h1>
-	<form method="POST" action="Controller?action=spotoptions" novalidate="novalidate">
+	<form method="POST" action="Controller?action=spotoptions&id=${spotnr}" novalidate="novalidate">
 		<label for="chairs">Aantal stoelen: </label><br>
 			<input type="radio" name="chairs" value="0" checked> 0<br>
 			<input type="radio" name="chairs" value="1"> 1<br>
