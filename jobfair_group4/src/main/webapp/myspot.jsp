@@ -8,22 +8,24 @@
 	<jsp:param value="Mijn plaats" name="h2"/>
 </jsp:include>
 
-<table>
-	<tr>
-		<th>Plaatsnr</th>
-		<th>Aantal stoelen</th>
-		<th>Aantal tafels</th>
-		<th>Electriciteit</th>
-		<th>Opmerkingen</th>
-	</tr>
-	<tr>
-		<td>${spotnr}</td>
-		<td>${chairs}</td>
-		<td>${tables}</td>
-		<td>${electricity}</td>
-		<td>${extra}</td>
-	</tr>
-</table>
+<ul>
+	<li>
+		<p>Plaatsnr: ${spotnr}</p>
+	</li>
+	<li>
+		<p>Aantal stoelen: ${chairs}</p>
+	</li>
+	<li>
+		<p>Aantal tafels: ${tables}</p>
+	</li>
+	<li>
+		<p>Elektriciteit: ${electricity}</p>
+	</li>
+	<li>
+		<p>Extra opmerkingen:</p>
+		<p>${extra}</p>
+	</li>
+</ul>
 
 </body>
 </html>
