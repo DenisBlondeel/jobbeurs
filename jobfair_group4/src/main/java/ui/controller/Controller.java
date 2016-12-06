@@ -1,6 +1,7 @@
 package ui.controller;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.Properties;
@@ -15,29 +16,38 @@ import javax.servlet.http.HttpServletResponse;
 
 import domain.model.Spot;
 import domain.service.SpotService;
+import ui.controller.handler.HandlerFactory;
 
 @WebServlet("/Controller")
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private SpotService spotservice;
-	
+	private SpotService service;
+	private HandlerFactory factory;
 	
 	@Override
 	public void init() throws ServletException{
 		super.init();
+
 		ServletContext context = getServletContext();
+
 		Properties properties = new Properties();
-		properties.setProperty("user", context.getInitParameter("user"));
-		 properties.setProperty("password", context.getInitParameter("password"));
-		 properties.setProperty("ssl", context.getInitParameter("ssl"));
-		 properties.setProperty("sslfactory", context.getInitParameter("sslfactory"));
-		 properties.setProperty("url", context.getInitParameter("url"));
 		Enumeration<String> parameterNames = context.getInitParameterNames();
-		while(parameterNames.hasMoreElements()){
+		while (parameterNames.hasMoreElements()) {
 			String propertyName = parameterNames.nextElement();
 			properties.setProperty(propertyName, context.getInitParameter(propertyName));
 		}
-		spotservice = new SpotService(properties);
+		
+//		try {
+//			service = new SpotService(properties);
+//
+//			InputStream input = context.getResourceAsStream("/WEB-INF/handlers.xml");
+//			Properties handlerProperties = new Properties();
+//			handlerProperties.loadFromXML(input);
+//
+//			handlerFactory = new HandlerFactory(handlerProperties, service);
+//		} catch (Exception e) {
+//			
+//		}
 	}
 
 	public Controller() {
@@ -46,12 +56,12 @@ public class Controller extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		processRequest(request, response);
+		this.processRequest(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		processRequest(request, response);
+		this.processRequest(request, response);
 	}
 	
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
@@ -82,7 +92,7 @@ public class Controller extends HttpServlet {
 	}
 
 	private String getSpots(HttpServletRequest request, HttpServletResponse response) {
-		List<Spot> spots = spotservice.getAll();
+		List<Spot> spots = service.getAll();
 		request.setAttribute("spots", spots);
 		return "spotoverview.jsp";
 	}
