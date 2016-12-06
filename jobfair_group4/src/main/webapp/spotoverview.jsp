@@ -15,7 +15,7 @@
 	<c:foreach var="spot" items="${spots}">
 	<td>${spot["spotid"]}</td>
 	<td>${spot["companyName"]}</td>
-	<td> <a href="Controller?action=spotoptions"> reserveer plaats </a> </td>
+	<td> <a href="Controller?action=spotoptions&id=${spot.spotid}"> reserveer plaats </a> </td>
 	</c:foreach>
 	</table>
 
