@@ -36,10 +36,10 @@ public class Controller extends HttpServlet {
 			String propertyName = parameterNames.nextElement();
 			properties.setProperty(propertyName, context.getInitParameter(propertyName));
 		}
+
+		service = new SpotService(properties);
 		
 //		try {
-//			service = new SpotService(properties);
-//
 //			InputStream input = context.getResourceAsStream("/WEB-INF/handlers.xml");
 //			Properties handlerProperties = new Properties();
 //			handlerProperties.loadFromXML(input);
