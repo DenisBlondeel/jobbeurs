@@ -89,6 +89,11 @@ public class Controller extends HttpServlet {
 		case "spots":
 			destination = getSpots(request, response);
 			break;
+		case "vrijelijst":
+			destination = getFreeSpots(request, response);
+			break;
+		case "bezetlijst":
+			destination = getOccupiedSpots(request, response);
 			default:
 			destination = "index.jsp";
 			
@@ -96,6 +101,22 @@ public class Controller extends HttpServlet {
 		
 		RequestDispatcher view = request.getRequestDispatcher(destination);
 		view.forward(request, response);
+	}
+
+	private String getOccupiedSpots(HttpServletRequest request, HttpServletResponse response)
+	{
+		String destination = "spotoverview.jsp";
+		List<Spot> spots = service.getOccupiedSpot();
+		request.setAttribute("free", spots);
+		return destination;
+	}
+
+	private String getFreeSpots(HttpServletRequest request, HttpServletResponse response)
+	{
+		String destination = "spotoverview.jsp";
+		List<Spot> spots = service.getFreeSpot();
+		request.setAttribute("occupied", spots);
+		return destination;
 	}
 
 	private String getSpots(HttpServletRequest request, HttpServletResponse response) {
