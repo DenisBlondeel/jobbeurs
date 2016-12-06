@@ -10,52 +10,57 @@ import domain.model.User;
 
 public class SpotService {
 	
-	private SpotRepository spotRepository;
-	private UserRepository userRepository;
+	private SpotRepository spotDB;
+	private UserRepository userDB;
 
 	public SpotService(Properties properties) {
 		
-		spotRepository = new SpotRepository(properties);
-		userRepository = new UserRepository();
+		spotDB = new SpotRepository(properties);
+		userDB = new UserRepository();
 	}
 	
 	public Spot getSpot(String spotId)
 	{
-		return spotRepository.get(spotId);
+		return spotDB.get(spotId);
 	}
 	
 	public List<Spot> getAll(){
-		return spotRepository.getAll();
+		return spotDB.getAll();
 	}
 	
 	public List<Spot> getFreeSpot()
 	{
-		return spotRepository.getFreeSpots();
+		return spotDB.getFreeSpots();
 	}
 	
 	public List<Spot> getOccupiedSpot()
 	{
-		return spotRepository.getOccupiedSpots();
+		return spotDB.getOccupiedSpots();
 	}
 	
 	public List<Spot> getAlphabeticOccupiedSpot()
 	{
-		return spotRepository.getOccupiedSpots();
+		return spotDB.getOccupiedSpots();
 	}
 	
 	public void addUserToSpot(String spotId, User user)
 	{
-		spotRepository.addUserToSpot(spotId, user);
+		spotDB.addUserToSpot(spotId, user);
 	}
 	
 	public void removeUserFromSpot(String spotId)
 	{
-		spotRepository.removeUserFromSpot(spotId);
+		spotDB.removeUserFromSpot(spotId);
 	}
 	
 	public SpotRepository getSpotRepository()
 	{
-		return spotRepository;
+		return spotDB;
+	}
+
+	public void close() {
+		spotDB.close();
+		userDB.close();
 	}
 	
 	

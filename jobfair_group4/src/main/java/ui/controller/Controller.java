@@ -50,6 +50,13 @@ public class Controller extends HttpServlet {
 //		}
 	}
 
+	@Override
+	public void destroy() {
+		service.close();
+
+		super.destroy();
+	}
+
 	public Controller() {
 		super();
 	}
