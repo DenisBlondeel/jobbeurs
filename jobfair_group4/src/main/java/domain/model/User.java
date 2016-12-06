@@ -91,6 +91,17 @@ public class User {
 		return password;
 	}
 
+	public boolean isCorrectPassword(String password) {
+		if(password.isEmpty()){
+			throw new IllegalArgumentException("Geen wachtwoord gegeven");
+		}
+		try {
+			return getPassword().equals(hashPassword(password));
+		} catch (Exception e) {
+			throw new IllegalArgumentException("Systeem kon geen hashed wachtwoord creëren");
+		}
+	}
+
 	public void setPassword(String password) {
 		if(password == null || password.isEmpty()){
 			throw new IllegalArgumentException("Gelieve een wachtwoord op te geven");

@@ -98,6 +98,35 @@ public class UserRepository {
 		}
 	}
 
+	public void delete(String userID) {
+		if (userID == null) {
+			throw new DbException("Nothing to delete.");
+		}
+		String sql = "DELETE FROM jobfair_group4.users WHERE userid = ?";
+		try {
+			statement = connection.prepareStatement(sql);
+
+			statement.setString(1, userID);
+
+			statement.executeUpdate();
+		} catch (SQLException e) {
+			throw new DbException(e.getMessage(), e);
+		}
+	}
+
+	public User getUserIfAuthenticated(String userID, String password) {
+		try {
+			User user = get(userID);
+			if (user.isCorrectPassword(password)) {
+				return user;
+			} else {
+				return null;
+			}
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
 	public Properties getProperties() {
 		return properties;
 	}
