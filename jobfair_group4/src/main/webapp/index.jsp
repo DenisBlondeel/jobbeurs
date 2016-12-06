@@ -22,6 +22,7 @@
 	<body>
 		<h1 class="text-center">Hello World</h1>
 		<h1>test ! </h1>
+		<h2>${reserved}</h2>
 		<a href="index.jsp"><i class="fa fa-home" aria-hidden="true"></i></a>
 		<a href="imgmap.html">hemisfeer</a>
 

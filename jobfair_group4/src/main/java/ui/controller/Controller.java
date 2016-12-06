@@ -36,12 +36,27 @@ public class Controller extends HttpServlet {
 		
 		switch(action)
 		{
+		case "spotoptions":
+			destination = spotOptions(request, response);
+			break;
 			default:
 			destination = "index.jsp";
 		}
 		
 		RequestDispatcher view = request.getRequestDispatcher(destination);
 		view.forward(request, response);
+	}
+
+	private String spotOptions(HttpServletRequest request, HttpServletResponse response) {
+		int chairs = Integer.parseInt(request.getParameter("chairs"));
+		int tables = Integer.parseInt(request.getParameter("tables"));
+		boolean electricity = false;
+		if(request.getParameter("electricity") != null){
+			electricity = true;
+		}
+		String extra = request.getParameter("extra");
+		request.setAttribute("reserved", "Uw plaats werd gereserveerd.");
+		return "index.jsp";
 	}
 
 }
