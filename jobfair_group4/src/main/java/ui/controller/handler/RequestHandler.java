@@ -18,7 +18,7 @@ public abstract class RequestHandler {
 
 	public RequestHandler() {}
 
-	public final void handle(HttpServletRequest request, HttpServletResponse response) {
+	public final void handle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		this.checkRole(request);
 		this.handleRequest(request, response);
 		

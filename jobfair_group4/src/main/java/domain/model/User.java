@@ -98,7 +98,7 @@ public class User {
 		try {
 			return getPassword().equals(hashPassword(password));
 		} catch (Exception e) {
-			throw new IllegalArgumentException("Systeem kon geen hashed wachtwoord creëren");
+			throw new IllegalArgumentException("Systeem kon geen hashed wachtwoord creeren");
 		}
 	}
 
@@ -119,7 +119,7 @@ public class User {
 			}
 			this.password = this.hashPassword(password);
 		} catch (Exception e) {
-			throw new IllegalArgumentException("Systeem kon geen hashed wachtwoord creëren");
+			throw new IllegalArgumentException("Systeem kon geen hashed wachtwoord creeren");
 		}
 	}
 	
