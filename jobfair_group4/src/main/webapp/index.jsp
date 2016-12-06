@@ -23,7 +23,7 @@
 	<body>
 		<h1 class="text-center">Hello World</h1>
 		<h1>test ! </h1>
-		<c:if test="${spotnr}!=null">
+		<c:if test="${spotnr!=null}">
 			<h2>Plaats ${spotnr} werd gereserveerd.</h2>
 		</c:if>
 		<a href="index.jsp"><i class="fa fa-home" aria-hidden="true"></i></a>
