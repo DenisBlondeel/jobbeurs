@@ -94,6 +94,7 @@ public class Controller extends HttpServlet {
 			break;
 		case "bezetlijst":
 			destination = getOccupiedSpots(request, response);
+			break;
 			default:
 			destination = "index.jsp";
 			
@@ -107,7 +108,7 @@ public class Controller extends HttpServlet {
 	{
 		String destination = "spotoverview.jsp";
 		List<Spot> spots = service.getOccupiedSpot();
-		request.setAttribute("free", spots);
+		request.setAttribute("spots", spots);
 		return destination;
 	}
 
@@ -115,7 +116,7 @@ public class Controller extends HttpServlet {
 	{
 		String destination = "spotoverview.jsp";
 		List<Spot> spots = service.getFreeSpot();
-		request.setAttribute("occupied", spots);
+		request.setAttribute("spots", spots);
 		return destination;
 	}
 

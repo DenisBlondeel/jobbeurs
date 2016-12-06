@@ -16,7 +16,7 @@ public class SpotService {
 	public SpotService(Properties properties) {
 		
 		spotDB = new SpotRepository(properties);
-		userDB = new UserRepository();
+		userDB = new UserRepository(properties);
 	}
 	
 	public Spot getSpot(String spotId)
