@@ -27,7 +27,9 @@ public class Spot {
 	}
 
 	public void setSpotID(String spotID) {
-		// TODO Auto-generated method
+		if (spotID == null || spotID.isEmpty()) {
+			throw new IllegalArgumentException("Er is geen spotID gegeven");
+		}
 		this.spotID = spotID;
 	}
 
@@ -36,7 +38,9 @@ public class Spot {
 	}
 
 	public void setAmountTables(int amountTables) {
-		// TODO Auto-generated method
+		if (amountTables < 0 || amountTables > 1) {
+			throw new IllegalArgumentException("Er is geen valide aantal tafels gegeven");
+		}
 		this.amountTables = amountTables;
 	}
 
@@ -45,7 +49,9 @@ public class Spot {
 	}
 
 	public void setAmountChairs(int amountChairs) {
-		// TODO Auto-generated method
+		if (amountChairs < 0 || amountChairs > 2) {
+			throw new IllegalArgumentException("Er is geen valide aantal stoelen gegeven");
+		}
 		this.amountChairs = amountChairs;
 	}
 
@@ -54,7 +60,6 @@ public class Spot {
 	}
 
 	public void setElectricity(boolean value) {
-		// TODO Auto-generated method
 		this.electricity = value;
 	}
 
@@ -63,7 +68,6 @@ public class Spot {
 	}
 
 	public void setRemarks(String remarks) {
-		// TODO Auto-generated method
 		this.remarks = remarks;
 	}
 
@@ -72,7 +76,6 @@ public class Spot {
 	}
 
 	public void setUser(User user) {
-		// TODO Auto-generated method
 		this.user = user;
 	}
 

@@ -107,7 +107,7 @@ public class Controller extends HttpServlet {
 	private String getOccupiedSpots(HttpServletRequest request, HttpServletResponse response)
 	{
 		String destination = "spotoverview.jsp";
-		List<Spot> spots = service.getOccupiedSpot();
+		List<Spot> spots = service.getOccupiedSpots();
 		request.setAttribute("spots", spots);
 		return destination;
 	}
@@ -115,13 +115,13 @@ public class Controller extends HttpServlet {
 	private String getFreeSpots(HttpServletRequest request, HttpServletResponse response)
 	{
 		String destination = "spotoverview.jsp";
-		List<Spot> spots = service.getFreeSpot();
+		List<Spot> spots = service.getFreeSpots();
 		request.setAttribute("spots", spots);
 		return destination;
 	}
 
 	private String getSpots(HttpServletRequest request, HttpServletResponse response) {
-		List<Spot> spots = service.getAll();
+		List<Spot> spots = service.getAllSpots();
 		request.setAttribute("spots", spots);
 		return "spotoverview.jsp";
 	}

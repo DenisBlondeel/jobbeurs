@@ -73,7 +73,7 @@ public class User {
 	}
 
 	public void setEmail(String email) {
-		if(email.isEmpty()){
+		if(email == null || email.isEmpty()){
 			throw new IllegalArgumentException("Er is geen email gegeven");
 		}
 		String USERID_PATTERN = 

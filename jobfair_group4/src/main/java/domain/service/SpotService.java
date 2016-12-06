@@ -14,57 +14,64 @@ public class SpotService {
 	private UserRepository userDB;
 
 	public SpotService(Properties properties) {
-		
 		spotDB = new SpotRepository(properties);
 		userDB = new UserRepository(properties);
-	}
-	
-	public Spot getSpot(String spotId)
-	{
-		return spotDB.get(spotId);
-	}
-	
-	public List<Spot> getAll(){
-		return spotDB.getAll();
-	}
-	
-	public List<Spot> getFreeSpot()
-	{
-		return spotDB.getFreeSpots();
-	}
-	
-	public List<Spot> getOccupiedSpot()
-	{
-		return spotDB.getOccupiedSpots();
-	}
-	
-	public List<Spot> getAlphabeticOccupiedSpot()
-	{
-		return spotDB.getOccupiedSpots();
-	}
-	
-	public void addUserToSpot(String spotId, User user)
-	{
-		spotDB.addUserToSpot(spotId, user);
-	}
-	
-	public void removeUserFromSpot(String spotId)
-	{
-		spotDB.removeUserFromSpot(spotId);
-	}
-	
-	public SpotRepository getSpotRepository()
-	{
-		return spotDB;
 	}
 
 	public void close() {
 		spotDB.close();
 		userDB.close();
 	}
-	
-	
-	
-	
 
+	public User getUser(String userID) {
+		return getUserRepository().get(userID);
+	}
+
+	public void addUser(User user) {
+		getUserRepository().add(user);
+	}
+
+	public void deleteUser(String userID) {
+		getUserRepository().delete(userID);
+	}
+
+	public User getUserIfAuthenticated(String userID, String password) {
+		return getUserRepository().getUserIfAuthenticated(userID, password);
+	}
+
+	private UserRepository getUserRepository() {
+		return this.userDB;
+	}
+
+	public Spot getSpot(String spotId) {
+		return getSpotRepository().get(spotId);
+	}
+	
+	public List<Spot> getAllSpots() {
+		return getSpotRepository().getAll();
+	}
+	
+	public List<Spot> getFreeSpots() {
+		return getSpotRepository().getFreeSpots();
+	}
+	
+	public List<Spot> getOccupiedSpots() {
+		return getSpotRepository().getOccupiedSpots();
+	}
+	
+	public List<Spot> getAlphabeticOccupiedSpots() {
+		return getSpotRepository().getOccupiedSpots();
+	}
+	
+	public void addUserToSpot(String spotId, User user) {
+		getSpotRepository().addUserToSpot(spotId, user);
+	}
+	
+	public void removeUserFromSpot(String spotId) {
+		getSpotRepository().removeUserFromSpot(spotId);
+	}
+	
+	public SpotRepository getSpotRepository() {
+		return spotDB;
+	}
 }
