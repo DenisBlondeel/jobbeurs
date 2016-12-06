@@ -16,6 +16,7 @@ public class SpotRepository {
 
 	private PreparedStatement statement;
 	private Connection connection;
+	private Properties properties;
 
 	public SpotRepository(Properties properties)
 	{
@@ -23,6 +24,7 @@ public class SpotRepository {
 			Class.forName("org.postgresql.Driver");
 			String url = properties.getProperty("url");
 			connection = DriverManager.getConnection(url, properties);
+			setProperties(properties);
 			} catch (Exception e) {
 			throw new DbException(e.getMessage(), e);
 			}
@@ -32,7 +34,7 @@ public class SpotRepository {
 	{
 		if (spotID.isEmpty())
 		{
-			throw new DbException("nothing to find");
+			throw new DbException("Niets te vinden !");
 		}
 		String sql = "SELECT * " + "FROM jobfair_group4.spots" + " WHERE spotID = ?;";
 		Spot spot = new Spot(spotID);
@@ -128,6 +130,10 @@ public class SpotRepository {
 	
 	public void addUserToSpot(String spotID, User user)
 	{
+		if (spotID.isEmpty() || user == null)
+		{
+			throw new DbException("Niets te vinden !");
+		}
 		String sql = "UPDATE jobfair_group4.spots SET userID = ? WHERE spotID = ?";
 		
 		try
@@ -141,6 +147,37 @@ public class SpotRepository {
 			throw new DbException(e.getMessage(), e);
 		}
 	}
+	
+	public void removeUserFromSpot(String spotID)
+	{
+		if (spotID.isEmpty() || user == null)
+		{
+			throw new DbException("Niets te vinden !");
+		}
+		String sql = "UPDATE jobfair_group4.spots SET userID = NULL WHERE spotID = ?";
+		
+		try
+		{
+			statement = connection.prepareStatement(sql);
+			statement.setString(1, spotID);
+			statement.execute();
+		} catch (SQLException e)
+		{
+			throw new DbException(e.getMessage(), e);
+		}
+	}
+	
+	public Properties getProperties()
+	{
+		return properties;
+	}
+	
+	public void setProperties(Properties properties)
+	{
+		this.properties = properties;
+	}
+	
+	
 	
 
 	
