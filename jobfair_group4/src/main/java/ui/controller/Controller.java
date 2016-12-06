@@ -27,6 +27,11 @@ public class Controller extends HttpServlet {
 		super.init();
 		ServletContext context = getServletContext();
 		Properties properties = new Properties();
+		properties.setProperty("user", context.getInitParameter("user"));
+		 properties.setProperty("password", context.getInitParameter("password"));
+		 properties.setProperty("ssl", context.getInitParameter("ssl"));
+		 properties.setProperty("sslfactory", context.getInitParameter("sslfactory"));
+		 properties.setProperty("url", context.getInitParameter("url"));
 		Enumeration<String> parameterNames = context.getInitParameterNames();
 		while(parameterNames.hasMoreElements()){
 			String propertyName = parameterNames.nextElement();

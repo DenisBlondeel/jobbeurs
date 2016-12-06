@@ -11,6 +11,7 @@
 
 	<table>
 	<thead> plaatsid </thead>
+	<thead> companyname </thead>
 	<thead> reserveer </thead>
 	<c:foreach var="spot" items="${spots}">
 	<td>${spot["spotid"]}</td>
