@@ -8,23 +8,19 @@
 </jsp:include>
 
 <table>
-	<thead>plaatsid
-	</thead>
-	<thead>companyname
-	</thead>
-	<thead>reserveer
-	</thead>
-	<thead>
-		<a href="Controller?action=vrijelijst">Vrije Plaatsen</a>
-	</thead>
-	<thead>
-		<a href="Controller?action=bezetlijst">Bezette Plaatsen</a>
-	</thead>
+	<tr>
+		<th>plaatsid </th>
+		<th>companyname </th>
+		<th>reserveer </th>
 
+		<th><a href="Controller?action=vrijelijst">Vrije Plaatsen </a></th>
+		<th><a href="Controller?action=bezetlijst">Bezette Plaatsen</a></th>
+
+	</tr>
 	<c:forEach var="spot" items="${spots}">
 		<tr>
 			<td>${spot.spotID}</td>
-			<td>${spot.electricity}</td>
+			<td>${spot.user}</td>
 
 		</tr>
 	</c:forEach>

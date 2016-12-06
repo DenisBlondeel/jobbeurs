@@ -94,7 +94,7 @@ public class SpotRepository {
 	public List<Spot> getFreeSpots()
 	{
 		List<Spot> list = new ArrayList<Spot>();
-		String sql = "SELECT *" + " FROM jobfair_group4.spot WHERE userID IS NULL ";
+		String sql = "SELECT *" + " FROM jobfair_group4.spots WHERE userID IS NULL ";
 		try
 		{
 			statement = connection.prepareStatement(sql);
@@ -118,7 +118,7 @@ public class SpotRepository {
 	public List<Spot> getOccupiedSpots()
 	{
 		List<Spot> list = new ArrayList<Spot>();
-		String sql = "SELECT *" + " FROM jobfair_group4.spot WHERE userID IS NOT NULL ";
+		String sql = "SELECT *" + " FROM jobfair_group4.spots WHERE userID IS NOT NULL ";
 		try
 		{
 			statement = connection.prepareStatement(sql);
@@ -142,7 +142,7 @@ public class SpotRepository {
 	public List<Spot> getAlphabeticOccupiedSpots()
 	{
 		List<Spot> list = new ArrayList<Spot>();
-		String sql = "SELECT *" + " FROM jobfair_group4.spot WHERE userID IS NOT NULL ORDER BY userID ";
+		String sql = "SELECT *" + " FROM jobfair_group4.spots WHERE userID IS NOT NULL ORDER BY userID ";
 		try
 		{
 			statement = connection.prepareStatement(sql);

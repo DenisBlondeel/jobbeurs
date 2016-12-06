@@ -10,6 +10,7 @@
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="css/bootstrap.css" >
 		<link rel="stylesheet" href="css/font-awesome.css" >
+		<link rel="stylesheet" href="css/style.css">
 
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -28,8 +29,8 @@
 			<ul>
 				<li id="${param.home}"><a href="Controller?action=home">Home</a></li>
 				<li id="${param.spotoverview}"><a href="Controller?action=spots">Alle plaatsen</a></li>
-				<li id="${param.myspot}"><a href="Controller?action=home">Mijn plaats</a></li>
-				<li id="${param.myaccount}"><a href="Controller?action=home">Mijn account</a></li>
+				<!--<li id="${param.myspot}"><a href="Controller?action=home">Mijn plaats</a></li>-->
+				<!--<li id="${param.myaccount}"><a href="Controller?action=home">Mijn account</a></li>-->
 			</ul>
 		</nav>
 		<h2>${param.h2}</h2>
