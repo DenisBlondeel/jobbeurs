@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
-import domain.model.Spot;
 import domain.model.User;
 
 public class UserRepository {
@@ -17,10 +16,11 @@ public class UserRepository {
 	private Properties properties;
 
 	public UserRepository(Properties properties) {
+		this.setProperties(properties);
 		try {
 			Class.forName("org.postgresql.Driver");
-			String url = properties.getProperty("url");
-			connection = DriverManager.getConnection(url, properties);
+			String url = getProperties().getProperty("url");
+			connection = DriverManager.getConnection(url, getProperties());
 			setProperties(properties);
 		} catch (Exception e) {
 			throw new DbException(e.getMessage(), e);

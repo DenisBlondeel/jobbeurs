@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import domain.model.Spot;
 import domain.service.SpotService;
 import ui.controller.handler.HandlerFactory;
+import ui.controller.handler.RequestHandler;
 
 @WebServlet("/Controller")
 public class Controller extends HttpServlet {
@@ -73,11 +74,17 @@ public class Controller extends HttpServlet {
 	
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		String action;
+		String action = request.getParameter("action");
+
+		if (action == null) {
+			action = "";
+		}
+
+//		RequestHandler handler = handlerFactory.getHandler(action);
+//		handler.handle(request, response);
+
 		String destination = "";
-		
-		action = request.getParameter("action");
-		
+
 		switch(action)
 		{
 		case "showopt":
@@ -95,7 +102,7 @@ public class Controller extends HttpServlet {
 		case "bezetlijst":
 			destination = getOccupiedSpots(request, response);
 			break;
-			default:
+		default:
 			destination = "index.jsp";
 			
 		}

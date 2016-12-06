@@ -41,7 +41,7 @@ public class SpotRepository {
 		if (spotID.isEmpty()) {
 			throw new DbException("Niets te vinden !");
 		}
-		String sql = "SELECT * " + "FROM jobfair_group4.spots" + " WHERE spotID = ?;";
+		String sql = "SELECT * FROM jobfair_group4.spots WHERE spotID = ?;";
 		Spot spot = new Spot(spotID);
 		try {
 			statement = connection.prepareStatement(sql);
@@ -169,6 +169,28 @@ public class SpotRepository {
 		try {
 			statement = connection.prepareStatement(sql);
 			statement.setString(1, spotID);
+			statement.execute();
+		} catch (SQLException e) {
+			throw new DbException(e.getMessage(), e);
+		}
+	}
+
+	public void updateSpot(Spot spot) {
+		if (spot == null) {
+			throw new DbException("Niets te vinden!");
+		}
+		String sql = "UPDATE jobfair_group4.spots SET amountTables = ?, amountChairs = ?, remark = ?, userID = ?, electricity = ? WHERE spotID = ?";
+
+		try {
+			statement = connection.prepareStatement(sql);
+
+			statement.setInt(1, spot.getAmountTables());
+			statement.setInt(2, spot.getAmountChairs());
+			statement.setString(3, spot.getRemarks());
+			statement.setString(4, spot.getUser().getUserID());
+			statement.setBoolean(5, spot.getElectricity());
+			statement.setString(6, spot.getSpotID());
+
 			statement.execute();
 		} catch (SQLException e) {
 			throw new DbException(e.getMessage(), e);

@@ -55,7 +55,7 @@ public class Spot {
 		this.amountChairs = amountChairs;
 	}
 
-	public boolean isElectricity() {
+	public boolean getElectricity() {
 		return electricity;
 	}
 

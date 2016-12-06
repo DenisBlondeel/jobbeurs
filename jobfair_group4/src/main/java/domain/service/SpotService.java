@@ -70,6 +70,10 @@ public class SpotService {
 	public void removeUserFromSpot(String spotId) {
 		getSpotRepository().removeUserFromSpot(spotId);
 	}
+
+	public void updateSpot(Spot spot) {
+		this.getSpotRepository().updateSpot(spot);
+	}
 	
 	public SpotRepository getSpotRepository() {
 		return spotDB;

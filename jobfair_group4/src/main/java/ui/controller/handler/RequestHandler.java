@@ -1,5 +1,8 @@
 package ui.controller.handler;
 
+import java.io.IOException;
+
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -17,10 +20,11 @@ public abstract class RequestHandler {
 
 	public final void handle(HttpServletRequest request, HttpServletResponse response) {
 		this.checkRole(request);
+		this.handleRequest(request, response);
 		
 	}
 
-	public abstract void handleRequest(HttpServletRequest request, HttpServletResponse response);
+	public abstract void handleRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 
 	private void checkRole(HttpServletRequest request) {
 		if (this.getAccesList() == null) {
