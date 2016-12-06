@@ -84,8 +84,8 @@ public class UserRepository {
 					statement.setString(2, user.getEmail());
 					statement.setString(3, user.getPassword());
 					statement.setString(4, user.getSalt());
-					statement.setString(5, user.getFirstName());
-					statement.setString(6, user.getLastName());
+					//statement.setString(5, user.getFirstName());
+					//statement.setString(6, user.getLastName());
 					statement.setString(7, user.getRole().toString());
 
 					statement.executeUpdate();
