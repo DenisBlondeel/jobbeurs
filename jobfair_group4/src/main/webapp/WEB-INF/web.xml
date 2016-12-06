@@ -20,11 +20,11 @@ jdbc:postgresql://gegevensbanken.khleuven.be:51617/jobfair_group4
 	</context-param>
 	<context-param>
 		<param-name>user</param-name>
-		<param-value>r0372092</param-value>
+		<param-value>local_hackaton_6</param-value>
 	</context-param>
 	<context-param>
 		<param-name>password</param-name>
-		<param-value>pass</param-value>
+		<param-value>eeZaetohnie7thoh</param-value>
 	</context-param>
 	<context-param>
 		<param-name>currentSchema</param-name>
