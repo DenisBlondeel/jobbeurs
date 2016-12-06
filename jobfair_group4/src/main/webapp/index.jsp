@@ -15,7 +15,7 @@
 			<h3>Plaats ${spotnr} werd gereserveerd.</h3>
 		</c:if>
 		<a href="index.jsp"><i class="fa fa-home" aria-hidden="true"></i></a>
-		<a href="imgmap.html">hemisfeer</a>
+		<a href="imgmap.jsp">hemisfeer</a>
 
 		<!-- jQuery -->
 		<script src="//code.jquery.com/jquery.js"></script>

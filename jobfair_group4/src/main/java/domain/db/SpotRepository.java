@@ -9,8 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import com.thoughtworks.selenium.webdriven.commands.Close;
-
 import domain.model.Spot;
 import domain.model.User;
 
@@ -64,22 +62,24 @@ public class SpotRepository {
 	
 	public List<Spot> getAll() {
 	List<Spot> list = new ArrayList<Spot>();
-	String sql = "Select * FROM jobfair_group4.spot";
-		try {
-			statement = connection.prepareStatement(sql);
-			ResultSet results = statement.executeQuery();
-			while (results.next()) {
-				Spot spot = new Spot(results.getString("spotID"));
-				spot.setAmountTables(results.getInt("amountTables"));
-				spot.setAmountChairs(results.getInt("amountChairs"));
-				spot.setElectricity(results.getBoolean("electricity"));
-				spot.setRemarks(results.getString("remarks"));
-				list.add(spot);
-			}
-		} catch (SQLException e) {
-			throw new DbException(e);
+	String sql = "Select * FROM jobfair_group4.spots";
+	try{
+		statement = connection.prepareStatement(sql);
+		ResultSet results = statement.executeQuery();
+		while (results.next())
+		{
+			Spot spot = new Spot(results.getString("spotID"));
+			spot.setAmountTables(results.getInt("amountTables"));
+			spot.setAmountChairs(results.getInt("amountChairs"));
+			spot.setElectricity(results.getBoolean("electricity"));
+			spot.setRemarks(results.getString("remarks"));
+			list.add(spot);
 		}
-		return list;
+	} catch (SQLException e)
+	{
+		throw new DbException(e);
+	}
+	return list;
 	}
 
 	public List<Spot> getFreeSpots() {
