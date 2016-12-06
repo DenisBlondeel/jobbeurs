@@ -150,7 +150,7 @@ public class SpotRepository {
 	
 	public void removeUserFromSpot(String spotID)
 	{
-		if (spotID.isEmpty() || user == null)
+		if (spotID.isEmpty())
 		{
 			throw new DbException("Niets te vinden !");
 		}
