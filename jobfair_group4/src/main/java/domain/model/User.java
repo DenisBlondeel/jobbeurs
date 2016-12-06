@@ -76,7 +76,14 @@ public class User {
 	}
 
 	public void setPassword(String password) {
+		if(password == null || password.isEmpty()){
+			throw new IllegalArgumentException("Gelieve een wachtwoord op te geven");
+		}
 		this.password = password;
+	}
+	
+	public String hashPassword(String password){
+		return password;
 	}
 
 	public String getSalt() {
