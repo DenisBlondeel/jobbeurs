@@ -18,11 +18,11 @@
 	</context-param>
 	<context-param>
 		<param-name>user</param-name>
-		<param-value>local_hackaton_6</param-value>
+		<param-value>r0372092</param-value>
 	</context-param>
 	<context-param>
 		<param-name>password</param-name>
-		<param-value>eeZaetohnie7thoh</param-value>
+		<param-value>Airbu1331</param-value>
 	</context-param>
 	<context-param>
 		<param-name>ssl</param-name>
