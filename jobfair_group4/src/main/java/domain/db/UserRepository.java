@@ -73,7 +73,7 @@ public class UserRepository {
 			ResultSet result = statement.executeQuery();
 
 			if (result.next() && result.getString("userId").equals(user.getUserID())) {
-				throw new IllegalArgumentException("User already exists");
+				throw new IllegalArgumentException("User bestaat al");
 			} else {
 				sql = "INSERT INTO \"r0589873_Web3\".person (userid, companyName, contactName, email, password, salt, firstName, lastName, role) "
 						+ "Values (?, ?, ?, ?, ?, ?, ?)";
