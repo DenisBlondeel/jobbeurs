@@ -24,11 +24,11 @@ jdbc:postgresql://gegevensbanken.khleuven.be:51617/jobfair_group4
 	</context-param>
 	<context-param>
 		<param-name>password</param-name>
-		<param-value>MyVerySecretPassword</param-value>
+		<param-value>Airbu1331</param-value>
 	</context-param>
 	<context-param>
 		<param-name>currentSchema</param-name>
-		<param-value>u0082726</param-value>
+		<param-value>jobfair_group4</param-value>
 	</context-param>
 	<context-param>
 		<param-name>ssl</param-name>
