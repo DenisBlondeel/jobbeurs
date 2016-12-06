@@ -1,33 +1,55 @@
 package domain.model;
 
+import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class User {
 	
-	private String userId, contactName, companyName, email, password, salt;
-	
+	private String userID;
+	private String contactName;
+	private String companyName;
+	private String email;
+	private String password;
+	private String salt;
+	private RoleEnum role;
+
 	public User(){
-		
+		this.setRole(RoleEnum.COMPANY);
 	}
 	
-	public User(String userId, String contactName, String companyName, String email, String password){
-		
+	public User(String userID, String contactName, String companyName, String email, String password){
+		this.setUserID(userID);
+		this.setContactName(contactName);
+		this.setCompanyName(companyName);
+		this.setEmail(email);
+		this.setPassword(password);
+		this.setRole(RoleEnum.COMPANY);
 	}
 	
-	public User(String userId, String contactName, String companyName, String email, String password, String salt){
-		
+	public User(String userID, String contactName, String companyName, String email, String password, String salt, RoleEnum role){
+		this.setUserID(userID);
+		this.setContactName(contactName);
+		this.setCompanyName(companyName);
+		this.setEmail(email);
+		this.setPassword(password);
+		this.setSalt(salt);
+		this.setRole(role);
 	}
 
-	public String getUserId() {
-		return userId;
+	public String getUserID() {
+		return userID;
 	}
 
-	public void setUserId(String userId) {
-		if(userId == null || userId.isEmpty()){
-			throw new IllegalArgumentException("");
+	public void setUserID(String userID) {
+		if(userID == null || userID.isEmpty()){
+			throw new IllegalArgumentException("Er is geen userID gegeven");
 		}
-		this.userId = userId;
+		this.userID = userID;
 	}
 
 	public String getContactName() {
@@ -35,9 +57,6 @@ public class User {
 	}
 
 	public void setContactName(String contactName) {
-		if(contactName == null || contactName.isEmpty()){
-			throw new IllegalArgumentException("Gelieve een contactpersoon op te geven");
-		}
 		this.contactName = contactName;
 	}
 
@@ -46,9 +65,6 @@ public class User {
 	}
 
 	public void setCompanyName(String companyName) {
-		if(companyName == null || companyName.isEmpty()){
-			throw new IllegalArgumentException("Gelieve de naam van je bedrijf in te vullen");
-		}
 		this.companyName = companyName;
 	}
 
@@ -58,7 +74,7 @@ public class User {
 
 	public void setEmail(String email) {
 		if(email.isEmpty()){
-			throw new IllegalArgumentException("No email given");
+			throw new IllegalArgumentException("Er is geen email gegeven");
 		}
 		String USERID_PATTERN = 
 				"^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
@@ -66,7 +82,7 @@ public class User {
 		Pattern p = Pattern.compile(USERID_PATTERN);
 		Matcher m = p.matcher(email);
 		if (!m.matches()) {
-			throw new IllegalArgumentException("Email not valid");
+			throw new IllegalArgumentException("Email heeft niet het juiste formaat");
 		}
 		this.email = email;
 	}
@@ -81,9 +97,30 @@ public class User {
 		}
 		this.password = password;
 	}
+
+	public void setPasswordHashed(String password) {
+		if(password.isEmpty()){
+			throw new IllegalArgumentException("Geen wachtwoord gegeven");
+		}
+		try {
+			if (this.getSalt() == null) {
+				this.createSalt();
+			}
+			this.password = this.hashPassword(password);
+		} catch (Exception e) {
+			throw new IllegalArgumentException("Systeem kon geen hashed wachtwoord creëren");
+		}
+	}
 	
-	public String hashPassword(String password){
-		return password;
+	public String hashPassword(String password) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+		MessageDigest crypt = MessageDigest.getInstance("SHA-1");
+		crypt.reset();
+
+		crypt.update(this.getSalt().getBytes("UTF-8"));
+		crypt.update(password.getBytes("UTF-8"));
+		
+		byte[] digest = crypt.digest();
+		return new BigInteger(1, digest).toString(16);
 	}
 
 	public String getSalt() {
@@ -91,9 +128,37 @@ public class User {
 	}
 
 	public void setSalt(String salt) {
+		if(salt == null || salt.isEmpty()){
+			throw new IllegalArgumentException("De salt voor het inloggen is niet ingevuld");
+		}
 		this.salt = salt;
 	}
-	
-	
 
+	private void createSalt() {
+		SecureRandom random = new SecureRandom();
+		byte seed[] = random.generateSeed(20);
+		this.setSalt(new BigInteger(1, seed).toString(16));
+	}
+
+	public RoleEnum getRole() {
+		return this.role;
+	}
+
+	public void setRole(RoleEnum role) {
+		if(role == null){
+			throw new IllegalArgumentException("De role van de user is niet gedefinieerd");
+		}
+		this.role = role;
+	}
+
+	public void setRole(String role) {
+		if(role == null || role.isEmpty()){
+			throw new IllegalArgumentException("De role van de user is niet gedefinieerd");
+		}
+		try {
+			this.role = RoleEnum.valueOf(role.toUpperCase());
+		} catch (Exception e) {
+			throw new IllegalArgumentException("De gegeven role bestaat niet");
+		}
+	}
 }
