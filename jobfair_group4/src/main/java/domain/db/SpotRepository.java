@@ -84,8 +84,14 @@ public class SpotRepository {
 
 	public List<Spot> getFreeSpots() {
 		List<Spot> list = new ArrayList<Spot>();
+<<<<<<< HEAD
+		String sql = "SELECT *" + " FROM jobfair_group4.spots WHERE userID IS NULL ";
+		try
+		{
+=======
 		String sql = "SELECT *" + " FROM jobfair_group4.spot WHERE userID IS NULL ";
 		try {
+>>>>>>> branch 'master' of https://github.com/elke-steegmans/jobfair_group4.git
 			statement = connection.prepareStatement(sql);
 			ResultSet results = statement.executeQuery();
 			while (results.next()) {
@@ -96,7 +102,36 @@ public class SpotRepository {
 				spot.setRemarks(results.getString("remarks"));
 				list.add(spot);
 			}
+<<<<<<< HEAD
+		} catch (SQLException e)
+		{
+			throw new DbException(e);
+		}
+		return list;
+	}
+	
+	public List<Spot> getOccupiedSpots()
+	{
+		List<Spot> list = new ArrayList<Spot>();
+		String sql = "SELECT *" + " FROM jobfair_group4.spots WHERE userID IS NOT NULL ";
+		try
+		{
+			statement = connection.prepareStatement(sql);
+			ResultSet results = statement.executeQuery();
+			while (results.next())
+			{
+				Spot spot = new Spot(results.getString("spotID"));
+				spot.setAmountTables(results.getInt("amountTables"));
+				spot.setAmountChairs(results.getInt("amountChairs"));
+				spot.setElectricity(results.getBoolean("electricity"));
+				spot.setRemarks(results.getString("remarks"));
+				list.add(spot);
+			}
+		} catch (SQLException e)
+		{
+=======
 		} catch (SQLException e) {
+>>>>>>> branch 'master' of https://github.com/elke-steegmans/jobfair_group4.git
 			throw new DbException(e);
 		}
 		return list;
@@ -104,8 +139,14 @@ public class SpotRepository {
 
 	public List<Spot> getOccupiedSpots() {
 		List<Spot> list = new ArrayList<Spot>();
+<<<<<<< HEAD
+		String sql = "SELECT *" + " FROM jobfair_group4.spots WHERE userID IS NOT NULL ORDER BY userID ";
+		try
+		{
+=======
 		String sql = "SELECT *" + " FROM jobfair_group4.spot WHERE userID IS NOT NULL ";
 		try {
+>>>>>>> branch 'master' of https://github.com/elke-steegmans/jobfair_group4.git
 			statement = connection.prepareStatement(sql);
 			ResultSet results = statement.executeQuery();
 			while (results.next()) {
