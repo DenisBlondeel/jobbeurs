@@ -21,7 +21,7 @@
 			</div>
 </c:if>
 
-<form method="POST" action="Controller?action=signup">
+<form method="POST" action="Controller?action=signup" novalidate="novalidate">
 	<p>
 		<label for="companyName">Naam van bedrijf: </label>
 		<input type="text" id="companyName" name="companyName" required value="<c:out value="${prevCompany}"/>">
