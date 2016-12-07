@@ -48,7 +48,7 @@ public class User {
 
 	public void setUserID(String companyName) {
 		if(companyName == null || companyName.isEmpty()){
-			throw new IllegalArgumentException("Gelieve een bedrijfsnaam in te geven.");
+			throw new IllegalArgumentException("Er kon geen gebruikersnaam gegenereerd worden.");
 		}
 		this.userID = generateUserId(companyName);
 	}
@@ -58,7 +58,7 @@ public class User {
 	}
 
 	public void setContactName(String contactName) {
-		if(contactName == null || contactName.isEmpty()){
+		if(contactName == null || contactName.trim().isEmpty()){
 			throw new IllegalArgumentException("Gelieve een contactpersoon op te geven.");
 		}
 		this.contactName = contactName;
@@ -69,7 +69,7 @@ public class User {
 	}
 
 	public void setCompanyName(String companyName) {
-		if(companyName == null || companyName.isEmpty()){
+		if(companyName == null || companyName.trim().isEmpty()){
 			throw new IllegalArgumentException("Gelieve een bedrijfsnaam op te geven.");
 		}
 		this.companyName = companyName;
@@ -80,7 +80,7 @@ public class User {
 	}
 
 	public void setEmail(String email) {
-		if(email == null || email.isEmpty()){
+		if(email == null || email.trim().isEmpty()){
 			throw new IllegalArgumentException("Er is geen email gegeven");
 		}
 		String USERID_PATTERN = 

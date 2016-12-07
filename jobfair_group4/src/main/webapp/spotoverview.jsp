@@ -15,7 +15,7 @@
 
 		<th><a href="Controller?action=vrijelijst">Vrije Plaatsen </a></th>
 		<th><a href="Controller?action=bezetlijst">Bezette Plaatsen</a></th>
-		<th><a href="Controller?action=alfabetischelijst">Bezete Plaatsen op alfabetische volgorde</a></th>
+		<th><a href="Controller?action=alfabetischelijst">Bezette plaatsen op alfabetische volgorde</a></th>
 
 	</tr>
 	<c:forEach var="spot" items="${spots}">

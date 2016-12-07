@@ -79,7 +79,7 @@ public class SignUpHandler extends RequestHandler {
 		String contactName = request.getParameter("contactName");
 		request.setAttribute("prevContactName", contactName);
 		try{
-			user.setCompanyName(contactName);
+			user.setContactName(contactName);
 		} catch (IllegalArgumentException e){
 			result.add(e.getMessage());
 		}
