@@ -15,6 +15,7 @@ public class GetFreeSpotsHandler extends RequestHandler {
 	public void handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		List<Spot> spots = this.getService().getFreeSpots();
+		//List<>
 		request.setAttribute("spots", spots);
 
 		request.getRequestDispatcher("spotoverview.jsp").forward(request, response);
