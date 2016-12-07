@@ -19,10 +19,10 @@ public class LogInHandler extends RequestHandler {
 		if (user!=null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
-			request.setAttribute("user", user);
+			request.setAttribute("userid", user.getUserID());
 		}
 
-		response.sendRedirect("index.jsp");
+		response.sendRedirect("Controller");
 	}
 
 }
