@@ -67,7 +67,6 @@ public class UserRepository {
 		String sql = "SELECT * FROM jobfair_group4.users WHERE userID = ?";
 		try {
 			statement = connection.prepareStatement(sql);
-
 			statement.setString(1, user.getUserID());
 			
 			ResultSet result = statement.executeQuery();
@@ -75,7 +74,7 @@ public class UserRepository {
 			if (result.next() && result.getString("userId").equals(user.getUserID())) {
 				throw new IllegalArgumentException("User bestaat al");
 			} else {
-				sql = "INSERT INTO jobfair_group4.users (userID, companyName, contactName, email, password, salt, role) "
+				sql = "INSERT INTO jobfair_group4.users (userid, companyname, contactname, email, password, salt, role) "
 						+ "Values (?, ?, ?, ?, ?, ?, ?)";
 				try {
 					statement = connection.prepareStatement(sql);
