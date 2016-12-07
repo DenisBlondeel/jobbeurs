@@ -22,16 +22,33 @@
 <body>
 	<div>
 		<header>
-			<h1>
-				<span>Jobbeurs 2017</span>
-			</h1>
-		<nav>
-			<ul>
-				<li id="${param.home}"><a href="Controller?action=home">Home</a></li>
-				<li id="${param.spotoverview}"><a href="Controller?action=spots">Alle plaatsen</a></li>
-				<!--<li id="${param.myspot}"><a href="Controller?action=home">Mijn plaats</a></li>-->
-				<!--<li id="${param.myaccount}"><a href="Controller?action=home">Mijn account</a></li>-->
-			</ul>
-		</nav>
+			<nav class="navbar navbar-default" role="navigation">
+			    <div class="container-fluid">
+			        <!-- Brand and toggle get grouped for better mobile display -->
+			        <div class="navbar-header">
+			            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+			                <span class="sr-only">Toggle navigation</span>
+			                <span class="icon-bar"></span>
+			                <span class="icon-bar"></span>
+			                <span class="icon-bar"></span>
+			            </button>
+			            <h1 class="normal"><a class="navbar-brand" href="Controller?action=home">Jobfair 2017</a></h1>
+			        </div>
+			
+			        <!-- Collect the nav links, forms, and other content for toggling -->
+			        <div class="collapse navbar-collapse navbar-ex1-collapse">
+			            <ul class="nav navbar-nav"><li id="${param.home}"><a href="Controller?action=home">Home</a></li>
+			                <li id="${param.spotoverview}"><a href="Controller?action=spots">Alle plaatsen</a></li>
+			                <!--<li id="${param.myspot}"><a href="Controller?action=home">Mijn plaats</a></li>-->
+			                <!--<li id="${param.myaccount}"><a href="Controller?action=home">Mijn account</a></li>-->
+			            </ul>
+			            
+			            <ul class="nav navbar-nav navbar-right">
+			                <li><a href="Controller?action=home">login</a></li>
+			            </ul>
+			        </div><!-- /.navbar-collapse -->
+			    </div>
+			</nav>
+
 		<h2>${param.h2}</h2>
 		</header>
