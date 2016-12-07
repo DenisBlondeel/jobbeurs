@@ -76,14 +76,14 @@ public class UserRepository {
 				sql = "INSERT INTO jobfair_group4.users (userid, companyname, contactname, email, password, salt, role) "
 						+ "Values (?, ?, ?, ?, ?, ?, ?)";
 				try {
-					connection.prepareStatement(sql);
+					statement = connection.prepareStatement(sql);
 
 					statement.setString(1, user.getUserID());
 					statement.setString(2, user.getCompanyName());
 					statement.setString(3, user.getContactName());
 					statement.setString(4, user.getEmail());
 					statement.setString(5, user.getPassword());
-					statement.setString(6, user.getSalt());
+					statement.setString(6, "hihisalt");
 					statement.setString(7, user.getRole().toString());
 
 					statement.executeUpdate();
