@@ -27,7 +27,7 @@ public class User {
 		this.setContactName(contactName);
 		this.setCompanyName(companyName);
 		this.setEmail(email);
-		this.setUserID(userID);
+		this.setUserID(companyName);
 		this.setPassword(password);
 		this.setRole(RoleEnum.COMPANY);
 	}
@@ -36,8 +36,8 @@ public class User {
 		this.setContactName(contactName);
 		this.setCompanyName(companyName);
 		this.setEmail(email);
-		this.setUserID(userID);
-		this.setPassword(password);
+		this.setUserID(companyName);
+		this.setPassword(generatePassword());
 		this.setSalt(salt);
 		this.setRole(role);
 	}
@@ -46,20 +46,13 @@ public class User {
 		return userID;
 	}
 
-	public void setUserID(String userID) {
-		if(companyName == null || companyName.isEmpty()){
-			throw new IllegalArgumentException("Er kon geen gebruikersnaam gegenereerd worden.");
-		}
-		this.userID = userID;
-	}
-
-	public void createUserID(String companyName) {
+	public void setUserID(String companyName) {
 		if(companyName == null || companyName.isEmpty()){
 			throw new IllegalArgumentException("Er kon geen gebruikersnaam gegenereerd worden.");
 		}
 		this.userID = generateUserId(companyName);
 	}
-	
+
 	public String getContactName() {
 		return contactName;
 	}
