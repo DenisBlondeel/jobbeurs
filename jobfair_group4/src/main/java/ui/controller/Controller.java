@@ -131,8 +131,8 @@ public class Controller extends HttpServlet {
 
 	private List<String> checkInputValues(HttpServletRequest request, User user) {
 		List<String> result = new ArrayList<>();
-		userSetId(user, request, result);
 		userSetCompany(user, request, result);
+		userSetId(user, request, result);
 		userSetName(user, request, result);
 		userSetEmail(user, request, result);
 		userSetPassword(user, request, result);
