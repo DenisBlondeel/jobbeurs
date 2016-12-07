@@ -13,11 +13,6 @@ public class Spot {
 	public Spot(String spotID) {
 		this.setSpotID(spotID);
 	}
-	
-	public Spot()
-	{
-		
-	}
 
 	public Spot(String spotID, int amountTables, int amountChairs, boolean electricity, String remarks, User user) {
 		this.setSpotID(spotID);
