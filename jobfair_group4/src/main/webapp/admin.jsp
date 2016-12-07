@@ -10,6 +10,15 @@
 	<jsp:param value="Admin" name="title"/>
 	<jsp:param value="Welkom, admin" name="h2"/>
 </jsp:include>
-
+<h3>Meerdere bedrijven toevoegen</h3>
+<form>
+	<p>
+		<form method="POST" action="Controller?action=	upload" enctype="multipart/form-data" >
+            File:
+            <input type="file" name="dataFile" id="fileChooser" /> <br/>
+            <input type="submit" value="Upload file" name="upload" id="upload" />
+        </form>
+	</p>
+</form>
 </body>
 </html>

@@ -9,12 +9,11 @@ import java.util.List;
 
 public class CsvReader {
 	
-	private String csvFile = "";
 	private BufferedReader br = null;
 	private String line = "";
 	
 	
-	public List<User> read(){
+	public List<User> read(String csvFile){
 		List<User> users = new ArrayList<User>();
 		try{
 			br = new BufferedReader(new FileReader(csvFile));
