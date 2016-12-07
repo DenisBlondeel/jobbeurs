@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="">
 	<jsp:include page="header.jsp">
@@ -102,7 +103,7 @@
 
 
 
-
+<!-- 
 <img src="img/standplaatsen-atrium-crop.png" usemap="#image-map-atrium"id="atrium" class="img-responsive">
 
 <map name="image-map-atrium" id="atrium-map">
@@ -119,11 +120,19 @@
     <area target="" alt="A11" title="A11" href="A11" coords="757,373,810,473" shape="rect">
     <area target="" alt="A12" title="A12" href="A12" coords="817,373,875,473" shape="rect">
 </map>
+ -->
 
 
 
-
-
+<c:if test="${errors!=null}">
+			<div>
+				<ul>
+					<c:forEach var="error" items="${errors}">
+						<li>${error}</li>
+					</c:forEach>
+				</ul>
+			</div>
+</c:if>
 
 
 

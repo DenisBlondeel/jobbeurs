@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -39,12 +40,20 @@
 			        <div class="collapse navbar-collapse navbar-ex1-collapse">
 			            <ul class="nav navbar-nav"><li id="${param.home}"><a href="Controller?action=home">Home</a></li>
 			                <li id="${param.spotoverview}"><a href="Controller?action=spots">Alle plaatsen</a></li>
-			                <!--<li id="${param.myspot}"><a href="Controller?action=home">Mijn plaats</a></li>-->
+			                <li id="${param.myspot}"><a href="Controller?action=myspot">Mijn plaats</a></li>
 			                <!--<li id="${param.myaccount}"><a href="Controller?action=home">Mijn account</a></li>-->
 			            </ul>
 			            
-			            <ul class="nav navbar-nav navbar-right">
-			                <li><a href="login.jsp">login</a></li>
+			            <ul class="nav navbar-nav navbar-right">	
+		
+							<c:choose>
+								<c:when test="${userid!=null}">
+					                <li><a href="Controller?action=logOut">${userid} uitloggen</a></li>
+				                </c:when>
+				                <c:otherwise>
+					                <li><a href="login.jsp">login</a></li>
+				                </c:otherwise>
+			                </c:choose>
 			            </ul>
 			        </div><!-- /.navbar-collapse -->
 			    </div>
