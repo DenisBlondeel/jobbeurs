@@ -11,8 +11,8 @@ import domain.model.User;
 
 public class UserRepository {
 
-	private PreparedStatement statement;
 	private Connection connection;
+	private PreparedStatement statement;
 	private Properties properties;
 
 	public UserRepository(Properties properties) {
@@ -31,7 +31,6 @@ public class UserRepository {
 		try {
 			connection.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 		}
 	}
 
@@ -42,7 +41,7 @@ public class UserRepository {
 		String sql = "SELECT * FROM jobfair_group4.users WHERE userID = ?;";
 		User user = new User();
 		try {
-			statement = connection.prepareStatement(sql);
+			connection.prepareStatement(sql);
 			statement.setString(1, userID);
 			ResultSet results = statement.executeQuery();
 			results.next();
@@ -66,7 +65,7 @@ public class UserRepository {
 		}
 		String sql = "SELECT * FROM jobfair_group4.users WHERE userID = ?";
 		try {
-			statement = connection.prepareStatement(sql);
+			connection.prepareStatement(sql);
 			statement.setString(1, user.getUserID());
 			
 			ResultSet result = statement.executeQuery();
@@ -77,7 +76,7 @@ public class UserRepository {
 				sql = "INSERT INTO jobfair_group4.users (userid, companyname, contactname, email, password, salt, role) "
 						+ "Values (?, ?, ?, ?, ?, ?, ?)";
 				try {
-					statement = connection.prepareStatement(sql);
+					connection.prepareStatement(sql);
 
 					statement.setString(1, user.getUserID());
 					statement.setString(2, user.getCompanyName());
@@ -103,7 +102,7 @@ public class UserRepository {
 		}
 		String sql = "DELETE FROM jobfair_group4.users WHERE userid = ?";
 		try {
-			statement = connection.prepareStatement(sql);
+			connection.prepareStatement(sql);
 
 			statement.setString(1, userID);
 
