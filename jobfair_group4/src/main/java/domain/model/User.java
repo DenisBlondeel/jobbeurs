@@ -179,8 +179,7 @@ public class User {
 		return new BigInteger(50, random).toString(32);
 	}
 	
-	public String generateUserId(){
-		String companyName = this.companyName;
+	public String generateUserId(String companyName){
 		Random random = new Random();
 		return companyName + random.nextInt(999);
 	}

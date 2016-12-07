@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import domain.model.Spot;
+import domain.model.User;
 import domain.service.SpotService;
 import ui.controller.handler.HandlerFactory;
 import ui.controller.handler.RequestHandler;
@@ -41,11 +42,11 @@ public class Controller extends HttpServlet {
 		service = new SpotService(properties);
 		
 //		try {
-//			InputStream input = context.getResourceAsStream("/WEB-INF/handlers.xml");
+//			InputStream input = context.getResourceAsStream("src/main/webapp/WEB-INF/handlers.xml");
 //			Properties handlerProperties = new Properties();
 //			handlerProperties.loadFromXML(input);
 //
-//			handlerFactory = new HandlerFactory(handlerProperties, service);
+//			factory = new HandlerFactory(handlerProperties, service);
 //		} catch (Exception e) {
 //			
 //		}
@@ -80,9 +81,9 @@ public class Controller extends HttpServlet {
 			action = "";
 		}
 
-//		RequestHandler handler = handlerFactory.getHandler(action);
+//		RequestHandler handler = factory.getHandler(action);
 //		handler.handle(request, response);
-
+		
 		String destination = "";
 
 		switch(action)
@@ -102,6 +103,9 @@ public class Controller extends HttpServlet {
 		case "bezetlijst":
 			destination = getOccupiedSpots(request, response);
 			break;
+		case "signup":
+			destination = signUp(request, response);
+			break;
 		default:
 			destination = "index.jsp";
 			
@@ -109,6 +113,20 @@ public class Controller extends HttpServlet {
 		
 		RequestDispatcher view = request.getRequestDispatcher(destination);
 		view.forward(request, response);
+	}
+
+	private String signUp(HttpServletRequest request, HttpServletResponse response)
+	{
+		User user = new User();
+		String companyName = request.getParameter("compagnyName");
+		String contactName = request.getParameter("contactName");
+		String email = request.getParameter("email");
+		String userId = user.generateUserId(companyName);
+		String password = user.generatePassword();
+		user.setCompanyName(companyName);
+		user.setContactName(contactName);
+		user.setEmail(email);
+		return null;
 	}
 
 	private String getOccupiedSpots(HttpServletRequest request, HttpServletResponse response)
@@ -154,3 +172,4 @@ public class Controller extends HttpServlet {
 	}
 
 }
+
