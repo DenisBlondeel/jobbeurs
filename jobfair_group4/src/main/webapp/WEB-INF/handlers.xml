@@ -10,4 +10,5 @@
 	<entry key="vrijelijst">ui.controller.handler.GetFreeSpotsHandler</entry>
 	<entry key="bezetlijst">ui.controller.handler.GetOccupiedSpotsHandler</entry>
 	<entry key="signup">ui.controller.handler.SignUpHandler</entry>
+	<entry key="addall">ui.controller.handler.CsvReaderHandler</entry>
 </properties>
