@@ -49,7 +49,6 @@ public class SignUpHandler extends RequestHandler {
 
 	private void userSetId(User user, HttpServletRequest request, List<String> result) {
 		String companyName = request.getParameter("companyName");
-		String userId = user.generateUserId(companyName);
 		try{
 			user.setUserID(companyName);
 		} catch (IllegalArgumentException e){
