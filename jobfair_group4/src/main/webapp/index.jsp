@@ -16,7 +16,10 @@
 		</c:if>
 
 		<a href="index.jsp"><i class="fa fa-home" aria-hidden="true"></i></a>
-		<a href="imgmap.jsp">hemisfeer</a>
+		<c:if test="${userid!=null}">
+			<a href="imgmap.jsp">hemisfeer</a>
+		</c:if>
+		
 
 		<!-- jQuery -->
 		<script src="//code.jquery.com/jquery.js"></script>
