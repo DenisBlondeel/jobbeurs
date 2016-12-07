@@ -67,7 +67,6 @@ public class UserRepository {
 		String sql = "SELECT * FROM jobfair_group4.users WHERE userID = ?";
 		try {
 			statement = connection.prepareStatement(sql);
-
 			statement.setString(1, user.getUserID());
 			
 			ResultSet result = statement.executeQuery();
