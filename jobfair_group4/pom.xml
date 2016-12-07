@@ -22,7 +22,7 @@
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<version>2.2</version>
 				<configuration>
-					<path>/${project.bluid.finalName}</path>
+					<path>/${project.build.finalName}</path>
 					<update>true</update>
 					<url>http://localhost:8080/manager/text</url>
 					<username>deployer</username>
