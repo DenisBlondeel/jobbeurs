@@ -27,7 +27,7 @@ public class User {
 		this.setContactName(contactName);
 		this.setCompanyName(companyName);
 		this.setEmail(email);
-		this.setUserID(userID);
+		this.setUserID(companyName);
 		this.setPassword(password);
 		this.setRole(RoleEnum.COMPANY);
 	}
@@ -36,7 +36,7 @@ public class User {
 		this.setContactName(contactName);
 		this.setCompanyName(companyName);
 		this.setEmail(email);
-		this.setUserID(generateUserId(companyName));
+		this.setUserID(companyName);
 		this.setPassword(generatePassword());
 		this.setSalt(salt);
 		this.setRole(role);
@@ -46,11 +46,11 @@ public class User {
 		return userID;
 	}
 
-	public void setUserID(String userID) {
-		if(userID == null || userID.isEmpty()){
-			throw new IllegalArgumentException("Er is geen userID gegeven");
+	public void setUserID(String companyName) {
+		if(companyName == null || companyName.isEmpty()){
+			throw new IllegalArgumentException("Gelieve een bedrijfsnaam in te geven.");
 		}
-		this.userID = userID;
+		this.userID = generateUserId(companyName);
 	}
 
 	public String getContactName() {
@@ -58,6 +58,9 @@ public class User {
 	}
 
 	public void setContactName(String contactName) {
+		if(contactName == null || contactName.isEmpty()){
+			throw new IllegalArgumentException("Gelieve een contactpersoon op te geven.");
+		}
 		this.contactName = contactName;
 	}
 
@@ -66,6 +69,9 @@ public class User {
 	}
 
 	public void setCompanyName(String companyName) {
+		if(companyName == null || companyName.isEmpty()){
+			throw new IllegalArgumentException("Gelieve een bedrijfsnaam op te geven.");
+		}
 		this.companyName = companyName;
 	}
 
