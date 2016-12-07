@@ -41,7 +41,7 @@ public class UserRepository {
 		String sql = "SELECT * FROM jobfair_group4.users WHERE userID = ?;";
 		User user = new User();
 		try {
-			connection.prepareStatement(sql);
+			statement = connection.prepareStatement(sql);
 			statement.setString(1, userID);
 			ResultSet results = statement.executeQuery();
 			results.next();
@@ -65,7 +65,7 @@ public class UserRepository {
 		}
 		String sql = "SELECT * FROM jobfair_group4.users WHERE userID = ?";
 		try {
-			connection.prepareStatement(sql);
+			statement = connection.prepareStatement(sql);
 			statement.setString(1, user.getUserID());
 			
 			ResultSet result = statement.executeQuery();
@@ -102,7 +102,7 @@ public class UserRepository {
 		}
 		String sql = "DELETE FROM jobfair_group4.users WHERE userid = ?";
 		try {
-			connection.prepareStatement(sql);
+			statement = connection.prepareStatement(sql);
 
 			statement.setString(1, userID);
 
