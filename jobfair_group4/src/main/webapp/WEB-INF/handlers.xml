@@ -12,4 +12,5 @@
 	<entry key="signup">ui.controller.handler.SignUpHandler</entry>
 	<entry key="addall">ui.controller.handler.CsvReaderHandler</entry>
 	<entry key="alfabetischelijst">ui.controller.handler.GetAlphabeticSpotsHandler</entry>
+	
 </properties>
