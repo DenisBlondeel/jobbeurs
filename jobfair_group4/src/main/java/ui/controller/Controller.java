@@ -27,7 +27,7 @@ public class Controller extends HttpServlet {
 	@Override
 	public void init() throws ServletException{
 		super.init();
-
+		System.out.println("init");
 		ServletContext context = getServletContext();
 
 		Properties properties = new Properties();
