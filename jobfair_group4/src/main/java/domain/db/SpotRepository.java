@@ -54,6 +54,7 @@ public class SpotRepository {
 				spot.setAmountChairs(results.getInt("amountChairs"));
 				spot.setElectricity(results.getBoolean("electricity"));
 				spot.setRemarks(results.getString("remarks"));
+				System.out.println("Get your shit together Denis");
 			}
 			
 		} catch (SQLException e) {
