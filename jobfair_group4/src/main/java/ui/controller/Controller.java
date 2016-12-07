@@ -17,14 +17,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import domain.model.Spot;
 import domain.model.User;
-import domain.service.SpotService;
+import domain.service.Service;
 import ui.controller.handler.HandlerFactory;
 import ui.controller.handler.RequestHandler;
 
 @WebServlet("/Controller")
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private SpotService service;
+	private Service service;
 	private HandlerFactory factory;
 	
 	@Override
@@ -40,7 +40,7 @@ public class Controller extends HttpServlet {
 			properties.setProperty(propertyName, context.getInitParameter(propertyName));
 		}
 
-		service = new SpotService(properties);
+		service = new Service(properties);
 		
 //		try {
 //			InputStream input = context.getResourceAsStream("src/main/webapp/WEB-INF/handlers.xml");
