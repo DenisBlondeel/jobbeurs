@@ -37,7 +37,7 @@ public class User {
 		this.setCompanyName(companyName);
 		this.setEmail(email);
 		this.setUserID(userID);
-		this.setPassword(generatePassword());
+		this.setPassword(password);
 		this.setSalt(salt);
 		this.setRole(role);
 	}
