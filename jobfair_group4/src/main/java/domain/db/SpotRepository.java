@@ -49,11 +49,13 @@ public class SpotRepository {
 			statement = connection.prepareStatement(sql);
 			statement.setString(1, spotID);
 			ResultSet results = statement.executeQuery();
-			results.next();
-			spot.setAmountTables(results.getInt("amountTables"));
-			spot.setAmountChairs(results.getInt("amountChairs"));
-			spot.setElectricity(results.getBoolean("electricity"));
-			spot.setRemarks(results.getString("remarks"));
+			if(results.next()){
+				spot.setAmountTables(results.getInt("amountTables"));
+				spot.setAmountChairs(results.getInt("amountChairs"));
+				spot.setElectricity(results.getBoolean("electricity"));
+				spot.setRemarks(results.getString("remarks"));
+			}
+			
 		} catch (SQLException e) {
 			throw new DbException(e.getMessage(), e);
 		}
