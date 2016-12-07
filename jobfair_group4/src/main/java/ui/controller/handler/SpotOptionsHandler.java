@@ -32,7 +32,7 @@ public class SpotOptionsHandler extends RequestHandler {
 		request.setAttribute("spotnr", spotID);
 		request.setAttribute("reserved", "Uw plaats werd gereserveerd.");
 
-		response.sendRedirect("index.jsp");
+		response.sendRedirect("Controller");
 	}
 
 }
