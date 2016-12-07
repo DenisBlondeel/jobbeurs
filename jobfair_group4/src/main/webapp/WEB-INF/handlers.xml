@@ -9,4 +9,5 @@
 	<entry key="spots">ui.controller.handler.GetSpotsHandler</entry>
 	<entry key="vrijelijst">ui.controller.handler.GetFreeSpotsHandler</entry>
 	<entry key="bezetlijst">ui.controller.handler.GetOccupiedSpotsHandler</entry>
+	<entry key="signup">ui.controller.handler.SignUpHandler</entry>
 </properties>
