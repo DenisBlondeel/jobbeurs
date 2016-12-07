@@ -191,10 +191,8 @@ public class SpotRepository {
 			statement.setInt(1, spot.getAmountTables());
 			statement.setInt(2, spot.getAmountChairs());
 			statement.setString(3, spot.getRemarks());
-			if(spot.getUser().getUserID() != null)
-			{
+			System.out.println(spot.getUser().getUserID());
 			statement.setString(4, spot.getUser().getUserID());
-			}
 			statement.setBoolean(5, spot.getElectricity());
 			statement.setString(6, spot.getSpotID());
 
