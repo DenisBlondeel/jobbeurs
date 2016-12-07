@@ -4,13 +4,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
-import domain.service.SpotService;
+import domain.service.Service;
 
 public class HandlerFactory {
 
 	private Map<String, RequestHandler> handlers = new HashMap<>();
 
-	public HandlerFactory(Properties properties, SpotService service) {
+	public HandlerFactory(Properties properties, Service service) {
 		for(Object key : properties.keySet()) {
 			RequestHandler handler = null;
 			String handlerName = properties.getProperty((String) key);
