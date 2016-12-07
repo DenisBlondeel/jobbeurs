@@ -75,14 +75,14 @@ public class Spot {
 	public User getUser() {
 		return user;
 	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 	
 	public void setUserID(String userID)
 	{
 		this.userID = userID;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
 	}
 	
 	public String getUserID()
