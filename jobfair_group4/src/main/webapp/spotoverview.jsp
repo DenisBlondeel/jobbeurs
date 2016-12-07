@@ -11,7 +11,7 @@
 	<tr>
 		<th>plaatsid </th>
 		<th>companyname </th>
-		<th>reserveer </th>
+		<th> </th>
 
 		<th><a href="Controller?action=vrijelijst">Vrije plaatsen </a></th>
 		<th><a href="Controller?action=bezetlijst">Bezette plaatsen</a></th>
