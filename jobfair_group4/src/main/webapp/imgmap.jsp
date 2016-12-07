@@ -117,6 +117,174 @@
 
 
 
+ <script type="text/javascript">
+
+
+
+
+
+
+
+
+    var ImageMap = function (map, img) {
+            var n,
+                areas = map.getElementsByTagName('area'),
+                len = areas.length,
+                coords = [],
+                previousWidth = 2339;
+            for (n = 0; n < len; n++) {
+                coords[n] = areas[n].coords.split(',');
+            }
+            this.resize = function () {
+                var n, m, clen,
+                    x = img.offsetWidth / previousWidth;
+                for (n = 0; n < len; n++) {
+                    clen = coords[n].length;
+                    for (m = 0; m < clen; m++) {
+                       /* if (m%2) {coords[n][m]-=253} 
+                        else {
+                            coords[n][m]-=
+                        }*/
+                        coords[n][m] *= x;
+                    }
+                    areas[n].coords = coords[n].join(',');
+                }
+                previousWidth = img.offsetWidth;
+
+
+
+/**
+*red
+*/
+
+    $(function () {
+        var data = {};
+        $('.map').maphilight();
+        data.alwaysOn = true;
+        data.fillColor = 'ff0000';
+        data.fillOpacity = '0.6';
+        $('.imgmaphigh').data('maphilight', data).trigger('alwaysOn.maphilight');    
+    });
+
+
+/**
+*green
+*/
+
+
+
+
+    $(function () {
+        var data = {};
+        $('.map').maphilight();
+        data.alwaysOn = true;
+        data.fillColor = '00ff00';
+        data.fillOpacity = '0.6';
+        $('.mine').data('maphilight', data).trigger('alwaysOn.maphilight'); 
+        
+    });
+
+
+
+
+
+
+                return true;
+            };
+            window.onresize = this.resize;
+        },
+        imageMap = new ImageMap(document.getElementById('map1'), document.getElementById('hemis'));
+    imageMap.resize();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+    var ImageMap = function (map, img) {
+            var n,
+                areas = map.getElementsByTagName('area'),
+                len = areas.length,
+                coords = [],
+                previousWidth = 2339;
+            for (n = 0; n < len; n++) {
+                coords[n] = areas[n].coords.split(',');
+            }
+            this.resize = function () {
+                var n, m, clen,
+                    x = img.offsetWidth / previousWidth;
+                for (n = 0; n < len; n++) {
+                    clen = coords[n].length;
+                    for (m = 0; m < clen; m++) {
+                        coords[n][m] *= x;
+                    }
+                    areas[n].coords = coords[n].join(',');
+                }
+                previousWidth = img.offsetWidth;
+                return true;
+            };
+            window.onresize = this.resize;
+        },
+        imageMap = new ImageMap(document.getElementById('map1'), document.getElementById('hemis'));
+    imageMap.resize();
+
+
+*/
+
+
+
+    jQuery(function()
+                            {
+             jQuery('#hemis').maphilight();
+                            });
+
+    $(function () {
+    var data = {};
+    $('.map').maphilight();
+    data.alwaysOn = true;
+    data.fillColor = 'ff0000';
+    data.fillOpacity = '0.6';
+    $('.imgmaphigh').data('maphilight', data).trigger('alwaysOn.maphilight');    
+});
+
+
+    $(function () {
+    var data = {};
+    $('.map').maphilight();
+    data.alwaysOn = true;
+    data.fillColor = '00ff00';
+    data.fillOpacity = '0.6';
+    $('.mine').data('maphilight', data).trigger('alwaysOn.maphilight'); 
+    
+});
+
+
+
+
+
+
+</script>
+
+
 
 
 
