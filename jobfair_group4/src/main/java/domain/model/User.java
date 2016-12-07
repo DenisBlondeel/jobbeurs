@@ -48,7 +48,7 @@ public class User {
 
 	public void setUserID(String companyName) {
 		if(companyName == null || companyName.isEmpty()){
-			throw new IllegalArgumentException("Gelieve een bedrijfsnaam in te geven.");
+			throw new IllegalArgumentException("Er kon geen gebruikersnaam gegenereerd worden.");
 		}
 		this.userID = generateUserId(companyName);
 	}
