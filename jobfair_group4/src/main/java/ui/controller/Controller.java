@@ -2,6 +2,7 @@ package ui.controller;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.Properties;
@@ -114,8 +115,81 @@ public class Controller extends HttpServlet {
 		RequestDispatcher view = request.getRequestDispatcher(destination);
 		view.forward(request, response);
 	}
+	
+	private String signUp(HttpServletRequest request, HttpServletResponse response) {
+		User user = new User();
+		List<String> result = new ArrayList<>();
+		result = checkInputValues(request, user);
+		if(result.size()>0){
+			request.setAttribute("errors", result);
+			return "signup.jsp";
+		} else {
+			service.addUser(user);
+			return "admin.jsp";
+		}
+	}
 
-	private String signUp(HttpServletRequest request, HttpServletResponse response)
+	private List<String> checkInputValues(HttpServletRequest request, User user) {
+		List<String> result = new ArrayList<>();
+		userSetId(user, request, result);
+		userSetCompany(user, request, result);
+		userSetName(user, request, result);
+		userSetEmail(user, request, result);
+		userSetPassword(user, request, result);
+		return result;
+	}
+
+	private void userSetCompany(User user, HttpServletRequest request, List<String> result) {
+		String companyName = request.getParameter("companyName");
+		request.setAttribute("prevCompany", companyName);
+		try{
+			user.setCompanyName(companyName);
+		} catch (IllegalArgumentException e){
+			result.add(e.getMessage());
+		}
+	}
+
+	private void userSetId(User user, HttpServletRequest request, List<String> result) {
+		String companyName = request.getParameter("companyName");
+		String userId = user.generateUserId(companyName);
+		try{
+			user.setUserID(userId);
+		} catch (IllegalArgumentException e){
+			result.add(e.getMessage());
+		}
+	}
+
+	private void userSetPassword(User user, HttpServletRequest request, List<String> result) {
+		String password = user.generatePassword();
+		try{
+			user.setPassword(password);
+		} catch (IllegalArgumentException e){
+			result.add(e.getMessage());
+		}
+	}
+
+	private void userSetEmail(User user, HttpServletRequest request, List<String> result) {
+		String email = request.getParameter("email");
+		request.setAttribute("prevEmail", email);
+		try{
+			user.setEmail(email);
+		} catch (IllegalArgumentException e){
+			result.add(e.getMessage());
+		}
+	}
+
+	private void userSetName(User user, HttpServletRequest request, List<String> result) {
+		String contactName = request.getParameter("contactName");
+		request.setAttribute("prevContactName", contactName);
+		try{
+			user.setCompanyName(contactName);
+		} catch (IllegalArgumentException e){
+			result.add(e.getMessage());
+		}
+	}
+	
+
+	/*private String signUp(HttpServletRequest request, HttpServletResponse response)
 	{
 		User user = new User();
 		String companyName = request.getParameter("compagnyName");
@@ -127,7 +201,7 @@ public class Controller extends HttpServlet {
 		user.setContactName(contactName);
 		user.setEmail(email);
 		return null;
-	}
+	}*/
 
 	private String getOccupiedSpots(HttpServletRequest request, HttpServletResponse response)
 	{
