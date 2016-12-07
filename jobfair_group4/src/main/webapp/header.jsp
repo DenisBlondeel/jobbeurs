@@ -44,7 +44,7 @@
 			            </ul>
 			            
 			            <ul class="nav navbar-nav navbar-right">
-			                <li><a href="Controller?action=home">login</a></li>
+			                <li><a href="login.jsp">login</a></li>
 			            </ul>
 			        </div><!-- /.navbar-collapse -->
 			    </div>
