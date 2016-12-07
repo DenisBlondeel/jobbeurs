@@ -1,4 +1,4 @@
-package ui.controller.handler;
+/*package ui.controller.handler;
 
 import java.io.File;
 import java.io.IOException;
@@ -87,7 +87,7 @@ public class CsvReaderHandler extends RequestHandler{
 		
 	}
 
-/*List<User> users = reader.read(file);
+List<User> users = reader.read(file);
 for (User user : users) {
 	service.addUser(user);
 }*/
