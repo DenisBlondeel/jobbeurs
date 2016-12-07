@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 import domain.model.Spot;
 import domain.model.User;
 
-public class SpotOptions extends RequestHandler {
+public class SpotOptionsHandler extends RequestHandler {
 
 	@Override
 	public void handleRequest(HttpServletRequest request, HttpServletResponse response)

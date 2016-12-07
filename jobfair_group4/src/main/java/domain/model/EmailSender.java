@@ -14,25 +14,40 @@ import domain.db.DbException;
 public class EmailSender {
 
 	
-	private String emailsender = "";
-	private String emailserver = "";
+	private String emailsender = "scrumbags.06@gmail.com";
+
 	
 	public void sendConfirmationMail(String spotId, String emailreceiver){
 		Properties properties = System.getProperties();
-		properties.setProperty("mail.smtp.host", emailserver);
+		properties.put("mail.smtp.starttls.enable", "true");
+		properties.put("mail.smtp.host", "smtp.gmail.com");
+		properties.put("mail.smtp.port", "587");
+		properties.put("mail.smtp.auth", "true");
+		properties.put("mail.smtp.password", "tttttttt");
+		properties.put("mail.smtp.user", "scrumbags.06");
+		
 		Session session = Session.getDefaultInstance(properties);
+		MimeMessage message = new MimeMessage(session);
 		
 		try{
-		MimeMessage message = new MimeMessage(session);
 		message.setFrom(new InternetAddress(emailsender));
 		
 		message.addRecipient(Message.RecipientType.TO, new InternetAddress(emailreceiver));
 		message.setSubject("confirmationemail");
 		message.setText("uw plaats met nummer " + spotId + " werd gereserveerd");
-		Transport.send(message);
+		Transport transport = session.getTransport("smtp");
+		transport.connect("scrumbags.06",emailsender, "tttttttt");
+		transport.sendMessage(message, message.getAllRecipients());
+		transport.close();
 		}
 		catch(MessagingException m) {
 			throw new DbException(m.getMessage());
 		} 
 	}
+
+
+
+
+
+
 }
