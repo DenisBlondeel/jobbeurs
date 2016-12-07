@@ -14,7 +14,7 @@ import domain.service.Service;
 
 public abstract class RequestHandler {
 
-	private Service service;
+	protected Service service;
 
 	public RequestHandler() {}
 

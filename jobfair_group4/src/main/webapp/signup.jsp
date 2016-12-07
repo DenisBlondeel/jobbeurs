@@ -12,7 +12,7 @@
 </jsp:include>
 
 <c:if test="${errors!=null}">
-			<div">
+			<div>
 				<ul>
 					<c:forEach var="error" items="${errors}">
 						<li>${error}</li>
@@ -24,15 +24,15 @@
 <form method="POST" action="Controller?action=signup" novalidate="novalidate">
 	<p>
 		<label for="companyName">Naam van bedrijf: </label>
-		<input type="text" id="companyName" name="companyName" required value="<c:out value="${prevCompany}"/>">
+		<input type="text" id="companyName" name="companyName" value="<c:out value="${prevCompany}"/>">
 	</p>
 	<p>
 		<label for="contactName">Naam van contactpersoon: </label>
-		<input type="text" id="contactName" name="contactName" required value="<c:out value="${prevContactName}"/>">
+		<input type="text" id="contactName" name="contactName" value="<c:out value="${prevContactName}"/>">
 	</p>
 	<p>
 		<label for="email">Email van contactpersoon: </label>
-		<input type="text" id="email" name="email" required value="<c:out value="${prevEmail}"/>">
+		<input type="text" id="email" name="email" value="<c:out value="${prevEmail}"/>">
 	</p>
 	<p>
 		<input type="submit" id="submit" value="registreer bedrijf">
