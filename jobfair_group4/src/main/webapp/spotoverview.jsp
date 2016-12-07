@@ -13,8 +13,8 @@
 		<th>companyname </th>
 		<th>reserveer </th>
 
-		<th><a href="Controller?action=vrijelijst">Vrije Plaatsen </a></th>
-		<th><a href="Controller?action=bezetlijst">Bezette Plaatsen</a></th>
+		<th><a href="Controller?action=vrijelijst">Vrije plaatsen </a></th>
+		<th><a href="Controller?action=bezetlijst">Bezette plaatsen</a></th>
 		<th><a href="Controller?action=alfabetischelijst">Bezette plaatsen op alfabetische volgorde</a></th>
 
 	</tr>
