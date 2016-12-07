@@ -23,7 +23,7 @@ public class SignUpHandler extends RequestHandler {
 			request.getRequestDispatcher("signup.jsp").forward(request, response);
 		} else {
 			this.getService().addUser(user);
-			response.sendRedirect("admin.jsp");
+			response.sendRedirect("index.jsp");
 		}
 	}
 
