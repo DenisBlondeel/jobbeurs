@@ -24,20 +24,20 @@ public class User {
 	}
 	
 	public User(String userID, String contactName, String companyName, String email, String password){
-		this.setUserID(userID);
 		this.setContactName(contactName);
 		this.setCompanyName(companyName);
 		this.setEmail(email);
+		this.setUserID(userID);
 		this.setPassword(password);
 		this.setRole(RoleEnum.COMPANY);
 	}
 	
 	public User(String userID, String contactName, String companyName, String email, String password, String salt, RoleEnum role){
-		this.setUserID(userID);
 		this.setContactName(contactName);
 		this.setCompanyName(companyName);
 		this.setEmail(email);
-		this.setPassword(password);
+		this.setUserID(generateUserId(companyName));
+		this.setPassword(generatePassword());
 		this.setSalt(salt);
 		this.setRole(role);
 	}
