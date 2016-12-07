@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -43,8 +44,16 @@
 			                <!--<li id="${param.myaccount}"><a href="Controller?action=home">Mijn account</a></li>-->
 			            </ul>
 			            
-			            <ul class="nav navbar-nav navbar-right">
-			                <li><a href="login.jsp">login</a></li>
+			            <ul class="nav navbar-nav navbar-right">	
+		
+							<c:choose>
+								<c:when test="${userid!=null}">
+					                <li><a href="Controller?action=logOut">${userid} uitloggen</a></li>
+				                </c:when>
+				                <c:otherwise>
+					                <li><a href="login.jsp">login</a></li>
+				                </c:otherwise>
+			                </c:choose>
 			            </ul>
 			        </div><!-- /.navbar-collapse -->
 			    </div>

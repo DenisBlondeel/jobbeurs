@@ -183,7 +183,7 @@ public class SpotRepository {
 		if (spot == null) {
 			throw new DbException("Niets te vinden!");
 		}
-		String sql = "UPDATE jobfair_group4.spots SET amountTables = ?, amountChairs = ?, remark = ?, userID = ?, electricity = ? WHERE spotID = ?";
+		String sql = "UPDATE jobfair_group4.spots SET amountTables = ?, amountChairs = ?, remarks = ?, userID = ?, electricity = ? WHERE spotID = ?";
 
 		try {
 			statement = connection.prepareStatement(sql);
@@ -191,10 +191,7 @@ public class SpotRepository {
 			statement.setInt(1, spot.getAmountTables());
 			statement.setInt(2, spot.getAmountChairs());
 			statement.setString(3, spot.getRemarks());
-			if(spot.getUser().getUserID() != null)
-			{
 			statement.setString(4, spot.getUser().getUserID());
-			}
 			statement.setBoolean(5, spot.getElectricity());
 			statement.setString(6, spot.getSpotID());
 
