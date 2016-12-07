@@ -5,6 +5,7 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -171,5 +172,16 @@ public class User {
 		} catch (Exception e) {
 			throw new IllegalArgumentException("De gegeven role bestaat niet");
 		}
+	}
+	
+	public String generatePassword(){
+		SecureRandom random = new SecureRandom();
+		return new BigInteger(50, random).toString(32);
+	}
+	
+	public String generateUserId(){
+		String companyName = this.companyName;
+		Random random = new Random();
+		return companyName + random.nextInt(999);
 	}
 }
