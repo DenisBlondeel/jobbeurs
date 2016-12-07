@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import domain.model.EmailSender;
 import domain.model.Spot;
 import domain.model.User;
 
@@ -17,6 +18,7 @@ public class SpotRepository {
 	private PreparedStatement statement;
 	private Connection connection;
 	private Properties properties;
+	private EmailSender emailsender;
 
 	public SpotRepository(Properties properties) {
 		try {
@@ -155,9 +157,11 @@ public class SpotRepository {
 			statement.setString(1, user.getContactName());
 			statement.setString(2, spotID);
 			statement.execute();
+			emailsender.sendConfirmationMail(spotID, user.getEmail());
 		} catch (SQLException e) {
 			throw new DbException(e.getMessage(), e);
 		}
+		
 	}
 
 	public void removeUserFromSpot(String spotID) {

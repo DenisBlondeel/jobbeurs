@@ -8,12 +8,12 @@ import domain.db.UserRepository;
 import domain.model.Spot;
 import domain.model.User;
 
-public class SpotService {
+public class Service {
 	
 	private SpotRepository spotDB;
 	private UserRepository userDB;
 
-	public SpotService(Properties properties) {
+	public Service(Properties properties) {
 		spotDB = new SpotRepository(properties);
 		userDB = new UserRepository(properties);
 	}

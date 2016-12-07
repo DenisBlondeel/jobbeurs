@@ -10,11 +10,11 @@ import javax.ws.rs.NotAuthorizedException;
 
 import domain.model.RoleEnum;
 import domain.model.User;
-import domain.service.SpotService;
+import domain.service.Service;
 
 public abstract class RequestHandler {
 
-	private SpotService service;
+	protected Service service;
 
 	public RequestHandler() {}
 
@@ -47,11 +47,11 @@ public abstract class RequestHandler {
 		return null;
 	}
 
-	public void setService(SpotService service) {
+	public void setService(Service service) {
 		this.service = service;
 	}
 
-	protected SpotService getService() {
+	protected Service getService() {
 		return service;
 	}
 }
