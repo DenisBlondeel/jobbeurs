@@ -54,6 +54,7 @@ public class SpotRepository {
 			spot.setAmountChairs(results.getInt("amountChairs"));
 			spot.setElectricity(results.getBoolean("electricity"));
 			spot.setRemarks(results.getString("remarks"));
+			spot.setUserID(results.getString("userid"));
 		} catch (SQLException e) {
 			throw new DbException(e.getMessage(), e);
 		}
@@ -75,6 +76,7 @@ public class SpotRepository {
 			spot.setAmountChairs(results.getInt("amountChairs"));
 			spot.setElectricity(results.getBoolean("electricity"));
 			spot.setRemarks(results.getString("remarks"));
+			spot.setUserID(results.getString("userid"));
 			list.add(spot);
 		}
 	} catch (SQLException e)
@@ -97,6 +99,7 @@ public class SpotRepository {
 				spot.setAmountChairs(results.getInt("amountChairs"));
 				spot.setElectricity(results.getBoolean("electricity"));
 				spot.setRemarks(results.getString("remarks"));
+				spot.setUserID(results.getString("userid"));
 				list.add(spot);
 			}
 		} catch (SQLException e)
@@ -118,6 +121,7 @@ public class SpotRepository {
 				spot.setAmountChairs(results.getInt("amountChairs"));
 				spot.setElectricity(results.getBoolean("electricity"));
 				spot.setRemarks(results.getString("remarks"));
+				spot.setUserID(results.getString("userid"));
 				list.add(spot);
 			}
 		} catch (SQLException e) {
@@ -138,6 +142,7 @@ public class SpotRepository {
 				spot.setAmountChairs(results.getInt("amountChairs"));
 				spot.setElectricity(results.getBoolean("electricity"));
 				spot.setRemarks(results.getString("remarks"));
+				spot.setUserID(results.getString("userid"));
 				list.add(spot);
 			}
 		} catch (SQLException e) {

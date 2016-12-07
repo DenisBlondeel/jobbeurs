@@ -8,9 +8,15 @@ public class Spot {
 	private boolean electricity = false;
 	private String remarks = null;
 	private User user = null;
+	private String userID;
 
 	public Spot(String spotID) {
 		this.setSpotID(spotID);
+	}
+	
+	public Spot()
+	{
+		
 	}
 
 	public Spot(String spotID, int amountTables, int amountChairs, boolean electricity, String remarks, User user) {
@@ -77,6 +83,16 @@ public class Spot {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+	
+	public void setUserID(String userID)
+	{
+		this.userID = userID;
+	}
+	
+	public String getUserID()
+	{
+		return userID;
 	}
 
 }
