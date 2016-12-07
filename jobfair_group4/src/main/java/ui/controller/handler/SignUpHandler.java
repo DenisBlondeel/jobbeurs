@@ -29,10 +29,10 @@ public class SignUpHandler extends RequestHandler {
 
 	private List<String> checkInputValues(HttpServletRequest request, User user) {
 		List<String> result = new ArrayList<>();
-		userSetId(user, request, result);
 		userSetCompany(user, request, result);
 		userSetName(user, request, result);
 		userSetEmail(user, request, result);
+		userSetId(user, request, result);
 		userSetPassword(user, request, result);
 		return result;
 	}
