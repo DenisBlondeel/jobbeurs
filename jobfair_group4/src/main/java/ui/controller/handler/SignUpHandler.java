@@ -51,7 +51,7 @@ public class SignUpHandler extends RequestHandler {
 		String companyName = request.getParameter("companyName");
 		String userId = user.generateUserId(companyName);
 		try{
-			user.setUserID(userId);
+			user.setUserID(companyName);
 		} catch (IllegalArgumentException e){
 			result.add(e.getMessage());
 		}
