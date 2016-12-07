@@ -22,7 +22,7 @@ public class LogInHandler extends RequestHandler {
 			request.setAttribute("userid", user.getUserID());
 		}
 
-		response.sendRedirect("index.jsp");
+		response.sendRedirect("Controller");
 	}
 
 }
