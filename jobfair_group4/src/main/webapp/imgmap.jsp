@@ -93,6 +93,32 @@
 
 
 
+<img src="standplaatsen-atrium-crop.png" usemap="#image-map">
+
+<map name="image-map">
+    <area target="" alt="A01" title="A01" href="A01" coords="1123,370,1183,468" shape="rect">
+    <area target="" alt="A02" title="A02" href="A02" coords="1127,473,1183,560" shape="rect">
+    <area target="" alt="A03" title="A03" href="A03" coords="1020,562,1123,615" shape="rect">
+    <area target="" alt="A04" title="A04" href="A04" coords="908,561,1012,615" shape="rect">
+    <area target="" alt="A05" title="A05" href="A05" coords="802,561,903,615" shape="rect">
+    <area target="" alt="A06" title="A06" href="A06" coords="693,559,794,615" shape="rect">
+    <area target="" alt="A07" title="A07" href="A07" coords="589,560,687,618" shape="rect">
+    <area target="" alt="A08" title="A08" href="A08" coords="489,560,584,616" shape="rect">
+    <area target="" alt="A09" title="A09" href="A09" coords="440,470,496,555" shape="rect">
+    <area target="" alt="A10" title="A10" href="A10" coords="443,372,493,461" shape="rect">
+    <area target="" alt="A11" title="A11" href="A11" coords="757,373,810,473" shape="rect">
+    <area target="" alt="A12" title="A12" href="A12" coords="817,373,875,473" shape="rect">
+</map>
+
+
+
+
+
+
+
+
+
+
 
 
 
