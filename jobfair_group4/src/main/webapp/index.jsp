@@ -15,7 +15,6 @@
 			<h3>Plaats ${spotnr} werd gereserveerd.</h3>
 		</c:if>
 
-		<a href="index.jsp"><i class="fa fa-home" aria-hidden="true"></i></a>
 		<c:if test="${userid!=null}">
 			<a href="imgmap.jsp">hemisfeer</a>
 		</c:if>

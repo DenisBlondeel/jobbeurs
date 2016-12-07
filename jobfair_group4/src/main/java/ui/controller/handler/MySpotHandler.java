@@ -17,6 +17,7 @@ public class MySpotHandler extends RequestHandler{
 		User user = (User) request.getSession().getAttribute("user");
 		String userID = user.getUserID();
 		Spot spot = service.getSpot(userID);
+		request.setAttribute("spot", spot);
 		request.setAttribute("spotnr", spot.getSpotID());
 		request.setAttribute("chairs", spot.getAmountChairs());
 		request.setAttribute("tables", spot.getAmountTables());
