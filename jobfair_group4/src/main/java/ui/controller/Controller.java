@@ -40,7 +40,7 @@ public class Controller extends HttpServlet {
 		service = new Service(properties);
 		
 		try {
-			InputStream input = context.getResourceAsStream("src/main/webapp/WEB-INF/handlers.xml");
+			InputStream input = context.getResourceAsStream("/WEB-INF/handlers.xml");
 			Properties handlerProperties = new Properties();
 			handlerProperties.loadFromXML(input);
 
