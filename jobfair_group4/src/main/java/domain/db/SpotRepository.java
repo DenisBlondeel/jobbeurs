@@ -55,8 +55,10 @@ public class SpotRepository {
 				spot.setElectricity(results.getBoolean("electricity"));
 				spot.setRemarks(results.getString("remarks"));
 				spot.setUserID(results.getString("userid"));
-				
+				System.out.println("Get your shit together Denis");
 			}
+
+			
 		} catch (SQLException e) {
 			throw new DbException(e.getMessage(), e);
 		}
