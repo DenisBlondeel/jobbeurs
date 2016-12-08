@@ -53,11 +53,6 @@ public class UpdateHandler extends RequestHandler{
 		}
 		request.setAttribute("extra", spot.getRemarks());
 		request.setAttribute("spotnr", spotnr);
-		try {
-			new EmailSender().sendUpdateMail(spot, getService().getUser(spot.getUserID()).getEmail());
-		} catch (MessagingException e) {
-			throw new ServletException(e.getMessage(), e);
-		}
 		request.getRequestDispatcher("updatespot.jsp").forward(request, response);
 	}
 
