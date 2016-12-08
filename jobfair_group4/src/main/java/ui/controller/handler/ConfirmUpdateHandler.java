@@ -33,6 +33,7 @@ public class ConfirmUpdateHandler extends RequestHandler	{
 		request.setAttribute("tables", spot.getAmountTables());
 		request.setAttribute("electricity", spot.getElectricity());
 		request.setAttribute("extra", spot.getRemarks());
+		request.setAttribute("action", "update");
 
 		try {
 			new EmailSender().sendUpdateMail(spot, user.getEmail());
