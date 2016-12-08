@@ -18,6 +18,7 @@ public abstract class RequestHandler {
 	protected Service service;
 
 	public RequestHandler() {}
+	private boolean timeHasCome = false;
 
 	public final void handle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, MessagingException {
 		this.checkRole(request);
