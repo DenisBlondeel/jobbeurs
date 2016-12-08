@@ -15,7 +15,7 @@ public class LogInHandler extends RequestHandler {
 	public void handleRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		String userID = request.getParameter("username");
 		String password = request.getParameter("password");
-		User user = this.getService().getUserIfAuthenticated(userID, password);
+		User user = getService().getUserIfAuthenticated(userID, password);
 
 		if (user!=null) {
 			HttpSession session = request.getSession();

@@ -49,8 +49,8 @@ public class UserRepository {
 			ResultSet results = statement.executeQuery();
 			results.next();
 			user.setUserID(userID);
-			user.setCompanyName(results.getString("companyName"));
-			user.setContactName(results.getString("contactName"));
+			user.setCompanyNameFromDb(results.getString("companyName"));
+			user.setContactNameFromDb(results.getString("contactName"));
 			user.setEmail(results.getString("email"));
 			user.setPassword(results.getString("password"));
 			user.setRole(results.getString("role"));
