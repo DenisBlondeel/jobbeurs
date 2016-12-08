@@ -40,12 +40,15 @@ public class SpotOptionsHandler extends RequestHandler {
 			throw new ServletException(e.getMessage(), e);
 		}
 		
-		if (this.getService().getFreeSpots().size() < 10) {
+		if (this.getEnoughSpots() && this.getService().getFreeSpots().size() < 10) {
+			this.setEnoughSpots(false);
 			try {
 				new EmailSender().sendAlmostSoldOutMail(this.getService().getAdminEmails());
 			} catch (MessagingException e) {
 				throw new ServletException(e.getMessage(), e);
 			}
+		} else {
+			this.setEnoughSpots(true);
 		}
 		if (user!=null) {
 			request.setAttribute("userid", user.getUserID());
@@ -53,5 +56,4 @@ public class SpotOptionsHandler extends RequestHandler {
 		request.setAttribute("reserveer", "reserveer");
 		response.sendRedirect("Controller?action=");
 	}
-
 }

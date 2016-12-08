@@ -18,8 +18,9 @@ public abstract class RequestHandler {
 	protected Service service;
 
 	public RequestHandler() {}
-	private boolean timeHasCome = false;
 	protected Calendar deadline;
+	private boolean timeHasCome = false;
+	private boolean enoughSpots = true;
 
 	public final void handle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
@@ -71,5 +72,18 @@ public abstract class RequestHandler {
 	{
 		if(Calendar.getInstance().after(deadline))
 			timeHasCome = true;
+	}
+
+
+	/**********************
+	 * SpotOptionsHandler *
+	 **********************/
+
+	protected boolean getEnoughSpots() {
+		return this.enoughSpots;
+	}
+
+	protected void setEnoughSpots(boolean value) {
+		this.enoughSpots = value;
 	}
 }
