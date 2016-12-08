@@ -2,6 +2,7 @@ package domain.model;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Properties;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -86,12 +87,14 @@ public class EmailSender {
 		sendFromGMail(subject, message, emailreceiver);
 	}
 
-	public void sendAlmostSoldOutMail(Spot spot, String emailreceiver) throws MessagingException {
+	public void sendAlmostSoldOutMail(List<String> emailreceivers) throws MessagingException {
 		String subject = "Jobbeurs 2017 - UCLL Leuven: Bijna volzet";
-		String message = "Melding voor de administrator: De te huren locaties zijn bijna volzet.<br>"
-				+ "Het is ongeveer tijd geworden om meer standplaatsen toe te voegen zodat meer bedrijven"
+		String message = "Melding voor de administrator: De te huren locaties zijn bijna volzet, er zijn minder dan 10 plaatsen nog vrij.<br>"
+				+ "Het is dus ongeveer tijd geworden om meer standplaatsen toe te voegen zodat meer bedrijven"
 				+ "kunnen strijden voor een plaatsje.";
-		sendFromGMail(subject, message, emailreceiver);
+		for (String emailreceiver : emailreceivers) {
+			sendFromGMail(subject, message, emailreceiver);
+		}
 	}
 
 	public void sendEndOfRegistrationMail(Date date, String emailreceiver) throws MessagingException {

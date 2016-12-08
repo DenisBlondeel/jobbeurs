@@ -89,5 +89,9 @@ public class Service {
 		spotDB.deleteAll();
 		userDB.deleteAll();
 	}
+
+	public List<String> getAdminEmails() {
+		return userDB.getAllAdminEmails();
+	}
 	
 }

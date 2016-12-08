@@ -37,9 +37,16 @@ public class SpotOptionsHandler extends RequestHandler {
 		try {
 			new EmailSender().sendConfirmationMail(spot, user.getEmail());
 		} catch (MessagingException e) {
-			request.setAttribute("errors", "Could not send an email to the user" + user.getUserID());
+			throw new ServletException(e.getMessage(), e);
 		}
-
+		
+		if (this.getService().getFreeSpots().size() < 10) {
+			try {
+				new EmailSender().sendAlmostSoldOutMail(this.getService().getAdminEmails());
+			} catch (MessagingException e) {
+				throw new ServletException(e.getMessage(), e);
+			}
+		}
 		if (user!=null) {
 			request.setAttribute("userid", user.getUserID());
 		}

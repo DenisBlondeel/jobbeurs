@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import domain.model.Spot;
 import domain.model.User;
 
 public class UserRepository {
@@ -61,30 +60,6 @@ public class UserRepository {
 
 		return user;
 	}
-	
-/*	public List<Spot> getAll() {
-	List<Spot> list = new ArrayList<Spot>();
-	String sql = "Select * FROM jobfair_group4.users";
-	try{
-		statement = connection.prepareStatement(sql);
-		ResultSet results = statement.executeQuery();
-		while (results.next())
-		{
-			Spot spot = new Spot(results.getString("spotID"));
-			spot.setAmountTables(results.getInt("amountTables"));
-			spot.setAmountChairs(results.getInt("amountChairs"));
-			spot.setElectricity(results.getBoolean("electricity"));
-			spot.setRemarks(results.getString("remarks"));
-			spot.setUserID(results.getString("userid"));
-			list.add(spot);
-		}
-	} catch (SQLException e)
-	{
-		throw new DbException(e);
-	}
-	return list;
-	}
-	*/
 
 	public void add(User user) {
 		if (user == null) {
@@ -165,6 +140,23 @@ public class UserRepository {
 		}
 	}
 
+	public List<String> getAllAdminEmails() {
+		List<String> list = new ArrayList<String>();
+		String sql = "SELECT email FROM jobfair_group4.users WHERE role=ADMIN";
+		try{
+			statement = connection.prepareStatement(sql);
+			ResultSet results = statement.executeQuery();
+			while (results.next())
+			{
+				list.add(results.getString("email"));
+			}
+		} catch (SQLException e)
+		{
+			throw new DbException(e);
+		}
+		return list;
+	}
+	
 	public Properties getProperties() {
 		return properties;
 	}
