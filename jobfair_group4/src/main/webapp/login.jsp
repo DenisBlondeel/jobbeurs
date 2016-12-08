@@ -15,16 +15,6 @@
 <div class="container">
 	
 <div class="row">
-	
-<c:if test="${errors!=null}">
-			<div class="alert alert-danger">
-				<ul>
-					<c:forEach var="error" items="${errors}">
-						<li>${error}</li>
-					</c:forEach>
-				</ul>
-			</div>
-</c:if>
 
 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-6">
 

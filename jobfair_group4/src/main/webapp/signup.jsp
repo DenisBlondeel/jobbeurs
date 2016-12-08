@@ -11,15 +11,6 @@
 	<jsp:param value="Sign Up" name="h2"/>
 </jsp:include>
 
-<c:if test="${errors!=null}">
-			<div class="alert alert-danger">
-				<ul>
-					<c:forEach var="error" items="${errors}">
-						<li>${error}</li>
-					</c:forEach>
-				</ul>
-			</div>
-</c:if>
 
 <div class="container">
 	
