@@ -37,7 +37,7 @@ public class EmailSender {
 		if (spot.getElectricity()) {
 			message+="<li>elektriciteit</li>";
 		}
-		message += "<br>Tot binnenkort.<br><br>"
+		message += "</ul><br>Tot binnenkort.<br><br>"
 				+ "--<br>"
 				+ "Mvg,<br>"
 				+ "Team Scrumbugs";
@@ -58,14 +58,14 @@ public class EmailSender {
 
 	public void sendUpdateMail(Spot spot, String emailreceiver) throws MessagingException {
 		String subject = "Jobbeurs 2017 - UCLL Leuven: Wijziging plaats";
-		String message = "Beste,<br><br>U reserveerde de plaats met nummer " + spot.getSpotID() + ".<br>"
-				+ "Het volgende zal voor jou voorzien worden:<br><ul><li>"
+		String message = "Beste,<br><br>U wijzigde uw vookeuren voor de plaats met nummer " + spot.getSpotID() + ".<br>"
+				+ "Het volgende zal nu voor jou voorzien worden:<br><ul><li>"
 				+ spot.getAmountChairs() + " stoelen</li>"
 				+ "<li>"+spot.getAmountTables()+" tafels</li>";
 		if (spot.getElectricity()) {
 			message+="<li>elektriciteit</li>";
 		}
-		message += "<br>Tot binnenkort.<br><br>"
+		message += "</ul><br>Tot binnenkort.<br><br>"
 				+ "--<br>"
 				+ "Mvg,<br>"
 				+ "Team Scrumbugs";

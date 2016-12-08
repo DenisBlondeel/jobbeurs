@@ -2,10 +2,12 @@ package ui.controller.handler;
 
 import java.io.IOException;
 
+import javax.mail.MessagingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import domain.model.EmailSender;
 import domain.model.Spot;
 
 public class UpdateHandler extends RequestHandler{
@@ -51,6 +53,11 @@ public class UpdateHandler extends RequestHandler{
 		}
 		request.setAttribute("extra", spot.getRemarks());
 		request.setAttribute("spotnr", spotnr);
+		try {
+			new EmailSender().sendUpdateMail(spot, getService().getUser(spot.getUserID()).getEmail());
+		} catch (MessagingException e) {
+			throw new ServletException(e.getMessage(), e);
+		}
 		request.getRequestDispatcher("updatespot.jsp").forward(request, response);
 	}
 
