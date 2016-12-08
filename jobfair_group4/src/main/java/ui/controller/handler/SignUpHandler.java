@@ -55,7 +55,6 @@ public class SignUpHandler extends RequestHandler {
 	private void userSetId(User user, HttpServletRequest request, List<String> result) {
 		String companyName = request.getParameter("companyName");
 		try{
-			//TODO Send this userID and the generated password to the user.
 			user.generateUserId(companyName);
 		} catch (IllegalArgumentException e){
 			result.add(e.getMessage());
@@ -64,7 +63,6 @@ public class SignUpHandler extends RequestHandler {
 
 	private void userSetPassword(User user, HttpServletRequest request, List<String> result) {
 		try{
-			//TODO send this password and the userID to the user;
 			tempPass = user.generatePassword();
 		} catch (IllegalArgumentException e){
 			result.add(e.getMessage());
