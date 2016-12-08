@@ -11,10 +11,14 @@
 	<body>
 		<!-- <h1 class="text-center">Hello World</h1>
 		<h1>test ! </h1> -->
+		<c:if test="${user!=null}">
+			<h3>Welkom ${user} !</h3>
+		</c:if>
+		
 		<c:if test="${spotnr!=null}">
 			<h3>Plaats ${spotnr} werd gereserveerd.</h3>
 		</c:if>
-
+		
 <!--  	<c:if test="${userid!=null}">
 			<a href="imgmap.jsp">hemisfeer</a>
 		</c:if>-->
