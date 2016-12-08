@@ -19,7 +19,7 @@
 			<a href="imgmap.jsp">hemisfeer</a>
 		</c:if>-->
 		
-			<a href="Controller?action=imgmap">hemisfeer</a>
+			<!--  a href="Controller?action=imgmap">hemisfeer</a>-->
 <!-- 			<a href="imgmap.jsp">hemisfeer</a> -->
 
 		<jsp:include page="imgmap.jsp"></jsp:include>
