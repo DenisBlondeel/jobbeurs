@@ -78,5 +78,14 @@
 				</ul>
 			</div>
 		</c:if>
+		<c:if test="${success!=null}">
+			<div class="alert alert-danger">
+				<ul>
+					<c:forEach var="suc" items="${success}">
+						<li>${cus}</li>
+					</c:forEach>
+				</ul>
+			</div>
+		</c:if>
 		
 	</header>
