@@ -5,28 +5,28 @@
 <jsp:include page="header.jsp">
 	<jsp:param value="Mijn plaats" name="title"/>
 	<jsp:param value="current" name="myspot"/>
-	<jsp:param value="Plaats   ${spotnr} - ${company}" name="h2"/>
+	<jsp:param value="Plaats   ${spot.spotID} - ${user.Company}" name="h2"/>
 </jsp:include>
 
 <ul>
 	<li>
-		<p>Aantal stoelen: ${chairs}</p>
+		<p>Aantal stoelen: ${spot.amountChairs}</p>
 	</li>
 	<li>
-		<p>Aantal tafels: ${tables}</p>
+		<p>Aantal tafels: ${spot.amountTables}</p>
 	</li>
 	<li>
-		<p>Elektriciteit: ${electricity}</p>
+		<p>Elektriciteit: ${spot.electricity}</p>
 	</li>
 	<li>
 		<p>Extra opmerkingen:</p>
-		<p>${remarks}</p>
+		<p>${spot.remarks}</p>
 	</li>
 </ul>
 
 <form method="POST" action="Controller?action=update">
 	<p>
-		<input type="hidden" name="spotnr" value="${spotnr}">
+		<input type="hidden" name="spotnr" value="${spot.spotID}">
 		<input type="submit" value="Wijzig voorkeuren">
 	</p>
 </form>
