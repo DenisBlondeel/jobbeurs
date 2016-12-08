@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import domain.model.EmailSender;
+import domain.model.EmailSender;import domain.model.RoleEnum;
 import domain.model.Spot;
 import domain.model.User;
 
@@ -34,7 +34,7 @@ public class SpotOptionsHandler extends RequestHandler {
 		request.setAttribute("spotnr", spotID);
 		request.setAttribute("reserved", "Uw plaats werd gereserveerd. U ontvangt een mail ter bevestiging.");
 		try {
-			new EmailSender().sendConfirmationMail(spotID, "brechtdecuyper@hotmail.com");
+			new EmailSender().sendConfirmationMail(spotID, user.getEmail());
 		} catch (MessagingException e) {
 			request.setAttribute("errors", "Could not send an email to the user" + user.getUserID());
 		}

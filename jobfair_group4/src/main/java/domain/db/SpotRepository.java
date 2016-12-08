@@ -123,7 +123,7 @@ public class SpotRepository {
 	
 	public List<Spot> getOccupiedSpots() {
 		List<Spot> list = new ArrayList<Spot>();
-		String sql = "SELECT * FROM jobfair_group4.users u INNER JOIN jobfair_group4.spots s ON s.userid = u.userid";
+		String sql = "SELECT * FROM jobfair_group4.users u INNER JOIN jobfair_group4.spots s ON s.userid = u.userid ORDER BY spotid";
 		try {
 			statement = connection.prepareStatement(sql);
 			ResultSet results = statement.executeQuery();
@@ -176,7 +176,7 @@ public class SpotRepository {
 				user.setRole(results.getString("role"));
 				user.setSalt(results.getString("salt"));
 				user.setUserID(results.getString("userid"));
-				
+				 
 				spot.setUser(user);				
 				
 				list.add(spot);
@@ -258,24 +258,51 @@ public class SpotRepository {
 		if (spot == null) {
 			throw new DbException("Niets te vinden!");
 		}
-		String sql = "UPDATE jobfair_group4.spots SET amountTables = ?, amountChairs = ?, remarks = ?, userID = ?, electricity = ? WHERE spotID = ?";
-
+		String sql = "SELECT * FROM jobfair_group4.spots WHERE spotID = ?";
 		try {
 			statement = connection.prepareStatement(sql);
+			statement.setString(1, spot.getSpotID());
+			
+			ResultSet result = statement.executeQuery();
 
-			statement.setInt(1, spot.getAmountTables());
-			statement.setInt(2, spot.getAmountChairs());
-			statement.setString(3, spot.getRemarks());
-			System.out.println(spot.getUser().getUserID());
-			statement.setString(4, spot.getUser().getUserID());
-			statement.setBoolean(5, spot.getElectricity());
-			statement.setString(6, spot.getSpotID());
+			if (result.next() && result.getString("spotId").equals(spot.getSpotID())) {
+				sql = "UPDATE jobfair_group4.spots SET amountTables = ?, amountChairs = ?, remarks = ?, userID = ?, electricity = ? WHERE spotID = ?";
+			} else {
+				sql = "INSERT INTO jobfair_group4.spots (amountTables, amountChairs, remarks, userID, electricity, userID) VALUES (?,?,?,?,?,?)";
+			}
 
-			statement.execute();
+			try {
+				statement = connection.prepareStatement(sql);
+	
+				statement.setInt(1, spot.getAmountTables());
+				statement.setInt(2, spot.getAmountChairs());
+				statement.setString(3, spot.getRemarks());
+				statement.setString(4, spot.getUser().getUserID());
+				statement.setBoolean(5, spot.getElectricity());
+				statement.setString(6, spot.getSpotID());
+	
+				statement.execute();
+			} catch (SQLException e) {
+				throw new DbException(e.getMessage(), e);
+			}
 		} catch (SQLException e) {
 			throw new DbException(e.getMessage(), e);
 		}
 	}
+	
+	public void deleteAll()
+	{
+		String sql = "DELETE FROM jobfair_group4.spots";
+
+		try {
+			statement = connection.prepareStatement(sql);
+			statement.execute();
+	}	catch(SQLException e)
+		{
+		throw new DbException(e.getMessage(), e);
+		}
+	}
+	
 
 	public Properties getProperties() {
 		return properties;

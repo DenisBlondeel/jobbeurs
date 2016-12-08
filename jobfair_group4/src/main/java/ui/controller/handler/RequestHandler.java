@@ -1,12 +1,13 @@
 package ui.controller.handler;
 
 import java.io.IOException;
+import java.util.Calendar;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.ws.rs.NotAuthorizedException;
+import ui.controller.NotAuthorizedException;
 
 import domain.model.RoleEnum;
 import domain.model.User;
@@ -18,11 +19,16 @@ public abstract class RequestHandler {
 
 	public RequestHandler() {}
 	private boolean timeHasCome = false;
+	protected Calendar deadline;
 
 	public final void handle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		this.checkRole(request);
-		this.handleRequest(request, response);
-		
+		try {
+			this.checkDate();
+			this.checkRole(request);
+			this.handleRequest(request, response);
+		} catch (NotAuthorizedException e) {
+			request.setAttribute("errors", e.getMessage());
+		}
 	}
 
 	public abstract void handleRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
@@ -41,6 +47,10 @@ public abstract class RequestHandler {
 				return;
 			}
 		}
+		if(user.getRole().equals(RoleEnum.ADMIN))
+		{
+			request.setAttribute("admin", "admin");
+		}
 		throw new NotAuthorizedException("Insufficient rights");
 	}
 
@@ -54,5 +64,10 @@ public abstract class RequestHandler {
 
 	protected Service getService() {
 		return service;
+	}
+	
+	public void checkDate()
+	{
+		if(Calendar.getInstance().after(deadline))timeHasCome = true;
 	}
 }
