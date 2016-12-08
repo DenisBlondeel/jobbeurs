@@ -77,7 +77,7 @@ public class SpotRepository {
 	
 	public List<Spot> getAll() {
 	List<Spot> list = new ArrayList<Spot>();
-	String sql = "Select * FROM jobfair_group4.spots";
+	String sql = "Select * FROM jobfair_group4.spots ORDER BY spotID";
 	try{
 		statement = connection.prepareStatement(sql);
 		ResultSet results = statement.executeQuery();

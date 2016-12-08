@@ -25,6 +25,7 @@ public class ConfirmUpdateHandler extends RequestHandler	{
 		service.updateSpot(spot);
 		request.setAttribute("spot", spot);
 		request.setAttribute("chairs", spot.getAmountChairs());
+		System.out.println(spot.getAmountTables());
 		request.setAttribute("tables", spot.getAmountTables());
 		request.setAttribute("electricity", spot.getElectricity());
 		request.setAttribute("extra", spot.getRemarks());
