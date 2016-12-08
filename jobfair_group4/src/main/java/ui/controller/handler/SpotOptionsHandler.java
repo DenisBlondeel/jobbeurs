@@ -16,7 +16,7 @@ public class SpotOptionsHandler extends RequestHandler {
 
 	@Override
 	public void handleRequest(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException, MessagingException {
+			throws ServletException, IOException {
 		int chairs = Integer.parseInt(request.getParameter("chairs"));
 		int tables = Integer.parseInt(request.getParameter("tables"));
 		boolean electricity = false;
@@ -33,7 +33,11 @@ public class SpotOptionsHandler extends RequestHandler {
 
 		request.setAttribute("spotnr", spotID);
 		request.setAttribute("reserved", "Uw plaats werd gereserveerd. U ontvangt een mail ter bevestiging.");
-		new EmailSender().sendConfirmationMail(spotID, user.getEmail());
+		try {
+			new EmailSender().sendConfirmationMail(spotID, user.getEmail());
+		} catch (MessagingException e) {
+			request.setAttribute("errors", "Could not send an email to the user" + user.getUserID());
+		}
 
 		if (user!=null) {
 			request.setAttribute("userid", user.getUserID());

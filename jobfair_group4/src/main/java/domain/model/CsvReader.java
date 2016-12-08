@@ -5,9 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import javax.mail.MessagingException;
+
 public class CsvReader {
 	
-	public List<User> read(InputStream in){
+	public List<User> read(InputStream in, List<String> errors){
 		List<User> users = new ArrayList<User>();
 		Scanner inputStream;
 		inputStream = new Scanner(in);
@@ -22,8 +24,13 @@ public class CsvReader {
 			String email = data[3];
 			user.setEmail(email);
 			user.generateUserId(companyName);
-			user.generatePassword();
+			String tempPass = user.generatePassword();
 			users.add(user);
+			try {
+				new EmailSender().sendNewCompanyMail(user.getUserID(), tempPass, user.getEmail());
+			} catch (MessagingException e) {
+				errors.add("Could not send an email to " + user.getUserID());
+			}
 		}
 		inputStream.close();
 		return users;
