@@ -21,7 +21,7 @@
 	<c:forEach var="spot" items="${spots}">
 		<tr>
 			<td>${spot.spotID}</td>
-			<td>${spot.user.userID}</td>
+			<td>${spot.user.companyName}</td>
 
 		</tr>
 	</c:forEach>

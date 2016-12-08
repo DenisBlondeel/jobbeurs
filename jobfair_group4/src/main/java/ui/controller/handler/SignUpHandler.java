@@ -32,7 +32,7 @@ public class SignUpHandler extends RequestHandler {
 			try {
 				new EmailSender().sendNewCompanyMail(user.getUserID(), tempPass, user.getEmail());
 			} catch (MessagingException e) {
-				request.setAttribute("error", "Could not send the email to the user " + user.getUserID());
+				throw new ServletException(e.getMessage(), e);
 			}
 			response.sendRedirect("index.jsp");
 		}

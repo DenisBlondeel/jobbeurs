@@ -1,6 +1,7 @@
 package ui.controller.handler;
 
 import java.io.IOException;
+import java.util.Calendar;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -18,8 +19,10 @@ public abstract class RequestHandler {
 
 	public RequestHandler() {}
 	private boolean timeHasCome = false;
+	protected Calendar deadline;
 
 	public final void handle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		this.checkDate();
 		this.checkRole(request);
 		this.handleRequest(request, response);
 		
@@ -54,5 +57,10 @@ public abstract class RequestHandler {
 
 	protected Service getService() {
 		return service;
+	}
+	
+	public void checkDate()
+	{
+		if(Calendar.getInstance().after(deadline))timeHasCome = true;
 	}
 }
