@@ -19,7 +19,13 @@
 			<a href="imgmap.jsp">hemisfeer</a>
 		</c:if>-->
 		
+<<<<<<< HEAD
 			<a href="Controller?action=imgmap">hemisfeer</a>
+=======
+<!-- 			<a href="imgmap.jsp">hemisfeer</a> -->
+
+		<jsp:include page="imgmap.jsp"></jsp:include>
+>>>>>>> branch 'master' of https://github.com/elke-steegmans/jobfair_group4.git
 
 		<!-- jQuery -->
 		<script src="//code.jquery.com/jquery.js"></script>
