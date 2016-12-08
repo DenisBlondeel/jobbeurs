@@ -22,6 +22,12 @@ public class EmailSender {
 	public EmailSender() {
 		loadProperties();
 	}
+	
+	public void sendConfirmationMail(String spotId, String emailreceiver) throws Exception{
+		String subject = "Confirmation email";
+		String message = "Uw plaats met nummer " + spotId + " werd gereserveerd";
+		sendFromGMail(subject, message, emailreceiver);
+	}
 
 	private void loadProperties() {
 		properties = new Properties();
@@ -32,29 +38,29 @@ public class EmailSender {
 		properties.put("mail.smtp.password", password);
 		properties.put("mail.smtp.user", username);
 	}
-	
-	public void sendConfirmationMail(String spotId, String emailreceiver){
-		Session session = Session.getInstance(properties,
-			      new javax.mail.Authenticator() {
-			         protected PasswordAuthentication getPasswordAuthentication() {
-			            return new PasswordAuthentication(username, password);
-			         }
-			      });
-		
+
+	public void sendMail() throws Exception {
+		String subject = "A test mail";
+		String message = "Dear customer, please may we inform you that you can register for the job fair:";
+		sendFromGMail(subject, message, "brechtdecuyper@hotmail.com");
+	}
+
+	private void sendFromGMail(String subject, String body, String... to) throws Exception {
+		Session session = Session.getDefaultInstance(properties);
 		
 		MimeMessage message = new MimeMessage(session);
+		for (int i = 0; i < to.length; i++) {
+			InternetAddress toAddress = new InternetAddress(to[i]);
+			message.addRecipient(Message.RecipientType.TO, toAddress);
+		}
+		message.setSubject(subject);
+		message.setText(body);
 		
-		
-		try{
-			
-			message.setFrom(new InternetAddress(emailsender));
-			message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(emailsender));
-			message.setSubject("confirmationemail");
-			message.setText("uw plaats met nummer " + spotId + " werd gereserveerd");
-
-			Transport.send(message);
-		} catch(MessagingException m) {
-			throw new DbException(m.getMessage());
-		} 
+		String from = properties.getProperty("mail.smtp.user");
+		String password = properties.getProperty("mail.smtp.password");
+		Transport transport = session.getTransport("smtp");
+		transport.connect(from, password);
+		transport.sendMessage(message, message.getAllRecipients());
+		transport.close();
 	}
 }
