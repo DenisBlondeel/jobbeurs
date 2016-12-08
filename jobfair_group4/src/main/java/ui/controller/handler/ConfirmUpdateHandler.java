@@ -24,6 +24,10 @@ public class ConfirmUpdateHandler extends RequestHandler	{
 		Spot spot = new Spot(spotnr, chairs, tables, electricity, extra, user);
 		service.updateSpot(spot);
 		request.setAttribute("spot", spot);
+		request.setAttribute("chairs", spot.getAmountChairs());
+		request.setAttribute("tables", spot.getAmountTables());
+		request.setAttribute("electricity", spot.getElectricity());
+		request.setAttribute("extra", spot.getRemarks());
 		request.getRequestDispatcher("myspot.jsp").forward(request, response);
 	}
 
