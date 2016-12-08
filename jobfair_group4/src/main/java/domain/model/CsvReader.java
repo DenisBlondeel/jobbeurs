@@ -13,10 +13,10 @@ public class CsvReader {
 	private String line = "";
 	
 	
-	public List<User> read(File uploadedFile){
+	public List<User> read(String filePath){
 		List<User> users = new ArrayList<User>();
 		try{
-			br = new BufferedReader(new FileReader(uploadedFile));
+			br = new BufferedReader(new FileReader(filePath));
 			while((line = br.readLine()) != null){
 				String[] data = line.split(";");
 				User user = new User();
