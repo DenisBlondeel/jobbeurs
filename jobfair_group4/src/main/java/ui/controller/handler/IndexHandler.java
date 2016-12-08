@@ -29,7 +29,7 @@ public class IndexHandler extends RequestHandler {
 			}
 			Spot spot = service.getSpotFromUser(user.getUserID());
 			if (spot != null) {
-				request.setAttribute("mine", service.getSpotFromUser(user.getUserID()).getSpotID());
+				request.setAttribute("mine", spot.getSpotID());
 			}
 		}
 		System.out.println(service);
