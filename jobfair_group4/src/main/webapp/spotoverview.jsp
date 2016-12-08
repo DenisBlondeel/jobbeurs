@@ -7,7 +7,14 @@
 	<jsp:param value="Overzicht van alle plaatsen" name="h2" />
 </jsp:include>
 
-<table>
+
+<div class="container">
+	
+<div class="row">
+
+<div class="col-xs-12 col-sm-12 col-md-8 col-lg-6">
+
+<table class="table table-striped">
 	<tr>
 		<th>Plaats </th>
 		<th>Bedrijfsnaam </th>
@@ -22,11 +29,15 @@
 		<tr>
 			<td>${spot.spotID}</td>
 			<td>${spot.user.companyName}</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
 
 		</tr>
 	</c:forEach>
 </table>
 
-
+</div></div></div>
 </body>
 </html>

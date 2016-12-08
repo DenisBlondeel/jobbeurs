@@ -5,25 +5,80 @@
 	<jsp:param value="Spot ${spotnr}" name="title"/>
 </jsp:include>
 
+
 <main>
-	<h1>Opties voor plaats ${spotnr}: </h1>
-	<form method="POST" action="Controller?action=spotoptions&id=${spotnr}" novalidate="novalidate">
-		<p><label for="chairs">Aantal stoelen: </label><br>
-			<input type="radio" name="chairs" value="0"> 0<br>
-			<input type="radio" name="chairs" value="1"> 1<br>
-			<input type="radio" name="chairs" value="2" checked> 2
-		</p>
-		<p><label for="tables">Aantal tafels: </label><br>
-			<input type="radio" name="tables" value="0"> 0<br>
-			<input type="radio" name="tables" value="1" checked> 1
-		</p>
-		<p><input type="checkbox" name="electricity" value="Elektriciteit" checked> Elektriciteit
-		</p>
-		<p><label for="extra">Extra opmerkingen: </label>
-		</p>
-			<p><input type="text" name="extra" value=""></p>
-		<input type="submit" value="reserveer plaats">
+
+
+<div class="container">
+	
+<div class="row">
+
+<div class="col-xs-12 col-sm-12 col-md-8 col-lg-6">
+
+	<h3>Opties voor plaats ${spotnr}: </h3>
+	<form method="POST" action="Controller?action=spotoptions&id=${spotnr}" novalidate="novalidate" role="form">
+		<fieldset>
+		<legend>Aantal stoelen: </legend>
+
+			<div class="radio">
+			  <label>
+			    <input type="radio" name="chairs" id="chairs0" value="0" >
+			   0
+			  </label>
+			</div>
+
+			<div class="radio">
+			  <label>
+			    <input type="radio" name="chairs" id="chairs1" value="1" >
+			   1
+			  </label>
+			</div>
+
+			<div class="radio">
+			  <label>
+			    <input type="radio" name="chairs" id="chairs2" value="2" checked >
+			   2
+			  </label>
+			</div>
+		</fieldset>
+
+		<fieldset>
+		<legend>Aantal tafels: </legend>
+
+			<div class="radio">
+			  <label>
+			    <input type="radio" name="tables" id="table0" value="0" >
+			   0
+			  </label>
+			</div>
+
+			<div class="radio">
+			  <label>
+			    <input type="radio" name="tables" id="table1" value="1" checked>
+			   1
+			  </label>
+			</div>
+
+		</fieldset>
+
+		<fieldset>
+		<legend class="sr-only">Elektriciteit</legend>
+			<div class="checkbox">
+			  <label>
+			    <input type="checkbox" name="electricity" value="Elektriciteit" checked>
+			    Elektriciteit
+			  </label>
+			</div>
+		</fieldset>
+
+		
+		<div class="form-group">	
+		<label for="extra">Extra opmerkingen: </label>
+		<textarea name="extra" class="form-control" rows="3"></textarea>
+		</div>
+		<button type="submit" class="btn btn-primary" value="Submit">reserveer plaats</button>
 	</form>
+	</div></div></div>
 </main>
 
 </body>
