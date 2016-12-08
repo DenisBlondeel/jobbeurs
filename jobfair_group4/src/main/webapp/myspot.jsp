@@ -5,34 +5,34 @@
 <jsp:include page="header.jsp">
 	<jsp:param value="Mijn plaats" name="title"/>
 	<jsp:param value="current" name="myspot"/>
-	<jsp:param value="Plaats   ${spot.spotID} - ${user.companyName}" name="h2"/>
+	<jsp:param value="Plaats   ${spotnr} - ${user.companyName}" name="h2"/>
 </jsp:include>
 
 <ul>
 	<li>
-		<p>Aantal stoelen: ${spot.amountChairs}</p>
+		<p>Aantal stoelen: ${chairs}</p>
 	</li>
 	<li>
-		<p>Aantal tafels: ${spot.amountTables}</p>
+		<p>Aantal tafels: ${tables}</p>
 	</li>
 	<li>
-		<p>Elektriciteit: ${spot.electricity}</p>
+		<p>Elektriciteit: ${electricity}</p>
 	</li>
 	<li>
 		<p>Extra opmerkingen:</p>
-		<p>${spot.remarks}</p>
+		<p>${extra}</p>
 	</li>
 </ul>
 
 <form method="POST" action="Controller?action=update">
 	<p>
-		<input type="hidden" name="spotnr" value="${spot.spotID}">
+		<input type="hidden" name="spotnr" value="${spotnr}">
 		<input type="submit" value="Wijzig voorkeuren">
 	</p>
 </form>
 <form method="POST" action="Controller?action=delete">
 	<p>
-		<input type="hidden" name="spotnr" value="${spot.spotID}">
+		<input type="hidden" name="spotnr" value="${spotnr}">
 		<input type="submit" value="Annulleer reservering">
 	</p>
 </form>
