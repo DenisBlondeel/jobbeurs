@@ -8,9 +8,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import domain.model.EmailSender;
 import domain.model.User;
 
 public class SignUpHandler extends RequestHandler {
+	
+	private String tempPass;
 
 	@Override
 	public void handleRequest(HttpServletRequest request, HttpServletResponse response)
@@ -23,6 +26,7 @@ public class SignUpHandler extends RequestHandler {
 			request.getRequestDispatcher("signup.jsp").forward(request, response);
 		} else {
 			this.getService().addUser(user);
+			new EmailSender().sendNewCompanyMail(user.getUserID(), tempPass, user.getEmail());
 			response.sendRedirect("index.jsp");
 		}
 	}
@@ -60,7 +64,7 @@ public class SignUpHandler extends RequestHandler {
 	private void userSetPassword(User user, HttpServletRequest request, List<String> result) {
 		try{
 			//TODO send this password and the userID to the user;
-			String password = user.generatePassword();
+			tempPass = user.generatePassword();
 		} catch (IllegalArgumentException e){
 			result.add(e.getMessage());
 		}
