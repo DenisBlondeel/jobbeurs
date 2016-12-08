@@ -43,7 +43,7 @@ public class SpotOptionsHandler extends RequestHandler {
 		if (user!=null) {
 			request.setAttribute("userid", user.getUserID());
 		}
-
+		request.setAttribute("action", "reserveer");
 		response.sendRedirect("Controller");
 	}
 
