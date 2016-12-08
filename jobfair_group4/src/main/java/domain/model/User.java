@@ -202,13 +202,12 @@ public class User {
 		return clearPass;
 	}
 	
-	public String generateUserId(String user){
+	public void generateUserId(String user){
 		if(user == null || user.isEmpty()){
 			throw new IllegalArgumentException("Er kon geen gebruikersnaam gegenereerd worden.");
 		}
 		Random random = new Random();
 		String userID = user + random.nextInt(999); 
 		this.setUserID(userID);
-		return userID;
 	}
 }
