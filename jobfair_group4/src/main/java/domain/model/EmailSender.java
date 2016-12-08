@@ -28,9 +28,19 @@ public class EmailSender {
 		properties.put("mail.smtp.user", username);
 	}
 
-	public void sendConfirmationMail(String spotId, String emailreceiver) throws MessagingException {
-		String subject = "Confirmation email";
-		String message = "Uw plaats met nummer " + spotId + " werd gereserveerd";
+	public void sendConfirmationMail(Spot spot, String emailreceiver) throws MessagingException {
+		String subject = "Jobbeurs 2017 - UCLL Leuven: Bevestiging plaats";
+		String message = "Beste,<br><br>U reserveerde de plaats met nummer " + spot.getSpotID() + ".<br>"
+				+ "Het volgende zal voor jou voorzien worden:<br><ul><li>"
+				+ spot.getAmountChairs() + " stoelen</li>"
+				+ "<li>"+spot.getAmountTables()+" tafels</li>";
+		if (spot.getElectricity()) {
+			message+="<li>elektriciteit</li>";
+		}
+		message += "<br>Tot binnenkort.<br><br>"
+				+ "--<br>"
+				+ "Mvg,<br>"
+				+ "Team Scrumbugs";
 		sendFromGMail(subject, message, emailreceiver);
 	}
 
@@ -46,6 +56,21 @@ public class EmailSender {
 		sendFromGMail(subject, message, emailreceiver);
 	}
 
+	public void sendUpdateMail(Spot spot, String emailreceiver) throws MessagingException {
+		String subject = "Jobbeurs 2017 - UCLL Leuven: Wijziging plaats";
+		String message = "Beste,<br><br>U reserveerde de plaats met nummer " + spot.getSpotID() + ".<br>"
+				+ "Het volgende zal voor jou voorzien worden:<br><ul><li>"
+				+ spot.getAmountChairs() + " stoelen</li>"
+				+ "<li>"+spot.getAmountTables()+" tafels</li>";
+		if (spot.getElectricity()) {
+			message+="<li>elektriciteit</li>";
+		}
+		message += "<br>Tot binnenkort.<br><br>"
+				+ "--<br>"
+				+ "Mvg,<br>"
+				+ "Team Scrumbugs";
+		sendFromGMail(subject, message, emailreceiver);
+	}
 
 	private void sendFromGMail(String subject, String body, String... to) throws MessagingException {
 		Session session = Session.getDefaultInstance(properties);
