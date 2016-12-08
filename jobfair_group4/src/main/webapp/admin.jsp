@@ -10,17 +10,36 @@
 	<jsp:param value="Admin" name="title" />
 	<jsp:param value="Welkom, admin" name="h2" />
 </jsp:include>
-<h3>Meerdere bedrijven toevoegen</h3>
 
-<form method="POST" action="Controller?action=upload"
-	enctype="multipart/form-data">
-	File: <input type="file" name="file" accept=".csv" /> <input
-		type="submit" value="Upload file" />
-</form>
 
-<form method="POST" action="Controller?action=setdate">
-	Eind datum: <input type="date" name="datum">
-	<input type="submit" name="submit" value="submit"><br>
-</form>
+<div class="container">
+	
+<div class="row">
+
+<div class="col-xs-12 col-sm-12 col-md-8 col-lg-6">
+	<h3>Meerdere bedrijven toevoegen</h3>
+
+	<form method="POST" action="Controller?action=upload" enctype="multipart/form-data">
+		<legend>Admin upload</legend>
+		<div class="form-group form-inline">
+			<label for="file">File: </label>
+			<input type="file" class="form-control" id="file" name="file" value="Upload file">
+			<button type="submit" class="btn btn-primary" value="Upload file">Upload file</button>
+		</div>
+	</form>
+</div>
+</div><div class="row">
+
+<div class="col-xs-12 col-sm-12 col-md-8 col-lg-6">
+	<form method="POST" action="Controller?action=setdate">
+		<legend>Verander eind datum</legend>
+		<div class="form-group form-inline">
+			<label for="datum">Eind datum:  </label>
+			<input type="date" name="datum" class="form-control" id="datum">
+			<button type="submit" class="btn btn-primary" value="Submit">Submit</button>
+		</div>
+	</form>
+
+	</div></div></div>
 </body>
 </html>
