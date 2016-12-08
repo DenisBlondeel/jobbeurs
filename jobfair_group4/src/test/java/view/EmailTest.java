@@ -17,11 +17,11 @@ public class EmailTest {
 
 	@Test
 	public void sendSimpleMailTest() throws Exception {
-		sender.sendMail();
+		sender.sendNewCompanyMail("brechtdecuyper@hotmail.com");
 	}
 
-	@Test
-	public void sendConfirmationMailTest() throws Exception {
-		sender.sendConfirmationMail("1762", "brechtdecuyper@hotmail.com");
-	}
+//	@Test
+//	public void sendConfirmationMailTest() throws Exception {
+//		sender.sendConfirmationMail("1762", "brechtdecuyper@hotmail.com");
+//	}
 }

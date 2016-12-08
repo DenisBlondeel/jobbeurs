@@ -23,12 +23,6 @@ public class EmailSender {
 		loadProperties();
 	}
 	
-	public void sendConfirmationMail(String spotId, String emailreceiver) throws Exception{
-		String subject = "Confirmation email";
-		String message = "Uw plaats met nummer " + spotId + " werd gereserveerd";
-		sendFromGMail(subject, message, emailreceiver);
-	}
-
 	private void loadProperties() {
 		properties = new Properties();
 		properties.put("mail.smtp.starttls.enable", "true");
@@ -39,11 +33,19 @@ public class EmailSender {
 		properties.put("mail.smtp.user", username);
 	}
 
-	public void sendMail() throws Exception {
-		String subject = "A test mail";
-		String message = "Dear customer, please may we inform you that you can register for the job fair:";
-		sendFromGMail(subject, message, "brechtdecuyper@hotmail.com");
+	public void sendConfirmationMail(String spotId, String emailreceiver) throws Exception{
+		String subject = "Confirmation email";
+		String message = "Uw plaats met nummer " + spotId + " werd gereserveerd";
+		sendFromGMail(subject, message, emailreceiver);
 	}
+
+	public void sendNewCompanyMail(String emailreceiver) throws Exception {
+		String subject = "Jobbeurs 2017 - UCLL Leuven";
+		String message = "Beste,\n\nWe mogen je met veel plezier melden dat je vanaf nu een plaats kunt reserveren voor onze jobbeurs.\n"
+				+ "Inloggen doe je op <a href=\"http://java.cyclone2.khleuven.be:38034/jobfair_group4/\">hier</a>.";
+		sendFromGMail(subject, message, emailreceiver);
+	}
+
 
 	private void sendFromGMail(String subject, String body, String... to) throws Exception {
 		Session session = Session.getDefaultInstance(properties);
