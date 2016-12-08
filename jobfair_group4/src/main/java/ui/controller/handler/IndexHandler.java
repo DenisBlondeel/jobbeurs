@@ -32,7 +32,6 @@ public class IndexHandler extends RequestHandler {
 				request.setAttribute("mine", spot.getSpotID());
 			}
 		}
-		System.out.println(service);
 		if(StaticArray.getAtrium().isEmpty()) StaticArray.fill();
 		if(StaticArray.getHemis().isEmpty()) StaticArray.fill();
 		request.setAttribute("bezet", service.getOccupiedSpots());

@@ -20,7 +20,6 @@ public class ConfirmUpdateHandler extends RequestHandler	{
 
 		int chairs = Integer.parseInt(request.getParameter("chairs"));
 		int tables = Integer.parseInt(request.getParameter("tables"));
-		System.out.println(tables);
 		boolean electricity = request.getParameter("electricity") != null;
 		String extra = request.getParameter("extra");
 

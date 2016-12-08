@@ -1,5 +1,7 @@
 package domain.model;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Properties;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -40,7 +42,7 @@ public class EmailSender {
 		message += "</ul><br>Tot binnenkort.<br><br>"
 				+ "--<br>"
 				+ "Mvg,<br>"
-				+ "Team Scrumbugs";
+				+ "Team Scrumbags";
 		sendFromGMail(subject, message, emailreceiver);
 	}
 
@@ -52,7 +54,7 @@ public class EmailSender {
 				+ "Wachtwoord: " + password + "<br><br>"
 				+ "--<br>"
 				+ "Mvg,<br>"
-				+ "Team Scrumbugs";
+				+ "Team Scrumbags";
 		sendFromGMail(subject, message, emailreceiver);
 	}
 
@@ -68,7 +70,43 @@ public class EmailSender {
 		message += "</ul><br>Tot binnenkort.<br><br>"
 				+ "--<br>"
 				+ "Mvg,<br>"
-				+ "Team Scrumbugs";
+				+ "Team Scrumbags";
+		sendFromGMail(subject, message, emailreceiver);
+	}
+
+	public void sendCancelationMail(Spot spot, String emailreceiver) throws MessagingException {
+		String subject = "Jobbeurs 2017 - UCLL Leuven: Annulatie plaats";
+		String message = "Beste,<br><br>Uw plaats met nummer " + spot.getSpotID() + " werd geannuleerd.<br>"
+				+ "Indien u deze mail krijgt zonder op de hoogte te zijn van deze veranderingen, gelieve dan contact op"
+				+ "te nemen met onze verantwoordelijke"
+				+ "<br>Tot binnenkort.<br><br>"
+				+ "--<br>"
+				+ "Mvg,<br>"
+				+ "Team Scrumbags";
+		sendFromGMail(subject, message, emailreceiver);
+	}
+
+	public void sendAlmostSoldOutMail(Spot spot, String emailreceiver) throws MessagingException {
+		String subject = "Jobbeurs 2017 - UCLL Leuven: Bijna volzet";
+		String message = "Melding voor de administrator: De te huren locaties zijn bijna volzet.<br>"
+				+ "Het is ongeveer tijd geworden om meer standplaatsen toe te voegen zodat meer bedrijven"
+				+ "kunnen strijden voor een plaatsje.";
+		sendFromGMail(subject, message, emailreceiver);
+	}
+
+	public void sendEndOfRegistrationMail(Date date, String emailreceiver) throws MessagingException {
+		String subject = "Jobbeurs 2017 - UCLL Leuven: De einddatum nadert";
+		String message = "Beste,<br><br>Vanaf " + new SimpleDateFormat("EEEE").format(date) + " "
+				+ new SimpleDateFormat("dd").format(date) + " "
+				+ new SimpleDateFormat("MMMM").format(date) + " eindigt de mogelijkheid"
+				+ "om zelf je plaats je kiezen op onze jobbeurs."
+				+ "U heeft dus nog even tijd om uw keuze te maken.<br>"
+				+ "Moest u uw keuze niet tijdig gemaakt hebben, zal onze verantwoordelijke"
+				+ "een willekeurige spot in uw plaats kiezen."
+				+ "<br>Tot binnenkort.<br><br>"
+				+ "--<br>"
+				+ "Mvg,<br>"
+				+ "Team Scrumbags";
 		sendFromGMail(subject, message, emailreceiver);
 	}
 
