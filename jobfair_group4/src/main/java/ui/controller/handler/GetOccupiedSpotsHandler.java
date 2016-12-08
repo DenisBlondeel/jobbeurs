@@ -29,24 +29,4 @@ public class GetOccupiedSpotsHandler extends RequestHandler	{
 
 		request.getRequestDispatcher("spotoverview.jsp").forward(request, response);
 	}
-	
-	private void linkUsersSpots()
-	{
-		List<Spot> spots = new ArrayList<Spot>();
-		List<Spot> allSpots = service.getOccupiedSpots();
-		List<User> allUsers = new ArrayList<User>();
-		
-		for(Spot spot : allSpots)
-		{
-			for(User user : allUsers)
-			{
-				if(spot.getUserID().equals(user.getUserID()))
-				{
-					spot.setUser(user);
-					spots.add(spot);
-				}
-			}
-		}
-	}
-
 }
