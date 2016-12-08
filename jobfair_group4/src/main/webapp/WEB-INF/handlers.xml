@@ -15,5 +15,4 @@
 	<entry key="alfabetischelijst">ui.controller.handler.GetAlphabeticSpotsHandler</entry>	
 	<entry key="myspot">ui.controller.handler.MySpotHandler</entry>
 	<entry key="imgmap">ui.controller.handler.ImgmapHandler</entry>
-	<entry key="update">ui.controller.handler.UpdateHandler</entry>
 </properties>
