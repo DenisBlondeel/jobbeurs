@@ -14,7 +14,7 @@ public class LogOutHandler extends RequestHandler {
 		HttpSession session = request.getSession();
 		session.invalidate();
 
-		request.getRequestDispatcher("index.jsp").forward(request, response);
+		request.getRequestDispatcher("Controller").forward(request, response);
 	}
 
 }

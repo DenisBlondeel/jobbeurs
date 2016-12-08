@@ -13,6 +13,7 @@ public class DeleteAllHandler extends RequestHandler{
 			throws ServletException, IOException
 	{
 		service.dropAll();
+		response.sendRedirect("Controller?action=");
 	}
 
 }

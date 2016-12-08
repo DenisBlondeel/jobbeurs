@@ -65,7 +65,7 @@ public class Service {
 	}
 	
 	public List<Spot> getAlphabeticOccupiedSpots() {
-		return getSpotRepository().getOccupiedSpots();
+		return getSpotRepository().getAlphabeticOccupiedSpots();
 	}
 	
 	public void addUserToSpot(String spotId, User user) {

@@ -129,7 +129,7 @@ public class UserRepository {
 	
 	public void deleteAll()
 	{
-		String sql = "DELETE FROM jobfair_group4.users";
+		String sql = "DELETE FROM jobfair_group4.users where role='COMPANY'";
 
 		try {
 			statement = connection.prepareStatement(sql);
@@ -142,7 +142,7 @@ public class UserRepository {
 
 	public List<String> getAllAdminEmails() {
 		List<String> list = new ArrayList<String>();
-		String sql = "SELECT email FROM jobfair_group4.users WHERE role=ADMIN";
+		String sql = "SELECT email FROM jobfair_group4.users WHERE role='ADMIN'";
 		try{
 			statement = connection.prepareStatement(sql);
 			ResultSet results = statement.executeQuery();
