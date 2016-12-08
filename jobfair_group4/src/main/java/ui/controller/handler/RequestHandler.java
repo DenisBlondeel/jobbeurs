@@ -28,6 +28,7 @@ public abstract class RequestHandler {
 			this.handleRequest(request, response);
 		} catch (NotAuthorizedException e) {
 			request.setAttribute("errors", e.getMessage());
+			response.sendRedirect("index.jsp");
 		}
 	}
 
