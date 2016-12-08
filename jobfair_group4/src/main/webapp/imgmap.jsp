@@ -74,19 +74,19 @@
     <area  alt="12" title="12" href="Controller?action=showopt&id=12" coords="759,565,809,635" shape="rect">
     <area  alt="11" title="11" href="Controller?action=showopt&id=11" coords="875,512,951,563" shape="rect">
     <area  alt="10" title="10" href="Controller?action=showopt&id=10" coords="953,514,1024,565" shape="rect">
-    <area  alt="9" title="9" href="Controller?action=showopt&id=9" coords="1028,513,1098,562" shape="rect">
-    <area  alt="8" title="8" href="Controller?action=showopt&id=8" coords="1102,513,1176,562" shape="rect">
-    <area  alt="7" title="7" href="Controller?action=showopt&id=7" coords="1176,513,1251,565" shape="rect">
-    <area  alt="6" title="6" href="Controller?action=showopt&id=6" coords="1253,515,1325,565" shape="rect">
-    <area  alt="5" title="5" href="Controller?action=showopt&id=5" coords="1387,560,1436,634" shape="rect">
+    <area  alt="09" title="9" href="Controller?action=showopt&id=9" coords="1028,513,1098,562" shape="rect">
+    <area  alt="08" title="8" href="Controller?action=showopt&id=8" coords="1102,513,1176,562" shape="rect">
+    <area  alt="07" title="7" href="Controller?action=showopt&id=7" coords="1176,513,1251,565" shape="rect">
+    <area  alt="06" title="6" href="Controller?action=showopt&id=6" coords="1253,515,1325,565" shape="rect">
+    <area  alt="05" title="5" href="Controller?action=showopt&id=5" coords="1387,560,1436,634" shape="rect">
     <area  alt="66" title="66" href="Controller?action=showopt&id=66" coords="889,879,962,931" shape="rect">
     <area  alt="65" title="65" href="Controller?action=showopt&id=65" coords="809,882,879,931" shape="rect">
     <area  alt="E2" title="E2" href="Controller?action=showopt&id=E2" coords="809,936,881,985" shape="rect">
     <area  alt="E1" title="E1" href="Controller?action=showopt&id=E1" coords="891,941,962,983" shape="rect">
-    <area  alt="1" title="1" href="Controller?action=showopt&id=1" coords="1672,717,1730,762,1761,725,1705,678" shape="poly">
-    <area  alt="2" title="2" href="Controller?action=showopt&id=2" coords="1639,630,1614,671,1672,713,1701,673" shape="poly">
-    <area  alt="3" title="3" href="Controller?action=showopt&id=3" coords="1579,590,1550,636,1614,675,1635,631" shape="poly">
-    <area  alt="4" title="4" href="Controller?action=showopt&id=4" coords="1507,556,1480,599,1546,630,1569,589" shape="poly">
+    <area  alt="01" title="1" href="Controller?action=showopt&id=1" coords="1672,717,1730,762,1761,725,1705,678" shape="poly">
+    <area  alt="02" title="2" href="Controller?action=showopt&id=2" coords="1639,630,1614,671,1672,713,1701,673" shape="poly">
+    <area  alt="03" title="3" href="Controller?action=showopt&id=3" coords="1579,590,1550,636,1614,675,1635,631" shape="poly">
+    <area  alt="04" title="4" href="Controller?action=showopt&id=4" coords="1507,556,1480,599,1546,630,1569,589" shape="poly">
     <area  alt="13" title="13" href="Controller?action=showopt&id=13" coords="654,584,681,627,739,594,718,547" shape="poly">
     <area  alt="14" title="14" href="Controller?action=showopt&id=14" coords="582,622,611,665,673,630,644,585" shape="poly">
     <area  alt="15" title="15" href="Controller?action=showopt&id=15" coords="578,624,516,667,545,710,607,667" shape="poly">
