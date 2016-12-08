@@ -116,7 +116,7 @@
     <div class="row">
         <div class=" hhh333">
         
-<img src="img/standplaatsen-crop.png" usemap="#image-map" id="hemis" class="img-responsive">
+<img src="img/Standplaatsen jobbeurs 2016-bedrijven-def-1.png" usemap="#image-map" id="hemis" class="img-responsive">
 
 <map name="image-map" id="map1">
 
@@ -309,10 +309,10 @@
                 for (n = 0; n < len; n++) {
                     clen = coords[n].length;
                     for (m = 0; m < clen; m++) {
-                        if (m%2) {coords[n][m]-=253} 
+                       /* if (m%2) {coords[n][m]-=253} 
                         else {
-                            coords[n][m]-=355
-                        }
+                            coords[n][m]-=
+                        }*/
                         coords[n][m] *= x;
                     }
                     areas[n].coords = coords[n].join(',');
@@ -333,6 +333,12 @@
         data.fillOpacity = '0.6';
         $('.imgmaphigh').data('maphilight', data).trigger('alwaysOn.maphilight');    
     });
+
+
+/**
+*green
+*/
+
 
 
 
