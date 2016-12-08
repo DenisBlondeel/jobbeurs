@@ -10,6 +10,20 @@ public class StaticArray {
 	
 	public StaticArray()
 	{
+	}
+	
+	public static List<StaticArrayDataTypes> getHemis()
+	{
+		return hemis;
+	}
+	
+	public static List<StaticArrayDataTypes> getAtrium()
+	{
+		return atrium;
+	}
+	
+	public static void fill()
+	{
 		hemis.add(new StaticArrayDataTypes("64", "613,922,536,876", "rect"));
 		hemis.add(new StaticArrayDataTypes("63", "615,872,689,922", "rect"));
 		hemis.add(new StaticArrayDataTypes("62", "699,876,747,944", "rect"));
@@ -95,16 +109,6 @@ public class StaticArray {
 		atrium.add(new StaticArrayDataTypes("A11", "757,373,810,473", "rect"));
 		atrium.add(new StaticArrayDataTypes("A12", "817,373,875,473", "rect"));
 
-}
-	
-	public static List<StaticArrayDataTypes> getHemis()
-	{
-		return hemis;
-	}
-	
-	public static List<StaticArrayDataTypes> getAtrium()
-	{
-		return atrium;
 	}
 	
 
