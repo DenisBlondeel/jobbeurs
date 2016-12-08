@@ -9,7 +9,8 @@ import javax.mail.MessagingException;
 
 public class CsvReader {
 	
-	public List<User> read(InputStream in, List<String> errors){
+	@SuppressWarnings("resource")
+	public List<User> read(InputStream in) throws MessagingException{
 		List<User> users = new ArrayList<User>();
 		Scanner inputStream;
 		inputStream = new Scanner(in);
@@ -29,7 +30,7 @@ public class CsvReader {
 			try {
 				new EmailSender().sendNewCompanyMail(user.getUserID(), tempPass, user.getEmail());
 			} catch (MessagingException e) {
-				errors.add("Could not send an email to " + user.getUserID());
+				throw new MessagingException(e.getMessage(), e);
 			}
 		}
 		inputStream.close();
