@@ -49,24 +49,16 @@ public class SpotRepository {
 			statement = connection.prepareStatement(sql);
 			statement.setString(1, spotID);
 			ResultSet results = statement.executeQuery();
-<<<<<<< HEAD
-			results.next();
-			spot.setAmountTables(results.getInt("amountTables"));
-			spot.setAmountChairs(results.getInt("amountChairs"));
-			spot.setElectricity(results.getBoolean("electricity"));
-			spot.setRemarks(results.getString("remarks"));
-			spot.setUserID(results.getString("userid"));
-=======
+
 			if(results.next()){
 				spot.setAmountTables(results.getInt("amountTables"));
 				spot.setAmountChairs(results.getInt("amountChairs"));
 				spot.setElectricity(results.getBoolean("electricity"));
 				spot.setRemarks(results.getString("remarks"));
 				spot.setUserID(results.getString("userid"));
-				System.out.println("Get your shit together Denis");
+				
 			}
 			
->>>>>>> branch 'master' of https://github.com/elke-steegmans/jobfair_group4.git
 		} catch (SQLException e) {
 			throw new DbException(e.getMessage(), e);
 		}
