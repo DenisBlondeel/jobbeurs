@@ -27,7 +27,7 @@
 
 	<div class="form-group">
 		<label for="username">username</label>
-		<input type="text" class="form-control" id="username" placeholder="username" name="username" autofocus>
+		<input type="text" class="form-control" id="username" placeholder="username" name="username" value="${userid}" autofocus>
 	</div>
 	<div class="form-group">
 		<label for="password">password</label>
