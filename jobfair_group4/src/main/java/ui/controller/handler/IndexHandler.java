@@ -20,8 +20,9 @@ public class IndexHandler extends RequestHandler {
 
 		if (user!=null) {
 			request.setAttribute("userid", user.getUserID());
-			request.setAttribute("mine", service.getSpotFromUser(user.getUserID()));
+			request.setAttribute("mine", service.getSpotFromUser(user.getUserID()).getSpotID());
 		}
+		System.out.println(service);
 		request.setAttribute("bezet", service.getOccupiedSpots());
 
 		request.getRequestDispatcher("index.jsp").forward(request, response);
