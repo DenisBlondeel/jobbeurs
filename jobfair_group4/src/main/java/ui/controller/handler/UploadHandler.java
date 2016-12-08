@@ -31,7 +31,7 @@ public class UploadHandler extends RequestHandler{
 		} catch (MessagingException e) {
 			throw new ServletException(e.getMessage(), e);
 		}
-	    response.sendRedirect("admin.jsp");
+	    request.getRequestDispatcher("admin.jsp").forward(request, response);
 	}
 		
 }
