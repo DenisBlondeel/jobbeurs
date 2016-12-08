@@ -56,7 +56,7 @@ public class SignUpHandler extends RequestHandler {
 		String companyName = request.getParameter("companyName");
 		try{
 			//TODO Send this userID and the generated password to the user.
-			String userID = user.generateUserId(companyName);
+			user.generateUserId(companyName);
 		} catch (IllegalArgumentException e){
 			result.add(e.getMessage());
 		}
