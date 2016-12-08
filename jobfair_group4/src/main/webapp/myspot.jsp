@@ -5,25 +5,22 @@
 <jsp:include page="header.jsp">
 	<jsp:param value="Mijn plaats" name="title"/>
 	<jsp:param value="current" name="myspot"/>
-	<jsp:param value="Mijn plaats" name="h2"/>
+	<jsp:param value="Plaats   ${spotnr} - ${company}" name="h2"/>
 </jsp:include>
 
 <ul>
 	<li>
-		<p>Plaatsnr: ${spot.spotID}</p>
+		<p>Aantal stoelen: ${chairs}</p>
 	</li>
 	<li>
-		<p>Aantal stoelen: ${spot.amountChairs}</p>
+		<p>Aantal tafels: ${tables}</p>
 	</li>
 	<li>
-		<p>Aantal tafels: ${spot.amountTables}</p>
-	</li>
-	<li>
-		<p>Elektriciteit: ${spot.electricity}</p>
+		<p>Elektriciteit: ${electricity}</p>
 	</li>
 	<li>
 		<p>Extra opmerkingen:</p>
-		<p>${spot.remarks}</p>
+		<p>${remarks}</p>
 	</li>
 </ul>
 

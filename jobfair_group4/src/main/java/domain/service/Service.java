@@ -47,6 +47,11 @@ public class Service {
 		return getSpotRepository().get(spotId);
 	}
 	
+	public Spot getSpotFromUser(String userID)
+	{
+		return getSpotRepository().getFromUser(userID);
+	}
+	
 	public List<Spot> getAllSpots() {
 		return getSpotRepository().getAll();
 	}

@@ -23,6 +23,11 @@ public class Spot {
 		this.setUser(user);
 	}
 
+	public Spot()
+	{
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getSpotID() {
 		return spotID;
 	}

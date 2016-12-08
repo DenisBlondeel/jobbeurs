@@ -186,6 +186,40 @@ public class SpotRepository {
 		}
 		return list;
 	}
+	
+	public Spot getFromUser(String userID)
+	{
+		if (userID.isEmpty()) {
+			throw new DbException("Niets te vinden !");
+		}
+		String sql = "SELECT * FROM jobfair_group4.spots WHERE userid = ?";
+		
+		Spot spot = new Spot();
+		try {
+			statement = connection.prepareStatement(sql);
+			statement.setString(1, userID);
+
+
+			ResultSet results = statement.executeQuery();
+
+
+			if(results.next()){
+				spot.setSpotID(results.getString("spotid"));
+				spot.setAmountTables(results.getInt("amountTables"));
+				spot.setAmountChairs(results.getInt("amountChairs"));
+				spot.setElectricity(results.getBoolean("electricity"));
+				spot.setRemarks(results.getString("remarks"));
+				spot.setUserID(results.getString("userid"));
+			}
+
+
+		} catch (SQLException e) {
+			throw new DbException(e.getMessage(), e);
+		}
+
+		return spot;
+	}
+		
 
 	public void addUserToSpot(String spotID, User user) {
 		if (spotID.isEmpty() || user == null) {

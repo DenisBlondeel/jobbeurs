@@ -20,13 +20,13 @@ public class HandlerFactory {
 				handler = (RequestHandler) handlerObject;
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
-				System.out.println("Ge zijt nen loeser ! ");
+				System.out.println("Ge zijt nen loeser ! 1");
 			} catch (InstantiationException e) {
 				e.printStackTrace();
-				System.out.println("Ge zijt nen loeser ! ");
+				System.out.println("Ge zijt nen loeser ! 2");
 			} catch (IllegalAccessException e) {
 				e.printStackTrace();
-				System.out.println("Ge zijt nen loeser ! ");
+				System.out.println("Ge zijt nen loeser ! 3");
 			}
 			handler.setService(service);
 			handlers.put((String) key, handler);

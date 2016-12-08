@@ -19,7 +19,7 @@
 			<a href="imgmap.jsp">hemisfeer</a>
 		</c:if>-->
 		
-			<a href="imgmap.jsp">hemisfeer</a>
+			<a href="Controller?action=imgmap">hemisfeer</a>
 
 		<!-- jQuery -->
 		<script src="//code.jquery.com/jquery.js"></script>
