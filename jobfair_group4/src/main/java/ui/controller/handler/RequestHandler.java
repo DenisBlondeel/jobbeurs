@@ -19,9 +19,13 @@ public abstract class RequestHandler {
 
 	public RequestHandler() {}
 
-	public final void handle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, MessagingException {
+	public final void handle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		this.checkRole(request);
-		this.handleRequest(request, response);
+		try {
+			this.handleRequest(request, response);
+		} catch (MessagingException mex) {
+			
+		}
 		
 	}
 
