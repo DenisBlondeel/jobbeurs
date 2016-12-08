@@ -1,6 +1,7 @@
 package ui.controller.handler;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -11,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import domain.model.Spot;
 import domain.model.User;
 
-public class GetOccupiedSpotsHandler extends RequestHandler {
+public class GetOccupiedSpotsHandler extends RequestHandler	{
 
 	@Override
 	public void handleRequest(HttpServletRequest request, HttpServletResponse response)
@@ -27,6 +28,25 @@ public class GetOccupiedSpotsHandler extends RequestHandler {
 		}
 
 		request.getRequestDispatcher("spotoverview.jsp").forward(request, response);
+	}
+	
+	private void linkUsersSpots()
+	{
+		List<Spot> spots = new ArrayList<Spot>();
+		List<Spot> allSpots = service.getOccupiedSpots();
+		List<User> allUsers = new ArrayList<User>();
+		
+		for(Spot spot : allSpots)
+		{
+			for(User user : allUsers)
+			{
+				if(spot.getUserID().equals(user.getUserID()))
+				{
+					spot.setUser(user);
+					spots.add(spot);
+				}
+			}
+		}
 	}
 
 }

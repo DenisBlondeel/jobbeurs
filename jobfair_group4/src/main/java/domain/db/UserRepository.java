@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import domain.model.User;
@@ -57,6 +59,30 @@ public class UserRepository {
 		}
 
 		return user;
+	}
+	
+	public List<User> getAll()
+	{
+		List<User> all = new ArrayList<User>();
+		User user = new User();
+		try{
+		String sql = "SELECT * FROM jobfair_group4.users";
+		statement = connection.prepareStatement(sql);
+		ResultSet results = statement.executeQuery();
+		results.next();
+		user.setUserID(results.getString("userid"));
+		user.setCompanyName(results.getString("companyName"));
+		user.setContactName(results.getString("contactName"));
+		user.setEmail(results.getString("email"));
+		user.setPassword(results.getString("password"));
+		user.setRole(results.getString("role"));
+		user.setSalt(results.getString("salt"));
+		all.add(user);
+		}
+		catch(SQLException e){
+			throw new DbException(e.getMessage(), e);
+		}
+		return all;
 	}
 
 	public void add(User user) {
