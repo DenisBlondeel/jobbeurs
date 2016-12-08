@@ -39,10 +39,15 @@ public class EmailSender {
 		sendFromGMail(subject, message, emailreceiver);
 	}
 
-	public void sendNewCompanyMail(String emailreceiver) throws Exception {
+	public void sendNewCompanyMail(String userID, String password, String emailreceiver) throws Exception {
 		String subject = "Jobbeurs 2017 - UCLL Leuven";
-		String message = "Beste,\n\nWe mogen je met veel plezier melden dat je vanaf nu een plaats kunt reserveren voor onze jobbeurs.\n"
-				+ "Inloggen doe je op <a href=\"http://java.cyclone2.khleuven.be:38034/jobfair_group4/\">hier</a>.";
+		String message = "Beste,<br><br>We mogen je met veel plezier melden dat je vanaf nu een plaats kunt reserveren voor onze jobbeurs.<br>"
+				+ "Inloggen doe je op <a href=\"http://java.cyclone2.khleuven.be:38034/jobfair_group4/\">hier</a> met volgende login-gegevens:<br>"
+				+ "UserID: " + userID + "<br>"
+				+ "Wachtwoord: " + password + "<br><br>"
+				+ "--<br>"
+				+ "Mvg,<br>"
+				+ "Team Scrumbugs";
 		sendFromGMail(subject, message, emailreceiver);
 	}
 
@@ -56,7 +61,7 @@ public class EmailSender {
 			message.addRecipient(Message.RecipientType.TO, toAddress);
 		}
 		message.setSubject(subject);
-		message.setText(body);
+		message.setContent(body, "text/html");
 		
 		String from = properties.getProperty("mail.smtp.user");
 		String password = properties.getProperty("mail.smtp.password");

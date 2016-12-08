@@ -1,9 +1,6 @@
 package ui.controller.handler;
 
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Paths;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -23,13 +20,12 @@ public class UploadHandler extends RequestHandler{
 			throws ServletException, IOException {
 		//String description = request.getParameter("description"); // Retrieves <input type="text" name="description">
 	    Part filePart = request.getPart("file"); // Retrieves <input type="file" name="file">
-	    String fileName = filePart.getSubmittedFileName().toString(); // MSIE fix
-	    File upload = new File(fileName);
 	    
-	    List<User> users = reader.read(upload);
+	    List<User> users = reader.read(filePart.getInputStream());
 	    for (User user : users) {
 			service.addUser(user);
 		}
+	    response.sendRedirect("admin.jsp");
 	}
 		
 }
