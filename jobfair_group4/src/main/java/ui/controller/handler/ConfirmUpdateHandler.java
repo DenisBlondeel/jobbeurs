@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import domain.model.EmailSender;
 import domain.model.Spot;
-import domain.model.User;
 
 public class ConfirmUpdateHandler extends RequestHandler	{
 
@@ -17,15 +16,19 @@ public class ConfirmUpdateHandler extends RequestHandler	{
 	public void handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String spotnr = request.getParameter("spotnr");
-		Spot prev = service.getSpot(spotnr);
+		Spot spot = service.getSpot(spotnr);
 
 		int chairs = Integer.parseInt(request.getParameter("chairs"));
 		int tables = Integer.parseInt(request.getParameter("tables"));
+		System.out.println(tables);
 		boolean electricity = request.getParameter("electricity") != null;
-
 		String extra = request.getParameter("extra");
-		User user = service.getUser(prev.getUserID());
-		Spot spot = new Spot(spotnr, chairs, tables, electricity, extra, user);
+
+		spot.setAmountChairs(chairs);
+		spot.setAmountTables(tables);
+		spot.setElectricity(electricity);
+		spot.setRemarks(extra);
+		spot.setUser(this.getService().getUser(spot.getUserID()));
 		service.updateSpot(spot);
 
 		request.setAttribute("spotnr", spot.getSpotID());
@@ -36,7 +39,7 @@ public class ConfirmUpdateHandler extends RequestHandler	{
 		request.setAttribute("action", "update");
 
 		try {
-			new EmailSender().sendUpdateMail(spot, user.getEmail());
+			new EmailSender().sendUpdateMail(spot, getService().getUser(spot.getUserID()).getEmail());
 		} catch (MessagingException e) {
 			throw new ServletException(e.getMessage(), e);
 		}

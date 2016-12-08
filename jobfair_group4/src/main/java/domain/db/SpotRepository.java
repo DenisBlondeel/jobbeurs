@@ -92,8 +92,8 @@ public class SpotRepository {
 			
 			if(spot.getUserID()!=null) {
 				User user = new User();
-				user.setCompanyName(results.getString("companyname"));
-				user.setContactName(results.getString("contactname"));
+				user.setCompanyNameFromDb(results.getString("companyname"));
+				user.setContactNameFromDb(results.getString("contactname"));
 				user.setEmail(results.getString("email"));
 				user.setPassword(results.getString("password"));
 				user.setRole(results.getString("role"));
@@ -150,8 +150,8 @@ public class SpotRepository {
 				spot.setUserID(results.getString("userid"));
 				
 				User user = new User();
-				user.setCompanyName(results.getString("companyname"));
-				user.setContactName(results.getString("contactname"));
+				user.setCompanyNameFromDb(results.getString("companyname"));
+				user.setContactNameFromDb(results.getString("contactname"));
 				user.setEmail(results.getString("email"));
 				user.setPassword(results.getString("password"));
 				user.setRole(results.getString("role"));
