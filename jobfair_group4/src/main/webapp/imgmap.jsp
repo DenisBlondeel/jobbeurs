@@ -25,6 +25,36 @@
 <img src="img/Standplaatsen jobbeurs 2016-bedrijven-def-1.png" usemap="#image-map" id="hemis" class="img-responsive">
 
 <map name="image-map" id="map1">
+	<c:forEach var="h" items="${hemis}">
+	
+		<area  alt="${h.id}" id="${h.id}" coords="${h.coords}" shape="${h.shape}"
+			<c:choose>
+				<c:when test="${h.id==mine}">
+					title="My spot"
+					href="Controller?action=myspot"
+					class="mine"
+				</c:when>
+				<c:otherwise>
+		       		<c:forEach var="b" items="${bezet}">
+		       			<c:choose>
+							<c:when test="${h.id==b.spotID}">
+		       					title="${b.user.companyName}"
+		       					href=""
+		       					class="bezet"
+		       				</c:when>
+		       				<c:otherwise>
+		       					title="${h.id}"
+		       					href="Controller?action=showopt&id=${h.id}"
+		       				</c:otherwise>
+		       			</c:choose>
+		       		</c:forEach>
+		       	</c:otherwise>
+			</c:choose>>
+		
+	</c:forEach>
+	
+	<!-- 
+	
     <area  alt="64" id="64" title="64" href="Controller?action=showopt&id=64" coords="613,922,536,876" shape="rect">
     <area  alt="63" id="63" title="63" href="Controller?action=showopt&id=63" coords="615,872,689,922" shape="rect">
     <area  alt="62" id="62" title="62" href="Controller?action=showopt&id=62" coords="699,876,747,944" shape="rect">
@@ -93,7 +123,7 @@
     <area  alt="14" id="14" title="14" href="Controller?action=showopt&id=14" coords="582,622,611,665,673,630,644,585" shape="poly">
     <area  alt="15" id="15" title="15" href="Controller?action=showopt&id=15" coords="578,624,516,667,545,710,607,667" shape="poly">
     <area  alt="16" id="16" title="16" href="Controller?action=showopt&id=16" coords="450,716,485,756,543,712,510,673" shape="poly">
-
+ -->
 </map>
 
 </div></div>
@@ -113,6 +143,35 @@
 <img src="img/standplaatsen-atrium-crop.png" usemap="#image-map-atrium" id="atrium" class="img-responsive">
 
 <map name="image-map-atrium" id="atrium-map">
+<c:forEach var="h" items="${atrium}">
+	
+		<area  alt="${h.id}" id="${h.id}" coords="${h.coords}" shape="${h.shape}"
+			<c:choose>
+				<c:when test="${h.id==mine}">
+					title="My spot"
+					href="Controller?action=myspot"
+					class="mine"
+				</c:when>
+				<c:otherwise>
+		       		<c:forEach var="b" items="${bezet}">
+		       			<c:choose>
+							<c:when test="${h.id==b.spotID}">
+		       					title="${b.user.companyName}"
+		       					href=""
+		       					class="bezet"
+		       				</c:when>
+		       				<c:otherwise>
+		       					title="${h.id}"
+		       					href="Controller?action=showopt&id=${h.id}"
+		       				</c:otherwise>
+		       			</c:choose>
+		       		</c:forEach>
+		       	</c:otherwise>
+			</c:choose>>
+		
+	</c:forEach>
+	
+	<!-- 
     <area target="" alt="A01" id="A01" title="A01" href="Controller?action=showopt&id=A01" coords="1123,370,1183,468" shape="rect">
     <area target="" alt="A02" id="A02" title="A02" href="Controller?action=showopt&id=A02" coords="1127,473,1183,560" shape="rect">
     <area target="" alt="A03" id="A03" title="A03" href="Controller?action=showopt&id=A03" coords="1020,562,1123,615" shape="rect">
@@ -125,6 +184,7 @@
     <area target="" alt="A10" id="A10" title="A10" href="Controller?action=showopt&id=A10" coords="443,372,493,461" shape="rect">
     <area target="" alt="A11" id="A11" title="A11" href="Controller?action=showopt&id=A11" coords="757,373,810,473" shape="rect">
     <area target="" alt="A12" id="A12" title="A12" href="Controller?action=showopt&id=A12" coords="817,373,875,473" shape="rect">
+ -->
 </map>
 </div></div></div>
 
@@ -170,7 +230,7 @@
         data.alwaysOn = true;
         data.fillColor = 'ff0000';
         data.fillOpacity = '0.6';
-        $('.imgmaphigh').data('maphilight', data).trigger('alwaysOn.maphilight');  
+        $('.bezet').data('maphilight', data).trigger('alwaysOn.maphilight');  
     <c:if test="${bezet!=null}">
         <c:forEach var="s" items="${bezet}">
             $('#${s.spotID}').data('maphilight', data).trigger('alwaysOn.maphilight');  
