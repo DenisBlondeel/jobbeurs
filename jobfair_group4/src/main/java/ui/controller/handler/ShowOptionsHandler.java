@@ -43,7 +43,14 @@ public class ShowOptionsHandler extends RequestHandler {
 	{
 		request.setAttribute("bezet", service.getOccupiedSpots());
 		if(user != null) request.setAttribute("mine", service.getSpotFromUser(user.getUserID()).getSpotID());
-		equest.getRequestDispatcher(dest + ".jsp").forward(request, response);
+		try
+		{
+			request.getRequestDispatcher(dest + ".jsp").forward(request, response);
+		} catch (ServletException | IOException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
