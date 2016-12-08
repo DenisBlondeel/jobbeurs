@@ -13,7 +13,7 @@ public class DeleteHandler extends RequestHandler{
 			throws ServletException, IOException {
 		String spotnr = request.getParameter("spotnr");
 		request.setAttribute("spotnr", spotnr);
-		response.sendRedirect("confirmdelete.jsp");
+		request.getRequestDispatcher("confirmdelete.jsp").forward(request, response);
 	}
 
 }

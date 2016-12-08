@@ -50,6 +50,11 @@
 					                <li id="${param.myspot}"><a href="Controller?action=myspot">Mijn plaats</a></li>
 				                </c:when>
 				                </c:choose>
+				                 <c:choose>
+								<c:when test="${admin!=null}">
+					                <li id="${param.myspot}"><a href="admin.jsp">Admin</a></li>
+				                </c:when>
+				                </c:choose>
 			                <!--<li id="${param.myaccount}"><a href="Controller?action=home">Mijn account</a></li>-->
 			            </ul>
 			            

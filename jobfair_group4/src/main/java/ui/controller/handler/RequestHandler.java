@@ -47,6 +47,10 @@ public abstract class RequestHandler {
 				return;
 			}
 		}
+		if(user.getRole().equals(RoleEnum.ADMIN))
+		{
+			request.setAttribute("admin", "admin");
+		}
 		throw new NotAuthorizedException("Insufficient rights");
 	}
 
