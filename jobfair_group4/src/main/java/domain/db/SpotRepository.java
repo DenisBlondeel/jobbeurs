@@ -194,7 +194,7 @@ public class SpotRepository {
 		}
 		String sql = "SELECT * FROM jobfair_group4.spots WHERE userid = ?";
 		
-		Spot spot = new Spot();
+		Spot spot = null;
 		try {
 			statement = connection.prepareStatement(sql);
 			statement.setString(1, userID);
@@ -204,6 +204,7 @@ public class SpotRepository {
 
 
 			if(results.next()){
+				spot = new Spot();
 				spot.setSpotID(results.getString("spotid"));
 				spot.setAmountTables(results.getInt("amountTables"));
 				spot.setAmountChairs(results.getInt("amountChairs"));
@@ -216,7 +217,6 @@ public class SpotRepository {
 		} catch (SQLException e) {
 			throw new DbException(e.getMessage(), e);
 		}
-
 		return spot;
 	}
 		

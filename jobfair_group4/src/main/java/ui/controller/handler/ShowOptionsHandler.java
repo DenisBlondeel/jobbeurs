@@ -22,6 +22,7 @@ public class ShowOptionsHandler extends RequestHandler {
 		
 		HttpSession session = request.getSession();
 		user = (User) session.getAttribute("user");
+		
 		if(service.getSpotFromUser(user.getUserID()) != null){
 			request.setAttribute("errors", "Er werd al een plaats gereserveerd voor " + user.getCompanyName() + ".");
 			request.getRequestDispatcher("index.jsp").forward(request, response);
