@@ -16,7 +16,12 @@ public class EmailTest {
 	}
 
 	@Test
-	public void sendConfirmationMailTest() {
-		sender.sendConfirmationMail("Ik hoop dat dit werkt", "brechtdecuyper@hotmail.com");
+	public void sendSimpleMailTest() throws Exception {
+		sender.sendNewCompanyMail("brechtdecuyper@hotmail.com");
 	}
+
+//	@Test
+//	public void sendConfirmationMailTest() throws Exception {
+//		sender.sendConfirmationMail("1762", "brechtdecuyper@hotmail.com");
+//	}
 }

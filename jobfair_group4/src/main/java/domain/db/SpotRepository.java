@@ -233,7 +233,7 @@ public class SpotRepository {
 			statement.setString(2, spotID);
 			statement.execute();
 			emailsender.sendConfirmationMail(spotID, user.getEmail());
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			throw new DbException(e.getMessage(), e);
 		}
 		

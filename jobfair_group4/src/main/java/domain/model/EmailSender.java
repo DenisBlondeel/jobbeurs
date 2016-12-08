@@ -22,7 +22,7 @@ public class EmailSender {
 	public EmailSender() {
 		loadProperties();
 	}
-
+	
 	private void loadProperties() {
 		properties = new Properties();
 		properties.put("mail.smtp.starttls.enable", "true");
@@ -32,29 +32,37 @@ public class EmailSender {
 		properties.put("mail.smtp.password", password);
 		properties.put("mail.smtp.user", username);
 	}
-	
-	public void sendConfirmationMail(String spotId, String emailreceiver){
-		Session session = Session.getInstance(properties,
-			      new javax.mail.Authenticator() {
-			         protected PasswordAuthentication getPasswordAuthentication() {
-			            return new PasswordAuthentication(username, password);
-			         }
-			      });
-		
+
+	public void sendConfirmationMail(String spotId, String emailreceiver) throws Exception{
+		String subject = "Confirmation email";
+		String message = "Uw plaats met nummer " + spotId + " werd gereserveerd";
+		sendFromGMail(subject, message, emailreceiver);
+	}
+
+	public void sendNewCompanyMail(String emailreceiver) throws Exception {
+		String subject = "Jobbeurs 2017 - UCLL Leuven";
+		String message = "Beste,\n\nWe mogen je met veel plezier melden dat je vanaf nu een plaats kunt reserveren voor onze jobbeurs.\n"
+				+ "Inloggen doe je op <a href=\"http://java.cyclone2.khleuven.be:38034/jobfair_group4/\">hier</a>.";
+		sendFromGMail(subject, message, emailreceiver);
+	}
+
+
+	private void sendFromGMail(String subject, String body, String... to) throws Exception {
+		Session session = Session.getDefaultInstance(properties);
 		
 		MimeMessage message = new MimeMessage(session);
+		for (int i = 0; i < to.length; i++) {
+			InternetAddress toAddress = new InternetAddress(to[i]);
+			message.addRecipient(Message.RecipientType.TO, toAddress);
+		}
+		message.setSubject(subject);
+		message.setText(body);
 		
-		
-		try{
-			
-			message.setFrom(new InternetAddress(emailsender));
-			message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(emailsender));
-			message.setSubject("confirmationemail");
-			message.setText("uw plaats met nummer " + spotId + " werd gereserveerd");
-
-			Transport.send(message);
-		} catch(MessagingException m) {
-			throw new DbException(m.getMessage());
-		} 
+		String from = properties.getProperty("mail.smtp.user");
+		String password = properties.getProperty("mail.smtp.password");
+		Transport transport = session.getTransport("smtp");
+		transport.connect(from, password);
+		transport.sendMessage(message, message.getAllRecipients());
+		transport.close();
 	}
 }
