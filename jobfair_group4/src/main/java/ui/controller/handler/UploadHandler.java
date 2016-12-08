@@ -23,10 +23,10 @@ public class UploadHandler extends RequestHandler{
 			throws ServletException, IOException {
 		//String description = request.getParameter("description"); // Retrieves <input type="text" name="description">
 	    Part filePart = request.getPart("file"); // Retrieves <input type="file" name="file">
-	    String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix
-	    InputStream fileContent = filePart.getInputStream();
+	    String fileName = filePart.getSubmittedFileName().toString(); // MSIE fix
+	    File upload = new File(fileName);
 	    
-	    List<User> users = reader.read(fileContent);
+	    List<User> users = reader.read(upload);
 	    for (User user : users) {
 			service.addUser(user);
 		}
