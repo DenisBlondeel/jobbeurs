@@ -68,6 +68,7 @@ public abstract class RequestHandler {
 	
 	public void checkDate()
 	{
-		if(Calendar.getInstance().after(deadline))timeHasCome = true;
+		if(Calendar.getInstance().after(deadline))
+			timeHasCome = true;
 	}
 }
