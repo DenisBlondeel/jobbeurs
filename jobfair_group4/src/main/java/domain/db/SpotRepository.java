@@ -77,7 +77,7 @@ public class SpotRepository {
 	
 	public List<Spot> getAll() {
 	List<Spot> list = new ArrayList<Spot>();
-	String sql = "Select * FROM jobfair_group4.spots ORDER BY spotID";
+	String sql = "SELECT * FROM jobfair_group4.users u RIGHT OUTER JOIN jobfair_group4.spots s ON s.userid = u.userid ORDER BY spotid";
 	try{
 		statement = connection.prepareStatement(sql);
 		ResultSet results = statement.executeQuery();
@@ -89,6 +89,20 @@ public class SpotRepository {
 			spot.setElectricity(results.getBoolean("electricity"));
 			spot.setRemarks(results.getString("remarks"));
 			spot.setUserID(results.getString("userid"));
+			
+			if(spot.getUserID()!=null) {
+				User user = new User();
+				user.setCompanyName(results.getString("companyname"));
+				user.setContactName(results.getString("contactname"));
+				user.setEmail(results.getString("email"));
+				user.setPassword(results.getString("password"));
+				user.setRole(results.getString("role"));
+				user.setSalt(results.getString("salt"));
+				user.setUserID(results.getString("userid"));
+			
+				spot.setUser(user);
+			}
+			
 			list.add(spot);
 		}
 	} catch (SQLException e)
@@ -100,7 +114,7 @@ public class SpotRepository {
 
 	public List<Spot> getFreeSpots() {
 		List<Spot> list = new ArrayList<Spot>();
-		String sql = "SELECT *" + " FROM jobfair_group4.spots WHERE userID IS NULL ";
+		String sql = "SELECT *" + " FROM jobfair_group4.spots WHERE userID IS NULL ORDER BY spotID";
 		try
 		{
 			statement = connection.prepareStatement(sql);
