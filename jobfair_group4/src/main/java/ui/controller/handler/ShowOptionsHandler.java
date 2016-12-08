@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import domain.model.RoleEnum;
 import domain.model.User;
 
 public class ShowOptionsHandler extends RequestHandler {
@@ -24,8 +25,17 @@ public class ShowOptionsHandler extends RequestHandler {
 
 		if (user!=null) {
 			request.setAttribute("userid", user.getUserID());
+			request.setAttribute("mine", service.getSpotFromUser(user.getUserID()).getSpotID());
 		}
-		else
+		request.setAttribute("bezet", service.getOccupiedSpots());
+		request.getRequestDispatcher("spotoptions.jsp").forward(request, response);
+		
+	}
+		@Override
+		public RoleEnum[] getAccesList() {
+			return new RoleEnum[]{RoleEnum.COMPANY, RoleEnum.ADMIN};
+			
+		/*else
 		{
 			redirect(request, response, "index");
 			
@@ -35,22 +45,22 @@ public class ShowOptionsHandler extends RequestHandler {
 		{
 			redirect(request, response, "index");
 		}
-
-		request.getRequestDispatcher("spotoptions.jsp").forward(request, response);
-	}
+		else{
+		}
+	}*/
 	
-	private void redirect(HttpServletRequest request, HttpServletResponse response, String dest)
+	/*private void redirect(HttpServletRequest request, HttpServletResponse response, String dest)
 	{
-		request.setAttribute("bezet", service.getOccupiedSpots());
 		if(user != null) request.setAttribute("mine", service.getSpotFromUser(user.getUserID()).getSpotID());
 		try
 		{
 			request.getRequestDispatcher(dest + ".jsp").forward(request, response);
-		} catch (ServletException | IOException e)
+			} catch (IOException | ServletException e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
+	}*/
 
+}
 }

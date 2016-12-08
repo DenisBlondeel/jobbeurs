@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.mail.MessagingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,7 +18,7 @@ public class SignUpHandler extends RequestHandler {
 
 	@Override
 	public void handleRequest(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws ServletException, IOException, MessagingException {
 		User user = new User();
 		List<String> result = new ArrayList<>();
 		result = checkInputValues(request, user);
@@ -54,8 +55,7 @@ public class SignUpHandler extends RequestHandler {
 	private void userSetId(User user, HttpServletRequest request, List<String> result) {
 		String companyName = request.getParameter("companyName");
 		try{
-			//TODO Send this userID and the generated password to the user.
-			String userID = user.generateUserId(companyName);
+			user.generateUserId(companyName);
 		} catch (IllegalArgumentException e){
 			result.add(e.getMessage());
 		}
@@ -63,7 +63,6 @@ public class SignUpHandler extends RequestHandler {
 
 	private void userSetPassword(User user, HttpServletRequest request, List<String> result) {
 		try{
-			//TODO send this password and the userID to the user;
 			tempPass = user.generatePassword();
 		} catch (IllegalArgumentException e){
 			result.add(e.getMessage());

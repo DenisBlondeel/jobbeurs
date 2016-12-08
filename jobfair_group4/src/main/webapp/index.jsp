@@ -12,7 +12,7 @@
 		<!-- <h1 class="text-center">Hello World</h1>
 		<h1>test ! </h1> -->
 		<c:if test="${user!=null}">
-			<h3>Welkom ${user} !</h3>
+			<h3>Welkom ${user.companyName}!</h3>
 		</c:if>
 		
 		<c:if test="${spotnr!=null}">
