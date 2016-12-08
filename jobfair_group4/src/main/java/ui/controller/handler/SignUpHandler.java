@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import domain.model.EmailSender;
 import domain.model.User;
 
 public class SignUpHandler extends RequestHandler {
@@ -23,6 +24,7 @@ public class SignUpHandler extends RequestHandler {
 			request.getRequestDispatcher("signup.jsp").forward(request, response);
 		} else {
 			this.getService().addUser(user);
+			new EmailSender().sendNewCompanyMail(user);
 			response.sendRedirect("index.jsp");
 		}
 	}
