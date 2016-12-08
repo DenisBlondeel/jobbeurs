@@ -35,6 +35,7 @@ public class ShowOptionsHandler extends RequestHandler {
 		public RoleEnum[] getAccesList() {
 			return new RoleEnum[]{RoleEnum.COMPANY, RoleEnum.ADMIN};
 			
+			
 		/*else
 		{
 			redirect(request, response, "index");
