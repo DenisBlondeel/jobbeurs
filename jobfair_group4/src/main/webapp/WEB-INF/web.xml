@@ -10,7 +10,7 @@
 		</jsp-property-group>
 	</jsp-config>
 	<welcome-file-list>
-		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>Controller</welcome-file>
 	</welcome-file-list>
 	<context-param>
 		<param-name>url</param-name>
