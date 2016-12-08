@@ -7,6 +7,7 @@ import java.util.Properties;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +18,7 @@ import ui.controller.handler.HandlerFactory;
 import ui.controller.handler.RequestHandler;
 
 @WebServlet("/Controller")
+@MultipartConfig
 public class Controller extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
