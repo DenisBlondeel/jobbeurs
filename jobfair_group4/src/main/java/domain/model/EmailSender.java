@@ -46,19 +46,13 @@ public class EmailSender {
 		
 		
 		try{
-			String from = properties.getProperty("mail.smtp.user");
-			String password = properties.getProperty("mail.smtp.password");
-			String host = properties.getProperty("mail.smtp.host");
-
+			
 			message.setFrom(new InternetAddress(emailsender));
-			message.addRecipient(Message.RecipientType.TO, new InternetAddress(emailreceiver));
+			message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(emailsender));
 			message.setSubject("confirmationemail");
 			message.setText("uw plaats met nummer " + spotId + " werd gereserveerd");
 
-			Transport transport = session.getTransport("smtp");
-			transport.connect(host, from, password);
-			transport.sendMessage(message, message.getAllRecipients());
-			transport.close();
+			Transport.send(message);
 		} catch(MessagingException m) {
 			throw new DbException(m.getMessage());
 		} 

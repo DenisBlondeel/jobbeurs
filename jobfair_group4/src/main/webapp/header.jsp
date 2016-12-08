@@ -12,6 +12,10 @@
 		<link rel="stylesheet" href="css/bootstrap.css" >
 		<link rel="stylesheet" href="css/font-awesome.css" >
 		<link rel="stylesheet" href="css/style.css">
+		<!-- jQuery -->
+		<script src="http://code.jquery.com/jquery.js"></script>
+		<!-- Bootstrap JavaScript -->
+		<script src="js/bootstrap.js"></script>
 
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

@@ -78,4 +78,5 @@ public class Service {
 	public SpotRepository getSpotRepository() {
 		return spotDB;
 	}
+	
 }

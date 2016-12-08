@@ -74,6 +74,16 @@ public class User {
 		}
 		this.companyName = companyName;
 	}
+	
+	public void setCompanyNameFromDb(String companyName)
+	{
+		this.companyName = companyName;
+	}
+	
+	public void setContactNameFromDb(String contactName)
+	{
+		this.contactName = contactName;
+	}
 
 	public String getEmail() {
 		return email;
