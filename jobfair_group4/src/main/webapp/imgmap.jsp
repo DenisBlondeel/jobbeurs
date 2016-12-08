@@ -126,24 +126,24 @@
 </div></div></div>
 
 
-
-<c:if test="${errors!=null}">
-			<div>
-				<ul>
-					<c:forEach var="error" items="${errors}">
-						<li>${error}</li>
-					</c:forEach>
-				</ul>
-			</div>
+<p hidden id="allocupiedspots">
+<c:if test="${spots!=null}">
+					<c:forEach var="s" items="${spots}">
+						${s.spotID}
+					</c:forEach>				
 </c:if>
 
 
-<p hidden class="">list of items</p>
+list of items</p>
 
 
  <script type="text/javascript">
 
-
+ <c:if test="${bezet!=null}">
+	<c:forEach var="s" items="${bezet}">
+		${s.spotID};
+	</c:forEach>				
+</c:if>
 
     jQuery(function()
                             {
