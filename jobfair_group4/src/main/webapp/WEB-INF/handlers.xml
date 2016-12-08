@@ -11,10 +11,7 @@
 	<entry key="vrijelijst">ui.controller.handler.GetFreeSpotsHandler</entry>
 	<entry key="bezetlijst">ui.controller.handler.GetOccupiedSpotsHandler</entry>
 	<entry key="signup">ui.controller.handler.SignUpHandler</entry>
-<<<<<<< HEAD
-=======
 	<entry key="upload">ui.controller.handler.UploadHandler</entry>
->>>>>>> branch 'master' of https://github.com/elke-steegmans/jobfair_group4.git
 	<entry key="alfabetischelijst">ui.controller.handler.GetAlphabeticSpotsHandler</entry>	
 	<entry key="myspot">ui.controller.handler.MySpotHandler</entry>
 	<entry key="imgmap">ui.controller.handler.ImgmapHandler</entry>
