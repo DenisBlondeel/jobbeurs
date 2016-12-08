@@ -35,7 +35,7 @@ public class SpotRepository {
 		try {
 			connection.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			throw new DbException(e);
 		}
 	}
 	
@@ -123,7 +123,7 @@ public class SpotRepository {
 	
 	public List<Spot> getOccupiedSpots() {
 		List<Spot> list = new ArrayList<Spot>();
-		String sql = "SELECT * FROM jobfair_group4.users u INNER JOIN jobfair_group4.spots s ON s.userid = u.userid";
+		String sql = "SELECT * FROM jobfair_group4.users u INNER JOIN jobfair_group4.spots s ON s.userid = u.userid ORDER BY spotid";
 		try {
 			statement = connection.prepareStatement(sql);
 			ResultSet results = statement.executeQuery();
@@ -176,7 +176,7 @@ public class SpotRepository {
 				user.setRole(results.getString("role"));
 				user.setSalt(results.getString("salt"));
 				user.setUserID(results.getString("userid"));
-				
+				 
 				spot.setUser(user);				
 				
 				list.add(spot);
