@@ -143,6 +143,14 @@
 
  <script type="text/javascript">
 
+
+
+    jQuery(function()
+                            {
+             jQuery('#hemis').maphilight();
+             jQuery('#atrium').maphilight();
+                            });
+
  
     var ImageMap = function (map, img) {
             var n,
@@ -170,20 +178,12 @@
 /**
 *red
 */
-
     $(function () {
         var data = {};
         $('.map').maphilight();
         data.alwaysOn = true;
         data.fillColor = 'ff0000';
         data.fillOpacity = '0.6';
-    $('#12').data('maphilight', data).trigger('alwaysOn.maphilight'); 
-    $('#31').data('maphilight', data).trigger('alwaysOn.maphilight'); 
-    $('#33').data('maphilight', data).trigger('alwaysOn.maphilight'); 
-    $('#58').data('maphilight', data).trigger('alwaysOn.maphilight');
-        
-        
-        
         $('.imgmaphigh').data('maphilight', data).trigger('alwaysOn.maphilight');    
     });
 
@@ -240,12 +240,6 @@
 
 
 
-
-    jQuery(function()
-                            {
-             jQuery('#hemis').maphilight();
-                            });
-
     $(function () {
     var data = {};
     $('.map').maphilight();
@@ -286,11 +280,6 @@
 
 
 
-
-		<!-- jQuery -->
-		<script src="//code.jquery.com/jquery.js"></script>
-		<!-- Bootstrap JavaScript -->
-		<script src="js/bootstrap.js"></script>
 		
 	</body>
 </html>
