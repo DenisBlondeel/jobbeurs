@@ -51,7 +51,7 @@ public class UpdateHandler extends RequestHandler{
 		}
 		request.setAttribute("extra", spot.getRemarks());
 		request.setAttribute("spotnr", spotnr);
-		response.sendRedirect("updatespot.jsp");
+		request.getRequestDispatcher("updatespot.jsp").forward(request, response);
 	}
 
 }

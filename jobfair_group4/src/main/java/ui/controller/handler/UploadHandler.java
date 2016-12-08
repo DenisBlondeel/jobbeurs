@@ -28,7 +28,7 @@ public class UploadHandler extends RequestHandler{
 			service.addUser(user);
 		}
 	    request.setAttribute("errors", errors);
-	    response.sendRedirect("admin.jsp");
+	    request.getRequestDispatcher("admin.jsp").forward(request, response);
 	}
 		
 }
