@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import domain.model.RoleEnum;
+import domain.model.Spot;
 import domain.model.StaticArray;
 import domain.model.User;
 
@@ -26,9 +27,14 @@ public class IndexHandler extends RequestHandler {
 			{
 				request.setAttribute("admin", "admin");
 			}
-			request.setAttribute("mine", service.getSpotFromUser(user.getUserID()).getSpotID());
+			Spot spot = service.getSpotFromUser(user.getUserID());
+			if (spot != null) {
+				request.setAttribute("mine", spot.getSpotID());
+			}
 		}
 		System.out.println(service);
+		if(StaticArray.getAtrium().isEmpty()) StaticArray.fill();
+		if(StaticArray.getHemis().isEmpty()) StaticArray.fill();
 		request.setAttribute("bezet", service.getOccupiedSpots());
 		request.setAttribute("hemis", StaticArray.getHemis());
 		request.setAttribute("atrium", StaticArray.getAtrium());
