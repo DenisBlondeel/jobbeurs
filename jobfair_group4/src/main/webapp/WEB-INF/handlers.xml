@@ -11,7 +11,7 @@
 	<entry key="vrijelijst">ui.controller.handler.GetFreeSpotsHandler</entry>
 	<entry key="bezetlijst">ui.controller.handler.GetOccupiedSpotsHandler</entry>
 	<entry key="signup">ui.controller.handler.SignUpHandler</entry>
-	<entry key="upload">ui.controller.handler.CsvReaderHandler</entry>
+	<entry key="upload">ui.controller.handler.UploadHandler</entry>
 	<entry key="alfabetischelijst">ui.controller.handler.GetAlphabeticSpotsHandler</entry>	
 	<entry key="myspot">ui.controller.handler.MySpotHandler</entry>
 </properties>
