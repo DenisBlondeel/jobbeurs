@@ -24,19 +24,19 @@ public class User {
 	}
 	
 	public User(String userID, String contactName, String companyName, String email, String password){
+		this.setUserID(userID);
 		this.setContactName(contactName);
 		this.setCompanyName(companyName);
 		this.setEmail(email);
-		this.setUserID(userID);
 		this.setPassword(password);
 		this.setRole(RoleEnum.COMPANY);
 	}
 	
 	public User(String userID, String contactName, String companyName, String email, String password, String salt, RoleEnum role){
+		this.setUserID(userID);
 		this.setContactName(contactName);
 		this.setCompanyName(companyName);
 		this.setEmail(email);
-		this.setUserID(userID);
 		this.setPassword(password);
 		this.setSalt(salt);
 		this.setRole(role);
@@ -47,19 +47,12 @@ public class User {
 	}
 
 	public void setUserID(String userID) {
-		if(companyName == null || companyName.isEmpty()){
-			throw new IllegalArgumentException("Er kon geen gebruikersnaam gegenereerd worden.");
+		if(userID == null || userID.isEmpty()){
+			throw new IllegalArgumentException("Geen juiste userID gegeven.");
 		}
 		this.userID = userID;
 	}
 
-	public void createUserID(String companyName) {
-		if(companyName == null || companyName.isEmpty()){
-			throw new IllegalArgumentException("Er kon geen gebruikersnaam gegenereerd worden.");
-		}
-		this.userID = generateUserId(companyName);
-	}
-	
 	public String getContactName() {
 		return contactName;
 	}
@@ -186,14 +179,26 @@ public class User {
 			throw new IllegalArgumentException("De gegeven role bestaat niet");
 		}
 	}
-	
+
+
+	/*********************
+	 * Generate New User *
+	 *********************/
+
 	public String generatePassword(){
 		SecureRandom random = new SecureRandom();
-		return new BigInteger(50, random).toString(32);
+		String clearPass = new BigInteger(50, random).toString(32);
+		this.setPasswordHashed(clearPass);
+		return clearPass;
 	}
 	
-	public String generateUserId(String companyName){
+	public String generateUserId(String user){
+		if(user == null || user.isEmpty()){
+			throw new IllegalArgumentException("Er kon geen gebruikersnaam gegenereerd worden.");
+		}
 		Random random = new Random();
-		return companyName + random.nextInt(999);
+		String userID = user + random.nextInt(999); 
+		this.setUserID(userID);
+		return userID;
 	}
 }

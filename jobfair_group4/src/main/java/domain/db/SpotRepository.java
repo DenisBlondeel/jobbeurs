@@ -48,8 +48,12 @@ public class SpotRepository {
 		try {
 			statement = connection.prepareStatement(sql);
 			statement.setString(1, spotID);
+<<<<<<< HEAD
 			ResultSet results = statement.executeQuery();
 
+=======
+			ResultSet results = statement.executeQuery();
+>>>>>>> branch 'master' of https://github.com/elke-steegmans/jobfair_group4.git
 			if(results.next()){
 				spot.setAmountTables(results.getInt("amountTables"));
 				spot.setAmountChairs(results.getInt("amountChairs"));
@@ -58,7 +62,11 @@ public class SpotRepository {
 				spot.setUserID(results.getString("userid"));
 				
 			}
+<<<<<<< HEAD
 			
+=======
+			
+>>>>>>> branch 'master' of https://github.com/elke-steegmans/jobfair_group4.git
 		} catch (SQLException e) {
 			throw new DbException(e.getMessage(), e);
 		}
