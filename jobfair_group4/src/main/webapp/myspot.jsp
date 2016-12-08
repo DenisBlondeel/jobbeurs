@@ -24,5 +24,12 @@
 	</li>
 </ul>
 
+<form method="POST" action="Controller?action=update">
+	<p>
+		<input type="hidden" name="spotnr" value="${spotnr}">
+		<input type="submit" value="Wijzig voorkeuren">
+	</p>
+</form>
+
 </body>
 </html>
