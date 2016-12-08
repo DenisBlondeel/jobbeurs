@@ -5,7 +5,7 @@
 <jsp:include page="header.jsp">
 	<jsp:param value="Mijn plaats" name="title"/>
 	<jsp:param value="current" name="myspot"/>
-	<jsp:param value="Plaats   ${spot.spotID} - ${user.Company}" name="h2"/>
+	<jsp:param value="Plaats   ${spot.spotID} - ${user.companyName}" name="h2"/>
 </jsp:include>
 
 <ul>
