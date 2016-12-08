@@ -21,7 +21,7 @@ public class SetDeadlineHandler extends RequestHandler{
 		calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(elements[0]));
 		this.deadline = calendar;
 
-		response.sendRedirect("admin.jsp");
+		response.sendRedirect("Controller?action=admin");
 	}
 
 }

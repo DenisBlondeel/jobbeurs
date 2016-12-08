@@ -21,4 +21,5 @@
 	<entry key="delete">ui.controller.handler.DeleteHandler</entry>
 	<entry key="confirmdelete">ui.controller.handler.ConfirmDeleteHandler</entry>
 	<entry key="drop">ui.controller.handler.DeleteAllHandler</entry>
+	<entry key="admin">ui.controller.handler.AdminHandler</entry>
 </properties>
