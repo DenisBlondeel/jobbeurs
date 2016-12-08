@@ -1,7 +1,8 @@
-/*package ui.controller.handler;
+package ui.controller.handler;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -22,6 +23,8 @@ public class CsvReaderHandler extends RequestHandler{
 	private static final String DATA_DIRECTORY = "data";
     private static final int MAX_MEMORY_SIZE = 1024 * 1024 * 2;
     private static final int MAX_REQUEST_SIZE = 1024 * 1024;
+    private List<User> users = new ArrayList<User>();
+    private CsvReader reader = new CsvReader();
     
 	@Override
 	public void handleRequest(HttpServletRequest request, HttpServletResponse response)
@@ -47,7 +50,7 @@ public class CsvReaderHandler extends RequestHandler{
         factory.setRepository(new File(System.getProperty("java.io.tmpdir")));
 
         // constructs the folder where uploaded file will be stored
-        String uploadFolder = getServletContext().getRealPath("")
+        String uploadFolder = request.getServletContext().getRealPath("")
                 + File.separator + DATA_DIRECTORY;
 
         // Create a new file upload handler
@@ -70,12 +73,13 @@ public class CsvReaderHandler extends RequestHandler{
                     System.out.println(filePath);
                     // saves the file to upload directory
                     item.write(uploadedFile);
+                    List<User> users = reader.read(filePath);
+                    for (User user : users) {
+                    	service.addUser(user);
+                    }
                 }
             }
-
-            // displays done.jsp page after upload finished
-            getServletContext().getRequestDispatcher("/done.jsp").forward(
-                    request, response);
+            
 
         } catch (FileUploadException ex) {
             throw new ServletException(ex);
@@ -87,7 +91,4 @@ public class CsvReaderHandler extends RequestHandler{
 		
 	}
 
-List<User> users = reader.read(file);
-for (User user : users) {
-	service.addUser(user);
-}*/
+/**/

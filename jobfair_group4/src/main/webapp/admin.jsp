@@ -13,7 +13,7 @@
 <h3>Meerdere bedrijven toevoegen</h3>
 <form>
 	<p>
-		<form method="POST" action="Controller?action=	upload" enctype="multipart/form-data" >
+		<form method="POST" action="Controller?action=addall" enctype="multipart/form-data" >
             File:
             <input type="file" name="dataFile" id="fileChooser" /> <br/>
             <input type="submit" value="Upload file" name="upload" id="upload" />
