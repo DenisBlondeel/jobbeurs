@@ -15,7 +15,8 @@ public class ConfirmDeleteHandler extends RequestHandler{
 		String action = request.getParameter("submit");
 		if(action.equals("ja")){
 			service.removeUserFromSpot(spotnr);
-			request.getRequestDispatcher("index.jsp").forward(request, response);
+			request.setAttribute("annuleer", "annuleer");
+			response.sendRedirect("Controller?action=");
 		} else {
 			request.getRequestDispatcher("myspot.jsp").forward(request, response);
 		}

@@ -30,23 +30,18 @@ public class MySpotHandler extends RequestHandler{
 			
 			Spot spot = service.getSpotFromUser(userID);
 			
-			//request.setAttribute("spot", spot);
-			request.setAttribute("spotnr", spot.getSpotID());
-			request.setAttribute("company", user.getCompanyName());
-			request.setAttribute("chairs", spot.getAmountChairs());
-			request.setAttribute("tables", spot.getAmountTables());
-			request.setAttribute("extra", spot.getRemarks());
-			
-			if(spot.getElectricity() == true)
-			{
-				request.setAttribute("electricity", "ja");
+			if (spot != null) {
+				request.setAttribute("spotnr", spot.getSpotID());
+				request.setAttribute("company", user.getCompanyName());
+				request.setAttribute("chairs", spot.getAmountChairs());
+				request.setAttribute("tables", spot.getAmountTables());
+				request.setAttribute("extra", spot.getRemarks());
+				if(spot.getElectricity() == true) {
+					request.setAttribute("electricity", "ja");
+				} else request.setAttribute("electricity", "nee");
 			}
-			else request.setAttribute("electricity", "nee");
-			
-			
-			}
-		
-	request.getRequestDispatcher("myspot.jsp").forward(request, response);
+		}
+		request.getRequestDispatcher("myspot.jsp").forward(request, response);
 	}
 
 }

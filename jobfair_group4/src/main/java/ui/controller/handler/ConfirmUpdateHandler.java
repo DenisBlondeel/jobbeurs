@@ -36,7 +36,7 @@ public class ConfirmUpdateHandler extends RequestHandler	{
 		request.setAttribute("tables", spot.getAmountTables());
 		request.setAttribute("electricity", spot.getElectricity());
 		request.setAttribute("extra", spot.getRemarks());
-		request.setAttribute("action", "update");
+		request.setAttribute("update", "update");
 
 		try {
 			new EmailSender().sendUpdateMail(spot, getService().getUser(spot.getUserID()).getEmail());
@@ -44,7 +44,7 @@ public class ConfirmUpdateHandler extends RequestHandler	{
 			throw new ServletException(e.getMessage(), e);
 		}
 
-		request.getRequestDispatcher("index.jsp").forward(request, response);
+		response.sendRedirect("Controller?action=");
 	}
 
 }

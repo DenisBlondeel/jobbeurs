@@ -40,7 +40,7 @@
 <form method="POST" action="Controller?action=delete">
 	<p>
 		<input type="hidden" name="spotnr" value="${spotnr}">
-		<input type="submit" value="Annulleer reservering">
+		<input type="submit" value="Annuleer reservering">
 	</p>
 </form>
 </c:otherwise>

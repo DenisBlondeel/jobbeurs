@@ -15,13 +15,17 @@
 			<h3>Welkom ${user.companyName}!</h3>
 		</c:if>
 		
-		<c:if test="${action==reserveer}">
+		<c:choose>
+		<c:when test="${reserveer!=null}">
 			<h3>Plaats ${spotnr} werd gereserveerd.</h3>
-		</c:if>
-		
-		<c:if test="${action==update}">
+		</c:when>
+		<c:when test="${update!=null}">
 			<h3>Plaats ${spotnr} werd geüpdatet.</h3>
-		</c:if>
+		</c:when>
+		<c:when test="${annuleer!=null}">
+			<h3>Plaats ${spotnr} werd geannuleerd.</h3>
+		</c:when>
+		</c:choose>
 		
 <!--  	<c:if test="${userid!=null}">
 			<a href="imgmap.jsp">hemisfeer</a>
