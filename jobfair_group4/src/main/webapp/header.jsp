@@ -44,7 +44,12 @@
 			        <div class="collapse navbar-collapse navbar-ex1-collapse">
 			            <ul class="nav navbar-nav"><li id="${param.home}"><a href="Controller?action=home">Home</a></li>
 			                <li id="${param.spotoverview}"><a href="Controller?action=spots">Alle plaatsen</a></li>
-			                <!-- <li id="${param.myspot}"><a href="Controller?action=myspot">Mijn plaats</a></li> -->
+			                
+			                <c:choose>
+								<c:when test="${userid!=null}">
+					                <li id="${param.myspot}"><a href="Controller?action=myspot">Mijn plaats</a></li>
+				                </c:when>
+				                </c:choose>
 			                <!--<li id="${param.myaccount}"><a href="Controller?action=home">Mijn account</a></li>-->
 			            </ul>
 			            

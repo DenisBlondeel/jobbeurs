@@ -9,21 +9,22 @@ import javax.servlet.http.HttpSession;
 
 import domain.model.User;
 
-public class IndexHandler extends RequestHandler {
+public class ImgmapHandler extends RequestHandler {
 
 	@Override
 	public void handleRequest(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
+			throws ServletException, IOException
+	{
+		request.setAttribute("bezet", service.getOccupiedSpots());
+		
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
 
 		if (user!=null) {
 			request.setAttribute("userid", user.getUserID());
 		}
-		request.setAttribute("bezet", service.getOccupiedSpots());
-		request.setAttribute("mine", service.getSpotFromUser(user.getUserID()));
 
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
+
 }

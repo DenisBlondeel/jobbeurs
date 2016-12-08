@@ -19,12 +19,10 @@
 			<a href="imgmap.jsp">hemisfeer</a>
 		</c:if>-->
 		
-			<a href="imgmap.jsp">hemisfeer</a>
+			<!--  a href="Controller?action=imgmap">hemisfeer</a>-->
+<!-- 			<a href="imgmap.jsp">hemisfeer</a> -->
 
-		<!-- jQuery -->
-		<script src="//code.jquery.com/jquery.js"></script>
-		<!-- Bootstrap JavaScript -->
-		<script src="js/bootstrap.js"></script>
-		
+		<jsp:include page="imgmap.jsp"></jsp:include>
+
 	</body>
 </html>
