@@ -73,7 +73,7 @@ public class CsvReaderHandler extends RequestHandler{
                     System.out.println(filePath);
                     // saves the file to upload directory
                     item.write(uploadedFile);
-                    List<User> users = reader.read(uploadedFile);
+                    List<User> users = reader.read(filePath);
                     for (User user : users) {
                     	service.addUser(user);
                     }
