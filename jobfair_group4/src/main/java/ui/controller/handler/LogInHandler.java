@@ -30,6 +30,7 @@ public class LogInHandler extends RequestHandler {
 			ArrayList<String> errors = new ArrayList<>();
 			errors.add("Uw gebruikersnaam of wachtwoord is niet correct");
 			request.setAttribute("errors", errors);
+			request.setAttribute("userid", userID);
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
 
