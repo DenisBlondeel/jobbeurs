@@ -84,4 +84,10 @@ public class Service {
 		return spotDB;
 	}
 	
+	public void dropAll()
+	{
+		spotDB.deleteAll();
+		userDB.deleteAll();
+	}
+	
 }

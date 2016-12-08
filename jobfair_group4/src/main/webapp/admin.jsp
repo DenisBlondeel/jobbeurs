@@ -39,6 +39,12 @@
 			<button type="submit" class="btn btn-primary" value="Submit">Submit</button>
 		</div>
 	</form>
+	<form method="POST" action="Controller?action=drop">
+		<legend>Verwijder alle klanten</legend>
+		<div class="form-group form-inline">
+			<button type="submit" class="btn btn-primary" value="Submit">Verwijder</button>
+		</div>
+	</form>
 
 	</div></div></div>
 </body>

@@ -276,6 +276,20 @@ public class SpotRepository {
 			throw new DbException(e.getMessage(), e);
 		}
 	}
+	
+	public void deleteAll()
+	{
+		String sql = "DELETE FROM jobfair_group4.spots";
+
+		try {
+			statement = connection.prepareStatement(sql);
+			statement.execute();
+	}	catch(SQLException e)
+		{
+		throw new DbException(e.getMessage(), e);
+		}
+	}
+	
 
 	public Properties getProperties() {
 		return properties;

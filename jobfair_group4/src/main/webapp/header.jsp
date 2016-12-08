@@ -79,7 +79,7 @@
 			</div>
 		</c:if>
 		<c:if test="${success!=null}">
-			<div class="alert alert-danger">
+			<div class="alert alert-success">
 				<p>${success}</p>
 			</div>
 		</c:if>
