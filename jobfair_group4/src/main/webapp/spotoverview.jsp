@@ -9,8 +9,8 @@
 
 <table>
 	<tr>
-		<th>plaatsid </th>
-		<th>companyname </th>
+		<th>Plaats </th>
+		<th>Bedrijfsnaam </th>
 		<th> </th>
 
 		<th><a href="Controller?action=vrijelijst">Vrije plaatsen </a></th>
