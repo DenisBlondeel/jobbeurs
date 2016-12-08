@@ -48,7 +48,7 @@ public class Controller extends HttpServlet {
 
 			factory = new HandlerFactory(handlerProperties, service);
 		} catch (Exception e) {
-			//to
+			throw new ServletException(e.getMessage(), e);
 		}
 	}
 
