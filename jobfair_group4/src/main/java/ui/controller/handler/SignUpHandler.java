@@ -34,7 +34,7 @@ public class SignUpHandler extends RequestHandler {
 			} catch (MessagingException e) {
 				throw new ServletException(e.getMessage(), e);
 			}
-			request.getRequestDispatcher("index.jsp").forward(request, response);
+			request.getRequestDispatcher("Controller?action=").forward(request, response);
 		}
 	}
 

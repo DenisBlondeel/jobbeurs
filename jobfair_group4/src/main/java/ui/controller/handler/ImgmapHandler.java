@@ -24,7 +24,7 @@ public class ImgmapHandler extends RequestHandler {
 			request.setAttribute("userid", user.getUserID());
 		}
 
-		request.getRequestDispatcher("index.jsp").forward(request, response);
+		request.getRequestDispatcher("Controller?action=").forward(request, response);
 	}
 
 }

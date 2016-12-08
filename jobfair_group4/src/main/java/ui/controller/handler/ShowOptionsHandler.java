@@ -26,7 +26,7 @@ public class ShowOptionsHandler extends RequestHandler {
 		
 		if(service.getSpotFromUser(user.getUserID()) != null){
 			request.setAttribute("errors", "Er werd al een plaats gereserveerd voor " + user.getCompanyName() + ".");
-			response.sendRedirect("Controller");
+			response.sendRedirect("Controller?action=");
 		}
 
 		if (user!=null) {

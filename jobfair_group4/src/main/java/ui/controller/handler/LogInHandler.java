@@ -25,7 +25,7 @@ public class LogInHandler extends RequestHandler {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
 			request.setAttribute("userid", user.getUserID());
-			response.sendRedirect("Controller");
+			response.sendRedirect("Controller?action=");
 		} else {
 			ArrayList<String> errors = new ArrayList<>();
 			errors.add("Uw gebruikersnaam of wachtwoord is niet correct");
