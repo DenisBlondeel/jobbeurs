@@ -7,7 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.ws.rs.NotAuthorizedException;
+import ui.controller.NotAuthorizedException;
 
 import domain.model.RoleEnum;
 import domain.model.User;
@@ -22,10 +22,13 @@ public abstract class RequestHandler {
 	protected Calendar deadline;
 
 	public final void handle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		this.checkDate();
-		this.checkRole(request);
-		this.handleRequest(request, response);
-		
+		try {
+			this.checkDate();
+			this.checkRole(request);
+			this.handleRequest(request, response);
+		} catch (NotAuthorizedException e) {
+			request.setAttribute("errors", e.getMessage());
+		}
 	}
 
 	public abstract void handleRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
