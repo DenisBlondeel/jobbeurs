@@ -15,8 +15,12 @@
 			<h3>Welkom ${user.companyName}!</h3>
 		</c:if>
 		
-		<c:if test="${spotnr!=null}">
+		<c:if test="${action==reserveer}">
 			<h3>Plaats ${spotnr} werd gereserveerd.</h3>
+		</c:if>
+		
+		<c:if test="${action==update}">
+			<h3>Plaats ${spotnr} werd geüpdatet.</h3>
 		</c:if>
 		
 <!--  	<c:if test="${userid!=null}">
