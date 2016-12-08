@@ -6,6 +6,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import domain.model.RoleEnum;
+
 public class DeleteAllHandler extends RequestHandler{
 
 	@Override
@@ -14,6 +16,12 @@ public class DeleteAllHandler extends RequestHandler{
 	{
 		service.dropAll();
 		response.sendRedirect("Controller?action=");
+	}
+
+
+	@Override
+	public RoleEnum[] getAccesList() {
+		return new RoleEnum[]{RoleEnum.ADMIN};
 	}
 
 }

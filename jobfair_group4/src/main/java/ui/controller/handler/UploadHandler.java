@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import domain.model.CsvReader;
+import domain.model.RoleEnum;
 import domain.model.User;
 
 public class UploadHandler extends RequestHandler{
@@ -33,5 +34,11 @@ public class UploadHandler extends RequestHandler{
 		}
 	    request.getRequestDispatcher("admin.jsp").forward(request, response);
 	}
-		
+
+
+	@Override
+	public RoleEnum[] getAccesList() {
+		return new RoleEnum[]{RoleEnum.ADMIN};
+	}
+
 }

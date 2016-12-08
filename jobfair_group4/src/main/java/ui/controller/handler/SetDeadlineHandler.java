@@ -19,8 +19,9 @@ public class SetDeadlineHandler extends RequestHandler{
 		calendar.set(Calendar.YEAR, Integer.parseInt(elements[2]));
 		calendar.set(Calendar.MONTH, Integer.parseInt(elements[1]));
 		calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(elements[0]));
-		deadline = calendar;
-		
+		this.deadline = calendar;
+
+		response.sendRedirect("admin.jsp");
 	}
 
 }

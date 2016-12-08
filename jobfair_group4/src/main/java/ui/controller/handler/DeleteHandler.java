@@ -6,6 +6,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import domain.model.RoleEnum;
+
 public class DeleteHandler extends RequestHandler{
 
 	@Override
@@ -16,4 +18,11 @@ public class DeleteHandler extends RequestHandler{
 		request.getRequestDispatcher("confirmdelete.jsp").forward(request, response);
 	}
 
+	@Override
+	public RoleEnum[] getAccesList() {
+		if (this.getTimeHasCome()) {
+			return new RoleEnum[]{RoleEnum.ADMIN};
+		}
+		return new RoleEnum[]{RoleEnum.COMPANY, RoleEnum.ADMIN};
+	}
 }

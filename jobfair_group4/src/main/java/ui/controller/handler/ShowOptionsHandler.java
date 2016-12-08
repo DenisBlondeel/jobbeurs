@@ -40,37 +40,12 @@ public class ShowOptionsHandler extends RequestHandler {
 		request.getRequestDispatcher("spotoptions.jsp").forward(request, response);
 		
 	}
-		@Override
-		public RoleEnum[] getAccesList() {
-			return new RoleEnum[]{RoleEnum.COMPANY, RoleEnum.ADMIN};
-			
-			
-		/*else
-		{
-			redirect(request, response, "index");
-			
-		}
-		if(service.getSpot(spot).getUser() == null)redirect(request, response, "index");
-		if(service.getSpot(spot).getUserID().equals(user.getUserID()))
-		{
-			redirect(request, response, "index");
-		}
-		else{
-		}
-	}*/
-	
-	/*private void redirect(HttpServletRequest request, HttpServletResponse response, String dest)
-	{
-		if(user != null) request.setAttribute("mine", service.getSpotFromUser(user.getUserID()).getSpotID());
-		try
-		{
-			request.getRequestDispatcher(dest + ".jsp").forward(request, response);
-			} catch (IOException | ServletException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}*/
 
-}
+	@Override
+	public RoleEnum[] getAccesList() {
+		if (this.getTimeHasCome()) {
+			return new RoleEnum[]{RoleEnum.ADMIN};
+		}
+		return new RoleEnum[]{RoleEnum.COMPANY, RoleEnum.ADMIN};
+	}
 }

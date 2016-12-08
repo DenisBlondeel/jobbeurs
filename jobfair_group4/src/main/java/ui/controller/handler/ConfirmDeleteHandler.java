@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import domain.model.EmailSender;
+import domain.model.RoleEnum;
 import domain.model.Spot;
 import domain.model.User;
 
@@ -38,4 +39,11 @@ public class ConfirmDeleteHandler extends RequestHandler{
 		}
 	}
 
+	@Override
+	public RoleEnum[] getAccesList() {
+		if (this.getTimeHasCome()) {
+			return new RoleEnum[]{RoleEnum.ADMIN};
+		}
+		return new RoleEnum[]{RoleEnum.COMPANY, RoleEnum.ADMIN};
+	}
 }
