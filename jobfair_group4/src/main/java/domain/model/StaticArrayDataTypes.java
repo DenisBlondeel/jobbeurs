@@ -13,4 +13,24 @@ public class StaticArrayDataTypes {
 		this.shape = shape;
 	}
 
+	public String getId()
+	{
+		return id;
+	}
+	
+	public void setId(String id)
+	{
+		this.id = id;
+	}
+	
+	public String getShape()
+	{
+		return shape;
+	}
+	
+	public void setShape(String shape)
+	{
+		this.shape = shape;
+	}
+	
 }
