@@ -19,7 +19,9 @@
 			<a href="imgmap.jsp">hemisfeer</a>
 		</c:if>-->
 		
-			<a href="imgmap.jsp">hemisfeer</a>
+<!-- 			<a href="imgmap.jsp">hemisfeer</a> -->
+
+		<jsp:include page="imgmap.jsp"></jsp:include>
 
 		<!-- jQuery -->
 		<script src="//code.jquery.com/jquery.js"></script>
