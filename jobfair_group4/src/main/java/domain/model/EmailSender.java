@@ -3,18 +3,13 @@ package domain.model;
 import java.util.Properties;
 import javax.mail.Message;
 import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import domain.db.DbException;
-
-
 public class EmailSender {
 
-	private String emailsender = "scrumbags.06@gmail.com";
 	private String username = "scrumbags.06", password = "tttttttt";
 	private Properties properties;
 
