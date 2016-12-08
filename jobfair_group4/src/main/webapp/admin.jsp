@@ -15,7 +15,7 @@
 	<p>
 		<form method="POST" action="Controller?action=upload" enctype="multipart/form-data" >
             File:
-            <input type="file" name="file"/>
+            <input type="file" name="file" accept=".csv" multiple="false"/>
             <input type="submit" value="Upload file"/>
         </form>
 	</p>
