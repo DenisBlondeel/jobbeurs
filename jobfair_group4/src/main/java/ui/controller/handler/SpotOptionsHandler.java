@@ -30,7 +30,11 @@ public class SpotOptionsHandler extends RequestHandler {
 		this.getService().updateSpot(new Spot(spotID, tables, chairs, electricity, extra, user));
 
 		request.setAttribute("spotnr", spotID);
-		request.setAttribute("reserved", "Uw plaats werd gereserveerd.");
+		request.setAttribute("reserved", "Uw plaats werd gereserveerd.");																	
+
+		if (user!=null) {
+			request.setAttribute("userid", user.getUserID());
+		}
 
 		response.sendRedirect("Controller");
 	}
