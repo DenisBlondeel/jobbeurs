@@ -123,7 +123,7 @@ public class SpotRepository {
 	
 	public List<Spot> getOccupiedSpots() {
 		List<Spot> list = new ArrayList<Spot>();
-		String sql = "SELECT *" + " FROM jobfair_group4.spots WHERE userID IS NOT NULL ORDER BY userID ";
+		String sql = "SELECT * FROM jobfair_group4.users u INNER JOIN jobfair_group4.spots s ON s.userid = u.userid";
 		try {
 			statement = connection.prepareStatement(sql);
 			ResultSet results = statement.executeQuery();
@@ -134,6 +134,18 @@ public class SpotRepository {
 				spot.setElectricity(results.getBoolean("electricity"));
 				spot.setRemarks(results.getString("remarks"));
 				spot.setUserID(results.getString("userid"));
+				
+				User user = new User();
+				user.setCompanyName(results.getString("companyname"));
+				user.setContactName(results.getString("contactname"));
+				user.setEmail(results.getString("email"));
+				user.setPassword(results.getString("password"));
+				user.setRole(results.getString("role"));
+				user.setSalt(results.getString("salt"));
+				user.setUserID(results.getString("userid"));
+				
+				spot.setUser(user);				
+				
 				list.add(spot);
 			}
 		} catch (SQLException e) {
@@ -144,7 +156,7 @@ public class SpotRepository {
 
 	public List<Spot> getAlphabeticOccupiedSpots() {
 		List<Spot> list = new ArrayList<Spot>();
-		String sql = "SELECT *" + " FROM jobfair_group4.spot WHERE userID IS NOT NULL ORDER BY userID ";
+		String sql = "SELECT * FROM jobfair_group4.users u INNER JOIN jobfair_group4.spots s ON s.userid = u.userid ORDER BY companyname";
 		try {
 			statement = connection.prepareStatement(sql);
 			ResultSet results = statement.executeQuery();
@@ -155,6 +167,18 @@ public class SpotRepository {
 				spot.setElectricity(results.getBoolean("electricity"));
 				spot.setRemarks(results.getString("remarks"));
 				spot.setUserID(results.getString("userid"));
+				
+				User user = new User();
+				user.setCompanyName(results.getString("companyname"));
+				user.setContactName(results.getString("contactname"));
+				user.setEmail(results.getString("email"));
+				user.setPassword(results.getString("password"));
+				user.setRole(results.getString("role"));
+				user.setSalt(results.getString("salt"));
+				user.setUserID(results.getString("userid"));
+				
+				spot.setUser(user);				
+				
 				list.add(spot);
 			}
 		} catch (SQLException e) {

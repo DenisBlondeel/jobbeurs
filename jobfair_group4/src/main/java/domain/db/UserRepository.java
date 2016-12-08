@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import domain.model.Spot;
 import domain.model.User;
 
 public class UserRepository {
@@ -61,29 +62,29 @@ public class UserRepository {
 		return user;
 	}
 	
-	public List<User> getAll()
-	{
-		List<User> all = new ArrayList<User>();
-		User user = new User();
-		try{
-		String sql = "SELECT * FROM jobfair_group4.users";
+/*	public List<Spot> getAll() {
+	List<Spot> list = new ArrayList<Spot>();
+	String sql = "Select * FROM jobfair_group4.users";
+	try{
 		statement = connection.prepareStatement(sql);
 		ResultSet results = statement.executeQuery();
-		results.next();
-		user.setUserID(results.getString("userid"));
-		user.setCompanyName(results.getString("companyName"));
-		user.setContactName(results.getString("contactName"));
-		user.setEmail(results.getString("email"));
-		user.setPassword(results.getString("password"));
-		user.setRole(results.getString("role"));
-		user.setSalt(results.getString("salt"));
-		all.add(user);
+		while (results.next())
+		{
+			Spot spot = new Spot(results.getString("spotID"));
+			spot.setAmountTables(results.getInt("amountTables"));
+			spot.setAmountChairs(results.getInt("amountChairs"));
+			spot.setElectricity(results.getBoolean("electricity"));
+			spot.setRemarks(results.getString("remarks"));
+			spot.setUserID(results.getString("userid"));
+			list.add(spot);
 		}
-		catch(SQLException e){
-			throw new DbException(e.getMessage(), e);
-		}
-		return all;
+	} catch (SQLException e)
+	{
+		throw new DbException(e);
 	}
+	return list;
+	}
+	*/
 
 	public void add(User user) {
 		if (user == null) {
