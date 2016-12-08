@@ -126,24 +126,9 @@
 </div></div></div>
 
 
-<p hidden id="allocupiedspots">
-<c:if test="${spots!=null}">
-					<c:forEach var="s" items="${spots}">
-						${s.spotID}
-					</c:forEach>				
-</c:if>
-
-
-list of items</p>
-
 
  <script type="text/javascript">
 
- <c:if test="${bezet!=null}">
-	<c:forEach var="s" items="${bezet}">
-		${s.spotID};
-	</c:forEach>				
-</c:if>
 
     jQuery(function()
                             {
@@ -189,6 +174,12 @@ list of items</p>
     $('#31').data('maphilight', data).trigger('alwaysOn.maphilight'); 
     $('#33').data('maphilight', data).trigger('alwaysOn.maphilight'); 
     $('#58').data('maphilight', data).trigger('alwaysOn.maphilight');  
+
+     <c:if test="${bezet!=null}">
+    <c:forEach var="s" items="${bezet}">
+        $('#${s.spotID}').data('maphilight', data).trigger('alwaysOn.maphilight');  
+    </c:forEach>                
+</c:if>
     });
 
 
@@ -206,6 +197,11 @@ list of items</p>
         data.fillColor = '00ff00';
         data.fillOpacity = '0.6';
         $('.mine').data('maphilight', data).trigger('alwaysOn.maphilight'); 
+
+     <c:if test="${mine!=null}">
+        $('#${mine}').data('maphilight', data).trigger('alwaysOn.maphilight');  
+                  
+</c:if>
         
     });
 
