@@ -17,7 +17,7 @@ public class EmailTest {
 
 	@Test
 	public void sendSimpleMailTest() throws Exception {
-		sender.sendNewCompanyMail("brechtdecuyper@hotmail.com");
+		sender.sendNewCompanyMail("r0589873", "Brecht", "brechtdecuyper@hotmail.com");
 	}
 
 //	@Test
