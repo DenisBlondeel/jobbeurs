@@ -96,6 +96,10 @@
 
 </map>
 
+</div></div>
+
+    <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
 
 
@@ -106,8 +110,7 @@
 
 
 
-
-<img src="img/standplaatsen-atrium-crop.png" usemap="#image-map-atrium"id="atrium" class="img-responsive">
+<img src="img/standplaatsen-atrium-crop.png" usemap="#image-map-atrium" id="atrium" class="img-responsive">
 
 <map name="image-map-atrium" id="atrium-map">
     <area target="" alt="A01" id="A01" title="A01" href="Controller?action=showopt&id=A01" coords="1123,370,1183,468" shape="rect">
@@ -137,12 +140,12 @@
                             });
 
  
-    var ImageMap = function (map, img) {
+    var ImageMap = function (map, img, width) {
             var n,
                 areas = map.getElementsByTagName('area'),
                 len = areas.length,
                 coords = [],
-                previousWidth = 2339;
+                previousWidth = width;
             for (n = 0; n < len; n++) {
                 coords[n] = areas[n].coords.split(',');
             }
@@ -158,8 +161,6 @@
                 }
                 previousWidth = img.offsetWidth;
 
-
-
 /**
 *red
 */
@@ -170,26 +171,17 @@
         data.fillColor = 'ff0000';
         data.fillOpacity = '0.6';
         $('.imgmaphigh').data('maphilight', data).trigger('alwaysOn.maphilight');  
-        $('#12').data('maphilight', data).trigger('alwaysOn.maphilight'); 
-    $('#31').data('maphilight', data).trigger('alwaysOn.maphilight'); 
-    $('#33').data('maphilight', data).trigger('alwaysOn.maphilight'); 
-    $('#58').data('maphilight', data).trigger('alwaysOn.maphilight');  
-
-     <c:if test="${bezet!=null}">
-    <c:forEach var="s" items="${bezet}">
-        $('#${s.spotID}').data('maphilight', data).trigger('alwaysOn.maphilight');  
-    </c:forEach>                
-</c:if>
+    <c:if test="${bezet!=null}">
+        <c:forEach var="s" items="${bezet}">
+            $('#${s.spotID}').data('maphilight', data).trigger('alwaysOn.maphilight');  
+        </c:forEach>                
+    </c:if>
     });
 
 
 /**
 *green
 */
-
-
-
-
     $(function () {
         var data = {};
         $('.map').maphilight();
@@ -197,73 +189,19 @@
         data.fillColor = '00ff00';
         data.fillOpacity = '0.6';
         $('.mine').data('maphilight', data).trigger('alwaysOn.maphilight'); 
-
-     <c:if test="${mine!=null}">
-        $('#${mine}').data('maphilight', data).trigger('alwaysOn.maphilight');  
-                  
-</c:if>
+        <c:if test="${mine!=null}">
+            $('#${mine}').data('maphilight', data).trigger('alwaysOn.maphilight');  
+        </c:if>
         
     });
-
-
-
-
-
-
                 return true;
             };
             window.onresize = this.resize;
         },
-        imageMap = new ImageMap(document.getElementById('map1'), document.getElementById('hemis'));
-    imageMap.resize();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    $(function () {
-    var data = {};
-    $('.map').maphilight();
-    data.alwaysOn = true;
-    data.fillColor = 'ff0000';
-    data.fillOpacity = '0.6';   /*
-    $('#12').data('maphilight', data).trigger('alwaysOn.maphilight'); 
-    $('#31').data('maphilight', data).trigger('alwaysOn.maphilight'); 
-    $('#33').data('maphilight', data).trigger('alwaysOn.maphilight'); 
-    $('#58').data('maphilight', data).trigger('alwaysOn.maphilight'); */
-});
-
-
-    $(function () {
-    var data = {};
-    $('.map').maphilight();
-    data.alwaysOn = true;
-    data.fillColor = '00ff00';
-    data.fillOpacity = '0.6';
-    $('.mine').data('maphilight', data).trigger('alwaysOn.maphilight'); 
-    
-});
-
-
+        imageMap = new ImageMap(document.getElementById('map1'), document.getElementById('hemis'), 2339);
+        imageMap2 = new ImageMap(document.getElementById('atrium-map'), document.getElementById('atrium'), 1715);
+    imageMap.resize();    
+    imageMap2.resize();
 
 
 

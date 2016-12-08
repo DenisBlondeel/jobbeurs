@@ -2,6 +2,7 @@ package ui.controller.handler;
 
 import java.io.IOException;
 
+import javax.mail.MessagingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,13 +19,13 @@ public abstract class RequestHandler {
 
 	public RequestHandler() {}
 
-	public final void handle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public final void handle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, MessagingException {
 		this.checkRole(request);
 		this.handleRequest(request, response);
 		
 	}
 
-	public abstract void handleRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+	public abstract void handleRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, MessagingException;
 
 	private void checkRole(HttpServletRequest request) {
 		if (this.getAccesList() == null) {
