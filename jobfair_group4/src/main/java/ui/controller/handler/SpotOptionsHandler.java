@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import domain.model.EmailSender;
+import domain.model.EmailSender;import domain.model.RoleEnum;
 import domain.model.Spot;
 import domain.model.User;
 
