@@ -3,6 +3,7 @@ package domain.model;
 import java.util.Properties;
 import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
@@ -14,6 +15,7 @@ import domain.db.DbException;
 public class EmailSender {
 
 	private String emailsender = "scrumbags.06@gmail.com";
+	private String username = "scrumbags.06", password = "tttttttt";
 	private Properties properties;
 
 
@@ -27,13 +29,21 @@ public class EmailSender {
 		properties.put("mail.smtp.host", "smtp.gmail.com");
 		properties.put("mail.smtp.port", "587");
 		properties.put("mail.smtp.auth", "true");
-		properties.put("mail.smtp.password", "tttttttt");
-		properties.put("mail.smtp.user", "scrumbags.06");
+		properties.put("mail.smtp.password", password);
+		properties.put("mail.smtp.user", username);
 	}
 	
 	public void sendConfirmationMail(String spotId, String emailreceiver){
-		Session session = Session.getDefaultInstance(properties);
+		Session session = Session.getInstance(properties,
+			      new javax.mail.Authenticator() {
+			         protected PasswordAuthentication getPasswordAuthentication() {
+			            return new PasswordAuthentication(username, password);
+			         }
+			      });
+		
+		
 		MimeMessage message = new MimeMessage(session);
+		
 		
 		try{
 			String from = properties.getProperty("mail.smtp.user");
