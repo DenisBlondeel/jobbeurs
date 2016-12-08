@@ -6,8 +6,10 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import domain.model.Spot;
+import domain.model.User;
 
 public class GetAlphabeticSpotsHandler extends RequestHandler {
 
@@ -17,6 +19,13 @@ public class GetAlphabeticSpotsHandler extends RequestHandler {
 	{
 		List<Spot> spots = this.getService().getAlphabeticOccupiedSpots();
 		request.setAttribute("spots", spots);
+		
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+
+		if (user!=null) {
+			request.setAttribute("userid", user.getUserID());
+		}
 
 		request.getRequestDispatcher("spotoverview.jsp").forward(request, response);
 		
