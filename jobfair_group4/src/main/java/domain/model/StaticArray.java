@@ -95,12 +95,17 @@ public class StaticArray {
 		atrium.add(new StaticArrayDataTypes("A11", "757,373,810,473", "rect"));
 		atrium.add(new StaticArrayDataTypes("A12", "817,373,875,473", "rect"));
 
-
-
-
-
 }
 	
+	public static List<StaticArrayDataTypes> getHemis()
+	{
+		return hemis;
+	}
+	
+	public static List<StaticArrayDataTypes> getAtrium()
+	{
+		return atrium;
+	}
 	
 
 }

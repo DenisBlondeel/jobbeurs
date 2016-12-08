@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import domain.model.RoleEnum;
 import domain.model.Spot;
 import domain.model.User;
 
@@ -22,6 +23,10 @@ public class MySpotHandler extends RequestHandler{
 		if (user!=null) {
 			String userID = user.getUserID();
 			request.setAttribute("userid", user.getUserID());
+			if(user.getRole().equals(RoleEnum.ADMIN))
+			{
+				request.setAttribute("admin", "admin");
+			}
 			
 			Spot spot = service.getSpotFromUser(userID);
 			

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import domain.model.RoleEnum;
 import domain.model.Spot;
 import domain.model.User;
 
@@ -24,6 +25,10 @@ public class GetSpotsHandler extends RequestHandler {
 
 		if (user!=null) {
 			request.setAttribute("userid", user.getUserID());
+			if(user.getRole().equals(RoleEnum.ADMIN))
+			{
+				request.setAttribute("admin", "admin");
+			}
 		}
 
 		request.getRequestDispatcher("spotoverview.jsp").forward(request, response);
