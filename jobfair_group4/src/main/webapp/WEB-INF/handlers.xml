@@ -17,4 +17,5 @@
 	<entry key="imgmap">ui.controller.handler.ImgmapHandler</entry>
 	<entry key="update">ui.controller.handler.UpdateHandler</entry>
 	<entry key="confirmupdate">ui.controller.handler.ConfirmUpdateHandler"</entry>
+	<entry key="setdate">ui.controller.handler.SetDeadlineHandler</entry>
 </properties>
