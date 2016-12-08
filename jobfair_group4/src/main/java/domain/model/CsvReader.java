@@ -1,7 +1,7 @@
 package domain.model;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -13,10 +13,10 @@ public class CsvReader {
 	private String line = "";
 	
 	
-	public List<User> read(String csvFile){
+	public List<User> read(File uploadedFile){
 		List<User> users = new ArrayList<User>();
 		try{
-			br = new BufferedReader(new FileReader(csvFile));
+			br = new BufferedReader(new FileReader(uploadedFile));
 			while((line = br.readLine()) != null){
 				String[] data = line.split(";");
 				User user = new User();
