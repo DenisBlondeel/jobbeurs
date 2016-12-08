@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html lang="">
-	<jsp:include page="header.jsp">
-		<jsp:param value="Plattegrond" name="title"/>
-		<jsp:param value="Plattegrond jobbeurs" name="h2"/>
-	</jsp:include>
+<!-- <!DOCTYPE html> -->
+<!-- <html lang=""> -->
+<%-- 	<jsp:include page="header.jsp"> --%>
+<%-- 		<jsp:param value="Plattegrond" name="title"/> --%>
+<%-- 		<jsp:param value="Plattegrond jobbeurs" name="h2"/> --%>
+<%-- 	</jsp:include> --%>
 	
 	
 	
