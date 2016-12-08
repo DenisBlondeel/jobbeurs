@@ -19,5 +19,6 @@
 	<entry key="confirmupdate">ui.controller.handler.ConfirmUpdateHandler</entry>
 	<entry key="setdate">ui.controller.handler.SetDeadlineHandler</entry>
 	<entry key="delete">ui.controller.handler.DeleteHandler</entry>
+	<entry key="confirmdelete">ui.controller.handler.ConfirmDeleteHandler</entry>
 	<entry key="drop">ui.controller.handler.DeleteAllHandler</entry>
 </properties>
