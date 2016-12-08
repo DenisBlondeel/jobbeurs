@@ -68,6 +68,7 @@ public class SpotRepository {
 =======
 				System.out.println("Get your shit together Denis");
 			}
+
 			
 >>>>>>> branch 'master' of https://github.com/elke-steegmans/jobfair_group4.git
 		} catch (SQLException e) {
