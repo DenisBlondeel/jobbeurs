@@ -30,6 +30,12 @@
 		<input type="submit" value="Wijzig voorkeuren">
 	</p>
 </form>
+<form method="POST" action="Controller?action=delete">
+	<p>
+		<input type="hidden" name="spotnr" value="${spot.spotID}">
+		<input type="submit" value="Annulleer reservering">
+	</p>
+</form>
 
 </body>
 </html>
