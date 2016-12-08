@@ -1,6 +1,7 @@
 package ui.controller.handler;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -16,13 +17,19 @@ public class LogInHandler extends RequestHandler {
 		String userID = request.getParameter("username");
 		String password = request.getParameter("password");
 		User user = getService().getUserIfAuthenticated(userID, password);
-
-		if (user!=null) {
+		
+		if(user!=null) {
+			String success;
+			success = "Je bent succesvol ingelogd!";
+			request.setAttribute("success", success);
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
 			request.setAttribute("userid", user.getUserID());
 			response.sendRedirect("Controller");
 		} else {
+			ArrayList<String> errors = new ArrayList<>();
+			errors.add("Uw gebruikersnaam of wachtwoord is niet correct");
+			request.setAttribute("errors", errors);
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
 

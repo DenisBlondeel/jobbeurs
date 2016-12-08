@@ -18,7 +18,7 @@ public class SignUpHandler extends RequestHandler {
 
 	@Override
 	public void handleRequest(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException, MessagingException {
+			throws ServletException, IOException {
 		User user = new User();
 		List<String> result = new ArrayList<>();
 		result = checkInputValues(request, user);
@@ -26,8 +26,14 @@ public class SignUpHandler extends RequestHandler {
 			request.setAttribute("errors", result);
 			request.getRequestDispatcher("signup.jsp").forward(request, response);
 		} else {
+			String succes = "Het bedrijf " + user.getCompanyName() + " is toegevoegd.";
+			request.setAttribute("succes", succes);
 			this.getService().addUser(user);
-			new EmailSender().sendNewCompanyMail(user.getUserID(), tempPass, user.getEmail());
+			try {
+				new EmailSender().sendNewCompanyMail(user.getUserID(), tempPass, user.getEmail());
+			} catch (MessagingException e) {
+				request.setAttribute("error", "Could not send the email to the user " + user.getUserID());
+			}
 			response.sendRedirect("index.jsp");
 		}
 	}
@@ -55,6 +61,7 @@ public class SignUpHandler extends RequestHandler {
 	private void userSetId(User user, HttpServletRequest request, List<String> result) {
 		String companyName = request.getParameter("companyName");
 		try{
+			//TODO Send this userID and the generated password to the user.
 			user.generateUserId(companyName);
 		} catch (IllegalArgumentException e){
 			result.add(e.getMessage());

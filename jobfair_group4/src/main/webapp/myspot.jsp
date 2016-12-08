@@ -5,7 +5,7 @@
 <jsp:include page="header.jsp">
 	<jsp:param value="Mijn plaats" name="title"/>
 	<jsp:param value="current" name="myspot"/>
-	<jsp:param value="Plaats   ${spot.spotID} - ${user.Company}" name="h2"/>
+	<jsp:param value="Plaats   ${spot.spotID} - ${user.companyName}" name="h2"/>
 </jsp:include>
 
 <ul>
@@ -28,6 +28,12 @@
 	<p>
 		<input type="hidden" name="spotnr" value="${spot.spotID}">
 		<input type="submit" value="Wijzig voorkeuren">
+	</p>
+</form>
+<form method="POST" action="Controller?action=delete">
+	<p>
+		<input type="hidden" name="spotnr" value="${spot.spotID}">
+		<input type="submit" value="Annulleer reservering">
 	</p>
 </form>
 
