@@ -33,16 +33,16 @@ public class EmailSender {
 		properties.put("mail.smtp.user", username);
 	}
 
-	public void sendConfirmationMail(String spotId, String emailreceiver) throws Exception{
+	public void sendConfirmationMail(String spotId, String emailreceiver) throws MessagingException {
 		String subject = "Confirmation email";
 		String message = "Uw plaats met nummer " + spotId + " werd gereserveerd";
 		sendFromGMail(subject, message, emailreceiver);
 	}
 
-	public void sendNewCompanyMail(String userID, String password, String emailreceiver) throws Exception {
+	public void sendNewCompanyMail(String userID, String password, String emailreceiver) throws MessagingException {
 		String subject = "Jobbeurs 2017 - UCLL Leuven";
 		String message = "Beste,<br><br>We mogen je met veel plezier melden dat je vanaf nu een plaats kunt reserveren voor onze jobbeurs.<br>"
-				+ "Inloggen doe je op <a href=\"http://java.cyclone2.khleuven.be:38034/jobfair_group4/\">hier</a> met volgende login-gegevens:<br>"
+				+ "Inloggen doe je <a href=\"http://java.cyclone2.khleuven.be:38034/jobfair_group4/\">hier</a> met volgende login-gegevens:<br>"
 				+ "UserID: " + userID + "<br>"
 				+ "Wachtwoord: " + password + "<br><br>"
 				+ "--<br>"
@@ -52,7 +52,7 @@ public class EmailSender {
 	}
 
 
-	private void sendFromGMail(String subject, String body, String... to) throws Exception {
+	private void sendFromGMail(String subject, String body, String... to) throws MessagingException {
 		Session session = Session.getDefaultInstance(properties);
 		
 		MimeMessage message = new MimeMessage(session);
