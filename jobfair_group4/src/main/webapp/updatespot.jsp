@@ -18,6 +18,7 @@
 		<input type="checkbox" name="electricity" value="Elektriciteit" ${el}> Elektriciteit<br>
 		<label for="extra">Extra opmerkingen: </label>
 			<input type="text" name="extra" value="${extra}">
+		<input type="hidden" name="spotnr" value="${spotnr}">
 		<input type="submit" value="Toepassen">
 	</form>
 </main>
