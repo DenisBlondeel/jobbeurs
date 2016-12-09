@@ -52,7 +52,7 @@
 				                </c:choose>
 				                 <c:choose>
 								<c:when test="${admin!=null}">
-					                <li id="${param.admin}"><a href="admin.jsp">Admin</a></li>
+					                <li id="${param.admin}"><a href="Controller?action=admin">Admin</a></li>
 				                </c:when>
 				                </c:choose>
 			                <!--<li id="${param.myaccount}"><a href="Controller?action=home">Mijn account</a></li>-->
