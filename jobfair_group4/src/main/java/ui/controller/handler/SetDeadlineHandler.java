@@ -39,13 +39,13 @@ public class SetDeadlineHandler extends RequestHandler{
 
 		if (date == null || date.trim().isEmpty()) {
 			errors.add("Geen datum meegegeven.");
-			deadline = null;
+			this.setDeadline(null);
 			return;
 		}
 
 		if (!date.contains("-")) {
 			errors.add("De gegeven datum heeft niet het juiste formaat: \"dag-maand-jaar\"");
-			deadline = null;
+			this.setDeadline(null);
 			return;
 		}
 
@@ -62,7 +62,7 @@ public class SetDeadlineHandler extends RequestHandler{
 			int month = Integer.parseInt(elements[1]) - 1;
 			int day = Integer.parseInt(elements[0]);
 			calendar.set(year, month, day);
-			this.deadline = calendar;
+			this.setDeadline(calendar);
 		} catch (NumberFormatException e) {
 			errors.add("De gegeven datum bestond niet uit enkel cijfers gescheiden door "
 					+ "een '-'. Gelieve een juiste datum mee te geven.");
