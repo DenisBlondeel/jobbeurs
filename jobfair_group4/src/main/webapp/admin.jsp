@@ -47,7 +47,7 @@
 	</form>
 	<legend>Voeg klant toe</legend>
 		<div class="form-group form-inline">
-	<button class="btn btn-primary" href = "signup.jsp">Voeg klant toe</button>
+	<a class="btn btn-primary" href = "signup.jsp">Voeg klant toe</a>
 	</div>
 	
 	<form method="POST" action="Controller?action=endMail">
