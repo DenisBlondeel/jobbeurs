@@ -13,7 +13,7 @@ import domain.model.Spot;
 public class EmailTest {
 
 	EmailSender sender;
-	String recipient = "iets@hotmail.com";
+	String recipient = "test@hotmail.com";
 
 	@Before
 	public void setUp() {
@@ -62,7 +62,6 @@ public class EmailTest {
 		receivers.add(recipient);
 		receivers.add(recipient);
 
-		if (receivers.size() == 4)
-			sender.sendAlmostSoldOutMail(receivers);
+		sender.sendAlmostSoldOutMail(receivers);
 	}
 }

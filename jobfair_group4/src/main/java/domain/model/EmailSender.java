@@ -93,7 +93,9 @@ public class EmailSender {
 		String message = "Melding voor de administrator: De te huren locaties zijn bijna volzet, er zijn minder dan 10 plaatsen nog vrij.<br>"
 				+ "Het is dus ongeveer tijd geworden om meer standplaatsen toe te voegen zodat meer bedrijven "
 				+ "kunnen strijden voor een plaatsje.";
-		this.sendMultipleFromGmail(subject, message, emailreceivers);
+		for (String to : emailreceivers) {
+			this.sendFromGMail(subject, message, to);
+		}
 	}
 
 	public void sendEndOfRegistrationMail(Calendar deadline, List<String> emailreceivers) throws MessagingException {
@@ -115,7 +117,9 @@ public class EmailSender {
 				+ "--<br>"
 				+ "Mvg,<br>"
 				+ "Team Scrumbags";
-		this.sendMultipleFromGmail(subject, message, emailreceivers);
+		for (String to : emailreceivers) {
+			this.sendFromGMail(subject, message, to);
+		}
 	}
 
 	private void sendFromGMail(String subject, String body, String to) throws MessagingException {
@@ -132,25 +136,6 @@ public class EmailSender {
 		Transport transport = session.getTransport("smtp");
 		transport.connect(from, password);
 		transport.sendMessage(message, message.getAllRecipients());
-		transport.close();
-	}
-
-	private void sendMultipleFromGmail(String subject, String body, List<String> emailreceivers) throws MessagingException {
-		Session session = Session.getDefaultInstance(properties);
-		
-		MimeMessage message = new MimeMessage(session);
-		message.setSubject(subject);
-		message.setContent(body, "text/html");
-		
-		String from = properties.getProperty("mail.smtp.user");
-		String password = properties.getProperty("mail.smtp.password");
-		Transport transport = session.getTransport("smtp");
-		transport.connect(from, password);
-		for (String to : emailreceivers) {
-			InternetAddress toAddress = new InternetAddress(to);
-			message.setRecipient(Message.RecipientType.TO, toAddress);
-			transport.sendMessage(message, message.getAllRecipients());
-		}
 		transport.close();
 	}
 }
