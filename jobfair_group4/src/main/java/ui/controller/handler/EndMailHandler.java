@@ -15,7 +15,7 @@ public class EndMailHandler extends RequestHandler {
 	public void handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-			new EmailSender().sendEndOfRegistrationMail(deadline.getTime(), this.getService().getEmailFromUsersWithoutSpot());
+			new EmailSender().sendEndOfRegistrationMail(deadline, this.getService().getEmailFromUsersWithoutSpot());
 		} catch (MessagingException e) {
 			throw new ServletException();
 		}

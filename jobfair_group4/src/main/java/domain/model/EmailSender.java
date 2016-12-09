@@ -1,6 +1,7 @@
 package domain.model;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Properties;
@@ -97,12 +98,13 @@ public class EmailSender {
 		}
 	}
 
-	public void sendEndOfRegistrationMail(Date date, List<String> emailreceivers) throws MessagingException {
+	public void sendEndOfRegistrationMail(Calendar deadline, List<String> emailreceivers) throws MessagingException {
 		String subject = "Jobbeurs 2017 - UCLL Leuven: Herinnering";
 		String message = "Beste,<br><br>";
-		if (date==null) {
+		if (deadline==null) {
 			message += "Weldra";
 		} else {
+			Date date = deadline.getTime();
 			message	+= "Vanaf " + new SimpleDateFormat("EEEE").format(date) + " "
 				+ new SimpleDateFormat("dd").format(date) + " "
 				+ new SimpleDateFormat("MMMM").format(date);
