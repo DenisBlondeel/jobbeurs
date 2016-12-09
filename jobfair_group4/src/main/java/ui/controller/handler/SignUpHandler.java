@@ -30,10 +30,12 @@ public class SignUpHandler extends RequestHandler {
 			String succes = "Het bedrijf " + user.getCompanyName() + " is toegevoegd.";
 			request.setAttribute("succes", succes);
 			this.getService().addUser(user);
-			try {
-				new EmailSender().sendNewCompanyMail(user.getUserID(), tempPass, user.getEmail());
-			} catch (MessagingException e) {
-				throw new ServletException(e.getMessage(), e);
+			if (!this.getTimeHasCome()) {
+				try {
+					new EmailSender().sendNewCompanyMail(user.getUserID(), tempPass, user.getEmail());
+				} catch (MessagingException e) {
+					throw new ServletException(e.getMessage(), e);
+				}
 			}
 		    request.getRequestDispatcher("Controller?action=admin").forward(request, response);
 		}
@@ -68,7 +70,6 @@ public class SignUpHandler extends RequestHandler {
 	private void userSetId(User user, HttpServletRequest request, List<String> result) {
 		String companyName = request.getParameter("companyName");
 		try{
-			//TODO Send this userID and the generated password to the user.
 			user.generateUserId(companyName);
 		} catch (IllegalArgumentException e){
 			result.add(e.getMessage());

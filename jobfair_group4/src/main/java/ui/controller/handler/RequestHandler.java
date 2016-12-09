@@ -75,7 +75,7 @@ public abstract class RequestHandler {
 			timeHasCome = false;
 			return;
 		}
-		if(deadline.getTime().after(new Date())) {
+		if(deadline.getTime().before(new Date())) {
 			timeHasCome = true;
 		}
 	}
