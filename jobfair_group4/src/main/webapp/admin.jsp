@@ -45,6 +45,11 @@
 			<button type="submit" class="btn btn-primary" value="Submit">Verwijder</button>
 		</div>
 	</form>
+	<legend>Voeg klant toe</legend>
+		<div class="form-group form-inline">
+	<button class="btn btn-primary" href = "signup.jsp">Voeg klant toe</button>
+	</div>
+	
 	<form method="POST" action="Controller?action=endMail">
 		<legend>Stuur een herinneringsmail naar bedrijven zonder spot</legend>
 		<div class="form-group form-inline">
