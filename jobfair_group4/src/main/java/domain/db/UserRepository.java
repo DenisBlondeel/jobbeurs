@@ -156,7 +156,28 @@ public class UserRepository {
 		}
 		return list;
 	}
-	
+
+	public List<String> getEmailFromUsersWithoutSpot() {
+		List<String> list = new ArrayList<String>();
+		String sql = "SELECT email FROM jobfair_group4.users"
+				+ "WHERE email NOT IN"
+					+ "(SELECT email FROM jobfair_group4.users WHERE userid IN"
+					+ "(SELECT userid FROM jobfair_group4.spots))"
+				+ "AND role='COMPANY'";
+		try{
+			statement = connection.prepareStatement(sql);
+			ResultSet results = statement.executeQuery();
+			while (results.next())
+			{
+				list.add(results.getString("email"));
+			}
+		} catch (SQLException e)
+		{
+			throw new DbException(e);
+		}
+		return list;
+	}
+
 	public Properties getProperties() {
 		return properties;
 	}

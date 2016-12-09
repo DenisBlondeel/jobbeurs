@@ -195,7 +195,7 @@ public class SpotRepository {
 		}
 		return list;
 	}
-	
+
 	public Spot getFromUser(String userID)
 	{
 		if (userID.isEmpty()) {
