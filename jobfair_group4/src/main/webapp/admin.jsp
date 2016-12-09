@@ -35,7 +35,7 @@
 		<legend>Verander eind datum</legend>
 		<div class="form-group form-inline">
 			<label for="datum">Eind datum:  </label>
-			<input type="date" name="datum" class="form-control" id="datum">
+			<input type="text" name="datum" class="form-control" id="datum">
 			<button type="submit" class="btn btn-primary" value="Submit">Submit</button>
 		</div>
 	</form>

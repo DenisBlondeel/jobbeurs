@@ -16,10 +16,11 @@ public class EndMailHandler extends RequestHandler {
 			throws ServletException, IOException {
 		try {
 			new EmailSender().sendEndOfRegistrationMail(deadline, this.getService().getEmailFromUsersWithoutSpot());
+			request.setAttribute("success", "Je mails werden verstuurd");
 		} catch (MessagingException e) {
 			throw new ServletException();
 		}
-		response.sendRedirect("Controller?action=admin");
+		request.getRequestDispatcher("Controller?action=admin").forward(request, response);
 		
 	}
 

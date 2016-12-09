@@ -85,7 +85,11 @@
 		</c:if>
 		<c:if test="${success!=null}">
 			<div class="alert alert-success">
-				<p>${success}</p>
+				<ul>
+				<c:forEach var="succes" items="${success}">
+					<li>${succes}</li>
+				</c:forEach>
+				</ul>
 			</div>
 		</c:if>
 		

@@ -1,8 +1,10 @@
 package ui.controller.handler;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -20,10 +22,16 @@ public class SetDeadlineHandler extends RequestHandler{
 		
 		if (errors.size() > 0) {
 			request.setAttribute("errors", errors);
-			request.getRequestDispatcher("admin.jsp").forward(request, response);
+		} else {
+			Date date = deadline.getTime();
+			String dateStr = new SimpleDateFormat("EEEE").format(date) + " "
+					+ new SimpleDateFormat("dd").format(date) + " "
+					+ new SimpleDateFormat("MMMM").format(date) + " "
+					+ new SimpleDateFormat("yyyy").format(date);
+			request.setAttribute("success", "Je hebt de deadline gewijzigd naar: " + dateStr);
 		}
 
-		response.sendRedirect("Controller?action=admin");
+		request.getRequestDispatcher("Controller?action=admin").forward(request, response);
 	}
 
 	private void setDeadline(HttpServletRequest request, List<String> errors) {
@@ -51,7 +59,7 @@ public class SetDeadlineHandler extends RequestHandler{
 		Calendar calendar = Calendar.getInstance();
 		try {
 			int year = Integer.parseInt(elements[2]);
-			int month = Integer.parseInt(elements[1]);
+			int month = Integer.parseInt(elements[1]) - 1;
 			int day = Integer.parseInt(elements[0]);
 			calendar.set(year, month, day);
 			this.deadline = calendar;
