@@ -83,6 +83,14 @@ public abstract class RequestHandler {
 	protected boolean getTimeHasCome() {
 		return this.timeHasCome;
 	}
+	
+	protected Calendar getDeadline() {
+		return this.deadline;
+	}
+
+	protected void setDeadline(Calendar deadline) {
+		this.deadline = deadline;
+	}
 
 	/**********************
 	 * SpotOptionsHandler *
