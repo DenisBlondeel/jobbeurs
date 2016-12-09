@@ -49,6 +49,7 @@ public class UpdateHandler extends RequestHandler{
 		} else {
 			request.setAttribute("el", "");
 		}
+		request.setAttribute("userid", spot.getUserID());
 		request.setAttribute("extra", spot.getRemarks());
 		request.setAttribute("spotnr", spotnr);
 		request.getRequestDispatcher("updatespot.jsp").forward(request, response);

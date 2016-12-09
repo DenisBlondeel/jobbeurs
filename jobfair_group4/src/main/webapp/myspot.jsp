@@ -10,6 +10,12 @@
 	<jsp:param value="Plaats   ${spotnr} - ${user.companyName}" name="h2"/>
 </jsp:include>
 
+<div class="container">
+	
+<div class="row">
+
+<div class="col-xs-12 col-sm-12 col-md-8 col-lg-6">
+
 <c:choose>
 <c:when test="${spotnr==null}">
 <p>U heeft nog geen plaats gereserveerd.</p>
@@ -31,20 +37,20 @@
 	</li>
 </ul>
 
-<form method="POST" action="Controller?action=update">
-	<p>
+<form method="POST" action="Controller?action=update" role="form">
+	<div class="form-group">
 		<input type="hidden" name="spotnr" value="${spotnr}">
-		<input type="submit" value="Wijzig voorkeuren">
-	</p>
+		<button type="submit" class="btn btn-primary" value="Wijzig voorkeuren">Wijzig voorkeuren</button>
+	</div>
 </form>
-<form method="POST" action="Controller?action=delete">
-	<p>
+<form method="POST" action="Controller?action=delete" role="form">
+	<div class="form-group">
 		<input type="hidden" name="spotnr" value="${spotnr}">
-		<input type="submit" value="Annuleer reservering">
-	</p>
+		<button type="submit" class="btn btn-primary" value="Annuleer reservering">Annuleer reservering</button>
+	</div>
 </form>
 </c:otherwise>
 </c:choose>
-
+</div></div></div>
 </body>
 </html>
