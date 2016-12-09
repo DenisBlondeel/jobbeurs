@@ -158,24 +158,36 @@ public class UserRepository {
 	}
 
 	public List<String> getEmailFromUsersWithoutSpot() {
-		List<String> list = new ArrayList<String>();
-		String sql = "SELECT email FROM jobfair_group4.users"
-				+ "WHERE email NOT IN"
-					+ "(SELECT email FROM jobfair_group4.users WHERE userid IN"
-					+ "(SELECT userid FROM jobfair_group4.spots))"
-				+ "AND role='COMPANY'";
+		List<String> list1 = new ArrayList<String>();
+		List<String> list2 = new ArrayList<String>();
+		List<String> result = new ArrayList<String>();
+		String sql1 = "SELECT email FROM jobfair_group4.users WHERE role='COMPANY'";
+		String sql2 = "SELECT email FROM jobfair_group4.users u INNER JOIN jobfair_group4.spots s ON u.userid=s.userid WHERE u.role='COMPANY'";
 		try{
-			statement = connection.prepareStatement(sql);
-			ResultSet results = statement.executeQuery();
-			while (results.next())
+			statement = connection.prepareStatement(sql1);
+			ResultSet results1 = statement.executeQuery();
+			while (results1.next())
 			{
-				list.add(results.getString("email"));
+				list1.add(results1.getString("email"));
+			}
+
+			statement = connection.prepareStatement(sql2);
+			ResultSet results2 = statement.executeQuery();
+			while (results2.next())
+			{
+				list2.add(results2.getString("email"));
+			}
+
+			for (String email : list1) {
+				if (!list2.contains(email)) {
+					result.add(email);
+				}
 			}
 		} catch (SQLException e)
 		{
 			throw new DbException(e);
 		}
-		return list;
+		return result;
 	}
 
 	public Properties getProperties() {
