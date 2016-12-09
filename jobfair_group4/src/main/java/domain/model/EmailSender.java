@@ -97,20 +97,27 @@ public class EmailSender {
 		}
 	}
 
-	public void sendEndOfRegistrationMail(Date date, String emailreceiver) throws MessagingException {
-		String subject = "Jobbeurs 2017 - UCLL Leuven: De einddatum nadert";
-		String message = "Beste,<br><br>Vanaf " + new SimpleDateFormat("EEEE").format(date) + " "
+	public void sendEndOfRegistrationMail(Date date, List<String> emailreceivers) throws MessagingException {
+		String subject = "Jobbeurs 2017 - UCLL Leuven: Herinnering";
+		String message = "Beste,<br><br>";
+		if (date==null) {
+			message += "Weldra";
+		} else {
+			message	+= "Vanaf " + new SimpleDateFormat("EEEE").format(date) + " "
 				+ new SimpleDateFormat("dd").format(date) + " "
-				+ new SimpleDateFormat("MMMM").format(date) + " eindigt de mogelijkheid "
-				+ "om zelf je plaats je kiezen op onze jobbeurs. "
-				+ "U heeft dus nog even tijd om uw keuze te maken.<br>"
+				+ new SimpleDateFormat("MMMM").format(date);
+		}
+		message	+= " eindigt de mogelijkheid om zelf je plaats je kiezen op onze jobbeurs. "
+				+ "U heeft nog even tijd om uw keuze te maken.<br>"
 				+ "Moest u uw keuze niet tijdig gemaakt hebben, zal onze verantwoordelijke "
 				+ "een willekeurige spot in uw plaats kiezen."
 				+ "<br>Tot binnenkort.<br><br>"
 				+ "--<br>"
 				+ "Mvg,<br>"
 				+ "Team Scrumbags";
-		sendFromGMail(subject, message, emailreceiver);
+		for (String emailreceiver : emailreceivers) {
+			sendFromGMail(subject, message, emailreceiver);
+		}
 	}
 
 	private void sendFromGMail(String subject, String body, String... to) throws MessagingException {

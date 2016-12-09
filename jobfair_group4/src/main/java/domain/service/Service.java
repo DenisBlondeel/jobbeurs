@@ -39,6 +39,10 @@ public class Service {
 		return getUserRepository().getUserIfAuthenticated(userID, password);
 	}
 
+	public List<String> getEmailFromUsersWithoutSpot() {
+		return getUserRepository().getEmailFromUsersWithoutSpot();
+	}
+
 	private UserRepository getUserRepository() {
 		return this.userDB;
 	}

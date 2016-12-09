@@ -22,4 +22,5 @@
 	<entry key="confirmdelete">ui.controller.handler.ConfirmDeleteHandler</entry>
 	<entry key="drop">ui.controller.handler.DeleteAllHandler</entry>
 	<entry key="admin">ui.controller.handler.AdminHandler</entry>
+	<entry key="endMail">ui.controller.handler.EndMailHandler</entry>
 </properties>

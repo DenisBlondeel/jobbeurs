@@ -45,7 +45,12 @@
 			<button type="submit" class="btn btn-primary" value="Submit">Verwijder</button>
 		</div>
 	</form>
-
+	<form method="POST" action="Controller?action=endMail">
+		<legend>Stuur een herinneringsmail naar bedrijven zonder spot</legend>
+		<div class="form-group form-inline">
+			<button type="submit" class="btn btn-primary" value="Submit">Stuur herinneringsmail</button>
+		</div>
+	</form>
 	</div></div></div>
 </body>
 </html>
