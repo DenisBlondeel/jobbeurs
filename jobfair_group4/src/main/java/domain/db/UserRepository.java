@@ -85,7 +85,7 @@ public class UserRepository {
 					statement.setString(3, user.getContactName());
 					statement.setString(4, user.getEmail());
 					statement.setString(5, user.getPassword());
-					statement.setString(6, "hihisalt");
+					statement.setString(6, user.getSalt());
 					statement.setString(7, user.getRole().toString());
 
 					statement.executeUpdate();
