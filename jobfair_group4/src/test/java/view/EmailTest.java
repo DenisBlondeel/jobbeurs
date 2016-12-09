@@ -8,11 +8,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 import domain.model.EmailSender;
+import domain.model.Spot;
 
 public class EmailTest {
 
 	EmailSender sender;
-	
+	String recipient = "iets@hotmail.com";
 
 	@Before
 	public void setUp() {
@@ -21,20 +22,47 @@ public class EmailTest {
 
 	@Test
 	public void sendSimpleMailTest() throws Exception {
-//		sender.sendNewCompanyMail("username", "password", "email@hotmail.com");
+		sender.sendNewCompanyMail("username", "password", recipient);
 	}
 
 	@Test
 	public void sendConfirmationMailTest() throws Exception {
-//		sender.sendConfirmationMail("spotID", "email@hotmail.com");
+		Spot spot = new Spot("1425", 1, 2, true, null, null);
+		sender.sendConfirmationMail(spot, recipient);
 	}
 
 	@Test
-	public void sendEndMailTest() throws Exception {
+	public void sendSingleEndMailTest() throws Exception {
 		Calendar deadline = Calendar.getInstance();
 		deadline.set(1995, 10, 26);
 		List<String> receivers = new ArrayList<>();
-		receivers.add("email@hotmail.com");
+		receivers.add(recipient);
 		sender.sendEndOfRegistrationMail(deadline, receivers);
+	}
+
+	@Test
+	public void sendMultipleEndMailTest() throws Exception {
+		List<String> receivers = new ArrayList<>();
+		receivers.add(recipient);
+		receivers.add(recipient);
+		receivers.add(recipient);
+		receivers.add(recipient);
+		Calendar deadline = Calendar.getInstance();
+		deadline.set(2016, 11, 25);
+
+		if (receivers.size() == 4)
+			sender.sendEndOfRegistrationMail(deadline, receivers);
+	}
+
+	@Test
+	public void sendAlmostSoldOutTest() throws Exception {
+		List<String> receivers = new ArrayList<>();
+		receivers.add(recipient);
+		receivers.add(recipient);
+		receivers.add(recipient);
+		receivers.add(recipient);
+
+		if (receivers.size() == 4)
+			sender.sendAlmostSoldOutMail(receivers);
 	}
 }
