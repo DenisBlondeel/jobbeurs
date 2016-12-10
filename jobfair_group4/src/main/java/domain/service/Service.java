@@ -96,14 +96,18 @@ public class Service {
 		return spotDB;
 	}
 	
-	public void dropAll()
+	public void dropAllUsers()
 	{
-		spotDB.deleteAll();
 		userDB.deleteAll();
+		spotDB.removeAllUsersFromSpots();
 	}
 
 	public List<String> getAdminEmails() {
 		return userDB.getAllAdminEmails();
+	}
+
+	public List<User> getAdmins() {
+		return getUserRepository().getAdmins();
 	}
 	
 }

@@ -30,7 +30,7 @@ public abstract class RequestHandler {
 			this.handleRequest(request, response);
 		} catch (NotAuthorizedException e) {
 			request.setAttribute("errors", e.getMessage());
-			request.getRequestDispatcher("index.jsp").forward(request, response);
+			request.getRequestDispatcher("Controller?action=home").forward(request, response);
 		}
 	}
 

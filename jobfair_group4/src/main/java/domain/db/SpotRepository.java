@@ -296,9 +296,9 @@ public class SpotRepository {
 		}
 	}
 	
-	public void deleteAll()
+	public void removeAllUsersFromSpots()
 	{
-		String sql = "DELETE FROM jobfair_group4.spots";
+		String sql = "UPDATE jobfair_group4.spots SET userid = NULL ";
 
 		try {
 			statement = connection.prepareStatement(sql);

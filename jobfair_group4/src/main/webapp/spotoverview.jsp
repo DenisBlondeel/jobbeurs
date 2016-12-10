@@ -19,7 +19,8 @@
 		<th>Plaats </th>
 		<th>Bedrijfsnaam </th>
 		<th> </th>
-
+		
+		<th><a href="Controller?action=spots">Alle plaatsen </a></th>
 		<th><a href="Controller?action=vrijelijst">Vrije plaatsen </a></th>
 		<th><a href="Controller?action=bezetlijst">Bezette plaatsen</a></th>
 		<th><a href="Controller?action=alfabetischelijst">Bezette plaatsen op alfabetische volgorde</a></th>
@@ -29,6 +30,7 @@
 		<tr>
 			<td>${spot.spotID}</td>
 			<td>${spot.user.companyName}</td>
+			<td></td>
 			<td></td>
 			<td></td>
 			<td></td>

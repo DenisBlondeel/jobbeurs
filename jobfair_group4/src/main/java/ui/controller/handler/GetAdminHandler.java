@@ -6,22 +6,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import domain.model.RoleEnum;
-
-public class DeleteAllHandler extends RequestHandler{
+public class GetAdminHandler extends RequestHandler {
 
 	@Override
 	public void handleRequest(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
-	{
-		service.dropAllUsers();
-		response.sendRedirect("Controller?action=");
-	}
-
-
-	@Override
-	public RoleEnum[] getAccesList() {
-		return new RoleEnum[]{RoleEnum.ADMIN};
+			throws ServletException, IOException {
+		request.setAttribute("admins", getService().getAdmins());
+		request.getRequestDispatcher("deleteAdmin.jsp").forward(request, response);
 	}
 
 }
