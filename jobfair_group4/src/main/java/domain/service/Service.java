@@ -30,6 +30,10 @@ public class Service {
 	public User getUser(String userID) {
 		return getUserRepository().get(userID);
 	}
+	
+	public List<User> getAllCompanies() {
+		return getUserRepository().getAllCompanies();
+	}
 
 	public void addUser(User user) {
 		getUserRepository().add(user);
@@ -109,6 +113,7 @@ public class Service {
 	public List<User> getAdmins() {
 		return getUserRepository().getAdmins();
 	}
+<<<<<<< HEAD
 	
 	public List<SpotData> getHemisData()
 	{
@@ -120,4 +125,10 @@ public class Service {
 		return dataDB.getAtriumData();
 	}
 	
+=======
+
+	public void deleteAdmin(String userID) {
+		getUserRepository().deleteAdmin(userID);
+	}
+>>>>>>> branch 'master' of https://github.com/elke-steegmans/jobfair_group4.git
 }

@@ -6,6 +6,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import domain.model.RoleEnum;
+
 public class GetAdminHandler extends RequestHandler {
 
 	@Override
@@ -15,4 +17,8 @@ public class GetAdminHandler extends RequestHandler {
 		request.getRequestDispatcher("deleteAdmin.jsp").forward(request, response);
 	}
 
+	@Override
+	public RoleEnum[] getAccesList() {
+		return new RoleEnum[]{RoleEnum.ADMIN};
+	}
 }

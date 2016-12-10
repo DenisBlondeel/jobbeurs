@@ -28,5 +28,5 @@
 	<entry key="addAdmin">ui.controller.handler.AddAdminHandler</entry>
 	<entry key="getAdmin">ui.controller.handler.GetAdminHandler</entry>
 	<entry key="deleteAdmin">ui.controller.handler.DeleteAdminHandler</entry>
-	<entry key="confirmDeleteAdmin">ui.controller.handler.ConfirmDeleteAdminHandler</entry>
+	<entry key="companies">ui.controller.handler.GetCompaniesHandler</entry>
 </properties>
