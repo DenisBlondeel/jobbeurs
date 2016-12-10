@@ -12,40 +12,47 @@ import domain.model.Spot;
 import domain.model.User;
 
 public class ShowOptionsHandler extends RequestHandler {
-	
+
 	User user;
 
 	@Override
 	public void handleRequest(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws ServletException, IOException
+	{
 		String spotID = request.getParameter("id");
 		request.setAttribute("spotnr", spotID);
-		
+
 		HttpSession session = request.getSession();
 		user = (User) session.getAttribute("user");
-		
-		if(service.getSpotFromUser(user.getUserID()) != null){
+
+		if (service.getSpotFromUser(user.getUserID()) != null)
+		{
 			request.setAttribute("errors", "Er werd al een plaats gereserveerd voor " + user.getCompanyName() + ".");
 			response.sendRedirect("Controller?action=");
+			return;
 		}
 
-		if (user!=null) {
+		if (user != null)
+		{
 			request.setAttribute("userid", user.getUserID());
 			Spot spot = service.getSpotFromUser(user.getUserID());
-			if (spot != null) {
+			if (spot != null)
+			{
 				request.setAttribute("mine", spot.getSpotID());
 			}
 		}
 		request.setAttribute("bezet", service.getOccupiedSpots());
 		request.getRequestDispatcher("spotoptions.jsp").forward(request, response);
-		
+
 	}
 
 	@Override
-	public RoleEnum[] getAccesList() {
-		if (this.getTimeHasCome()) {
-			return new RoleEnum[]{};
+	public RoleEnum[] getAccesList()
+	{
+		if (this.getTimeHasCome())
+		{
+			return new RoleEnum[] {};
 		}
-		return new RoleEnum[]{RoleEnum.COMPANY};
+		return new RoleEnum[] { RoleEnum.COMPANY };
 	}
 }
