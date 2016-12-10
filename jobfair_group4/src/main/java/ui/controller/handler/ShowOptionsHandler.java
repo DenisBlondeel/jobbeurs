@@ -1,6 +1,8 @@
 package ui.controller.handler;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +16,7 @@ import domain.model.User;
 public class ShowOptionsHandler extends RequestHandler {
 
 	User user;
+	List<String> errors = new ArrayList<String>();
 
 	@Override
 	public void handleRequest(HttpServletRequest request, HttpServletResponse response)
@@ -27,7 +30,8 @@ public class ShowOptionsHandler extends RequestHandler {
 
 		if (service.getSpotFromUser(user.getUserID()) != null)
 		{
-			request.setAttribute("errors", "Er werd al een plaats gereserveerd voor " + user.getCompanyName() + ".");
+			errors.add("Er werd al een plaats gereserveerd voor " + user.getCompanyName() + ".");
+			request.setAttribute("errors", errors);
 			response.sendRedirect("Controller?action=");
 			return;
 		}
