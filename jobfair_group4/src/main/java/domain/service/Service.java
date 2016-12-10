@@ -109,5 +109,8 @@ public class Service {
 	public List<User> getAdmins() {
 		return getUserRepository().getAdmins();
 	}
-	
+
+	public void deleteAdmin(String userID) {
+		getUserRepository().deleteAdmin(userID);
+	}
 }
