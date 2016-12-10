@@ -14,7 +14,7 @@ public class LinkUserToSpotHandler extends RequestHandler {
 	public void handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setAttribute("freeSpots", this.getService().getFreeSpots());
-		request.setAttribute("freeUsers", this.getService().getUsersWithoutSpot());
+		request.setAttribute("freeUsers", this.getService().getUserIDsWithoutSpot());
 
 		request.getRequestDispatcher("linkSpot.jsp").forward(request, response);
 	}

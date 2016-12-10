@@ -39,8 +39,8 @@ public class Service {
 		return getUserRepository().getUserIfAuthenticated(userID, password);
 	}
 
-	public List<User> getUsersWithoutSpot() {
-		return getUserRepository().getUsersWithoutSpot();
+	public List<String> getUserIDsWithoutSpot() {
+		return getUserRepository().getUserIDsWithoutSpot();
 	}
 
 	public List<String> getEmailFromUsersWithoutSpot() {
