@@ -3,19 +3,23 @@ package domain.service;
 import java.util.List;
 import java.util.Properties;
 
+import domain.db.SpotDataRepository;
 import domain.db.SpotRepository;
 import domain.db.UserRepository;
 import domain.model.Spot;
+import domain.model.SpotData;
 import domain.model.User;
 
 public class Service {
 	
 	private SpotRepository spotDB;
 	private UserRepository userDB;
+	private SpotDataRepository dataDB;
 
 	public Service(Properties properties) {
 		spotDB = new SpotRepository(properties);
 		userDB = new UserRepository(properties);
+		dataDB = new SpotDataRepository(properties);
 	}
 
 	public void close() {
@@ -104,6 +108,16 @@ public class Service {
 
 	public List<User> getAdmins() {
 		return getUserRepository().getAdmins();
+	}
+	
+	public List<SpotData> getHemisData()
+	{
+		return dataDB.getHemisfeerData();
+	}
+	
+	public List<SpotData> getAtriumData()
+	{
+		return dataDB.getAtriumData();
 	}
 	
 }
