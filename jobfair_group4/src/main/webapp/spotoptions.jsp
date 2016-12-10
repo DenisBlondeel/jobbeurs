@@ -16,7 +16,7 @@
 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-6">
 
 	<h3>Opties voor plaats ${spotnr}: </h3>
-	<form method="POST" action="Controller?action=spotoptions&id=${spotnr}" novalidate="novalidate" role="form">
+	<form method="POST" action="Controller?action=spotoptions" novalidate="novalidate" role="form">
 		<fieldset>
 		<legend>Aantal stoelen: </legend>
 
@@ -76,6 +76,7 @@
 		<label for="extra">Extra opmerkingen: </label>
 		<textarea name="extra" class="form-control" rows="3"></textarea>
 		</div>
+		<input type="hidden" id="id" name="id" value="<c:out value="${spotnr}"/>"> 
 		<button type="submit" class="btn btn-primary" value="Submit">reserveer plaats</button>
 	</form>
 	</div></div></div>

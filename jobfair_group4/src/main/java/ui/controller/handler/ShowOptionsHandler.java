@@ -46,7 +46,12 @@ public class ShowOptionsHandler extends RequestHandler {
 			}
 		}
 		request.setAttribute("bezet", service.getOccupiedSpots());
-		request.getRequestDispatcher("spotoptions.jsp").forward(request, response);
+		if (user.getRole().equals(RoleEnum.ADMIN)) {
+			request.setAttribute("freeUsers", this.getService().getUserIDsWithoutSpot());
+			request.getRequestDispatcher("spotoptionsadmin.jsp").forward(request, response);
+		} else {
+			request.getRequestDispatcher("spotoptions.jsp").forward(request, response);
+		}
 
 	}
 
@@ -55,8 +60,8 @@ public class ShowOptionsHandler extends RequestHandler {
 	{
 		if (this.getTimeHasCome())
 		{
-			return new RoleEnum[] {};
+			return new RoleEnum[] {RoleEnum.ADMIN};
 		}
-		return new RoleEnum[] { RoleEnum.COMPANY };
+		return new RoleEnum[] { RoleEnum.COMPANY, RoleEnum.ADMIN};
 	}
 }

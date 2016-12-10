@@ -7,6 +7,7 @@
 	<entry key="logOut">ui.controller.handler.LogOutHandler</entry>
 	<entry key="showopt">ui.controller.handler.ShowOptionsHandler</entry>
 	<entry key="spotoptions">ui.controller.handler.SpotOptionsHandler</entry>
+	<entry key="spotoptionsadmin">ui.controller.handler.SpotOptionsAdminHandler</entry>
 	<entry key="spots">ui.controller.handler.GetSpotsHandler</entry>
 	<entry key="vrijelijst">ui.controller.handler.GetFreeSpotsHandler</entry>
 	<entry key="bezetlijst">ui.controller.handler.GetOccupiedSpotsHandler</entry>
