@@ -19,13 +19,15 @@
 		<th>Bedrijfsnaam </th>
 		<th>Contactnaam </th>
 		<th>Email </th>
+		<th>Plaats </th>
 
 	</tr>
-	<c:forEach var="company" items="${companies}">
+	<c:forEach var="spot" items="${spotsTaken}">
 		<tr>
-			<td>${company.companyName}</td>
-			<td>${company.contactName}</td>
-			<td>${company.email}</td>
+			<td>${spot.user.companyName}</td>
+			<td>${spot.user.contactName}</td>
+			<td>${spot.user.email}</td>
+			<td>${spot.spotID}</td>
 		</tr>
 	</c:forEach>
 </table>
