@@ -9,10 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import javax.management.relation.Role;
-
 import domain.model.RoleEnum;
-import domain.model.Spot;
 import domain.model.User;
 
 public class UserRepository {
@@ -167,7 +164,7 @@ public class UserRepository {
 			results.next();
 			int cnt = Integer.parseInt(results.getString("count"));
 			if (cnt == 1) {
-				throw new DbException("Er moet minstens één admin zijn.");
+				throw new IllegalArgumentException("Er moet minstens één admin zijn.");
 			} else {
 				this.delete(userID);
 			}
