@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import domain.model.Spot;
 import domain.model.SpotData;
 
 public class SpotDataRepository {
