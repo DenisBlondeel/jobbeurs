@@ -7,10 +7,12 @@
 	<entry key="logOut">ui.controller.handler.LogOutHandler</entry>
 	<entry key="showopt">ui.controller.handler.ShowOptionsHandler</entry>
 	<entry key="spotoptions">ui.controller.handler.SpotOptionsHandler</entry>
+	<entry key="spotoptionsadmin">ui.controller.handler.SpotOptionsAdminHandler</entry>
 	<entry key="spots">ui.controller.handler.GetSpotsHandler</entry>
 	<entry key="vrijelijst">ui.controller.handler.GetFreeSpotsHandler</entry>
 	<entry key="bezetlijst">ui.controller.handler.GetOccupiedSpotsHandler</entry>
 	<entry key="signup">ui.controller.handler.SignUpHandler</entry>
+	<entry key="gotosignup">ui.controller.handler.GotoSignUpHandler</entry>
 	<entry key="upload">ui.controller.handler.UploadHandler</entry>
 	<entry key="alfabetischelijst">ui.controller.handler.GetAlphabeticSpotsHandler</entry>	
 	<entry key="myspot">ui.controller.handler.MySpotHandler</entry>
@@ -33,4 +35,5 @@
 	<entry key="download">ui.controller.handler.DownloadHandler</entry>
 	<entry key="resetpw">ui.controller.handler.ResetPwHandler</entry>
 	<entry key="confirmresetpw">ui.controller.handler.ConfirmResetPwHandler</entry>
+	<entry key="getBedrijven">ui.controller.handler.GetBedrijvenHandler</entry>
 </properties>

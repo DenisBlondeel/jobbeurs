@@ -18,6 +18,7 @@ public class EndMailHandler extends RequestHandler {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		Calendar deadline = (Calendar)session.getAttribute("deadline");
+		this.getService().getEmailFromUsersWithoutSpot();
 		try {
 			new EmailSender().sendEndOfRegistrationMail(deadline, this.getService().getEmailFromUsersWithoutSpot());
 			request.setAttribute("success", "Je mails werden verstuurd");

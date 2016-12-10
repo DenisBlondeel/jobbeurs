@@ -22,12 +22,12 @@
 		<th>Plaats </th>
 
 	</tr>
-	<c:forEach var="spot" items="${spotsTaken}">
+	<c:forEach var="company" items="${companies}" varStatus="status">
 		<tr>
-			<td>${spot.user.companyName}</td>
-			<td>${spot.user.contactName}</td>
-			<td>${spot.user.email}</td>
-			<td>${spot.spotID}</td>
+			<td>${company.companyName}</td>
+			<td>${company.contactName}</td>
+			<td>${company.email}</td>
+			<td>${spotsTaken[status.index]}</td>
 		</tr>
 	</c:forEach>
 </table>

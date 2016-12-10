@@ -20,16 +20,19 @@ public class GetCompaniesHandler extends RequestHandler {
 			throws ServletException, IOException {
 		List<User> companies = this.getService().getAllCompanies();
 		List<Spot> spots = this.getService().getAllSpots();
-		List<Spot> spotsTaken = new ArrayList<>();
+		List<String> spotsTaken = new ArrayList<>();
 		
 		for (User company : companies) {
+			String companySpot = "";
 			for (Spot spot : spots) {
 				if(spot.getUserID()!=null && spot.getUserID().equals(company.getUserID())) {
-					spotsTaken.add(spot);
+					companySpot = spot.getSpotID();
 				}
 			}
+			spotsTaken.add(companySpot);
 		}
 		
+		request.setAttribute("companies", companies);
 		request.setAttribute("spotsTaken", spotsTaken);
 		
 		HttpSession session = request.getSession();
