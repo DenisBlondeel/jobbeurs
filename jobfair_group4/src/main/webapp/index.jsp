@@ -9,10 +9,8 @@
 		<jsp:param value="UCLL Jobbeurs 2017" name="h2"/>
 	</jsp:include>
 	<body>
-		<!-- <h1 class="text-center">Hello World</h1>
-		<h1>test ! </h1> -->
-		<c:if test="${user!=null}">
-			<h3>Welkom ${user.companyName}!</h3>
+		<c:if test="${sessionScope.user!=null}">
+			<h3>Welkom <c:out value="${sessionScope.user.companyName}"/>!</h3>
 		</c:if>
 		
 		<c:choose>
@@ -27,13 +25,6 @@
 		</c:when>
 		</c:choose>
 		
-<!--  	<c:if test="${userid!=null}">
-			<a href="imgmap.jsp">hemisfeer</a>
-		</c:if>-->
-		
-			<!--  a href="Controller?action=imgmap">hemisfeer</a>-->
-<!-- 			<a href="imgmap.jsp">hemisfeer</a> -->
-
 		<jsp:include page="imgmap.jsp"></jsp:include>
 
 	</body>
