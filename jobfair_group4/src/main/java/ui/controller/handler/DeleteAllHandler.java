@@ -14,7 +14,7 @@ public class DeleteAllHandler extends RequestHandler{
 	public void handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException
 	{
-		service.dropAll();
+		service.dropAllUsers();
 		response.sendRedirect("Controller?action=");
 	}
 
