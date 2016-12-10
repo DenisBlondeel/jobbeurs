@@ -71,6 +71,8 @@ public class UserRepository {
 			while (results.next()) {
 				User user = new User();
 				user.setUserID(results.getString("userid"));
+				user.setCompanyNameFromDb(results.getString("companyName"));
+				user.setContactNameFromDb(results.getString("contactName"));
 				user.setEmail(results.getString("email"));
 				user.setPassword(results.getString("password"));
 				user.setRole(results.getString("role"));
@@ -116,6 +118,28 @@ public class UserRepository {
 					throw new DbException(e.getMessage(), e);
 				}
 			}
+		} catch (SQLException e) {
+			throw new DbException(e.getMessage(), e);
+		}
+	}
+
+	public void deleteAdmin(String userID) {
+		if (userID == null) {
+			throw new DbException("Nothing to delete.");
+		}
+		String sql = "SELECT COUNT(*) FROM jobfair_group4.users WHERE role='ADMIN'";
+		try {
+			statement = connection.prepareStatement(sql);
+			ResultSet results = statement.executeQuery();
+
+			results.next();
+			int cnt = Integer.parseInt(results.getString("count"));
+			if (cnt == 1) {
+				throw new DbException("Er moet minstens één admin zijn.");
+			} else {
+				this.delete(userID);
+			}
+
 		} catch (SQLException e) {
 			throw new DbException(e.getMessage(), e);
 		}

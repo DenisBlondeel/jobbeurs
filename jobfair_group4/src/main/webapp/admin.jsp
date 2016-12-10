@@ -53,6 +53,10 @@
 		<div class="form-group form-inline">
 	<a class="btn btn-primary" href = "Controller?action=linkSpot">Link bedrijven aan vrije plaatsen</a>
 	</div>
+	<legend>Verwijder een beheerder</legend>
+		<div class="form-group form-inline">
+	<a class="btn btn-primary" href = "Controller?action=getAdmin">Verwijder een beheerder</a>
+	</div>
 	
 	<form method="POST" action="Controller?action=endMail">
 		<legend>Stuur een herinneringsmail naar bedrijven zonder spot</legend>
