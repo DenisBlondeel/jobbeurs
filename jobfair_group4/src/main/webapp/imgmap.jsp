@@ -34,6 +34,9 @@
 					href="Controller?action=myspot"
 					class="mine"
 				</c:when>
+				<c:when test="${empty bezet}">
+					href="Controller?action=showopt&id=${h.id}"
+				</c:when>
 				<c:otherwise>
 		       		<c:forEach var="b" items="${bezet}">
 		       			<c:choose>
