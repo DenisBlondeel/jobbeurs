@@ -39,6 +39,10 @@ public class Service {
 		return getUserRepository().getUserIfAuthenticated(userID, password);
 	}
 
+	public List<String> getUserIDsWithoutSpot() {
+		return getUserRepository().getUserIDsWithoutSpot();
+	}
+
 	public List<String> getEmailFromUsersWithoutSpot() {
 		return getUserRepository().getEmailFromUsersWithoutSpot();
 	}
@@ -88,10 +92,10 @@ public class Service {
 		return spotDB;
 	}
 	
-	public void dropAll()
+	public void dropAllUsers()
 	{
-		spotDB.deleteAll();
 		userDB.deleteAll();
+		spotDB.removeAllUsersFromSpots();
 	}
 
 	public List<String> getAdminEmails() {

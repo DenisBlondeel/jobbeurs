@@ -43,7 +43,6 @@
 		       					class="bezet"
 		       				</c:when>
 		       				<c:otherwise>
-		       					title="${h.id}"
 		       					href="Controller?action=showopt&id=${h.id}"
 		       				</c:otherwise>
 		       			</c:choose>
@@ -161,7 +160,6 @@
 		       					class="bezet"
 		       				</c:when>
 		       				<c:otherwise>
-		       					title="${h.id}"
 		       					href="Controller?action=showopt&id=${h.id}"
 		       				</c:otherwise>
 		       			</c:choose>

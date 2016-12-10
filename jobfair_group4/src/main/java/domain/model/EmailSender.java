@@ -32,16 +32,32 @@ public class EmailSender {
 		properties.put("mail.smtp.user", username);
 	}
 
-	public void sendConfirmationMail(Spot spot, String emailreceiver) throws MessagingException {
+	public void sendConfirmationMail(Spot spot, String company, String emailreceiver) throws MessagingException {
 		String subject = "Jobbeurs 2017 - UCLL Leuven: Bevestiging plaats";
-		String message = "Beste,<br><br>U reserveerde de plaats met nummer " + spot.getSpotID() + ".<br>"
-				+ "Het volgende zal voor jou voorzien worden:<br><ul><li>"
+		String message = "Beste,<br><br>Uw bedrijf, "
+				+ company + ", reserveerde de plaats met nummer " + spot.getSpotID() + ".<br>"
+				+ "Het volgende zal voor u voorzien worden:<br><ul><li>"
 				+ spot.getAmountChairs() + " stoelen</li>"
 				+ "<li>"+spot.getAmountTables()+" tafels</li>";
 		if (spot.getElectricity()) {
 			message+="<li>elektriciteit</li>";
 		}
 		message += "</ul><br>Tot binnenkort.<br><br>"
+				+ "--<br>"
+				+ "Mvg,<br>"
+				+ "Team Scrumbags";
+		sendFromGMail(subject, message, emailreceiver);
+	}
+
+	public void sendUserLinkedToSpotMail(String spotID, String company, String emailreceiver) throws MessagingException {
+		String subject = "Jobbeurs 2017 - UCLL Leuven: Toewijzing plaats";
+		String message = "Beste,<br><br>Uw bedrijf, "
+				+ company + ", kreeg de plaats met nummer " + spotID + " toegewezen.<br>"
+				+ "Wij voorzien het volgende voor u:<br><ul>"
+				+ "<li>2 stoelen</li>"
+				+ "<li>1 tafel</li>"
+				+ "<li>elektriciteit</li>"
+				+ "</ul><br>Tot binnenkort.<br><br>"
 				+ "--<br>"
 				+ "Mvg,<br>"
 				+ "Team Scrumbags";
@@ -60,10 +76,11 @@ public class EmailSender {
 		sendFromGMail(subject, message, emailreceiver);
 	}
 
-	public void sendUpdateMail(Spot spot, String emailreceiver) throws MessagingException {
+	public void sendUpdateMail(Spot spot, String company, String emailreceiver) throws MessagingException {
 		String subject = "Jobbeurs 2017 - UCLL Leuven: Wijziging plaats";
-		String message = "Beste,<br><br>U wijzigde uw vookeuren voor de plaats met nummer " + spot.getSpotID() + ".<br>"
-				+ "Het volgende zal nu voor jou voorzien worden:<br><ul><li>"
+		String message = "Beste,<br><br>Uw bedrijf, "
+				+ company + ", wijzigde uw vookeuren voor de plaats met nummer " + spot.getSpotID() + ".<br>"
+				+ "Het volgende zal nu voor u voorzien worden:<br><ul><li>"
 				+ spot.getAmountChairs() + " stoelen</li>"
 				+ "<li>"+spot.getAmountTables()+" tafels</li>";
 		if (spot.getElectricity()) {
@@ -76,9 +93,9 @@ public class EmailSender {
 		sendFromGMail(subject, message, emailreceiver);
 	}
 
-	public void sendCancelationMail(Spot spot, String emailreceiver) throws MessagingException {
+	public void sendCancelationMail(Spot spot, String company, String emailreceiver) throws MessagingException {
 		String subject = "Jobbeurs 2017 - UCLL Leuven: Annulatie plaats";
-		String message = "Beste,<br><br>Uw plaats met nummer " + spot.getSpotID() + " werd geannuleerd.<br>"
+		String message = "Beste "+company+",<br><br>Uw plaats met nummer " + spot.getSpotID() + " werd geannuleerd.<br>"
 				+ "Indien u deze mail krijgt zonder op de hoogte te zijn van deze veranderingen, gelieve dan contact op "
 				+ "te nemen met onze verantwoordelijke"
 				+ "<br>Tot binnenkort.<br><br>"
@@ -93,8 +110,8 @@ public class EmailSender {
 		String message = "Melding voor de administrator: De te huren locaties zijn bijna volzet, er zijn minder dan 10 plaatsen nog vrij.<br>"
 				+ "Het is dus ongeveer tijd geworden om meer standplaatsen toe te voegen zodat meer bedrijven "
 				+ "kunnen strijden voor een plaatsje.";
-		for (String emailreceiver : emailreceivers) {
-			sendFromGMail(subject, message, emailreceiver);
+		for (String to : emailreceivers) {
+			this.sendFromGMail(subject, message, to);
 		}
 	}
 
@@ -117,19 +134,17 @@ public class EmailSender {
 				+ "--<br>"
 				+ "Mvg,<br>"
 				+ "Team Scrumbags";
-		for (String emailreceiver : emailreceivers) {
-			sendFromGMail(subject, message, emailreceiver);
+		for (String to : emailreceivers) {
+			this.sendFromGMail(subject, message, to);
 		}
 	}
 
-	private void sendFromGMail(String subject, String body, String... to) throws MessagingException {
+	private void sendFromGMail(String subject, String body, String to) throws MessagingException {
 		Session session = Session.getDefaultInstance(properties);
 		
 		MimeMessage message = new MimeMessage(session);
-		for (int i = 0; i < to.length; i++) {
-			InternetAddress toAddress = new InternetAddress(to[i]);
-			message.addRecipient(Message.RecipientType.TO, toAddress);
-		}
+		InternetAddress toAddress = new InternetAddress(to);
+		message.setRecipient(Message.RecipientType.TO, toAddress);
 		message.setSubject(subject);
 		message.setContent(body, "text/html");
 		

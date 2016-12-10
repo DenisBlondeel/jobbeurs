@@ -29,7 +29,7 @@ public class ConfirmDeleteHandler extends RequestHandler{
 			service.removeUserFromSpot(spotnr);
 			request.setAttribute("annuleer", "annuleer");
 			try {
-				new EmailSender().sendCancelationMail(spot, user.getEmail());
+				new EmailSender().sendCancelationMail(spot, user.getCompanyName(), user.getEmail());
 			} catch (MessagingException e) {
 				
 			}

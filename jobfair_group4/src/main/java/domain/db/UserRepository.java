@@ -85,7 +85,7 @@ public class UserRepository {
 					statement.setString(3, user.getContactName());
 					statement.setString(4, user.getEmail());
 					statement.setString(5, user.getPassword());
-					statement.setString(6, "hihisalt");
+					statement.setString(6, user.getSalt());
 					statement.setString(7, user.getRole().toString());
 
 					statement.executeUpdate();
@@ -155,6 +155,41 @@ public class UserRepository {
 			throw new DbException(e);
 		}
 		return list;
+	}
+
+	public List<String> getUserIDsWithoutSpot() {
+		List<String> list1 = new ArrayList<String>();
+		List<String> list2 = new ArrayList<String>();
+		List<String> result = new ArrayList<String>();
+
+		String sql1 = "SELECT userID FROM jobfair_group4.users WHERE role='COMPANY'";
+		String sql2 = "SELECT u.userID FROM jobfair_group4.users u INNER JOIN jobfair_group4.spots s ON u.userid=s.userid WHERE u.role='COMPANY'";
+
+		try{
+			statement = connection.prepareStatement(sql1);
+			ResultSet results1 = statement.executeQuery();
+			while (results1.next())
+			{
+				list1.add(results1.getString("userID"));
+			}
+
+			statement = connection.prepareStatement(sql2);
+			ResultSet results2 = statement.executeQuery();
+			while (results2.next())
+			{
+				list2.add(results2.getString("userID"));
+			}
+
+			for (String id : list1) {
+				if (!list2.contains(id)) {
+					result.add(id);
+				}
+			}
+		} catch (SQLException e)
+		{
+			throw new DbException(e);
+		}
+		return result;
 	}
 
 	public List<String> getEmailFromUsersWithoutSpot() {

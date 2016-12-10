@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import domain.model.EmailSender;
 import domain.model.Spot;
+import domain.model.User;
 
 public class ConfirmUpdateHandler extends RequestHandler	{
 
@@ -37,8 +38,10 @@ public class ConfirmUpdateHandler extends RequestHandler	{
 		request.setAttribute("extra", spot.getRemarks());
 		request.setAttribute("update", "update");
 
+		User user = getService().getUser(spot.getUserID());
+
 		try {
-			new EmailSender().sendUpdateMail(spot, getService().getUser(spot.getUserID()).getEmail());
+			new EmailSender().sendUpdateMail(spot, user.getCompanyName(), user.getEmail());
 		} catch (MessagingException e) {
 			throw new ServletException(e.getMessage(), e);
 		}

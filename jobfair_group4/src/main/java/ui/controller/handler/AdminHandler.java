@@ -28,4 +28,9 @@ public class AdminHandler extends RequestHandler {
 		request.getRequestDispatcher("admin.jsp").forward(request, response);;
 	}
 
+
+	@Override
+	public RoleEnum[] getAccesList() {
+		return new RoleEnum[]{RoleEnum.ADMIN};
+	}
 }

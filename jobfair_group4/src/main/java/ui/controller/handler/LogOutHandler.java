@@ -12,7 +12,7 @@ public class LogOutHandler extends RequestHandler {
 	@Override
 	public void handleRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		HttpSession session = request.getSession();
-		session.invalidate();
+		session.removeAttribute("user");
 
 		request.getRequestDispatcher("Controller?action=").forward(request, response);
 	}

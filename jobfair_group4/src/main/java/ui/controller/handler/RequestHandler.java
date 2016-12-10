@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import ui.controller.NotAuthorizedException;
 
 import domain.model.RoleEnum;
@@ -17,7 +18,6 @@ import domain.service.Service;
 public abstract class RequestHandler {
 
 	protected Service service;
-	protected Calendar deadline;
 	private boolean timeHasCome = false;
 	private boolean enoughSpots = true;
 
@@ -25,7 +25,7 @@ public abstract class RequestHandler {
 
 	public final void handle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			this.checkDate();
+			this.checkDate(request);
 			this.checkRole(request);
 			this.handleRequest(request, response);
 		} catch (NotAuthorizedException e) {
@@ -41,20 +41,20 @@ public abstract class RequestHandler {
 			return;
 		}
 		HttpSession session = request.getSession();
-		User user = (User) session.getAttribute("user");
+		User user = (User)session.getAttribute("user");
 		if (user == null) {
-			throw new NotAuthorizedException("Insufficient rights");
+			throw new NotAuthorizedException("Je hebt hiervoor geen toegang");
+		}
+		if(user.getRole().equals(RoleEnum.ADMIN))
+		{
+			request.setAttribute("admin", "admin");
 		}
 		for (RoleEnum role : this.getAccesList()) {
 			if (user.getRole().equals(role)) {
 				return;
 			}
 		}
-		if(user.getRole().equals(RoleEnum.ADMIN))
-		{
-			request.setAttribute("admin", "admin");
-		}
-		throw new NotAuthorizedException("Insufficient rights");
+		throw new NotAuthorizedException("Je hebt hiervoor geen toegang");
 	}
 
 	public RoleEnum[] getAccesList() {
@@ -69,8 +69,10 @@ public abstract class RequestHandler {
 		return service;
 	}
 	
-	public void checkDate()
+	public void checkDate(HttpServletRequest request)
 	{
+		HttpSession session = request.getSession();
+		Calendar deadline = (Calendar)session.getAttribute("deadline");
 		if(deadline == null) {
 			timeHasCome = false;
 			return;
@@ -83,6 +85,7 @@ public abstract class RequestHandler {
 	protected boolean getTimeHasCome() {
 		return this.timeHasCome;
 	}
+
 
 	/**********************
 	 * SpotOptionsHandler *
