@@ -167,7 +167,7 @@ public class UserRepository {
 			results.next();
 			int cnt = Integer.parseInt(results.getString("count"));
 			if (cnt == 1) {
-				throw new DbException("Er moet minstens één admin zijn.");
+				throw new IllegalArgumentException("Er moet minstens één admin zijn.");
 			} else {
 				this.delete(userID);
 			}

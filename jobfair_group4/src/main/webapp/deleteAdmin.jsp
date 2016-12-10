@@ -8,7 +8,7 @@
 <jsp:include page="header.jsp">
 	<jsp:param value="admin" name="type" />
 	<jsp:param value="Delete admin" name="title" />
-	<jsp:param value="Verwijder admin" name="h2" />
+	<jsp:param value="Verwijder beheerder" name="h2" />
 </jsp:include>
 
 
@@ -18,7 +18,7 @@
 
 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-6">
 	<p>Selecteer hieronder de beheerder die je wenst te verwijderen.</p>
-	<form method="POST" action="Controller?action=upload" enctype="multipart/form-data">
+	<form method="POST" action="Controller?action=deleteAdmin">
 		<div class="form-group">
 			<label for="adminID">Beheerders: </label>
 			<select class="form-control" name="adminID" id="adminID">
@@ -28,11 +28,11 @@
 			</select>
 		</div>
 		<div class="form-group">
-			<label for="password">password</label>
+			<label for="password">Je Wachtwoord: </label>
 			<input type="password" class="form-control" id="password" placeholder="password" name="password">
 		</div>
 		<div class="form-group">
-			<button type="submit" class="btn btn-primary" value="Verwijder admin">Verwijder admin</button>
+			<button type="submit" class="btn btn-primary" value="Verwijder admin">Verwijder beheerder</button>
 		</div>
 	</form>
 </div>
