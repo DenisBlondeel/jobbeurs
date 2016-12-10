@@ -5,14 +5,14 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class CsvWriter {
 	
 	private static final DateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 	
-	public void write(ArrayList<User> users){
+	public File write(List<User> users){
 		
 		String fileName = "Inschrijvingen_Jobbeurs_"+getYear();
 		File file = new File(fileName);
@@ -32,9 +32,10 @@ public class CsvWriter {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+		return file;
 	}
 
-	private String getYear() {
+	public String getYear() {
 		Date date = new Date();
 		String currentDate = sdf.format(date);
 		String year = "";

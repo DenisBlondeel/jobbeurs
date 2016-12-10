@@ -67,6 +67,7 @@
 	<legend>Toon alle bedrijven</legend>
 		<div class="form-group form-inline">
 	<a class="btn btn-primary" href = "Controller?action=companies">Lijst met alle bedrijven</a>
+	<a class="btn btn-primary" href = "Controller?action=download">Download lijst met alle bedrijven</a>
 	</div>
 	</div></div></div>
 </body>
