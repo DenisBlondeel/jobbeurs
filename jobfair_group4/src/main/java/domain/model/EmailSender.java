@@ -52,7 +52,7 @@ public class EmailSender {
 	public void sendUserLinkedToSpotMail(String spotID, String company, String emailreceiver) throws MessagingException {
 		String subject = "Jobbeurs 2017 - UCLL Leuven: Toewijzing plaats";
 		String message = "Beste,<br><br>Uw bedrijf, "
-				+ company + ", kreeg de plaats met nummer " + spotID + "toegewezen.<br>"
+				+ company + ", kreeg de plaats met nummer " + spotID + " toegewezen.<br>"
 				+ "Wij voorzien het volgende voor u:<br><ul>"
 				+ "<li>2 stoelen</li>"
 				+ "<li>1 tafel</li>"
