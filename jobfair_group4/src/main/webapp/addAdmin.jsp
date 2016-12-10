@@ -34,7 +34,7 @@
 			<input type="text" class="form-control" id="email" name="email" value='<c:out value="${prevEmail}"></c:out>'>
 		</div>
 		<div class="form-group">
-			<input type="submit" class="btn btn-primary" value="Beheerder toevoegen">Beheerder toevoegen</button>
+			<input type="submit" class="btn btn-primary" value="Beheerder toevoegen">
 		</div>
 	</form>
 </div>
