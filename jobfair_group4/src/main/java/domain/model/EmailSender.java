@@ -32,9 +32,10 @@ public class EmailSender {
 		properties.put("mail.smtp.user", username);
 	}
 
-	public void sendConfirmationMail(Spot spot, String emailreceiver) throws MessagingException {
+	public void sendConfirmationMail(Spot spot, String company, String emailreceiver) throws MessagingException {
 		String subject = "Jobbeurs 2017 - UCLL Leuven: Bevestiging plaats";
-		String message = "Beste,<br><br>U reserveerde de plaats met nummer " + spot.getSpotID() + ".<br>"
+		String message = "Beste,<br><br>Uw bedrijf, "
+				+ company + " reserveerde de plaats met nummer " + spot.getSpotID() + ".<br>"
 				+ "Het volgende zal voor jou voorzien worden:<br><ul><li>"
 				+ spot.getAmountChairs() + " stoelen</li>"
 				+ "<li>"+spot.getAmountTables()+" tafels</li>";

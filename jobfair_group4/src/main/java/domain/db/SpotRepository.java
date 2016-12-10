@@ -241,7 +241,7 @@ public class SpotRepository {
 			statement.setString(1, user.getContactName());
 			statement.setString(2, spotID);
 			statement.execute();
-			emailsender.sendConfirmationMail(this.get(spotID), user.getEmail());
+			emailsender.sendConfirmationMail(this.get(spotID), user.getCompanyName(), user.getEmail());
 		} catch (Exception e) {
 			throw new DbException(e.getMessage(), e);
 		}

@@ -15,19 +15,19 @@
 
 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-6">
 
-<form method="POST" action="Controller?action=" role="form">
+<form method="POST" action="Controller?action=confirmLink" role="form">
 	<legend class="sr-only">Sign up</legend>
 	<div class="form-group">
-		<label for="freeSpot">Lege spot: </label>
-		<select class="form-control" name="freeSpot" id="freeSpot">
+		<label for="spotID">Lege spot: </label>
+		<select class="form-control" name="spotID" id="spotID">
 			<c:forEach var="freeSpot" items="${freeSpots}">
 				<option value="<c:out value="${freeSpot.spotID}"/>"><c:out value="${freeSpot.spotID}"/></option>
 			</c:forEach>
 		</select>
 	</div>
 	<div class="form-group">
-		<label for="freeUser">Bedrijven die niet gekozen hebben: </label>
-		<select class="form-control" name="freeUser" id="freeUser">
+		<label for="userID">Bedrijven die niet gekozen hebben: </label>
+		<select class="form-control" name="userID" id="userId">
 			<c:forEach var="freeUser" items="${freeUsers}">
 				<option value="<c:out value="${freeUser}"/>"><c:out value="${freeUser}"/></option>
 			</c:forEach>
