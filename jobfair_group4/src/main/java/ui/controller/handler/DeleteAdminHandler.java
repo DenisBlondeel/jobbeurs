@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import domain.model.RoleEnum;
 import domain.model.User;
 
 public class DeleteAdminHandler extends RequestHandler {
@@ -31,4 +32,8 @@ public class DeleteAdminHandler extends RequestHandler {
 		}
 	}
 
+	@Override
+	public RoleEnum[] getAccesList() {
+		return new RoleEnum[]{RoleEnum.ADMIN};
+	}
 }
