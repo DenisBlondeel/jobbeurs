@@ -9,10 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import javax.management.relation.Role;
-
 import domain.model.RoleEnum;
-import domain.model.Spot;
 import domain.model.User;
 
 public class UserRepository {
