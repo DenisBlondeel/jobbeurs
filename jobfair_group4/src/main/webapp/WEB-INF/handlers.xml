@@ -11,6 +11,7 @@
 	<entry key="vrijelijst">ui.controller.handler.GetFreeSpotsHandler</entry>
 	<entry key="bezetlijst">ui.controller.handler.GetOccupiedSpotsHandler</entry>
 	<entry key="signup">ui.controller.handler.SignUpHandler</entry>
+	<entry key="gotosignup">ui.controller.handler.GotoSignUpHandler</entry>
 	<entry key="upload">ui.controller.handler.UploadHandler</entry>
 	<entry key="alfabetischelijst">ui.controller.handler.GetAlphabeticSpotsHandler</entry>	
 	<entry key="myspot">ui.controller.handler.MySpotHandler</entry>
@@ -31,4 +32,5 @@
 	<entry key="deleteAdmin">ui.controller.handler.DeleteAdminHandler</entry>
 	<entry key="companies">ui.controller.handler.GetCompaniesHandler</entry>
 	<entry key="download">ui.controller.handler.DownloadHandler</entry>
+	<entry key="getBedrijven">ui.controller.handler.GetBedrijvenHandler</entry>
 </properties>
