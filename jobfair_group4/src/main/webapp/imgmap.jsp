@@ -168,7 +168,6 @@
 		       		</c:forEach>
 		       	</c:otherwise>
 			</c:choose>>
-		
 	</c:forEach>
 	
 	<!-- 
