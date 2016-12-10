@@ -28,7 +28,7 @@ public class SignUpHandler extends RequestHandler {
 			request.getRequestDispatcher("signup.jsp").forward(request, response);
 		} else {
 			String succes = "Het bedrijf " + user.getCompanyName() + " is toegevoegd.";
-			request.setAttribute("succes", succes);
+			request.setAttribute("success", succes);
 			this.getService().addUser(user);
 			if (!this.getTimeHasCome()) {
 				try {
