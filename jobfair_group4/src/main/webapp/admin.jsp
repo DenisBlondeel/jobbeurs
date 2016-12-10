@@ -17,10 +17,9 @@
 <div class="row">
 
 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-6">
-	<h3>Meerdere bedrijven toevoegen</h3>
 
 	<form method="POST" action="Controller?action=upload" enctype="multipart/form-data">
-		<legend>Admin upload</legend>
+		<legend>Meerdere bedrijven toevoegen</legend>
 		<div class="form-group form-inline">
 			<label for="file">File: </label>
 			<input type="file" class="form-control" id="file" name="file" value="Upload file">
@@ -40,12 +39,12 @@
 		</div>
 	</form>
 	<form method="POST" action="Controller?action=drop">
-		<legend>Verwijder alle klanten</legend>
+		<legend>Verwijder alle bedrijven</legend>
 		<div class="form-group form-inline">
 			<button type="submit" class="btn btn-primary" value="Submit">Verwijder</button>
 		</div>
 	</form>
-	<legend>Voeg klant toe</legend>
+	<legend>Voeg bedrijf toe</legend>
 		<div class="form-group form-inline">
 	<a class="btn btn-primary" href = "signup.jsp">Voeg klant toe</a>
 	</div>
@@ -64,6 +63,10 @@
 			<button type="submit" class="btn btn-primary" value="Submit">Stuur herinneringsmail</button>
 		</div>
 	</form>
+	<legend>Toon alle bedrijven</legend>
+		<div class="form-group form-inline">
+	<a class="btn btn-primary" href = "Controller?action=companies">Lijst met alle bedrijven</a>
+	</div>
 	</div></div></div>
 </body>
 </html>
