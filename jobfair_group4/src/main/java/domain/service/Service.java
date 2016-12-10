@@ -101,5 +101,9 @@ public class Service {
 	public List<String> getAdminEmails() {
 		return userDB.getAllAdminEmails();
 	}
+
+	public List<User> getAdmins() {
+		return getUserRepository().getAdmins();
+	}
 	
 }
