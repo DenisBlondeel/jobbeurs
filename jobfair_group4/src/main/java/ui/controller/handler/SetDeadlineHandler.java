@@ -10,6 +10,7 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class SetDeadlineHandler extends RequestHandler{
 
@@ -18,11 +19,15 @@ public class SetDeadlineHandler extends RequestHandler{
 			throws ServletException, IOException
 	{
 		List<String> errors = new ArrayList<>();
-		this.setDeadline(request, errors);
+		Calendar deadline = this.setDeadline(request, errors);
 		
 		if (errors.size() > 0) {
 			request.setAttribute("errors", errors);
 		} else {
+			HttpSession session = request.getSession();
+			session.removeAttribute("deadline");
+			session.setAttribute("deadline", deadline);
+
 			Date date = deadline.getTime();
 			String dateStr = new SimpleDateFormat("EEEE").format(date) + " "
 					+ new SimpleDateFormat("dd").format(date) + " "
@@ -34,39 +39,36 @@ public class SetDeadlineHandler extends RequestHandler{
 		request.getRequestDispatcher("Controller?action=admin").forward(request, response);
 	}
 
-	private void setDeadline(HttpServletRequest request, List<String> errors) {
+	private Calendar setDeadline(HttpServletRequest request, List<String> errors) {
 		String date = request.getParameter("datum");
 
 		if (date == null || date.trim().isEmpty()) {
 			errors.add("Geen datum meegegeven.");
-			this.setDeadline(null);
-			return;
+			return null;
 		}
 
 		if (!date.contains("-")) {
 			errors.add("De gegeven datum heeft niet het juiste formaat: \"dag-maand-jaar\"");
-			this.setDeadline(null);
-			return;
+			return null;
 		}
 
 		String[] elements = date.split("-");
 		if (elements.length != 3) {
 			errors.add("De gegeven datum heeft niet het juiste formaat: \"dag-maand-jaar\"");
-			deadline = null;
-			return;
+			return null;
 		}
 		
-		Calendar calendar = Calendar.getInstance();
 		try {
+			Calendar deadline = Calendar.getInstance();
 			int year = Integer.parseInt(elements[2]);
 			int month = Integer.parseInt(elements[1]) - 1;
 			int day = Integer.parseInt(elements[0]);
-			calendar.set(year, month, day);
-			this.setDeadline(calendar);
+			deadline.set(year, month, day);
+			return deadline;
 		} catch (NumberFormatException e) {
 			errors.add("De gegeven datum bestond niet uit enkel cijfers gescheiden door "
 					+ "een '-'. Gelieve een juiste datum mee te geven.");
+			return null;
 		}
-
 	}
 }
