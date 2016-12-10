@@ -269,29 +269,29 @@ public class UserRepository {
 	}
 
 	public List<String> getEmailFromUsersWithoutSpot() {
-		List<String> list1 = new ArrayList<String>();
-		List<String> list2 = new ArrayList<String>();
+		List<String> list = new ArrayList<String>();
 		List<String> result = new ArrayList<String>();
-		String sql1 = "SELECT email FROM jobfair_group4.users WHERE role='COMPANY'";
-		String sql2 = "SELECT email FROM jobfair_group4.users u INNER JOIN jobfair_group4.spots s ON u.userid=s.userid WHERE u.role='COMPANY'";
+
+		String sql1 = "SELECT * FROM jobfair_group4.users WHERE role='COMPANY'";
+		String sql2 = "SELECT u.userid FROM jobfair_group4.users u INNER JOIN jobfair_group4.spots s ON u.userid=s.userid WHERE u.role='COMPANY'";
 		try{
-			statement = connection.prepareStatement(sql1);
+
+			//vullen van lijst van userID's waarvan de users een spot hebben
+			statement = connection.prepareStatement(sql2);
 			ResultSet results1 = statement.executeQuery();
 			while (results1.next())
 			{
-				list1.add(results1.getString("email"));
+				list.add(results1.getString("userid"));
 			}
 
-			statement = connection.prepareStatement(sql2);
+			//vullen van lijst (result) van emails waarvan de users geen spot hebben
+			statement = connection.prepareStatement(sql1);
 			ResultSet results2 = statement.executeQuery();
 			while (results2.next())
 			{
-				list2.add(results2.getString("email"));
-			}
-
-			for (String email : list1) {
-				if (!list2.contains(email)) {
-					result.add(email);
+				String userid = results2.getString("userid");
+				if (!list.contains(userid)) {
+					result.add(results2.getString("email"));
 				}
 			}
 		} catch (SQLException e)
