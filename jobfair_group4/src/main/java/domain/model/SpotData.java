@@ -1,46 +1,56 @@
 package domain.model;
 
-public class StaticArrayDataTypes {
+public class SpotData {
 	
 	private String id;
 	private String coords;
 	private String shape;
+	private String place;
 	
-	public StaticArrayDataTypes(String id, String coords, String shape)
+	public SpotData()
 	{
-		this.id = id;
-		this.coords = coords;
-		this.shape = shape;
+		
 	}
-
 	public String getId()
 	{
 		return id;
 	}
-	
+
 	public void setId(String id)
 	{
 		this.id = id;
 	}
-	
-	public String getShape()
-	{
-		return shape;
-	}
-	
-	public void setShape(String shape)
-	{
-		this.shape = shape;
-	}
-	
+
 	public String getCoords()
 	{
 		return coords;
 	}
-	
+
 	public void setCoords(String coords)
 	{
 		this.coords = coords;
 	}
+
+	public String getShape()
+	{
+		return shape;
+	}
+
+	public void setShape(String shape)
+	{
+		this.shape = shape;
+	}
+
+	public String getPlace()
+	{
+		return place;
+	}
 	
+	public void setPlace(String place)
+	{
+		this.place = place;
+	}
+	
+	
+
 }
