@@ -25,4 +25,9 @@
 	<entry key="endMail">ui.controller.handler.EndMailHandler</entry>
 	<entry key="linkSpot">ui.controller.handler.LinkUserToSpotHandler</entry>
 	<entry key="confirmLink">ui.controller.handler.ConfirmLinkUserToSpotHandler</entry>
+	<entry key="addAdmin">ui.controller.handler.AddAdminHandler</entry>
+	<entry key="getAdmin">ui.controller.handler.GetAdminHandler</entry>
+	<entry key="deleteAdmin">ui.controller.handler.DeleteAdminHandler</entry>
+	<entry key="confirmDeleteAdmin">ui.controller.handler.ConfirmDeleteAdminHandler</entry>
+	<entry key="companies">ui.controller.handler.GetCompaniesHandler</entry>
 </properties>

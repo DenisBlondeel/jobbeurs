@@ -9,6 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import javax.management.relation.Role;
+
+import domain.model.RoleEnum;
+import domain.model.Spot;
 import domain.model.User;
 
 public class UserRepository {
@@ -60,6 +64,34 @@ public class UserRepository {
 
 		return user;
 	}
+	
+	public List<User> getAllCompanies() {
+		List<User> list = new ArrayList<User>();
+		String sql = "SELECT * FROM jobfair_group4.users ORDER BY companyname";
+		try{
+			statement = connection.prepareStatement(sql);
+			ResultSet results = statement.executeQuery();
+			while (results.next())
+			{
+				User user = new User();
+				user.setCompanyNameFromDb(results.getString("companyname"));
+				user.setContactNameFromDb(results.getString("contactname"));
+				user.setEmail(results.getString("email"));
+				user.setPassword(results.getString("password"));
+				user.setRole(results.getString("role"));
+				user.setSalt(results.getString("salt"));
+				user.setUserID(results.getString("userid"));
+				
+				if(user.getRole()==RoleEnum.COMPANY) {
+					list.add(user);
+				}
+			}
+		} catch (SQLException e)
+		{
+			throw new DbException(e);
+		}
+		return list;
+	}
 
 	public List<User> getAdmins() {
 		List<User> list = new ArrayList<User>();
@@ -71,6 +103,8 @@ public class UserRepository {
 			while (results.next()) {
 				User user = new User();
 				user.setUserID(results.getString("userid"));
+				user.setCompanyNameFromDb(results.getString("companyName"));
+				user.setContactNameFromDb(results.getString("contactName"));
 				user.setEmail(results.getString("email"));
 				user.setPassword(results.getString("password"));
 				user.setRole(results.getString("role"));
@@ -116,6 +150,28 @@ public class UserRepository {
 					throw new DbException(e.getMessage(), e);
 				}
 			}
+		} catch (SQLException e) {
+			throw new DbException(e.getMessage(), e);
+		}
+	}
+
+	public void deleteAdmin(String userID) {
+		if (userID == null) {
+			throw new DbException("Nothing to delete.");
+		}
+		String sql = "SELECT COUNT(*) FROM jobfair_group4.users WHERE role='ADMIN'";
+		try {
+			statement = connection.prepareStatement(sql);
+			ResultSet results = statement.executeQuery();
+
+			results.next();
+			int cnt = Integer.parseInt(results.getString("count"));
+			if (cnt == 1) {
+				throw new DbException("Er moet minstens één admin zijn.");
+			} else {
+				this.delete(userID);
+			}
+
 		} catch (SQLException e) {
 			throw new DbException(e.getMessage(), e);
 		}

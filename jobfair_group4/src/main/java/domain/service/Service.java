@@ -26,6 +26,10 @@ public class Service {
 	public User getUser(String userID) {
 		return getUserRepository().get(userID);
 	}
+	
+	public List<User> getAllCompanies() {
+		return getUserRepository().getAllCompanies();
+	}
 
 	public void addUser(User user) {
 		getUserRepository().add(user);
@@ -100,6 +104,10 @@ public class Service {
 
 	public List<String> getAdminEmails() {
 		return userDB.getAllAdminEmails();
+	}
+
+	public List<User> getAdmins() {
+		return getUserRepository().getAdmins();
 	}
 	
 }
