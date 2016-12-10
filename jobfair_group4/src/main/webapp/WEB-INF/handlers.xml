@@ -23,4 +23,5 @@
 	<entry key="drop">ui.controller.handler.DeleteAllHandler</entry>
 	<entry key="admin">ui.controller.handler.AdminHandler</entry>
 	<entry key="endMail">ui.controller.handler.EndMailHandler</entry>
+	<entry key="linkSpot">ui.controller.handler.LinkUserToSpotHandler</entry>
 </properties>

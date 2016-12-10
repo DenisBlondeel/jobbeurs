@@ -45,14 +45,14 @@ public abstract class RequestHandler {
 		if (user == null) {
 			throw new NotAuthorizedException("Je hebt hiervoor geen toegang");
 		}
+		if(user.getRole().equals(RoleEnum.ADMIN))
+		{
+			request.setAttribute("admin", "admin");
+		}
 		for (RoleEnum role : this.getAccesList()) {
 			if (user.getRole().equals(role)) {
 				return;
 			}
-		}
-		if(user.getRole().equals(RoleEnum.ADMIN))
-		{
-			request.setAttribute("admin", "admin");
 		}
 		throw new NotAuthorizedException("Je hebt hiervoor geen toegang");
 	}

@@ -157,6 +157,58 @@ public class UserRepository {
 		return list;
 	}
 
+	public List<User> getUsersWithoutSpot() {
+		List<User> list1 = new ArrayList<User>();
+		List<User> list2 = new ArrayList<User>();
+		List<User> result = new ArrayList<User>();
+
+		String sql1 = "SELECT * FROM jobfair_group4.users WHERE role='COMPANY'";
+		String sql2 = "SELECT * FROM jobfair_group4.users u INNER JOIN jobfair_group4.spots s ON u.userid=s.userid WHERE u.role='COMPANY'";
+		User user = new User();
+
+		try{
+			statement = connection.prepareStatement(sql1);
+			ResultSet results1 = statement.executeQuery();
+			while (results1.next())
+			{
+				user.setUserID(results1.getString("userID"));
+				user.setCompanyNameFromDb(results1.getString("companyName"));
+				user.setContactNameFromDb(results1.getString("contactName"));
+				user.setEmail(results1.getString("email"));
+				user.setPassword(results1.getString("password"));
+				user.setRole(results1.getString("role"));
+				user.setSalt(results1.getString("salt"));
+
+				list1.add(user);
+			}
+
+			statement = connection.prepareStatement(sql2);
+			ResultSet results2 = statement.executeQuery();
+			while (results2.next())
+			{
+				user.setUserID(results1.getString("userID"));
+				user.setCompanyNameFromDb(results1.getString("companyName"));
+				user.setContactNameFromDb(results1.getString("contactName"));
+				user.setEmail(results1.getString("email"));
+				user.setPassword(results1.getString("password"));
+				user.setRole(results1.getString("role"));
+				user.setSalt(results1.getString("salt"));
+
+				list2.add(user);
+			}
+
+			for (User person : list1) {
+				if (!list2.contains(person)) {
+					result.add(person);
+				}
+			}
+		} catch (SQLException e)
+		{
+			throw new DbException(e);
+		}
+		return result;
+	}
+
 	public List<String> getEmailFromUsersWithoutSpot() {
 		List<String> list1 = new ArrayList<String>();
 		List<String> list2 = new ArrayList<String>();
