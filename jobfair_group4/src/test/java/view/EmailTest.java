@@ -14,6 +14,7 @@ public class EmailTest {
 
 	EmailSender sender;
 	String recipient = "test@hotmail.com";
+	String company = "Enola Gay";
 
 	@Before
 	public void setUp() {
@@ -28,7 +29,7 @@ public class EmailTest {
 	@Test
 	public void sendConfirmationMailTest() throws Exception {
 		Spot spot = new Spot("1425", 1, 2, true, null, null);
-		sender.sendConfirmationMail(spot, recipient);
+		sender.sendConfirmationMail(spot, company, recipient);
 	}
 
 	@Test

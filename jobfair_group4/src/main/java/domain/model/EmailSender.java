@@ -35,14 +35,29 @@ public class EmailSender {
 	public void sendConfirmationMail(Spot spot, String company, String emailreceiver) throws MessagingException {
 		String subject = "Jobbeurs 2017 - UCLL Leuven: Bevestiging plaats";
 		String message = "Beste,<br><br>Uw bedrijf, "
-				+ company + " reserveerde de plaats met nummer " + spot.getSpotID() + ".<br>"
-				+ "Het volgende zal voor jou voorzien worden:<br><ul><li>"
+				+ company + ", reserveerde de plaats met nummer " + spot.getSpotID() + ".<br>"
+				+ "Het volgende zal voor u voorzien worden:<br><ul><li>"
 				+ spot.getAmountChairs() + " stoelen</li>"
 				+ "<li>"+spot.getAmountTables()+" tafels</li>";
 		if (spot.getElectricity()) {
 			message+="<li>elektriciteit</li>";
 		}
 		message += "</ul><br>Tot binnenkort.<br><br>"
+				+ "--<br>"
+				+ "Mvg,<br>"
+				+ "Team Scrumbags";
+		sendFromGMail(subject, message, emailreceiver);
+	}
+
+	public void sendUserLinkedToSpotMail(String spotID, String company, String emailreceiver) throws MessagingException {
+		String subject = "Jobbeurs 2017 - UCLL Leuven: Toewijzing plaats";
+		String message = "Beste,<br><br>Uw bedrijf, "
+				+ company + ", kreeg de plaats met nummer " + spotID + "toegewezen.<br>"
+				+ "Wij voorzien het volgende voor u:<br><ul>"
+				+ "<li>2 stoelen</li>"
+				+ "<li>1 tafel</li>"
+				+ "<li>elektriciteit</li>"
+				+ "</ul><br>Tot binnenkort.<br><br>"
 				+ "--<br>"
 				+ "Mvg,<br>"
 				+ "Team Scrumbags";
@@ -61,10 +76,11 @@ public class EmailSender {
 		sendFromGMail(subject, message, emailreceiver);
 	}
 
-	public void sendUpdateMail(Spot spot, String emailreceiver) throws MessagingException {
+	public void sendUpdateMail(Spot spot, String company, String emailreceiver) throws MessagingException {
 		String subject = "Jobbeurs 2017 - UCLL Leuven: Wijziging plaats";
-		String message = "Beste,<br><br>U wijzigde uw vookeuren voor de plaats met nummer " + spot.getSpotID() + ".<br>"
-				+ "Het volgende zal nu voor jou voorzien worden:<br><ul><li>"
+		String message = "Beste,<br><br>Uw bedrijf, "
+				+ company + ", wijzigde uw vookeuren voor de plaats met nummer " + spot.getSpotID() + ".<br>"
+				+ "Het volgende zal nu voor u voorzien worden:<br><ul><li>"
 				+ spot.getAmountChairs() + " stoelen</li>"
 				+ "<li>"+spot.getAmountTables()+" tafels</li>";
 		if (spot.getElectricity()) {
@@ -77,9 +93,9 @@ public class EmailSender {
 		sendFromGMail(subject, message, emailreceiver);
 	}
 
-	public void sendCancelationMail(Spot spot, String emailreceiver) throws MessagingException {
+	public void sendCancelationMail(Spot spot, String company, String emailreceiver) throws MessagingException {
 		String subject = "Jobbeurs 2017 - UCLL Leuven: Annulatie plaats";
-		String message = "Beste,<br><br>Uw plaats met nummer " + spot.getSpotID() + " werd geannuleerd.<br>"
+		String message = "Beste "+company+",<br><br>Uw plaats met nummer " + spot.getSpotID() + " werd geannuleerd.<br>"
 				+ "Indien u deze mail krijgt zonder op de hoogte te zijn van deze veranderingen, gelieve dan contact op "
 				+ "te nemen met onze verantwoordelijke"
 				+ "<br>Tot binnenkort.<br><br>"

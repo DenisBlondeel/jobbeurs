@@ -36,7 +36,7 @@ public class SpotOptionsHandler extends RequestHandler {
 		request.setAttribute("spotnr", spotID);
 		request.setAttribute("reserved", "Uw plaats werd gereserveerd. U ontvangt een mail ter bevestiging.");
 		try {
-			new EmailSender().sendConfirmationMail(spot, user.getEmail());
+			new EmailSender().sendConfirmationMail(spot, user.getCompanyName(), user.getEmail());
 		} catch (MessagingException e) {
 			throw new ServletException(e.getMessage(), e);
 		}
