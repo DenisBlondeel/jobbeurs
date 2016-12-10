@@ -54,6 +54,10 @@ public class Service {
 	public List<String> getEmailFromUsersWithoutSpot() {
 		return getUserRepository().getEmailFromUsersWithoutSpot();
 	}
+	
+	public void updateUser(User user){
+		getUserRepository().update(user);
+	}
 
 	private UserRepository getUserRepository() {
 		return this.userDB;

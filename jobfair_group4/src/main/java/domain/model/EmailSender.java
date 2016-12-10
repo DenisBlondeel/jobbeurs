@@ -141,7 +141,7 @@ public class EmailSender {
 		message	+= " eindigt de mogelijkheid om zelf je plaats je kiezen op onze jobbeurs. "
 				+ "U heeft nog even tijd om uw keuze te maken.<br>"
 				+ "Moest u uw keuze niet tijdig gemaakt hebben, zal onze verantwoordelijke "
-				+ "een willekeurige spot in uw plaats kiezen."
+				+ "een willekeurige plaats voor u kiezen."
 				+ "<br>Tot binnenkort.<br><br>"
 				+ "--<br>"
 				+ "Mvg,<br>"
@@ -149,6 +149,19 @@ public class EmailSender {
 		for (String to : emailreceivers) {
 			this.sendFromGMail(subject, message, to);
 		}
+	}
+	
+	public void sendResetPasswordMail(String contactName, String companyname, String email, String password) throws MessagingException {
+		String subject = "Jobbeurs 2017 - UCLL Leuven: Wachtwoord resetten";
+		String message = "Beste" + contactName + "<br><br>"
+						+ "U vergat uw wachtwoord om in te loggen voor " + companyname + ".<br>"
+						+ "Om opnieuw gebruik te kunnen maken van onze applicate kan u onderstaand wachtwoord gebruiken:<br>"
+						+ password + "<br><br>"
+						+ "Tot binnenkort.<br><br>"
+						+ "--<br>"
+						+ "Mvg,<br>"
+						+ "Team Scrumbags";
+		this.sendFromGMail(subject, message, email);
 	}
 
 	private void sendFromGMail(String subject, String body, String to) throws MessagingException {
@@ -167,4 +180,6 @@ public class EmailSender {
 		transport.sendMessage(message, message.getAllRecipients());
 		transport.close();
 	}
+
+	
 }

@@ -48,7 +48,7 @@ public class UserRepository {
 			statement.setString(1, userID);
 			ResultSet results = statement.executeQuery();
 			results.next();
-			user.setUserID(userID);
+			user.setUserID(results.getString("userID"));
 			user.setCompanyNameFromDb(results.getString("companyName"));
 			user.setContactNameFromDb(results.getString("contactName"));
 			user.setEmail(results.getString("email"));
@@ -299,6 +299,25 @@ public class UserRepository {
 			throw new DbException(e);
 		}
 		return result;
+	}
+	
+	public void update(User user) {
+		try{
+			String sql = "UPDATE jobfair_group4.users"
+					+ " SET userid = ?, companyname = ?, contactname = ?, email = ?, password = ?, salt = ?, role = ?"
+					+ " WHERE userid = ?";
+			statement = connection.prepareStatement(sql);
+			statement.setString(1, user.getUserID());
+			statement.setString(2, user.getCompanyName());
+			statement.setString(3, user.getContactName());
+			statement.setString(4, user.getEmail());
+			statement.setString(5, user.getPassword());
+			statement.setString(6, user.getSalt());
+			statement.setString(7, user.getRole().toString());
+			statement.execute();
+		} catch (SQLException e){
+			throw new DbException(e);
+		}
 	}
 
 	public Properties getProperties() {
