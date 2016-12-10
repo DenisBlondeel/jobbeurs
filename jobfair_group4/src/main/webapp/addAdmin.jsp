@@ -7,8 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <jsp:include page="header.jsp">
 	<jsp:param value="admin" name="type" />
-	<jsp:param value="Admin" name="title" />
-	<jsp:param value="Welkom, admin" name="h2" />
+	<jsp:param value="Beheerder toevoegen" name="title" />
+	<jsp:param value="Beheerder toevoegen" name="h2" />
 </jsp:include>
 
 
@@ -23,18 +23,18 @@
 		<legend>Nieuwe beheerder toevoegen</legend>
 		<div class="form-group">
 			<label for="userID">Gebruikersnaam: </label>
-			<input type="text" class="form-control" id="userID" name="userID" value='<c:out value="${user.userID}"></c:out>'>
+			<input type="text" class="form-control" id="userID" name="userID" value='<c:out value="${prevID}"></c:out>'>
 		</div>
 		<div class="form-group">
 			<label for="contactName">Naam: </label>
-			<input type="text" class="form-control" id="contactName" name="contactName" value='<c:out value="${user.contactName}"></c:out>'>
+			<input type="text" class="form-control" id="contactName" name="contactName" value='<c:out value="${prevContactName}"></c:out>'>
 		</div>
 		<div class="form-group">
 			<label for="email">Email: </label>
-			<input type="text" class="form-control" id="email" name="email" value='<c:out value="${user.email}"></c:out>'>
+			<input type="text" class="form-control" id="email" name="email" value='<c:out value="${prevEmail}"></c:out>'>
 		</div>
 		<div class="form-group">
-			<button type="submit" class="btn btn-primary" value="Beheerder toevoegen">Beheerder toevoegen</button>
+			<input type="submit" class="btn btn-primary" value="Beheerder toevoegen">Beheerder toevoegen</button>
 		</div>
 	</form>
 </div>

@@ -53,8 +53,9 @@
 		<div class="form-group form-inline">
 	<a class="btn btn-primary" href = "Controller?action=linkSpot">Link bedrijven aan vrije plaatsen</a>
 	</div>
-	<legend>Verwijder een beheerder</legend>
+	<legend>Beheerders</legend>
 		<div class="form-group form-inline">
+	<a class="btn btn-primary" href = "Controller?action=toAddAdmin">Voeg een beheerder toe</a>
 	<a class="btn btn-primary" href = "Controller?action=getAdmin">Verwijder een beheerder</a>
 	</div>
 	

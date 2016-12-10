@@ -76,6 +76,18 @@ public class EmailSender {
 		sendFromGMail(subject, message, emailreceiver);
 	}
 
+	public void sendNewAdminMail(String userID, String password, String emailreceiver) throws MessagingException {
+		String subject = "Beheerder website Jobbeurs - UCLL Leuven";
+		String message = "Beste,<br><br>Vanaf heden heeft u de toestemming gekregen om als beheerder in te loggen op onze website.<br>"
+				+ "Inloggen doe je <a href=\"http://java.cyclone2.khleuven.be:38034/jobfair_group4/\">hier</a> met volgende login-gegevens:<br>"
+				+ "UserID: " + userID + "<br>"
+				+ "Wachtwoord: " + password + "<br><br>"
+				+ "--<br>"
+				+ "Mvg,<br>"
+				+ "Team Scrumbags";
+		sendFromGMail(subject, message, emailreceiver);
+	}
+
 	public void sendUpdateMail(Spot spot, String company, String emailreceiver) throws MessagingException {
 		String subject = "Jobbeurs 2017 - UCLL Leuven: Wijziging plaats";
 		String message = "Beste,<br><br>Uw bedrijf, "
