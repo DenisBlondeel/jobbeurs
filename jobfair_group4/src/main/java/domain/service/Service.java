@@ -95,6 +95,7 @@ public class Service {
 	public void dropAllUsers()
 	{
 		userDB.deleteAll();
+		spotDB.removeAllUsersFromSpots();
 	}
 
 	public List<String> getAdminEmails() {
