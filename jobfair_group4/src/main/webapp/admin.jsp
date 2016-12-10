@@ -39,15 +39,12 @@
 			<button type="submit" class="btn btn-primary" value="Submit">Submit</button>
 		</div>
 	</form>
-	<form method="POST" action="Controller?action=drop">
-		<legend>Verwijder alle bedrijven</legend>
-		<div class="form-group form-inline">
-			<button type="submit" class="btn btn-primary" value="Submit">Verwijder</button>
-		</div>
 	</form>
-	<legend>Voeg bedrijf toe</legend>
+	<legend>Bedrijf Manager</legend>
 		<div class="form-group form-inline">
-	<a class="btn btn-primary" href = "signup.jsp">Voeg klant toe</a>
+	<a class="btn btn-primary" href = "Controller?action=gotosignup">Voeg Bedrijf toe</a>
+	<a class="btn btn-primary" href = "Controller?action=getBedrijven">Verwijder Bedrijf</a>
+	<a class="btn btn-primary" href="Controller?action=drop">Verwijder alle Bedrijven</a>
 	</div>
 	<legend>Link bedrijven aan vrije plaatsen</legend>
 		<div class="form-group form-inline">

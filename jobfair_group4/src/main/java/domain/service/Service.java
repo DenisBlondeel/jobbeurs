@@ -127,4 +127,9 @@ public class Service {
 	{
 		return dataDB.getAtriumData();
 	}
+	
+	public List<User> getAllUsers()
+	{
+		return userDB.getAllCompanies();
+	}
 }
