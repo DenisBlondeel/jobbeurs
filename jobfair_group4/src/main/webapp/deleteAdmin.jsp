@@ -28,6 +28,10 @@
 			</select>
 		</div>
 		<div class="form-group">
+			<label for="password">password</label>
+			<input type="password" class="form-control" id="password" placeholder="password" name="password">
+		</div>
+		<div class="form-group">
 			<button type="submit" class="btn btn-primary" value="Verwijder admin">Verwijder admin</button>
 		</div>
 	</form>
