@@ -7,18 +7,17 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import domain.model.RoleEnum;
 import domain.model.Spot;
 import domain.model.User;
 
-public class GetCompaniesHandler extends RequestHandler {
+public class GetCompaniesAlphabeticallyOnCompanyHandler extends RequestHandler {
 
 	@Override
 	public void handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		List<User> companies = this.getService().getAllCompanies();
+		List<User> companies = this.getService().getAllCompaniesAlphabeticallyOnCompany();
 		List<Spot> spots = this.getService().getAllSpots();
 		List<String> spotsTaken = new ArrayList<>();
 		
@@ -35,18 +34,13 @@ public class GetCompaniesHandler extends RequestHandler {
 		request.setAttribute("companies", companies);
 		request.setAttribute("spotsTaken", spotsTaken);
 		
-		HttpSession session = request.getSession();
-		User user = (User) session.getAttribute("user");
-
-		if (user!=null) {
-			request.setAttribute("userid", user.getUserID());
-			if(user.getRole().equals(RoleEnum.ADMIN))
-			{
-				request.setAttribute("admin", "admin");
-			}
-		}
+		request.setAttribute("admin", "admin");
 
 		request.getRequestDispatcher("companiesoverview.jsp").forward(request, response);
 	}
 
+	@Override
+	public RoleEnum[] getAccesList() {
+		return new RoleEnum[]{RoleEnum.ADMIN};
+	}
 }

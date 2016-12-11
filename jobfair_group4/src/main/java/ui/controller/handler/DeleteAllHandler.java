@@ -18,7 +18,6 @@ public class DeleteAllHandler extends RequestHandler{
 		response.sendRedirect("Controller?action=");
 	}
 
-
 	@Override
 	public RoleEnum[] getAccesList() {
 		return new RoleEnum[]{RoleEnum.ADMIN};

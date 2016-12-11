@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <jsp:include page="header.jsp">
 	<jsp:param value="Spot ${spotnr}" name="title"/>
@@ -76,7 +77,7 @@
 		<label for="extra">Extra opmerkingen: </label>
 		<textarea name="extra" class="form-control" rows="3"></textarea>
 		</div>
-		<input type="hidden" id="id" name="id" value="<c:out value="${spotnr}"/>"> 
+		<input type="hidden" id="id" name="id" value="<c:out value="${spotnr}" />"> 
 		<button type="submit" class="btn btn-primary" value="Submit">reserveer plaats</button>
 	</form>
 	</div></div></div>

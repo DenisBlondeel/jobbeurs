@@ -22,16 +22,14 @@
 
 
 <form action="Controller?action=confirmresetpw" method="POST" role="form">
-	<legend class="sr-only">Nieuw wachtwoord</legend>
+	<legend class="sr-only">Wachtwoord vergeten</legend>
 	<div class="form-group">
-	<p>${result}</p>
+	<p>Geef hieronder je gebruikersnaam door om een nieuw wachtwoord via mail te verkrijgen.</p>
 	</div>
 	<div class="form-group">
-		<c:if test="${showReset!=null}">
-			<input type="hidden" name="email" value="${email}">
-			<input type="hidden" name="userid" value="${userid}">
-			<input class="btn btn-primary" type="submit" name="submit" value="Reset">
-		</c:if>
+		<label for="userID">Gebruikersnaam: </label>
+		<input type="text" id="userID" name="userID" value='<c:out value="${prevUserID}"></c:out>'>
+		<input class="btn btn-primary" type="submit" name="submit" value="Reset">
 		<input class="btn btn-primary" type="submit" name="submit" value="Annuleer">
 	</div>
 </form>

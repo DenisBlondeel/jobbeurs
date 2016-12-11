@@ -31,9 +31,15 @@
 	<entry key="toAddAdmin">ui.controller.handler.ToAddAdminHandler</entry>
 	<entry key="getAdmin">ui.controller.handler.GetAdminHandler</entry>
 	<entry key="deleteAdmin">ui.controller.handler.DeleteAdminHandler</entry>
-	<entry key="companies">ui.controller.handler.GetCompaniesHandler</entry>
+	<entry key="companies">ui.controller.handler.GetCompaniesAlphabeticallyOnCompanyHandler</entry>
+	<entry key="companiesContact">ui.controller.handler.GetCompaniesAlphabeticallyOnContactHandler</entry>
+	<entry key="companiesEmail">ui.controller.handler.GetCompaniesAlphabeticallyOnEmailHandler</entry>
+	<entry key="companiesSpotid">ui.controller.handler.GetCompaniesAlphabeticallyOnSpotidHandler</entry>
 	<entry key="download">ui.controller.handler.DownloadHandler</entry>
 	<entry key="resetpw">ui.controller.handler.ResetPwHandler</entry>
 	<entry key="confirmresetpw">ui.controller.handler.ConfirmResetPwHandler</entry>
 	<entry key="getBedrijven">ui.controller.handler.GetBedrijvenHandler</entry>
+	<entry key="myaccount">ui.controller.handler.MyAccountHandler</entry>
+	<entry key="deletebedrijf">ui.controller.handler.DeleteBedrijfHandler</entry>
+	<entry key="updateaccount">ui.controller.handler.UpdateAccountHandler</entry>
 </properties>

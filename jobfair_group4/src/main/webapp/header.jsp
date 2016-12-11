@@ -42,18 +42,18 @@
 			
 			        <!-- Collect the nav links, forms, and other content for toggling -->
 			        <div class="collapse navbar-collapse navbar-ex1-collapse">
-			            <ul class="nav navbar-nav"><li id="${param.home}"><a href="Controller?action=home">Home</a></li>
-			                <li id="${param.spotoverview}"><a href="Controller?action=spots">Alle plaatsen</a></li>
+			            <ul class="nav navbar-nav"><li id="${param.home}"><a href="Controller?action=home"><i class="fa fa-home"></i> Home</a></li>
+			                <li id="${param.spotoverview}"><a href="Controller?action=spots"><i class="fa fa-globe"></i> Alle plaatsen</a></li>
 			                
 			                <c:choose>
 			                
-								<c:when test="${sessionScope.user.userID!=null}">
-					                <li id="${param.myspot}"><a href="Controller?action=myspot">Mijn plaats</a></li>
+								<c:when test="${sessionScope.user.userID!=null && sessionScope.user.role.toString() eq 'COMPANY'}">
+					                <li id="${param.myspot}"><a href="Controller?action=myspot"><i class="fa fa-map-marker"></i> Mijn plaats</a></li>
 				                </c:when>
 				                </c:choose>
 				                 <c:choose>
-								<c:when test="${admin!=null}">
-					                <li id="${param.admin}"><a href="Controller?action=admin">Admin</a></li>
+								<c:when test="${sessionScope.user.role.toString() eq 'ADMIN'}">
+					                <li id="${param.admin}"><a href="Controller?action=admin"><i class="fa fa-cog"></i> Admin</a></li>
 				                </c:when>
 				                </c:choose>
 			                <!--<li id="${param.myaccount}"><a href="Controller?action=home">Mijn account</a></li>-->
@@ -62,11 +62,12 @@
 			            <ul class="nav navbar-nav navbar-right">	
 		
 							<c:choose>
-								<c:when test="${userid!=null}">
-					                <li><a href="Controller?action=logOut"><c:out value="${sessionScope.user.userID}"/> uitloggen</a></li>
+								<c:when test="${sessionScope.user!=null}">
+					                <li><a href="Controller?action=myaccount&id=${sessionScope.user.userID}"><i class="fa fa-user-circle"></i> <c:out value="${sessionScope.user.userID}"/></a></li>
+					                <li><a href="Controller?action=logOut">uitloggen</a></li>
 				                </c:when>
 				                <c:otherwise>
-					                <li><a href="login.jsp">login</a></li>
+					                <li><a href="login.jsp">Login</a></li>
 				                </c:otherwise>
 			                </c:choose>
 			            </ul>
@@ -79,7 +80,7 @@
 			<div class="alert alert-danger">
 				<ul>
 					<c:forEach var="error" items="${errors}">
-						<li>${error}</li>
+						<li><c:out value="${error}"/></li>
 					</c:forEach>
 				</ul>
 			</div>
@@ -88,7 +89,7 @@
 			<div class="alert alert-success">
 				<ul>
 				<c:forEach var="succes" items="${success}">
-					<li>${succes}</li>
+					<li><c:out value="${succes}"/></li>
 				</c:forEach>
 				</ul>
 			</div>

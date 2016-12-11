@@ -19,7 +19,6 @@ public class GotoSignUpHandler extends RequestHandler {
 		
 
 		if (user!=null) {
-			String userID = user.getUserID();
 			request.setAttribute("userid", user.getUserID());
 			if(user.getRole().equals(RoleEnum.ADMIN))
 			{

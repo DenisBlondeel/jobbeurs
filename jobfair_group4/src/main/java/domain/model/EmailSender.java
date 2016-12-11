@@ -151,17 +151,17 @@ public class EmailSender {
 		}
 	}
 	
-	public void sendResetPasswordMail(String contactName, String companyname, String email, String password) throws MessagingException {
+	public void sendResetPasswordMail(User user, String password, String emailreceiver) throws MessagingException {
 		String subject = "Jobbeurs 2017 - UCLL Leuven: Wachtwoord resetten";
-		String message = "Beste" + contactName + "<br><br>"
-						+ "U vergat uw wachtwoord om in te loggen voor " + companyname + ".<br>"
-						+ "Om opnieuw gebruik te kunnen maken van onze applicate kan u onderstaand wachtwoord gebruiken:<br>"
-						+ password + "<br><br>"
-						+ "Tot binnenkort.<br><br>"
+		String message = "Beste " + user.getCompanyName() + ",<br><br>"
+						+ "U heeft ons gemeld dat u uw wachtwoord vergeten bent waarmee u kunt in loggen voor de jobbeurs.<br>"
+						+ "Om opnieuw gebruik te kunnen maken van onze applicate kan u onderstaand wachtwoord gebruiken met de zelfde gebruikersnaam:<br>"
+						+ "UserID: " + user.getUserID() + "<br>"
+						+ "Wachtwoord: " + password + "<br><br>"
 						+ "--<br>"
 						+ "Mvg,<br>"
 						+ "Team Scrumbags";
-		this.sendFromGMail(subject, message, email);
+		this.sendFromGMail(subject, message, emailreceiver);
 	}
 
 	private void sendFromGMail(String subject, String body, String to) throws MessagingException {

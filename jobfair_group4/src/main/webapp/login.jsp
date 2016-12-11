@@ -32,9 +32,9 @@
 	<div class="form-group">
 		<label for="password">Wachtwoord</label>
 		<input type="password" class="form-control" id="password" placeholder="Wachtwoord" name="password">
+		<a href="Controller?action=resetpw">Wachtwoord vergeten</a>
 	</div>
 	<div class="form-group">
-		<input type="submit" name="submit" value="Wachtwoord vergeten?">
 		<input type="submit" name="submit" class="btn btn-primary" value="Inloggen">
 	</div>
 </form>

@@ -208,6 +208,6 @@ public class User {
 		}
 		Random random = new Random();
 		String userID = user + random.nextInt(999); 
-		this.setUserID(userID);
+		this.setUserID(userID.replace(" ", ""));
 	}
 }
