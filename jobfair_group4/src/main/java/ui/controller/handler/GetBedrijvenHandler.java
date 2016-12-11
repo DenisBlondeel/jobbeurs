@@ -14,7 +14,7 @@ public class GetBedrijvenHandler extends RequestHandler {
 	public void handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException
 	{
-		request.setAttribute("companies", service.getAllCompanies());
+		request.setAttribute("companies", service.getAllCompaniesAlphabeticallyOnCompany());
 		request.getRequestDispatcher("deleteBedrijf.jsp").forward(request, response);
 	}
 

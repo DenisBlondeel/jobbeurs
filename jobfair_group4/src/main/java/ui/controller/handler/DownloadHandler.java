@@ -31,7 +31,7 @@ public class DownloadHandler extends RequestHandler{
                 "filename=\"" + reportName + "\"");
 
         ArrayList<String> rows = new ArrayList<String>();
-        List<User> users = service.getAllCompanies();
+        List<User> users = service.getAllCompaniesAlphabeticallyOnCompany();
 		rows.add("Bedrijfsnaam;Naam contactpersoon;Email contactpersoon;Plaatsnummer;Aantal stoelen;Aantal tafels;Elektriciteit;Opmerkingen\n");
 
         for (User user : users) {
