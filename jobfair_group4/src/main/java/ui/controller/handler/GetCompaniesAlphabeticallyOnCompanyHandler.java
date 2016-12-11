@@ -12,7 +12,7 @@ import domain.model.RoleEnum;
 import domain.model.Spot;
 import domain.model.User;
 
-public class GetCompaniesHandler extends RequestHandler {
+public class GetCompaniesAlphabeticallyOnCompanyHandler extends RequestHandler {
 
 	@Override
 	public void handleRequest(HttpServletRequest request, HttpServletResponse response)

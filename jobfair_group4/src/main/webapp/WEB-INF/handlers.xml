@@ -31,7 +31,7 @@
 	<entry key="toAddAdmin">ui.controller.handler.ToAddAdminHandler</entry>
 	<entry key="getAdmin">ui.controller.handler.GetAdminHandler</entry>
 	<entry key="deleteAdmin">ui.controller.handler.DeleteAdminHandler</entry>
-	<entry key="companies">ui.controller.handler.GetCompaniesHandler</entry>
+	<entry key="companies">ui.controller.handler.GetCompaniesAlphabeticallyOnCompanyHandler</entry>
 	<entry key="download">ui.controller.handler.DownloadHandler</entry>
 	<entry key="resetpw">ui.controller.handler.ResetPwHandler</entry>
 	<entry key="confirmresetpw">ui.controller.handler.ConfirmResetPwHandler</entry>
