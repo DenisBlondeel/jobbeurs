@@ -34,10 +34,8 @@
 		<input type="password" class="form-control" id="password" placeholder="Wachtwoord" name="password">
 	</div>
 	<div class="form-group">
-		<a href="Controller?action=resetpw" >Wachtwoord vergeten?</a>
-	</div>
-	<div>
-		<input type="submit" class="btn btn-primary" value="Inloggen">
+		<input type="submit" name="submit" value="Wachtwoord vergeten?">
+		<input type="submit" name="submit" class="btn btn-primary" value="Inloggen">
 	</div>
 </form>
 </div></div></div>

@@ -11,27 +11,33 @@ import javax.servlet.http.HttpSession;
 import domain.model.User;
 
 public class LogInHandler extends RequestHandler {
+	
+	ResetPwHandler reset;
 
 	@Override
 	public void handleRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		String userID = request.getParameter("userid");
-		String password = request.getParameter("password");
-		User user = service.getUserIfAuthenticated(userID, password);
-		
-		if(user!=null) {
-			String success;
-			success = "Je bent succesvol ingelogd!";
-			request.setAttribute("success", success);
-			HttpSession session = request.getSession();
-			session.setAttribute("user", user);
-			request.setAttribute("userid", user.getUserID());
-			response.sendRedirect("Controller?action=");
+		if(!request.getParameter("submit").equals("Wachtwoord vergeten?")){
+			String userID = request.getParameter("userid");
+			String password = request.getParameter("password");
+			User user = service.getUserIfAuthenticated(userID, password);
+			
+			if(user!=null) {
+				String success;
+				success = "Je bent succesvol ingelogd!";
+				request.setAttribute("success", success);
+				HttpSession session = request.getSession();
+				session.setAttribute("user", user);
+				request.setAttribute("userid", user.getUserID());
+				response.sendRedirect("Controller?action=");
+			} else {
+				ArrayList<String> errors = new ArrayList<>();
+				errors.add("Uw gebruikersnaam of wachtwoord is niet correct");
+				request.setAttribute("errors", errors);
+				request.setAttribute("userid", userID);
+				request.getRequestDispatcher("login.jsp").forward(request, response);
+			}
 		} else {
-			ArrayList<String> errors = new ArrayList<>();
-			errors.add("Uw gebruikersnaam of wachtwoord is niet correct");
-			request.setAttribute("errors", errors);
-			request.setAttribute("userid", userID);
-			request.getRequestDispatcher("login.jsp").forward(request, response);
+			reset.handle(request, response);
 		}
 	}
 }
