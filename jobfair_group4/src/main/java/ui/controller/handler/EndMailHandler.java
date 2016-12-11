@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import domain.model.EmailSender;
+import domain.model.RoleEnum;
 
 public class EndMailHandler extends RequestHandler {
 
@@ -29,4 +30,8 @@ public class EndMailHandler extends RequestHandler {
 		
 	}
 
+	@Override
+	public RoleEnum[] getAccesList() {
+		return new RoleEnum[]{RoleEnum.ADMIN};
+	}
 }

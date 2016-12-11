@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import domain.model.RoleEnum;
 import domain.model.User;
 
 public class DownloadHandler extends RequestHandler{
@@ -53,5 +54,10 @@ public class DownloadHandler extends RequestHandler{
 			year += currentDate.charAt(i);
 		}
 		return year;
+	}
+
+	@Override
+	public RoleEnum[] getAccesList() {
+		return new RoleEnum[]{RoleEnum.ADMIN};
 	}
 }

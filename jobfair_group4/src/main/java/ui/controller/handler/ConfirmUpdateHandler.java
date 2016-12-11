@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import domain.model.EmailSender;
+import domain.model.RoleEnum;
 import domain.model.Spot;
 import domain.model.User;
 
@@ -49,4 +50,8 @@ public class ConfirmUpdateHandler extends RequestHandler	{
 		response.sendRedirect("Controller?action=");
 	}
 
+	@Override
+	public RoleEnum[] getAccesList() {
+		return new RoleEnum[]{RoleEnum.ADMIN, RoleEnum.COMPANY};
+	}
 }
