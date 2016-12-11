@@ -12,33 +12,38 @@
 
 
 <div class="container">
-	
-<div class="row">
 
-<div class="col-xs-12 col-sm-12 col-md-8 col-lg-6">
-	<p>Selecteer hieronder het bedrijf dat je wenst te verwijderen.</p>
-	<form method="POST" action="Controller?action=">
-		<div class="form-group">
-			<label for="companyName">Beheerders: </label>
-			<select class="form-control" name="companyName" id="companyName">
-				<c:if test="${companies != null}">
-				<c:forEach var="company" items="${companies}">
-					<option value="<c:out value="${company.userID}"/>">
-						<c:out value="${company.companyName}"/>, <c:out value="${company.email}"/>: <c:out value="${company.userID}"/>
-						</option>
-				</c:forEach>
-				</c:if>
-			</select>
+	<div class="row">
+
+		<div class="col-xs-12 col-sm-12 col-md-8 col-lg-6">
+			<p>Selecteer hieronder het bedrijf dat je wenst te verwijderen.</p>
+			<form method="POST" action="Controller?action=deletebedrijf">
+				<div class="form-group">
+					<label for="companyName">Bedrijven: </label> <select
+						class="form-control" name="companyName" id="companyName">
+						<c:if test="${companies != null}">
+							<c:forEach var="company" items="${companies}">
+								<option value="<c:out value="${company.userID}"/>">
+									<c:out value="${company.companyName}" />,
+									<c:out value="${company.email}" />:
+									<c:out value="${company.userID}" />
+								</option>
+							</c:forEach>
+						</c:if>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="password">Je Wachtwoord: </label> <input
+						type="password" class="form-control" id="password"
+						placeholder="password" name="password">
+				</div>
+				<div class="form-group">
+					<button type="submit" class="btn btn-primary"
+						value="Verwijder admin">Verwijder bedrijf</button>
+				</div>
+			</form>
 		</div>
-		<div class="form-group">
-			<label for="password">Je Wachtwoord: </label>
-			<input type="password" class="form-control" id="password" placeholder="password" name="password">
-		</div>
-		<div class="form-group">
-			<button type="submit" class="btn btn-primary" value="Verwijder admin">Verwijder bedrijf</button>
-		</div>
-	</form>
+	</div>
 </div>
-</div></div>
 </body>
 </html>
