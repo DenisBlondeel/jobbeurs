@@ -12,7 +12,7 @@ import domain.model.User;
 
 public class LogInHandler extends RequestHandler {
 	
-	ResetPwHandler reset;
+	ResetPwHandler reset = new ResetPwHandler();
 
 	@Override
 	public void handleRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
