@@ -12,12 +12,12 @@ import domain.model.RoleEnum;
 import domain.model.Spot;
 import domain.model.User;
 
-public class GetCompaniesHandler extends RequestHandler {
+public class GetCompaniesAlphabeticallyOnCompanyHandler extends RequestHandler {
 
 	@Override
 	public void handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		List<User> companies = this.getService().getAllCompanies();
+		List<User> companies = this.getService().getAllCompaniesAlphabeticallyOnCompany();
 		List<Spot> spots = this.getService().getAllSpots();
 		List<String> spotsTaken = new ArrayList<>();
 		

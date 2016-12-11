@@ -42,18 +42,18 @@
 			
 			        <!-- Collect the nav links, forms, and other content for toggling -->
 			        <div class="collapse navbar-collapse navbar-ex1-collapse">
-			            <ul class="nav navbar-nav"><li id="${param.home}"><a href="Controller?action=home">Home</a></li>
-			                <li id="${param.spotoverview}"><a href="Controller?action=spots">Alle plaatsen</a></li>
+			            <ul class="nav navbar-nav"><li id="${param.home}"><a href="Controller?action=home"><i class="fa fa-home"></i> Home</a></li>
+			                <li id="${param.spotoverview}"><a href="Controller?action=spots"><i class="fa fa-globe"></i> Alle plaatsen</a></li>
 			                
 			                <c:choose>
 			                
 								<c:when test="${sessionScope.user.userID!=null && sessionScope.user.role.toString() eq 'COMPANY'}">
-					                <li id="${param.myspot}"><a href="Controller?action=myspot">Mijn plaats</a></li>
+					                <li id="${param.myspot}"><a href="Controller?action=myspot"><i class="fa fa-map-marker"></i> Mijn plaats</a></li>
 				                </c:when>
 				                </c:choose>
 				                 <c:choose>
 								<c:when test="${sessionScope.user.role.toString() eq 'ADMIN'}">
-					                <li id="${param.admin}"><a href="Controller?action=admin">Admin</a></li>
+					                <li id="${param.admin}"><a href="Controller?action=admin"><i class="fa fa-cog"></i> Admin</a></li>
 				                </c:when>
 				                </c:choose>
 			                <!--<li id="${param.myaccount}"><a href="Controller?action=home">Mijn account</a></li>-->
@@ -63,8 +63,8 @@
 		
 							<c:choose>
 								<c:when test="${sessionScope.user!=null}">
-					                <li><a href="Controller?action=myaccount"><c:out value="${sessionScope.user.userID}"/></a></li>
-					                <li><a href="Controller?action=logOut&id=${sessionScope.user.userID}">uitloggen</a></li>
+					                <li><a href="Controller?action=myaccount&id=${sessionScope.user.userID}"><i class="fa fa-user-circle"></i> <c:out value="${sessionScope.user.userID}"/></a></li>
+					                <li><a href="Controller?action=logOut">uitloggen</a></li>
 				                </c:when>
 				                <c:otherwise>
 					                <li><a href="login.jsp">Login</a></li>

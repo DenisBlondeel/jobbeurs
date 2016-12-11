@@ -17,10 +17,10 @@
 
 <table class="table table-striped">
 	<tr>
-		<th>Bedrijfsnaam </th>
-		<th>Contactnaam </th>
-		<th>Email </th>
-		<th>Plaats </th>
+		<th><a href="Controller?action=companies">Bedrijfsnaam</a></th>
+		<th><a href="Controller?action=companiesContact">Contactnaam</a></th>
+		<th><a href="Controller?action=companiesEmail">Email</a></th>
+		<th><a href="Controller?action=companiesSpotid">Plaats</a></th>
 
 	</tr>
 	<c:forEach var="company" items="${companies}" varStatus="status">

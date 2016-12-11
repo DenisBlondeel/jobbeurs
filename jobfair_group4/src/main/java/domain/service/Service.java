@@ -31,8 +31,20 @@ public class Service {
 		return getUserRepository().get(userID);
 	}
 	
-	public List<User> getAllCompanies() {
-		return getUserRepository().getAllCompanies();
+	public List<User> getAllCompaniesAlphabeticallyOnCompany() {
+		return getUserRepository().getAllCompaniesAlphabeticallyOnCompany();
+	}
+	
+	public List<User> getAllCompaniesAlphabeticallyOnContact() {
+		return getUserRepository().getAllCompaniesAlphabeticallyOnContact();
+	}
+	
+	public List<User> getAllCompaniesAlphabeticallyOnEmail() {
+		return getUserRepository().getAllCompaniesAlphabeticallyOnEmail();
+	}
+
+	public List<User> getAllCompaniesAlphabeticallyOnSpotid() {
+		return getUserRepository().getAllCompaniesAlphabeticallyOnSpotid();
 	}
 
 	public void addUser(User user) {
@@ -130,11 +142,6 @@ public class Service {
 	public List<SpotData> getAtriumData()
 	{
 		return dataDB.getAtriumData();
-	}
-	
-	public List<User> getAllUsers()
-	{
-		return userDB.getAllCompanies();
 	}
 	
 }

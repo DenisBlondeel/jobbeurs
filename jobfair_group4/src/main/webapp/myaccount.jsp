@@ -15,19 +15,19 @@
 
 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-6">
 
-	<h3>Instellingen voor ${sessionScope.user.companyName}</h3>
+	<h3>Instellingen voor ${companyName}</h3>
 	<form method="POST" action="Controller?action=updateaccount" novalidate="novalidate" role="form">
 		<fieldset>
 		<legend>Gebruikersnaam</legend>
 			<div class="form-group">
-			  <p>${sessionScope.user.userID}</p>
+			  <p>${userid}</p>
 			</div>
 		</fieldset>
 		
 		<fieldset>
 		<legend>Bedrijfsnaam</legend>
 			<div class="form-group">
-			  <p>${sessionScope.user.companyName}</p>
+			  <p>${companyName}</p>
 			</div>
 		</fieldset>
 		
@@ -35,16 +35,16 @@
 		<legend>Contactpersoon</legend>
 			<div class="form-group">
 				<label for="contactname">Naam</label>
-				<input type="text" name="contactname" value="${sessionScope.user.contactName}">
+				<input type="text" name="contactname" value="${contactName}">
 			</div>
 			<div class="form-group">
 				<label for="email">Email</label>
-				<input type="text" name="email" value="${sessionScope.user.email}">
+				<input type="text" name="email" value="${email}">
 			</div>
 		</fieldset>
 		
 		<fieldset>
-			<legend>Wachtwoord</legend>
+			<legend>Wachtwoord wijzigen</legend>
 			<div class="form-group">
 				<label for="currpass">Huidige wachtwoord</label>
 				<input type="password" name="currpass" value="">
