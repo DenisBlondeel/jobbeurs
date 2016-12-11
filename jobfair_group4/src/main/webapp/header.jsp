@@ -63,7 +63,8 @@
 		
 							<c:choose>
 								<c:when test="${sessionScope.user!=null}">
-					                <li><a href="Controller?action=logOut"><c:out value="${sessionScope.user.userID}"/> uitloggen</a></li>
+					                <li><a href="Controller?action=myaccount"><c:out value="${sessionScope.user.userID}"/></a></li>
+					                <li><a href="Controller?action=logOut&id=${sessionScope.user.userID}">uitloggen</a></li>
 				                </c:when>
 				                <c:otherwise>
 					                <li><a href="login.jsp">Login</a></li>

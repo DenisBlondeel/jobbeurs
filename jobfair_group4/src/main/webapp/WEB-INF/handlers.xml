@@ -36,4 +36,5 @@
 	<entry key="resetpw">ui.controller.handler.ResetPwHandler</entry>
 	<entry key="confirmresetpw">ui.controller.handler.ConfirmResetPwHandler</entry>
 	<entry key="getBedrijven">ui.controller.handler.GetBedrijvenHandler</entry>
+	<entry key="myaccount">ui.controller.handler.MyAccountHandler</entry>
 </properties>
