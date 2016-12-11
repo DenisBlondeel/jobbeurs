@@ -66,7 +66,7 @@
 					                <li><a href="Controller?action=logOut"><c:out value="${sessionScope.user.userID}"/> uitloggen</a></li>
 				                </c:when>
 				                <c:otherwise>
-					                <li><a href="login.jsp">login</a></li>
+					                <li><a href="login.jsp">Login</a></li>
 				                </c:otherwise>
 			                </c:choose>
 			            </ul>
