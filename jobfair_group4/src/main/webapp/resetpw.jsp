@@ -27,7 +27,7 @@
 		<p>Test</p>
 	</div>
 	<div class="form-group">
-		<c:when test="${actie!=fail }">
+		<c:when test="${showOpt!=null}">
 			<input type="hidden" name="email" value="${email }">
 			<input type="hidden" name="userid" value="${userid }">
 			<input class="btn btn-primary" type="submit" name="submit" value="Reset">
