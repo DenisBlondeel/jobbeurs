@@ -14,10 +14,10 @@ public class LogInHandler extends RequestHandler {
 
 	@Override
 	public void handleRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		if(!request.getParameter("submit").equals("Wachtwoord vergeten?")){
+		if(request.getParameter("submit").equals("Inloggen")){
 			String userID = request.getParameter("userid");
 			String password = request.getParameter("password");
-			User user = getService().getUserIfAuthenticated(userID, password);
+			User user = service.getUserIfAuthenticated(userID, password);
 			
 			if(user!=null) {
 				String success;
