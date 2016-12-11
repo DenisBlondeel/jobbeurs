@@ -69,7 +69,7 @@ public class UpdateAccountHandler extends RequestHandler{
 	}
 
 	private void userSetName(User user, HttpServletRequest request, List<String> errors) {
-		String contactName = request.getParameter("contactName");
+		String contactName = request.getParameter("contactname");
 		request.setAttribute("contactname", contactName);
 		try{
 			user.setContactName(contactName);
