@@ -40,7 +40,9 @@ public class UpdateAccountHandler extends RequestHandler{
 
 	private void userSetPassword(User user, HttpServletRequest request, List<String> errors) {
 		String currPass = request.getParameter("currpass");
-		if(service.getUserIfAuthenticated(user.getUserID(), currPass) != null){
+		if(currPass == null){
+			return;
+		} else if(service.getUserIfAuthenticated(user.getUserID(), currPass) != null){
 			String newPass = request.getParameter("newpass");
 			String repPass = request.getParameter("reppass");
 			if(newPass.equals(repPass)){
