@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import domain.model.RoleEnum;
 import domain.model.User;
 
 public class UserRepository {
@@ -64,9 +63,10 @@ public class UserRepository {
 		return user;
 	}
 	
-	public List<User> getAllCompanies() {
+	public List<User> getAllCompaniesAlphabeticallyOnCompany() {
 		List<User> list = new ArrayList<User>();
-		String sql = "SELECT * FROM jobfair_group4.users ORDER BY companyname";
+		String sql = "SELECT * FROM jobfair_group4.users u LEFT OUTER JOIN jobfair_group4.spots s"
+				+ " ON u.userid=s.userid WHERE u.role='COMPANY' ORDER BY u.companyName, u.contactName, u.email, s.spotid";
 		try{
 			statement = connection.prepareStatement(sql);
 			ResultSet results = statement.executeQuery();
@@ -80,10 +80,89 @@ public class UserRepository {
 				user.setRole(results.getString("role"));
 				user.setSalt(results.getString("salt"));
 				user.setUserID(results.getString("userid"));
-				
-				if(user.getRole()==RoleEnum.COMPANY) {
-					list.add(user);
-				}
+
+				list.add(user);
+			}
+		} catch (SQLException e)
+		{
+			throw new DbException(e);
+		}
+		return list;
+	}
+	
+	public List<User> getAllCompaniesAlphabeticallyOnContact() {
+		List<User> list = new ArrayList<User>();
+		String sql = "SELECT * FROM jobfair_group4.users u LEFT OUTER JOIN jobfair_group4.spots s"
+				+ " ON u.userid=s.userid WHERE u.role='COMPANY' ORDER BY u.contactName, u.companyName, u.email, s.spotid";
+		try{
+			statement = connection.prepareStatement(sql);
+			ResultSet results = statement.executeQuery();
+			while (results.next())
+			{
+				User user = new User();
+				user.setCompanyNameFromDb(results.getString("companyname"));
+				user.setContactNameFromDb(results.getString("contactname"));
+				user.setEmail(results.getString("email"));
+				user.setPassword(results.getString("password"));
+				user.setRole(results.getString("role"));
+				user.setSalt(results.getString("salt"));
+				user.setUserID(results.getString("userid"));
+
+				list.add(user);
+			}
+		} catch (SQLException e)
+		{
+			throw new DbException(e);
+		}
+		return list;
+	}
+	
+	public List<User> getAllCompaniesAlphabeticallyOnEmail() {
+		List<User> list = new ArrayList<User>();
+		String sql = "SELECT * FROM jobfair_group4.users u LEFT OUTER JOIN jobfair_group4.spots s"
+				+ " ON u.userid=s.userid WHERE u.role='COMPANY' ORDER BY u.email, u.companyName, u.contactName, s.spotid";
+		try{
+			statement = connection.prepareStatement(sql);
+			ResultSet results = statement.executeQuery();
+			while (results.next())
+			{
+				User user = new User();
+				user.setCompanyNameFromDb(results.getString("companyname"));
+				user.setContactNameFromDb(results.getString("contactname"));
+				user.setEmail(results.getString("email"));
+				user.setPassword(results.getString("password"));
+				user.setRole(results.getString("role"));
+				user.setSalt(results.getString("salt"));
+				user.setUserID(results.getString("userid"));
+
+				list.add(user);
+			}
+		} catch (SQLException e)
+		{
+			throw new DbException(e);
+		}
+		return list;
+	}
+	
+	public List<User> getAllCompaniesAlphabeticallyOnSpotid() {
+		List<User> list = new ArrayList<User>();
+		String sql = "SELECT * FROM jobfair_group4.users u LEFT OUTER JOIN jobfair_group4.spots s"
+				+ " ON u.userid=s.userid WHERE u.role='COMPANY' ORDER BY s.spotid, u.companyName, u.contactName, u.email";
+		try{
+			statement = connection.prepareStatement(sql);
+			ResultSet results = statement.executeQuery();
+			while (results.next())
+			{
+				User user = new User();
+				user.setCompanyNameFromDb(results.getString("companyname"));
+				user.setContactNameFromDb(results.getString("contactname"));
+				user.setEmail(results.getString("email"));
+				user.setPassword(results.getString("password"));
+				user.setRole(results.getString("role"));
+				user.setSalt(results.getString("salt"));
+				user.setUserID(results.getString("userid"));
+
+				list.add(user);
 			}
 		} catch (SQLException e)
 		{
