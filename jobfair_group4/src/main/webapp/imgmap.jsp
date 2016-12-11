@@ -34,6 +34,9 @@
 					href="Controller?action=myspot"
 					class="mine"
 				</c:when>
+				<c:when test="${empty bezet}">
+					href="Controller?action=showopt&id=${h.id}"
+				</c:when>
 				<c:otherwise>
 		       		<c:forEach var="b" items="${bezet}">
 		       			<c:choose>
@@ -43,7 +46,6 @@
 		       					class="bezet"
 		       				</c:when>
 		       				<c:otherwise>
-		       					title="${h.id}"
 		       					href="Controller?action=showopt&id=${h.id}"
 		       				</c:otherwise>
 		       			</c:choose>
@@ -161,14 +163,12 @@
 		       					class="bezet"
 		       				</c:when>
 		       				<c:otherwise>
-		       					title="${h.id}"
 		       					href="Controller?action=showopt&id=${h.id}"
 		       				</c:otherwise>
 		       			</c:choose>
 		       		</c:forEach>
 		       	</c:otherwise>
 			</c:choose>>
-		
 	</c:forEach>
 	
 	<!-- 

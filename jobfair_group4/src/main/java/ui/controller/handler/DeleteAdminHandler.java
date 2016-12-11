@@ -10,24 +10,27 @@ import javax.servlet.http.HttpSession;
 import domain.model.RoleEnum;
 import domain.model.User;
 
-public class AdminHandler extends RequestHandler {
+public class DeleteAdminHandler extends RequestHandler {
 
 	@Override
 	public void handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		User user = (User) session.getAttribute("user");
+		String adminID = request.getParameter("adminID");
+		String password = request.getParameter("password");
 
-		if (user!=null) {
-			request.setAttribute("userid", user.getUserID());
-			if(user.getRole().equals(RoleEnum.ADMIN))
-			{
-				request.setAttribute("admin", "admin");
+		HttpSession session = request.getSession();
+		User user = ((User) session.getAttribute("user"));
+
+		if (user.isCorrectPassword(password)) {
+			try {
+				this.getService().deleteAdmin(adminID);
+				response.sendRedirect("Controller?action=admin");
+			} catch (IllegalArgumentException e) {
+				request.setAttribute("errors", e.getMessage());
+				request.getRequestDispatcher("Controller?action=getAdmin").forward(request, response);
 			}
 		}
-		request.getRequestDispatcher("admin.jsp").forward(request, response);;
 	}
-
 
 	@Override
 	public RoleEnum[] getAccesList() {

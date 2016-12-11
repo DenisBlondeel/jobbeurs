@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import domain.model.RoleEnum;
 import domain.model.User;
 
 public class UserRepository {
@@ -37,28 +38,83 @@ public class UserRepository {
 	}
 
 	public User get(String userID) {
-		if (userID.isEmpty()) {
-			throw new DbException("Niets te vinden !");
+		User user = null;
+		if (userID == null || userID.isEmpty()) {
+			return user;
 		}
+		user = new User();
 		String sql = "SELECT * FROM jobfair_group4.users WHERE userID = ?;";
-		User user = new User();
 		try {
 			statement = connection.prepareStatement(sql);
 			statement.setString(1, userID);
 			ResultSet results = statement.executeQuery();
-			results.next();
-			user.setUserID(userID);
-			user.setCompanyNameFromDb(results.getString("companyName"));
-			user.setContactNameFromDb(results.getString("contactName"));
-			user.setEmail(results.getString("email"));
-			user.setPassword(results.getString("password"));
-			user.setRole(results.getString("role"));
-			user.setSalt(results.getString("salt"));
+			if(results.next());{
+				user.setUserID(results.getString("userID"));
+				user.setCompanyNameFromDb(results.getString("companyName"));
+				user.setContactNameFromDb(results.getString("contactName"));
+				user.setEmail(results.getString("email"));
+				user.setPassword(results.getString("password"));
+				user.setRole(results.getString("role"));
+				user.setSalt(results.getString("salt"));
+			}
 		} catch (SQLException e) {
 			throw new DbException(e.getMessage(), e);
 		}
 
 		return user;
+	}
+	
+	public List<User> getAllCompanies() {
+		List<User> list = new ArrayList<User>();
+		String sql = "SELECT * FROM jobfair_group4.users ORDER BY companyname";
+		try{
+			statement = connection.prepareStatement(sql);
+			ResultSet results = statement.executeQuery();
+			while (results.next())
+			{
+				User user = new User();
+				user.setCompanyNameFromDb(results.getString("companyname"));
+				user.setContactNameFromDb(results.getString("contactname"));
+				user.setEmail(results.getString("email"));
+				user.setPassword(results.getString("password"));
+				user.setRole(results.getString("role"));
+				user.setSalt(results.getString("salt"));
+				user.setUserID(results.getString("userid"));
+				
+				if(user.getRole()==RoleEnum.COMPANY) {
+					list.add(user);
+				}
+			}
+		} catch (SQLException e)
+		{
+			throw new DbException(e);
+		}
+		return list;
+	}
+
+	public List<User> getAdmins() {
+		List<User> list = new ArrayList<User>();
+		String sql = "SELECT * FROM jobfair_group4.users WHERE role='ADMIN';";
+		try {
+			statement = connection.prepareStatement(sql);
+			ResultSet results = statement.executeQuery();
+
+			while (results.next()) {
+				User user = new User();
+				user.setUserID(results.getString("userid"));
+				user.setCompanyNameFromDb(results.getString("companyName"));
+				user.setContactNameFromDb(results.getString("contactName"));
+				user.setEmail(results.getString("email"));
+				user.setPassword(results.getString("password"));
+				user.setRole(results.getString("role"));
+				user.setSalt(results.getString("salt"));
+				list.add(user);
+			}
+		} catch (SQLException e) {
+			throw new DbException(e.getMessage(), e);
+		}
+
+		return list;
 	}
 
 	public void add(User user) {
@@ -85,7 +141,7 @@ public class UserRepository {
 					statement.setString(3, user.getContactName());
 					statement.setString(4, user.getEmail());
 					statement.setString(5, user.getPassword());
-					statement.setString(6, "hihisalt");
+					statement.setString(6, user.getSalt());
 					statement.setString(7, user.getRole().toString());
 
 					statement.executeUpdate();
@@ -93,6 +149,28 @@ public class UserRepository {
 					throw new DbException(e.getMessage(), e);
 				}
 			}
+		} catch (SQLException e) {
+			throw new DbException(e.getMessage(), e);
+		}
+	}
+
+	public void deleteAdmin(String userID) {
+		if (userID == null) {
+			throw new DbException("Nothing to delete.");
+		}
+		String sql = "SELECT COUNT(*) FROM jobfair_group4.users WHERE role='ADMIN'";
+		try {
+			statement = connection.prepareStatement(sql);
+			ResultSet results = statement.executeQuery();
+
+			results.next();
+			int cnt = Integer.parseInt(results.getString("count"));
+			if (cnt == 1) {
+				throw new IllegalArgumentException("Er moet minstens één admin zijn.");
+			} else {
+				this.delete(userID);
+			}
+
 		} catch (SQLException e) {
 			throw new DbException(e.getMessage(), e);
 		}
@@ -157,30 +235,32 @@ public class UserRepository {
 		return list;
 	}
 
-	public List<String> getEmailFromUsersWithoutSpot() {
+	public List<String> getUserIDsWithoutSpot() {
 		List<String> list1 = new ArrayList<String>();
 		List<String> list2 = new ArrayList<String>();
 		List<String> result = new ArrayList<String>();
-		String sql1 = "SELECT email FROM jobfair_group4.users WHERE role='COMPANY'";
-		String sql2 = "SELECT email FROM jobfair_group4.users u INNER JOIN jobfair_group4.spots s ON u.userid=s.userid WHERE u.role='COMPANY'";
+
+		String sql1 = "SELECT userID FROM jobfair_group4.users WHERE role='COMPANY'";
+		String sql2 = "SELECT u.userID FROM jobfair_group4.users u INNER JOIN jobfair_group4.spots s ON u.userid=s.userid WHERE u.role='COMPANY'";
+
 		try{
 			statement = connection.prepareStatement(sql1);
 			ResultSet results1 = statement.executeQuery();
 			while (results1.next())
 			{
-				list1.add(results1.getString("email"));
+				list1.add(results1.getString("userID"));
 			}
 
 			statement = connection.prepareStatement(sql2);
 			ResultSet results2 = statement.executeQuery();
 			while (results2.next())
 			{
-				list2.add(results2.getString("email"));
+				list2.add(results2.getString("userID"));
 			}
 
-			for (String email : list1) {
-				if (!list2.contains(email)) {
-					result.add(email);
+			for (String id : list1) {
+				if (!list2.contains(id)) {
+					result.add(id);
 				}
 			}
 		} catch (SQLException e)
@@ -188,6 +268,59 @@ public class UserRepository {
 			throw new DbException(e);
 		}
 		return result;
+	}
+
+	public List<String> getEmailFromUsersWithoutSpot() {
+		List<String> list = new ArrayList<String>();
+		List<String> result = new ArrayList<String>();
+
+		String sql1 = "SELECT * FROM jobfair_group4.users WHERE role='COMPANY'";
+		String sql2 = "SELECT u.userid FROM jobfair_group4.users u INNER JOIN jobfair_group4.spots s ON u.userid=s.userid WHERE u.role='COMPANY'";
+		try{
+
+			//vullen van lijst van userID's waarvan de users een spot hebben
+			statement = connection.prepareStatement(sql2);
+			ResultSet results1 = statement.executeQuery();
+			while (results1.next())
+			{
+				list.add(results1.getString("userid"));
+			}
+
+			//vullen van lijst (result) van emails waarvan de users geen spot hebben
+			statement = connection.prepareStatement(sql1);
+			ResultSet results2 = statement.executeQuery();
+			while (results2.next())
+			{
+				String userid = results2.getString("userid");
+				if (!list.contains(userid)) {
+					result.add(results2.getString("email"));
+				}
+			}
+		} catch (SQLException e)
+		{
+			throw new DbException(e);
+		}
+		return result;
+	}
+	
+	public void update(User user) {
+		try{
+			String sql = "UPDATE jobfair_group4.users"
+					+ " SET userid = ?, companyname = ?, contactname = ?, email = ?, password = ?, salt = ?, role = ?"
+					+ " WHERE userid = ?";
+			statement = connection.prepareStatement(sql);
+			statement.setString(1, user.getUserID());
+			statement.setString(2, user.getCompanyName());
+			statement.setString(3, user.getContactName());
+			statement.setString(4, user.getEmail());
+			statement.setString(5, user.getPassword());
+			statement.setString(6, user.getSalt());
+			statement.setString(7, user.getRole().toString());
+			statement.setString(8, user.getUserID());
+			statement.execute();
+		} catch (SQLException e){
+			throw new DbException(e);
+		}
 	}
 
 	public Properties getProperties() {

@@ -3,19 +3,23 @@ package domain.service;
 import java.util.List;
 import java.util.Properties;
 
+import domain.db.SpotDataRepository;
 import domain.db.SpotRepository;
 import domain.db.UserRepository;
 import domain.model.Spot;
+import domain.model.SpotData;
 import domain.model.User;
 
 public class Service {
 	
 	private SpotRepository spotDB;
 	private UserRepository userDB;
+	private SpotDataRepository dataDB;
 
 	public Service(Properties properties) {
 		spotDB = new SpotRepository(properties);
 		userDB = new UserRepository(properties);
+		dataDB = new SpotDataRepository(properties);
 	}
 
 	public void close() {
@@ -25,6 +29,10 @@ public class Service {
 
 	public User getUser(String userID) {
 		return getUserRepository().get(userID);
+	}
+	
+	public List<User> getAllCompanies() {
+		return getUserRepository().getAllCompanies();
 	}
 
 	public void addUser(User user) {
@@ -39,8 +47,16 @@ public class Service {
 		return getUserRepository().getUserIfAuthenticated(userID, password);
 	}
 
+	public List<String> getUserIDsWithoutSpot() {
+		return getUserRepository().getUserIDsWithoutSpot();
+	}
+
 	public List<String> getEmailFromUsersWithoutSpot() {
 		return getUserRepository().getEmailFromUsersWithoutSpot();
+	}
+	
+	public void updateUser(User user){
+		getUserRepository().update(user);
 	}
 
 	private UserRepository getUserRepository() {
@@ -88,14 +104,36 @@ public class Service {
 		return spotDB;
 	}
 	
-	public void dropAll()
+	public void dropAllUsers()
 	{
-		spotDB.deleteAll();
 		userDB.deleteAll();
+		spotDB.removeAllUsersFromSpots();
 	}
 
 	public List<String> getAdminEmails() {
 		return userDB.getAllAdminEmails();
 	}
+
+	public List<User> getAdmins() {
+		return getUserRepository().getAdmins();
+	}
+
+	public void deleteAdmin(String userID) {
+		getUserRepository().deleteAdmin(userID);
+	}
 	
+	public List<SpotData> getHemisData()
+	{
+		return dataDB.getHemisfeerData();
+	}
+	
+	public List<SpotData> getAtriumData()
+	{
+		return dataDB.getAtriumData();
+	}
+	
+	public List<User> getAllUsers()
+	{
+		return userDB.getAllCompanies();
+	}
 }

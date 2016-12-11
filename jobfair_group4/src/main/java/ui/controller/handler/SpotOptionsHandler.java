@@ -36,7 +36,7 @@ public class SpotOptionsHandler extends RequestHandler {
 		request.setAttribute("spotnr", spotID);
 		request.setAttribute("reserved", "Uw plaats werd gereserveerd. U ontvangt een mail ter bevestiging.");
 		try {
-			new EmailSender().sendConfirmationMail(spot, user.getEmail());
+			new EmailSender().sendConfirmationMail(spot, user.getCompanyName(), user.getEmail());
 		} catch (MessagingException e) {
 			throw new ServletException(e.getMessage(), e);
 		}
@@ -61,8 +61,8 @@ public class SpotOptionsHandler extends RequestHandler {
 	@Override
 	public RoleEnum[] getAccesList() {
 		if (this.getTimeHasCome()) {
-			return new RoleEnum[]{RoleEnum.ADMIN};
+			return new RoleEnum[]{};
 		}
-		return new RoleEnum[]{RoleEnum.COMPANY, RoleEnum.ADMIN};
+		return new RoleEnum[]{RoleEnum.COMPANY};
 	}
 }

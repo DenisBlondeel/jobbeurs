@@ -1,6 +1,8 @@
 package ui.controller.handler;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -12,40 +14,54 @@ import domain.model.Spot;
 import domain.model.User;
 
 public class ShowOptionsHandler extends RequestHandler {
-	
+
 	User user;
+	List<String> errors = new ArrayList<String>();
 
 	@Override
 	public void handleRequest(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws ServletException, IOException
+	{
 		String spotID = request.getParameter("id");
 		request.setAttribute("spotnr", spotID);
-		
+
 		HttpSession session = request.getSession();
 		user = (User) session.getAttribute("user");
-		
-		if(service.getSpotFromUser(user.getUserID()) != null){
-			request.setAttribute("errors", "Er werd al een plaats gereserveerd voor " + user.getCompanyName() + ".");
+
+		if (service.getSpotFromUser(user.getUserID()) != null)
+		{
+			errors.add("Er werd al een plaats gereserveerd voor " + user.getCompanyName() + ".");
+			request.setAttribute("errors", errors);
 			response.sendRedirect("Controller?action=");
+			return;
 		}
 
-		if (user!=null) {
+		if (user != null)
+		{
 			request.setAttribute("userid", user.getUserID());
 			Spot spot = service.getSpotFromUser(user.getUserID());
-			if (spot != null) {
+			if (spot != null)
+			{
 				request.setAttribute("mine", spot.getSpotID());
 			}
 		}
 		request.setAttribute("bezet", service.getOccupiedSpots());
-		request.getRequestDispatcher("spotoptions.jsp").forward(request, response);
-		
+		if (user.getRole().equals(RoleEnum.ADMIN)) {
+			request.setAttribute("freeUsers", this.getService().getUserIDsWithoutSpot());
+			request.getRequestDispatcher("spotoptionsadmin.jsp").forward(request, response);
+		} else {
+			request.getRequestDispatcher("spotoptions.jsp").forward(request, response);
+		}
+
 	}
 
 	@Override
-	public RoleEnum[] getAccesList() {
-		if (this.getTimeHasCome()) {
-			return new RoleEnum[]{RoleEnum.ADMIN};
+	public RoleEnum[] getAccesList()
+	{
+		if (this.getTimeHasCome())
+		{
+			return new RoleEnum[] {RoleEnum.ADMIN};
 		}
-		return new RoleEnum[]{RoleEnum.COMPANY, RoleEnum.ADMIN};
+		return new RoleEnum[] { RoleEnum.COMPANY, RoleEnum.ADMIN};
 	}
 }

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" session="true"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -46,7 +46,8 @@
 			                <li id="${param.spotoverview}"><a href="Controller?action=spots">Alle plaatsen</a></li>
 			                
 			                <c:choose>
-								<c:when test="${userid!=null}">
+			                
+								<c:when test="${sessionScope.user.userID!=null}">
 					                <li id="${param.myspot}"><a href="Controller?action=myspot">Mijn plaats</a></li>
 				                </c:when>
 				                </c:choose>
@@ -62,7 +63,7 @@
 		
 							<c:choose>
 								<c:when test="${userid!=null}">
-					                <li><a href="Controller?action=logOut">${userid} uitloggen</a></li>
+					                <li><a href="Controller?action=logOut"><c:out value="${sessionScope.user.userID}"/> uitloggen</a></li>
 				                </c:when>
 				                <c:otherwise>
 					                <li><a href="login.jsp">login</a></li>

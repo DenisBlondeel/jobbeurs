@@ -8,20 +8,19 @@ import javax.servlet.http.HttpServletResponse;
 
 import domain.model.RoleEnum;
 
-public class DeleteAllHandler extends RequestHandler{
+public class LinkUserToSpotHandler extends RequestHandler {
 
 	@Override
 	public void handleRequest(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
-	{
-		service.dropAllUsers();
-		response.sendRedirect("Controller?action=");
-	}
+			throws ServletException, IOException {
+		request.setAttribute("freeSpots", this.getService().getFreeSpots());
+		request.setAttribute("freeUsers", this.getService().getUserIDsWithoutSpot());
 
+		request.getRequestDispatcher("linkSpot.jsp").forward(request, response);
+	}
 
 	@Override
 	public RoleEnum[] getAccesList() {
 		return new RoleEnum[]{RoleEnum.ADMIN};
 	}
-
 }

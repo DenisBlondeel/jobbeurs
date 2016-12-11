@@ -8,20 +8,22 @@ import javax.servlet.http.HttpServletResponse;
 
 import domain.model.RoleEnum;
 
-public class DeleteAllHandler extends RequestHandler{
+public class ToShowOptionsHandler extends RequestHandler {
 
 	@Override
 	public void handleRequest(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
-	{
-		service.dropAllUsers();
-		response.sendRedirect("Controller?action=");
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		
 	}
-
 
 	@Override
-	public RoleEnum[] getAccesList() {
-		return new RoleEnum[]{RoleEnum.ADMIN};
+	public RoleEnum[] getAccesList()
+	{
+		if (this.getTimeHasCome())
+		{
+			return new RoleEnum[] {RoleEnum.ADMIN};
+		}
+		return new RoleEnum[] { RoleEnum.COMPANY, RoleEnum.ADMIN};
 	}
-
 }

@@ -26,17 +26,17 @@
 	<legend class="sr-only">Login Form</legend>
 
 	<div class="form-group">
-		<label for="username">username</label>
-		<input type="text" class="form-control" id="username" placeholder="username" name="username" value="${userid}" autofocus>
+		<label for="username">Gebruikersnaam</label>
+		<input type="text" class="form-control" id="userid" placeholder="Gebruikersnaam" name="userid" value="${userid}" autofocus>
 	</div>
 	<div class="form-group">
-		<label for="password">password</label>
-		<input type="password" class="form-control" id="password" placeholder="password" name="password">
+		<label for="password">Wachtwoord</label>
+		<input type="password" class="form-control" id="password" placeholder="Wachtwoord" name="password">
 	</div>
-
-	
-
-	<button type="submit" class="btn btn-primary">Submit</button>
+	<div class="form-group">
+		<input type="submit" name="submit" value="Wachtwoord vergeten?">
+		<input type="submit" name="submit" class="btn btn-primary" value="Inloggen">
+	</div>
 </form>
 </div></div></div>
 	

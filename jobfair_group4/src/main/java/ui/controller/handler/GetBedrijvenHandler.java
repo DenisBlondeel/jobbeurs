@@ -8,16 +8,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import domain.model.RoleEnum;
 
-public class DeleteAllHandler extends RequestHandler{
+public class GetBedrijvenHandler extends RequestHandler {
 
 	@Override
 	public void handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException
 	{
-		service.dropAllUsers();
-		response.sendRedirect("Controller?action=");
+		request.setAttribute("bedrijven", service.getAllUsers());
+		request.getRequestDispatcher("deleteBedrijf.jsp").forward(request, response);
 	}
-
 
 	@Override
 	public RoleEnum[] getAccesList() {
