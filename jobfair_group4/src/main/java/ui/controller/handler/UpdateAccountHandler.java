@@ -37,38 +37,12 @@ public class UpdateAccountHandler extends RequestHandler{
 		userSetPassword(user, request, errors);
 		return errors;
 	}
-
-	/*private void userSetPassword(User user, HttpServletRequest request, List<String> errors) {
-		String currPass = request.getParameter("currpass");
-		if(currPass == null || currPass.trim().isEmpty()){
-			errors.add("Vul je huidige wachtwoord in");
-			return;
-		} else if(service.getUserIfAuthenticated(user.getUserID(), currPass) != null){
-			String newPass = request.getParameter("newpass");
-			if(newPass == null || newPass.trim().isEmpty()){
-				errors.add("")
-			}
-			String repPass = request.getParameter("reppass");
-			if(newPass.equals(repPass)){
-				try{
-					user.setPassword(newPass);
-					user.setPasswordHashed(newPass);
-				} catch (IllegalArgumentException e){
-					errors.add(e.getMessage());
-				}
-			} else {
-				errors.add("Nieuwe wachtwoord en herhaalde wachtwoord komen niet overeen.");
-			}
-		} else {
-			errors.add("Huidige wachtwoord is niet correct.");
-		}
-	}*/
 	
 	private void userSetPassword(User user, HttpServletRequest request, List<String> errors){
 		String currPass = request.getParameter("currpass");
 		String newPass = request.getParameter("newpass");
 		String repPass = request.getParameter("reppass");
-		if(currPass==null && newPass==null && repPass==null){
+		if((currPass==null || currPass.trim().isEmpty()) && (newPass==null || newPass.trim().isEmpty()) && (repPass==null || repPass.trim().isEmpty())){
 			return;
 		} else if(currPass!=null && newPass!=null && repPass!=null){
 			if(service.getUserIfAuthenticated(user.getUserID(), currPass)==null){
@@ -84,14 +58,14 @@ public class UpdateAccountHandler extends RequestHandler{
 				errors.add("Nieuw wachtwoord en herhaalde wachtwoord komen niet overeen.");
 			}
 		} else if(currPass!=null && newPass!=null){
-			if(repPass==null){
+			if(repPass==null || repPass.trim().isEmpty()){
 				errors.add("Herhaal je nieuwe wachtwoord.");
 			}
 		} else if(currPass!=null && repPass!=null){
-			if(newPass==null){
+			if(newPass==null || newPass.trim().isEmpty()){
 				errors.add("Geef een nieuw wachtwoord op.");
 			}
-		} else if(currPass==null && (newPass!=null || repPass!=null)){
+		} else if((currPass==null || currPass.trim().isEmpty()) && (newPass!=null || repPass!=null)){
 			errors.add("Vul je huidige wachtwoord in.");
 		}
 	}
