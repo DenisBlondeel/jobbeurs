@@ -44,7 +44,7 @@ public class UpdateAccountHandler extends RequestHandler{
 		String repPass = request.getParameter("reppass");
 		if((currPass==null || currPass.trim().isEmpty()) && (newPass==null || newPass.trim().isEmpty()) && (repPass==null || repPass.trim().isEmpty())){
 			return;
-		} else if(currPass!=null && newPass!=null && repPass!=null){
+		} else {
 			if(service.getUserIfAuthenticated(user.getUserID(), currPass)==null){
 				errors.add("Huidige wachtwoord is niet correct.");
 			} else if(newPass.equals(repPass)){
@@ -57,7 +57,7 @@ public class UpdateAccountHandler extends RequestHandler{
 			} else {
 				errors.add("Nieuw wachtwoord en herhaalde wachtwoord komen niet overeen.");
 			}
-		} else if(currPass!=null && newPass!=null){
+		} /*else if(currPass!=null && newPass!=null){
 			if(repPass==null || repPass.trim().isEmpty()){
 				errors.add("Herhaal je nieuwe wachtwoord.");
 			}
@@ -67,7 +67,7 @@ public class UpdateAccountHandler extends RequestHandler{
 			}
 		} else if((currPass==null || currPass.trim().isEmpty()) && (newPass!=null || repPass!=null)){
 			errors.add("Vul je huidige wachtwoord in.");
-		}
+		}*/
 	}
 
 	private void userSetEmail(User user, HttpServletRequest request, List<String> errors) {
