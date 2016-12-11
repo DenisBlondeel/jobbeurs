@@ -23,13 +23,13 @@ public class EmailTest {
 
 	@Test
 	public void sendSimpleMailTest() throws Exception {
-		sender.sendNewCompanyMail("username", "password", recipient);
+//		sender.sendNewCompanyMail("username", "password", recipient);
 	}
 
 	@Test
 	public void sendConfirmationMailTest() throws Exception {
 		Spot spot = new Spot("1425", 1, 2, true, null, null);
-		sender.sendConfirmationMail(spot, company, recipient);
+//		sender.sendConfirmationMail(spot, company, recipient);
 	}
 
 	@Test
@@ -38,7 +38,7 @@ public class EmailTest {
 		deadline.set(1995, 10, 26);
 		List<String> receivers = new ArrayList<>();
 		receivers.add(recipient);
-		sender.sendEndOfRegistrationMail(deadline, receivers);
+//		sender.sendEndOfRegistrationMail(deadline, receivers);
 	}
 
 	@Test
@@ -51,8 +51,7 @@ public class EmailTest {
 		Calendar deadline = Calendar.getInstance();
 		deadline.set(2016, 11, 25);
 
-		if (receivers.size() == 4)
-			sender.sendEndOfRegistrationMail(deadline, receivers);
+//		sender.sendEndOfRegistrationMail(deadline, receivers);
 	}
 
 	@Test
@@ -63,6 +62,6 @@ public class EmailTest {
 		receivers.add(recipient);
 		receivers.add(recipient);
 
-		sender.sendAlmostSoldOutMail(receivers);
+//		sender.sendAlmostSoldOutMail(receivers);
 	}
 }
