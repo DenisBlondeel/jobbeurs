@@ -231,11 +231,6 @@
         data.fillColor = 'ff0000';
         data.fillOpacity = '0.6';
         $('.bezet').data('maphilight', data).trigger('alwaysOn.maphilight');  
-    <c:if test="${bezet!=null}">
-        <c:forEach var="s" items="${bezet}">
-            $('#${s.spotID}').data('maphilight', data).trigger('alwaysOn.maphilight');  
-        </c:forEach>                
-    </c:if>
     });
 
 
@@ -249,9 +244,7 @@
         data.fillColor = '00ff00';
         data.fillOpacity = '0.6';
         $('.mine').data('maphilight', data).trigger('alwaysOn.maphilight'); 
-        <c:if test="${mine!=null}">
-            $('#${mine}').data('maphilight', data).trigger('alwaysOn.maphilight');  
-        </c:if>
+      
         
     });
                 return true;
