@@ -48,14 +48,15 @@ public class UserRepository {
 			statement = connection.prepareStatement(sql);
 			statement.setString(1, userID);
 			ResultSet results = statement.executeQuery();
-			results.next();
-			user.setUserID(results.getString("userID"));
-			user.setCompanyNameFromDb(results.getString("companyName"));
-			user.setContactNameFromDb(results.getString("contactName"));
-			user.setEmail(results.getString("email"));
-			user.setPassword(results.getString("password"));
-			user.setRole(results.getString("role"));
-			user.setSalt(results.getString("salt"));
+			if(results.next());{
+				user.setUserID(results.getString("userID"));
+				user.setCompanyNameFromDb(results.getString("companyName"));
+				user.setContactNameFromDb(results.getString("contactName"));
+				user.setEmail(results.getString("email"));
+				user.setPassword(results.getString("password"));
+				user.setRole(results.getString("role"));
+				user.setSalt(results.getString("salt"));
+			}
 		} catch (SQLException e) {
 			throw new DbException(e.getMessage(), e);
 		}

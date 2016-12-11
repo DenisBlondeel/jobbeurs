@@ -18,7 +18,7 @@ public class ConfirmResetPwHandler extends RequestHandler{
 	public void handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String submit = request.getParameter("submit");
-		if(submit == "Reset"){
+		if(submit.equals("Reset")){
 			String userid = request.getParameter("userid");
 			String email = request.getParameter("email");
 			User user = service.getUser(userid);
