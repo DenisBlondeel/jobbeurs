@@ -17,7 +17,7 @@
 
 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-6">
 	<p>Selecteer hieronder het bedrijf dat je wenst te verwijderen.</p>
-	<form method="POST" action="Controller?action=deleteAdmin">
+	<form method="POST" action="Controller?action=">
 		<div class="form-group">
 			<label for="companyName">Beheerders: </label>
 			<select class="form-control" name="companyName" id="companyName">
