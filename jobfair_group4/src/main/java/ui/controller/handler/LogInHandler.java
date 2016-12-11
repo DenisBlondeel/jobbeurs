@@ -37,7 +37,7 @@ public class LogInHandler extends RequestHandler {
 				request.getRequestDispatcher("login.jsp").forward(request, response);
 			}
 		} else {
-			reset.handle(request, response);
+			reset.handleRequest(request, response);
 		}
 	}
 }
