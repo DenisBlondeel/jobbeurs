@@ -47,12 +47,12 @@
 			                
 			                <c:choose>
 			                
-								<c:when test="${sessionScope.user.userID!=null}">
+								<c:when test="${sessionScope.user.userID!=null && sessionScope.user.role.toString() eq 'COMPANY'}">
 					                <li id="${param.myspot}"><a href="Controller?action=myspot">Mijn plaats</a></li>
 				                </c:when>
 				                </c:choose>
 				                 <c:choose>
-								<c:when test="${admin!=null}">
+								<c:when test="${sessionScope.user.role.toString() eq 'ADMIN'}">
 					                <li id="${param.admin}"><a href="Controller?action=admin">Admin</a></li>
 				                </c:when>
 				                </c:choose>
@@ -62,7 +62,7 @@
 			            <ul class="nav navbar-nav navbar-right">	
 		
 							<c:choose>
-								<c:when test="${userid!=null}">
+								<c:when test="${sessionScope.user!=null}">
 					                <li><a href="Controller?action=logOut"><c:out value="${sessionScope.user.userID}"/> uitloggen</a></li>
 				                </c:when>
 				                <c:otherwise>
