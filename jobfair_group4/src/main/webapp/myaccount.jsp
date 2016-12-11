@@ -27,7 +27,7 @@
 		<fieldset>
 		<legend>Bedrijfsnaam</legend>
 			<div class="form-group">
-			  <p>$companyName}</p>
+			  <p>${companyName}</p>
 			</div>
 		</fieldset>
 		
