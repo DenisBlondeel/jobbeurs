@@ -32,7 +32,7 @@ public class ShowOptionsHandler extends RequestHandler {
 		{
 			errors.add("Er werd al een plaats gereserveerd voor " + user.getCompanyName() + ".");
 			request.setAttribute("errors", errors);
-			response.sendRedirect("Controller?action=");
+			request.getRequestDispatcher("Controller?action=").forward(request, response);
 			return;
 		}
 

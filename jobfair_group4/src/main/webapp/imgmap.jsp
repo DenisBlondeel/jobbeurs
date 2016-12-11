@@ -26,7 +26,6 @@
 
 <map name="image-map" id="map1">
 	<c:forEach var="h" items="${hemis}">
-	
 		<area  alt="${h.id}" id="${h.id}" coords="${h.coords}" shape="${h.shape}"
 			<c:choose>
 				<c:when test="${h.id==mine}">
@@ -39,20 +38,14 @@
 				</c:when>
 				<c:otherwise>
 		       		<c:forEach var="b" items="${bezet}">
-		       			<c:choose>
-							<c:when test="${h.id==b.spotID}">
-		       					title="${b.user.companyName}"
-		       					href=""
-		       					class="bezet"
-		       				</c:when>
-		       				<c:otherwise>
-		       					href="Controller?action=showopt&id=${h.id}"
-		       				</c:otherwise>
-		       			</c:choose>
+						<c:if test="${h.id==b.spotID}">
+	       					title="${b.user.companyName}"
+	       					class="bezet"
+	       				</c:if>
 		       		</c:forEach>
+					href="Controller?action=showopt&id=${h.id}"
 		       	</c:otherwise>
 			</c:choose>>
-		
 	</c:forEach>
 	
 	<!-- 
@@ -145,28 +138,26 @@
 <img src="img/standplaatsen-atrium-crop.png" usemap="#image-map-atrium" id="atrium" class="img-responsive">
 
 <map name="image-map-atrium" id="atrium-map">
-<c:forEach var="h" items="${atrium}">
-	
-		<area  alt="${h.id}" id="${h.id}" coords="${h.coords}" shape="${h.shape}"
+
+	<c:forEach var="h" items="${atrium}">
+		<area  alt="${h.id}" id="${h.id}" coords="${h.coords}" shape="${h.shape}" 
 			<c:choose>
 				<c:when test="${h.id==mine}">
 					title="My spot"
 					href="Controller?action=myspot"
 					class="mine"
 				</c:when>
+				<c:when test="${empty bezet}">
+					href="Controller?action=showopt&id=${h.id}"
+				</c:when>
 				<c:otherwise>
 		       		<c:forEach var="b" items="${bezet}">
-		       			<c:choose>
-							<c:when test="${h.id==b.spotID}">
-		       					title="${b.user.companyName}"
-		       					href=""
-		       					class="bezet"
-		       				</c:when>
-		       				<c:otherwise>
-		       					href="Controller?action=showopt&id=${h.id}"
-		       				</c:otherwise>
-		       			</c:choose>
+						<c:if test="${h.id==b.spotID}">
+	       					title="${b.user.companyName}"
+	       					class="bezet"
+	       				</c:if>
 		       		</c:forEach>
+					href="Controller?action=showopt&id=${h.id}"
 		       	</c:otherwise>
 			</c:choose>>
 	</c:forEach>
@@ -234,7 +225,7 @@
     <c:if test="${bezet!=null}">
         <c:forEach var="s" items="${bezet}">
             $('#${s.spotID}').data('maphilight', data).trigger('alwaysOn.maphilight');  
-        </c:forEach>                
+        </c:forEach>
     </c:if>
     });
 
