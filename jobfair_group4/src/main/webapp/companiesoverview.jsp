@@ -4,6 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <jsp:include page="header.jsp">
 	<jsp:param value="current" name="companiesoverview" />
+	<jsp:param value="Overzicht" name="title"/>
 	<jsp:param value="Overzicht van alle bedrijven" name="h2" />
 </jsp:include>
 

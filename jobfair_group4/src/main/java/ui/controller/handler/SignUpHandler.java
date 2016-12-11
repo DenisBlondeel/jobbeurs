@@ -21,10 +21,10 @@ public class SignUpHandler extends RequestHandler {
 	public void handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		User user = new User();
-		List<String> result = new ArrayList<>();
-		result = checkInputValues(request, user);
-		if(result.size()>0){
-			request.setAttribute("errors", result);
+		List<String> errors = new ArrayList<>();
+		errors = checkInputValues(request, user);
+		if(errors.size()>0){
+			request.setAttribute("errors", errors);
 			request.getRequestDispatcher("signup.jsp").forward(request, response);
 		} else {
 			String succes = "Het bedrijf " + user.getCompanyName() + " is toegevoegd.";
@@ -48,59 +48,59 @@ public class SignUpHandler extends RequestHandler {
 
 
 	private List<String> checkInputValues(HttpServletRequest request, User user) {
-		List<String> result = new ArrayList<>();
-		userSetCompany(user, request, result);
-		userSetName(user, request, result);
-		userSetEmail(user, request, result);
-		userSetId(user, request, result);
-		userSetPassword(user, request, result);
-		return result;
+		List<String> errors = new ArrayList<>();
+		userSetCompany(user, request, errors);
+		userSetName(user, request, errors);
+		userSetEmail(user, request, errors);
+		userSetId(user, request, errors);
+		userSetPassword(user, request, errors);
+		return errors;
 	}
 
-	private void userSetCompany(User user, HttpServletRequest request, List<String> result) {
+	private void userSetCompany(User user, HttpServletRequest request, List<String> errors) {
 		String companyName = request.getParameter("companyName");
 		request.setAttribute("prevCompany", companyName);
 		try{
 			user.setCompanyName(companyName);
 		} catch (IllegalArgumentException e){
-			result.add(e.getMessage());
+			errors.add(e.getMessage());
 		}
 	}
 
-	private void userSetId(User user, HttpServletRequest request, List<String> result) {
+	private void userSetId(User user, HttpServletRequest request, List<String> errors) {
 		String companyName = request.getParameter("companyName");
 		try{
 			user.generateUserId(companyName);
 		} catch (IllegalArgumentException e){
-			result.add(e.getMessage());
+			errors.add(e.getMessage());
 		}
 	}
 
-	private void userSetPassword(User user, HttpServletRequest request, List<String> result) {
+	private void userSetPassword(User user, HttpServletRequest request, List<String> errors) {
 		try{
 			tempPass = user.generatePassword();
 		} catch (IllegalArgumentException e){
-			result.add(e.getMessage());
+			errors.add(e.getMessage());
 		}
 	}
 
-	private void userSetEmail(User user, HttpServletRequest request, List<String> result) {
+	private void userSetEmail(User user, HttpServletRequest request, List<String> errors) {
 		String email = request.getParameter("email");
 		request.setAttribute("prevEmail", email);
 		try{
 			user.setEmail(email);
 		} catch (IllegalArgumentException e){
-			result.add(e.getMessage());
+			errors.add(e.getMessage());
 		}
 	}
 
-	private void userSetName(User user, HttpServletRequest request, List<String> result) {
+	private void userSetName(User user, HttpServletRequest request, List<String> errors) {
 		String contactName = request.getParameter("contactName");
 		request.setAttribute("prevContactName", contactName);
 		try{
 			user.setContactName(contactName);
 		} catch (IllegalArgumentException e){
-			result.add(e.getMessage());
+			errors.add(e.getMessage());
 		}
 	}
 }
