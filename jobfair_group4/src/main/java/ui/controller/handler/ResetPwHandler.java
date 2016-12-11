@@ -20,16 +20,16 @@ public class ResetPwHandler extends RequestHandler{
 		if(user != null){
 			result = "Ben je je wachtwoord vergeten? Klik dan hieronder op 'Reset' om een nieuw wachtwoord te ontvangen via email."
 					+ "/n Deze mail wordt verzonden naar " + user.getEmail() + ".";
-			actie = "success";
 			String email = user.getEmail();
 			request.setAttribute("email", email);
 			request.setAttribute("userid", user.getUserID());
+			request.setAttribute("showReset", "ok");
 		} else {
 			result = "Gebruiker met gebruikersnaam " + userid + " bestaat niet.";
 			actie = "fail";
+			request.setAttribute("showReset", null);
 		}
 		request.setAttribute("result", result);
-		request.setAttribute("actie", actie);
 		request.getRequestDispatcher("resetpw.jsp").forward(request, response);
 	}
 
