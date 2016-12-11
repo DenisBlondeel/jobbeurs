@@ -38,7 +38,7 @@ public class UserRepository {
 	}
 
 	public User get(String userID) {
-		if (userID.isEmpty()) {
+		if (userID == null || userID.isEmpty()) {
 			throw new DbException("Niets te vinden !");
 		}
 		String sql = "SELECT * FROM jobfair_group4.users WHERE userID = ?;";
