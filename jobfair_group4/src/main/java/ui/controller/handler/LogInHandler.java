@@ -14,26 +14,24 @@ public class LogInHandler extends RequestHandler {
 
 	@Override
 	public void handleRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		if(request.getParameter("submit").equals("Inloggen")){
-			String userID = request.getParameter("userid");
-			String password = request.getParameter("password");
-			User user = service.getUserIfAuthenticated(userID, password);
-			
-			if(user!=null) {
-				String success;
-				success = "Je bent succesvol ingelogd!";
-				request.setAttribute("success", success);
-				HttpSession session = request.getSession();
-				session.setAttribute("user", user);
-				request.setAttribute("userid", user.getUserID());
-				response.sendRedirect("Controller?action=");
-			} else {
-				ArrayList<String> errors = new ArrayList<>();
-				errors.add("Uw gebruikersnaam of wachtwoord is niet correct");
-				request.setAttribute("errors", errors);
-				request.setAttribute("userid", userID);
-				request.getRequestDispatcher("login.jsp").forward(request, response);
-			}
+		String userID = request.getParameter("userid");
+		String password = request.getParameter("password");
+		User user = service.getUserIfAuthenticated(userID, password);
+		
+		if(user!=null) {
+			String success;
+			success = "Je bent succesvol ingelogd!";
+			request.setAttribute("success", success);
+			HttpSession session = request.getSession();
+			session.setAttribute("user", user);
+			request.setAttribute("userid", user.getUserID());
+			response.sendRedirect("Controller?action=");
+		} else {
+			ArrayList<String> errors = new ArrayList<>();
+			errors.add("Uw gebruikersnaam of wachtwoord is niet correct");
+			request.setAttribute("errors", errors);
+			request.setAttribute("userid", userID);
+			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
 		request.getRequestDispatcher("Controller?action=resetpw").forward(request, response);
 	}
