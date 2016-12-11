@@ -43,4 +43,8 @@ public class MySpotHandler extends RequestHandler{
 		request.getRequestDispatcher("myspot.jsp").forward(request, response);
 	}
 
+	@Override
+	public RoleEnum[] getAccesList() {
+		return new RoleEnum[]{RoleEnum.COMPANY};
+	}
 }

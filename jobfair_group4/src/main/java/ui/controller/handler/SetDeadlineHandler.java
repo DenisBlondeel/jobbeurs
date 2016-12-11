@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import domain.model.RoleEnum;
+
 public class SetDeadlineHandler extends RequestHandler{
 
 	@Override
@@ -70,5 +72,10 @@ public class SetDeadlineHandler extends RequestHandler{
 					+ "een '-'. Gelieve een juiste datum mee te geven.");
 			return null;
 		}
+	}
+
+	@Override
+	public RoleEnum[] getAccesList() {
+		return new RoleEnum[]{RoleEnum.ADMIN};
 	}
 }

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import domain.model.RoleEnum;
+import domain.model.Spot;
 import domain.model.User;
 
 public class DownloadHandler extends RequestHandler{
@@ -30,9 +31,13 @@ public class DownloadHandler extends RequestHandler{
 
         ArrayList<String> rows = new ArrayList<String>();
         List<User> users = service.getAllCompanies();
+        rows.add("Bedrijfsnaam;Naam contactpersoon;Email contactpersoon;Plaatsnummer"+
+        		";Aantal stoelen;Aantal tafels;Elektriciteit;Opmerkingen\n");
 
         for (User user : users) {
-            rows.add(user.getCompanyName()+";"+user.getContactName()+";;"+user.getEmail()+"\n");
+        	Spot spot = getService().getSpotFromUser(user.getUserID());
+            rows.add(user.getCompanyName()+";"+user.getContactName()+";"+user.getEmail()+";"+spot.getSpotID()
+            	+";"+spot.getAmountChairs()+";"+spot.getAmountTables()+";"+spot.getElectricity()+";"+spot.getRemarks()+"\n");
         }
 
         Iterator<String> iter = rows.iterator();
