@@ -18,7 +18,7 @@ public class ResetPwHandler extends RequestHandler{
 		String actie;
 		User user = service.getUser(userid);
 		String email = user.getEmail();
-		if(user.getUserID().isEmpty()){
+		if(user.getUserID() == null){
 			result = "Ben je je wachtwoord vergeten? Klik dan hieronder op 'Reset' om een nieuw wachtwoord te ontvangen via email."
 					+ "/n Deze mail wordt verzonden naar " + user.getEmail() + ".";
 			actie = "success";

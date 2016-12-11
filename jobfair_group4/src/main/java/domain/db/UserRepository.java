@@ -38,11 +38,12 @@ public class UserRepository {
 	}
 
 	public User get(String userID) {
+		User user = null;
 		if (userID == null || userID.isEmpty()) {
-			throw new DbException("Niets te vinden !");
+			return user;
 		}
+		user = new User();
 		String sql = "SELECT * FROM jobfair_group4.users WHERE userID = ?;";
-		User user = new User();
 		try {
 			statement = connection.prepareStatement(sql);
 			statement.setString(1, userID);
