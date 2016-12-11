@@ -23,13 +23,13 @@ public class ResetPwHandler extends RequestHandler{
 			actie = "success";
 			String email = user.getEmail();
 			request.setAttribute("email", email);
+			request.setAttribute("userid", user.getUserID());
 		} else {
 			result = "Gebruiker met gebruikersnaam " + userid + " bestaat niet.";
 			actie = "fail";
 		}
 		request.setAttribute("result", result);
 		request.setAttribute("actie", actie);
-		request.setAttribute("userid", user.getUserID());
 		request.getRequestDispatcher("resetpw.jsp").forward(request, response);
 	}
 
