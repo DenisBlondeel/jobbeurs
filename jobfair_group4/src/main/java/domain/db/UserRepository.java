@@ -48,7 +48,7 @@ public class UserRepository {
 			statement = connection.prepareStatement(sql);
 			statement.setString(1, userID);
 			ResultSet results = statement.executeQuery();
-			while(results.next());{
+			if(results.next());{
 				user.setUserID(results.getString("userID"));
 				user.setCompanyNameFromDb(results.getString("companyName"));
 				user.setContactNameFromDb(results.getString("contactName"));
