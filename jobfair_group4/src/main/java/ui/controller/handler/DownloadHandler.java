@@ -31,8 +31,8 @@ public class DownloadHandler extends RequestHandler{
 
         ArrayList<String> rows = new ArrayList<String>();
         List<User> users = service.getAllCompanies();
-        rows.add("Bedrijfsnaam;Naam contactpersoon;Email contactpersoon;Plaatsnummer"+
-        		";Aantal stoelen;Aantal tafels;Elektriciteit;Opmerkingen\n");
+//        rows.add("Bedrijfsnaam;Naam contactpersoon;Email contactpersoon;Plaatsnummer"+
+//        		";Aantal stoelen;Aantal tafels;Elektriciteit;Opmerkingen\n");
 
         for (User user : users) {
         	Spot spot = getService().getSpotFromUser(user.getUserID());
