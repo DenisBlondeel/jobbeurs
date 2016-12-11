@@ -79,7 +79,7 @@
 			<div class="alert alert-danger">
 				<ul>
 					<c:forEach var="error" items="${errors}">
-						<li>${error}</li>
+						<li><c:out value="${error}"/></li>
 					</c:forEach>
 				</ul>
 			</div>
@@ -88,7 +88,7 @@
 			<div class="alert alert-success">
 				<ul>
 				<c:forEach var="succes" items="${success}">
-					<li>${succes}</li>
+					<li><c:out value="${succes}"/></li>
 				</c:forEach>
 				</ul>
 			</div>

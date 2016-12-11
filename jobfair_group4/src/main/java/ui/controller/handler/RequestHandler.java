@@ -52,18 +52,6 @@ public abstract class RequestHandler {
 		}
 		throw new NotAuthorizedException("Je hebt hiervoor geen toegang");
 	}
-
-	public RoleEnum[] getAccesList() {
-		return null;
-	}
-
-	public void setService(Service service) {
-		this.service = service;
-	}
-
-	protected Service getService() {
-		return service;
-	}
 	
 	public void checkDate(HttpServletRequest request)
 	{
@@ -78,14 +66,28 @@ public abstract class RequestHandler {
 		}
 	}
 
-	protected boolean getTimeHasCome() {
-		return this.timeHasCome;
+//	private void resetSomeSessions(HttpServletRequest request) {
+//		HttpSession session = request.getSession();
+//		session.removeAttribute("success");
+//		session.removeAttribute("errors");
+//	}
+
+
+	/*********************
+	 * Getters & Setters *
+	 *********************/
+
+	public RoleEnum[] getAccesList() {
+		return null;
 	}
 
+	public void setService(Service service) {
+		this.service = service;
+	}
 
-	/**********************
-	 * SpotOptionsHandler *
-	 **********************/
+	protected Service getService() {
+		return service;
+	}
 
 	protected boolean getEnoughSpots() {
 		return this.enoughSpots;
@@ -93,5 +95,9 @@ public abstract class RequestHandler {
 
 	protected void setEnoughSpots(boolean value) {
 		this.enoughSpots = value;
+	}
+
+	protected boolean getTimeHasCome() {
+		return this.timeHasCome;
 	}
 }
