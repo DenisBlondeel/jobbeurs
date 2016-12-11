@@ -36,10 +36,9 @@
 	<div class="form-group">
 		<input type="submit" name="submit" value="Wachtwoord vergeten?">
 	</div>
-
-	
-
-	<button type="submit" class="btn btn-primary">Inloggen</button>
+	<div>
+		<input type="submit" class="btn btn-primary" value="Inloggen">
+	</div>
 </form>
 </div></div></div>
 	
