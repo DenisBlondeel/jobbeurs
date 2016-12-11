@@ -23,7 +23,9 @@
 			<select class="form-control" name="companyName" id="companyName">
 				<c:if test="${companies != null}">
 				<c:forEach var="company" items="${companies}">
-					<option value="<c:out value="${company.userID}"/>"><c:out value="${company.userID}"/></option>
+					<option value="<c:out value="${company.userID}"/>">
+						<c:out value="${company.companyName}"/>, <c:out value="${company.email}"/>: <c:out value="${company.userID}"/>
+						</option>
 				</c:forEach>
 				</c:if>
 			</select>
