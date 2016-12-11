@@ -33,6 +33,5 @@ public class LogInHandler extends RequestHandler {
 			request.setAttribute("userid", userID);
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
-		request.getRequestDispatcher("Controller?action=resetpw").forward(request, response);
 	}
 }
