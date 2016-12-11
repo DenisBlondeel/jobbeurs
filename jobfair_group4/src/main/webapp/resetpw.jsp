@@ -24,12 +24,12 @@
 <form action="Controller?action=confirmresetpw" method="POST" role="form">
 	<legend class="sr-only">Nieuw wachtwoord</legend>
 	<div class="form-group">
-		<p>Test</p>
+	<p>${result}</p>
 	</div>
 	<div class="form-group">
-		<c:if test="${not empty showReset}">
-			<input type="hidden" name="email" value="${email }">
-			<input type="hidden" name="userid" value="${userid }">
+		<c:if test="${empty showReset}">
+			<input type="hidden" name="email" value="${email}">
+			<input type="hidden" name="userid" value="${userid}">
 			<input class="btn btn-primary" type="submit" name="submit" value="Reset">
 		</c:if>
 		<input class="btn btn-primary" type="submit" name="submit" value="Annuleer">
