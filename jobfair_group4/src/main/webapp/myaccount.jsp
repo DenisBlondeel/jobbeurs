@@ -44,7 +44,7 @@
 		</fieldset>
 		
 		<fieldset>
-			<legend>Wachtwoord</legend>
+			<legend>Wachtwoord wijzigen</legend>
 			<div class="form-group">
 				<label for="currpass">Huidige wachtwoord</label>
 				<input type="password" name="currpass" value="">
