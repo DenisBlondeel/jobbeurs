@@ -15,9 +15,8 @@ public class ResetPwHandler extends RequestHandler{
 			throws ServletException, IOException {
 		String userid = request.getParameter("userid");
 		String result;
-		String actie;
 		User user = service.getUser(userid);
-		if(user != null){
+		if(!user.getUserID().trim().isEmpty()){
 			result = "Ben je je wachtwoord vergeten? Klik dan hieronder op 'Reset' om een nieuw wachtwoord te ontvangen via email."
 					+ "/n Deze mail wordt verzonden naar " + user.getEmail() + ".";
 			String email = user.getEmail();
@@ -26,7 +25,6 @@ public class ResetPwHandler extends RequestHandler{
 			request.setAttribute("showReset", "ok");
 		} else {
 			result = "Gebruiker met gebruikersnaam " + userid + " bestaat niet.";
-			actie = "fail";
 			request.setAttribute("showReset", null);
 		}
 		request.setAttribute("result", result);
