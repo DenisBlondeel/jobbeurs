@@ -19,8 +19,8 @@
 			<p>Selecteer hieronder het bedrijf dat je wenst te verwijderen.</p>
 			<form method="POST" action="Controller?action=deletebedrijf">
 				<div class="form-group">
-					<label for="companyName">Bedrijven: </label> <select
-						class="form-control" name="companyName" id="companyName">
+					<label for="companyID">Bedrijven: </label> <select
+						class="form-control" name="companyID" id="companyID">
 						<c:if test="${companies != null}">
 							<c:forEach var="company" items="${companies}">
 								<option value="<c:out value="${company.userID}"/>">
