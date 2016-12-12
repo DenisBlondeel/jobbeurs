@@ -50,7 +50,7 @@
 				Na afloop van de jobbeurs kunnen ook alle bedrijven verwijderd worden.</p>
 			<a class="btn btn-primary" href="Controller?action=gotosignup">Voeg Bedrijf toe</a>
 			<a class="btn btn-primary" href="Controller?action=getBedrijven">Verwijder Bedrijf</a>
-			<a class="btn btn-primary" href="Controller?action=drop">Verwijder alle Bedrijven</a>
+			<a class="btn btn-primary" href="confirmdeleteAll.jsp">Verwijder alle Bedrijven</a>
 		</div>
 	<legend><i class="fa fa-link"></i> Link bedrijven aan vrije plaatsen</legend>
 		<p>Met deze tool kan je een bedrijf zonder plaats een plaats toekennen.</p>
