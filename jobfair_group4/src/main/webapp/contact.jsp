@@ -24,7 +24,7 @@
 					<c:forEach var="admin" items="${admins}">
 						<li>
 							${admin.contactName}<br>
-							Email: ${admin.email}
+							${admin.email}
 						</li>
 					</c:forEach>
 				</ul>
