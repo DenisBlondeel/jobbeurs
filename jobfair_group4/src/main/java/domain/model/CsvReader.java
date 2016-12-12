@@ -25,7 +25,6 @@ public class CsvReader {
 			String[] data = line.split(";");
 			User user = new User();
 			String companyName = data[0];
-			System.out.println(companyName);
 			user.setCompanyName(companyName);
 			String contactName = data[1];
 			user.setContactName(contactName);
