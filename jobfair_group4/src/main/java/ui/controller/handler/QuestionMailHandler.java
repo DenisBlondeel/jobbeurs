@@ -34,6 +34,9 @@ public class QuestionMailHandler extends RequestHandler{
 			request.setAttribute("errors", "Gelieve alle velden in te vullen");
 		} else if(!verify){
 			request.setAttribute("errors", "Vergeet de captcha niet aan te vinken.");
+			request.setAttribute("from", from);
+			request.setAttribute("subj", subj);
+			request.setAttribute("msg", msg);
 		} else {
 			EmailSender es = new EmailSender();
 			try{
@@ -43,9 +46,6 @@ public class QuestionMailHandler extends RequestHandler{
 				throw new ServletException(e.getMessage(), e);
 			}
 		}
-		request.setAttribute("from", from);
-		request.setAttribute("subj", subj);
-		request.setAttribute("msg", msg);
 		request.getRequestDispatcher("Controller?action=contact").forward(request, response);
 	}
 }
