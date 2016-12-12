@@ -14,8 +14,14 @@ public class DeleteAllHandler extends RequestHandler{
 	public void handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException
 	{
-		service.dropAllUsers();
-		response.sendRedirect("Controller?action=");
+		String action = request.getParameter("submit");
+
+		if(action.equals("ja")){
+			service.dropAllUsers();
+			response.sendRedirect("Controller?action=");
+		} else {
+			request.getRequestDispatcher("Controller?action=admin").forward(request, response);
+		}
 	}
 
 	@Override
