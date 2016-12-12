@@ -43,8 +43,11 @@
 				</select>
 				<label for="subject">Onderwerp: </label>
 				<input class="form-control" type="text" name="subject" value="${subject}" placeholder="Onderwerp">
+				<label for="name">Naam: </label>
+				<input class="form-control" type="text" name="name" value="${from}">
 				<label for="message">Je bericht: </label>
-				<textarea class="form-control" name="message" class="form-control" rows="3" placeholder="Vragen / Opmerkingen"></textarea>
+				<textarea class="form-control" name="message" class="form-control" rows="3" value="${msg}" placeholder="Vragen / Opmerkingen"></textarea>
+				<input type="submit" class="btn btn-primary" value="Verzenden">
 			</div>
 		</fieldset>
 	</form>

@@ -164,6 +164,12 @@ public class EmailSender {
 		this.sendFromGMail(subject, message, emailreceiver);
 	}
 
+	public void sendQuestionMail(String to, String from, String subj, String msg) throws MessagingException {
+		String subject = "Jobbeurs - Vraag van " + from + " - " + subj;
+		String message = msg + "<br><br>--<br>Deze vraag werd verzonden vanaf de jobbeurs-webapp.<br><br>Team Scrumbags----";
+		this.sendFromGMail(subject, message, to);
+	}
+
 	private void sendFromGMail(String subject, String body, String to) throws MessagingException {
 		Session session = Session.getDefaultInstance(properties);
 		
