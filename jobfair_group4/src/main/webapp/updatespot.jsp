@@ -52,7 +52,7 @@
 
 			<div class="radio">
 			  <label>
-			    <input type="radio" name="tables" id="table1" value="1" ${tb0}>
+			    <input type="radio" name="tables" id="table1" value="1" ${tb1}>
 			   1
 			  </label>
 			</div>
