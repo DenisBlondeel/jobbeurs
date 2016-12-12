@@ -25,17 +25,18 @@ public class CsvReader {
 			String[] data = line.split(";");
 			User user = new User();
 			String companyName = data[0];
-			user.setCompanyName(companyName);
 			String contactName = data[1];
-			user.setContactName(contactName);
 			String email = data[2];
-			user.setEmail(email);
-			user.generateUserId(companyName);
-			String tempPass = user.generatePassword();
-			users.add(user);
-			mailList.put(user, tempPass);
+			if(!companyName.equals("bedrijf") && !contactName.equals("contactpersoon") && !email.equals("email")){
+				user.setCompanyName(companyName);
+				user.setContactName(contactName);
+				user.setEmail(email);
+				user.generateUserId(companyName);
+				String tempPass = user.generatePassword();
+				users.add(user);
+				mailList.put(user, tempPass);
+			}
 		}
-		users.remove(0);
 
 		try {
 			emailSender.sendNewCompanyMail(mailList);
