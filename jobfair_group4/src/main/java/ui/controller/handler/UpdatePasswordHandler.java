@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import domain.model.RoleEnum;
 import domain.model.User;
 
 public class UpdatePasswordHandler extends RequestHandler {
@@ -30,6 +31,11 @@ public class UpdatePasswordHandler extends RequestHandler {
 			request.setAttribute("success", "Uw wachtwoord werd aangepast.");
 			request.getRequestDispatcher("Controller?action=home").forward(request, response);
 		}
+	}
+
+	@Override
+	public RoleEnum[] getAccesList() {
+		return new RoleEnum[]{RoleEnum.ADMIN, RoleEnum.COMPANY};
 	}
 
 	private void userSetPassword(User user, HttpServletRequest request, List<String> errors){

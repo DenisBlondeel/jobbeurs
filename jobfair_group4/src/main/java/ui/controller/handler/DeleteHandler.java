@@ -21,8 +21,8 @@ public class DeleteHandler extends RequestHandler{
 	@Override
 	public RoleEnum[] getAccesList() {
 		if (this.getTimeHasCome()) {
-			return new RoleEnum[]{RoleEnum.ADMIN};
+			return new RoleEnum[]{};
 		}
-		return new RoleEnum[]{RoleEnum.COMPANY, RoleEnum.ADMIN};
+		return new RoleEnum[]{RoleEnum.COMPANY};
 	}
 }

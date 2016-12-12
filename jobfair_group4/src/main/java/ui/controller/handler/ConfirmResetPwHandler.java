@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import domain.db.DbException;
 import domain.model.EmailSender;
+import domain.model.RoleEnum;
 import domain.model.User;
 
 public class ConfirmResetPwHandler extends RequestHandler{
@@ -65,6 +66,12 @@ public class ConfirmResetPwHandler extends RequestHandler{
 			errors.add("Geen gebruiker met de gegeven gebruikersnaam gevonden.");
 			return null;
 		}
+	}
+
+
+	@Override
+	public RoleEnum[] getAccesList() {
+		return new RoleEnum[]{RoleEnum.ADMIN, RoleEnum.COMPANY};
 	}
 
 }
