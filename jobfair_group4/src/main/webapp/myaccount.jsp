@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <jsp:include page="header.jsp">
-	<jsp:param value="Jobbeurs - ${sessionScope.user.companyName}" name="title"/>
+	<jsp:param value="Jobbeurs - ${sessionScope.user.contactName}" name="title"/>
 </jsp:include>
 
 
@@ -15,7 +15,7 @@
 
 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-6">
 
-	<h3>Instellingen voor ${companyName}</h3>
+	<h3>Instellingen voor ${contactName}</h3>
 	<form method="POST" action="Controller?action=updateaccount" novalidate="novalidate" role="form">
 		<fieldset>
 		<legend>Gebruikersnaam</legend>
