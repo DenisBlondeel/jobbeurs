@@ -19,7 +19,7 @@ public class CsvReader {
 		Map<User, String> mailList = new HashMap<>();
 
 		Scanner inputStream;
-		inputStream = new Scanner(in, "ISO-8859-1");
+		inputStream = new Scanner(in, "UTF-8");
 		while(inputStream.hasNextLine()){
 			String line = inputStream.nextLine();
 			String[] data = line.split(";");
