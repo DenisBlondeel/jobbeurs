@@ -26,12 +26,6 @@ public class ConfirmUpdateHandler extends RequestHandler	{
 		int tables = Integer.parseInt(request.getParameter("tables"));
 		boolean electricity = request.getParameter("electricity") != null;
 		String extra = request.getParameter("extra");
-		System.out.println(spotnr);
-		System.out.println(spot);
-		System.out.println(chairs);
-		System.out.println(tables);
-		System.out.println(electricity);
-		System.out.println(extra);
 
 		spot.setAmountChairs(chairs);
 		spot.setAmountTables(tables);

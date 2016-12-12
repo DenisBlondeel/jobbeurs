@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import domain.model.RoleEnum;
 import domain.model.User;
 
 public class UpdateAccountHandler extends RequestHandler{
@@ -43,6 +44,11 @@ public class UpdateAccountHandler extends RequestHandler{
 			request.setAttribute("success", "Uw gegevens werden aangepast.");
 			request.getRequestDispatcher("Controller?action=home").forward(request, response);
 		}
+	}
+
+	@Override
+	public RoleEnum[] getAccesList() {
+		return new RoleEnum[]{RoleEnum.ADMIN, RoleEnum.COMPANY};
 	}
 
 	private List<String> checkInputvalues(User user, HttpServletRequest request) {
