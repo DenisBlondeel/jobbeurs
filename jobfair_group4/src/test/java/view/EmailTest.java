@@ -61,7 +61,23 @@ public class EmailTest {
 		receivers.add(recipient);
 		receivers.add(recipient);
 		receivers.add(recipient);
+		receivers.add(recipient);
+		receivers.add(recipient);
+		receivers.add(recipient);
+		receivers.add(recipient);
+		receivers.add(recipient);
+		receivers.add(recipient);
+		receivers.add(recipient);
+		receivers.add(recipient);
+		receivers.add(recipient);
+		receivers.add(recipient);
+		receivers.add(recipient);
 
 //		sender.sendAlmostSoldOutMail(receivers);
+	}
+
+	@Test
+	public void sendUserLinkedToSpotTest() throws Exception {
+//		sender.sendUserLinkedToSpotMail("ךכûüשאיט", company, recipient);
 	}
 }
