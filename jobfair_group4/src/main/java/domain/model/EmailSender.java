@@ -16,7 +16,7 @@ import javax.mail.internet.MimeMessage;
 public class EmailSender {
 
 	private String username = "scrumbags.06", password = "tttttttt";
-	private String messageHeader = "<meta charset=\"UTF-8\">";
+	private String messageHeader = "<meta charset=\"ISO-8859-1\">";
 	private Properties properties;
 
 
