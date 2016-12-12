@@ -38,7 +38,7 @@
 				<label for="adminID">Selecteer een beheerder * </label>
 				<select class="form-control" name="adminID" id="adminID">
 					<c:forEach var="admin" items="${admins}">
-						<option value="<c:out value="${admin.contactName}"/>"></option>
+						<option value="<c:out value="${admin.contactName}"/>"><c:out value="${admin.contactName}"/></option>
 					</c:forEach>
 				</select>
 				<label for="subject">Onderwerp * </label>
