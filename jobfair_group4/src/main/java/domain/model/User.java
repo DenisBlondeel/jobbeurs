@@ -207,7 +207,7 @@ public class User {
 			throw new IllegalArgumentException("Er kon geen gebruikersnaam gegenereerd worden.");
 		}
 		Random random = new Random();
-		String userID = user + random.nextInt(999); 
+		String userID = user + random.nextInt(999);
 		this.setUserID(userID.replace(" ", ""));
 	}
 }
