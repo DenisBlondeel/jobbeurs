@@ -21,11 +21,8 @@ public class UpdatePasswordHandler extends RequestHandler {
 		List<String> errors = new ArrayList<>();
 
 		this.userSetPassword(user, request, errors);
-		System.out.println("check1");
 
 		if (!errors.isEmpty()) {
-			System.out.println("check2");
-			System.out.println(errors.get(0));
 			request.setAttribute("errors", errors);
 			request.getRequestDispatcher("myaccount.jsp").forward(request, response);
 		} else {
