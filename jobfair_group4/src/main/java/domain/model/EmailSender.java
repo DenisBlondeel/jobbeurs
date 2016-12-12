@@ -185,7 +185,7 @@ public class EmailSender {
 		InternetAddress toAddress = new InternetAddress(to);
 		message.setRecipient(Message.RecipientType.TO, toAddress);
 		message.setSubject(subject);
-		message.setContent(body, "text/html");
+		message.setContent(body, "text/html; charset=utf-8");
 		
 		String from = properties.getProperty("mail.smtp.user");
 		String password = properties.getProperty("mail.smtp.password");
@@ -206,7 +206,7 @@ public class EmailSender {
 		for(int i = 0; i < emailreceivers.size(); i++) {
 			MimeMessage message = new MimeMessage(session);
 			message.setSubject(subject);
-			message.setContent(body, "text/html");
+			message.setContent(body, "text/html; charset=utf-8");
 
 			InternetAddress toAddress = new InternetAddress(emailreceivers.get(i));
 			message.setRecipient(Message.RecipientType.TO, toAddress);
@@ -238,7 +238,7 @@ public class EmailSender {
 	
 			MimeMessage message = new MimeMessage(session);
 			message.setSubject(subject);
-			message.setContent(body, "text/html");
+			message.setContent(body, "text/html; charset=utf-8");
 	
 			InternetAddress toAddress = new InternetAddress(user.getEmail());
 			message.setRecipient(Message.RecipientType.TO, toAddress);
