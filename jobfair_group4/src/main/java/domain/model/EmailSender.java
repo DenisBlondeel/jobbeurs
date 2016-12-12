@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -210,6 +211,38 @@ public class EmailSender {
 			InternetAddress toAddress = new InternetAddress(emailreceivers.get(i));
 			message.setRecipient(Message.RecipientType.TO, toAddress);
 
+			transport.sendMessage(message, message.getAllRecipients());
+		}
+
+		transport.close();
+	}
+
+	public void sendNewCompanyMail(Map<User, String> mailList) throws MessagingException {
+		String subject = "Jobbeurs 2017 - UCLL Leuven";
+		Session session = Session.getDefaultInstance(properties);
+		
+		String from = properties.getProperty("mail.smtp.user");
+		String password = properties.getProperty("mail.smtp.password");
+		Transport transport = session.getTransport("smtp");
+		transport.connect(from, password);
+		
+		for(User user : mailList.keySet()) {
+			String body = messageHeader
+					+ "Beste,<br><br>We mogen je met veel plezier melden dat je vanaf nu een plaats kunt reserveren voor onze jobbeurs.<br>"
+					+ "Inloggen doe je <a href=\"http://java.cyclone2.khleuven.be:38034/jobfair_group4/\">hier</a> met volgende login-gegevens:<br>"
+					+ "UserID: " + user.getUserID() + "<br>"
+					+ "Wachtwoord: " + mailList.get(user) + "<br><br>"
+					+ "--<br>"
+					+ "Mvg,<br>"
+					+ "Team Scrumbags";
+	
+			MimeMessage message = new MimeMessage(session);
+			message.setSubject(subject);
+			message.setContent(body, "text/html");
+	
+			InternetAddress toAddress = new InternetAddress(user.getEmail());
+			message.setRecipient(Message.RecipientType.TO, toAddress);
+	
 			transport.sendMessage(message, message.getAllRecipients());
 		}
 

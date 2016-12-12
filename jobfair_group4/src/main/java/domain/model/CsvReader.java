@@ -2,7 +2,9 @@ package domain.model;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 import javax.mail.MessagingException;
@@ -14,6 +16,7 @@ public class CsvReader {
 	@SuppressWarnings("resource")
 	public List<User> read(InputStream in) throws MessagingException{
 		List<User> users = new ArrayList<User>();
+		Map<User, String> mailList = new HashMap<>();
 		Scanner inputStream;
 		inputStream = new Scanner(in);
 		while(inputStream.hasNextLine()){
@@ -29,12 +32,15 @@ public class CsvReader {
 			user.generateUserId(companyName);
 			String tempPass = user.generatePassword();
 			users.add(user);
-			try {
-				emailSender.sendNewCompanyMail(user.getUserID(), tempPass, user.getEmail());
-			} catch (MessagingException e) {
-				throw new MessagingException(e.getMessage(), e);
-			}
+			mailList.put(user, tempPass);
 		}
+
+		try {
+			emailSender.sendNewCompanyMail(mailList);
+		} catch (MessagingException e) {
+			throw new MessagingException(e.getMessage(), e);
+		}
+
 		inputStream.close();
 		return users;
 	}
