@@ -58,7 +58,7 @@ public class User {
 	}
 
 	public void setContactName(String contactName) {
-		if(contactName == null || contactName.trim().isEmpty()){
+		if(!role.equals(RoleEnum.ADMIN) && (contactName == null || contactName.trim().isEmpty())){
 			throw new IllegalArgumentException("Gelieve een contactpersoon op te geven.");
 		}
 		this.contactName = contactName;

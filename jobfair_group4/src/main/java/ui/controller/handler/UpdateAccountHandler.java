@@ -18,11 +18,26 @@ public class UpdateAccountHandler extends RequestHandler{
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
+
+		String password = request.getParameter("password");
+		if (password == null || password.isEmpty()) {
+			request.setAttribute("errors", "Je bent verplicht om je wachtwoord in te geven vooraleer de wijzigingen doorgevoerd kunnen worden.");
+			request.getRequestDispatcher("myaccount.jsp").forward(request, response);
+			return;
+		}
+
+		if (!user.isCorrectPassword(password)) {
+			request.setAttribute("errors", "Verkeerd wachtwoord.");
+			request.getRequestDispatcher("myaccount.jsp").forward(request, response);
+			return;
+		}
+
 		List<String> errors = new ArrayList<>();
 		errors = checkInputvalues(user, request);
+
 		if(!errors.isEmpty()){
 			request.setAttribute("errors", errors);
-			request.getRequestDispatcher("Controller?action=myaccount").forward(request, response);
+			request.getRequestDispatcher("myaccount.jsp").forward(request, response);
 		} else {
 			service.updateUser(user);
 			request.setAttribute("success", "Uw gegevens werden aangepast.");
@@ -34,45 +49,11 @@ public class UpdateAccountHandler extends RequestHandler{
 		List<String> errors = new ArrayList<>();
 		userSetName(user, request, errors);
 		userSetEmail(user, request, errors);
-		userSetPassword(user, request, errors);
 		return errors;
 	}
 	
-	private void userSetPassword(User user, HttpServletRequest request, List<String> errors){
-		String currPass = request.getParameter("currpass");
-		String newPass = request.getParameter("newpass");
-		String repPass = request.getParameter("reppass");
-		if((currPass==null || currPass.trim().isEmpty()) && (newPass==null || newPass.trim().isEmpty()) && (repPass==null || repPass.trim().isEmpty())){
-			return;
-		} else {
-			if(service.getUserIfAuthenticated(user.getUserID(), currPass)==null){
-				errors.add("Huidige wachtwoord is niet correct.");
-			} else if(newPass.equals(repPass)){
-				try{
-					user.setPassword(newPass);
-					user.setPasswordHashed(newPass);
-				} catch (IllegalArgumentException e){
-					errors.add(e.getMessage());
-				}
-			} else {
-				errors.add("Nieuw wachtwoord en herhaalde wachtwoord komen niet overeen.");
-			}
-		} /*else if(currPass!=null && newPass!=null){
-			if(repPass==null || repPass.trim().isEmpty()){
-				errors.add("Herhaal je nieuwe wachtwoord.");
-			}
-		} else if(currPass!=null && repPass!=null){
-			if(newPass==null || newPass.trim().isEmpty()){
-				errors.add("Geef een nieuw wachtwoord op.");
-			}
-		} else if((currPass==null || currPass.trim().isEmpty()) && (newPass!=null || repPass!=null)){
-			errors.add("Vul je huidige wachtwoord in.");
-		}*/
-	}
-
 	private void userSetEmail(User user, HttpServletRequest request, List<String> errors) {
 		String email = request.getParameter("email");
-		request.setAttribute("email", email);
 		try{
 			user.setEmail(email);
 		} catch (IllegalArgumentException e){
@@ -82,12 +63,10 @@ public class UpdateAccountHandler extends RequestHandler{
 
 	private void userSetName(User user, HttpServletRequest request, List<String> errors) {
 		String contactName = request.getParameter("contactname");
-		request.setAttribute("contactname", contactName);
 		try{
 			user.setContactName(contactName);
 		} catch (IllegalArgumentException e){
 			errors.add(e.getMessage());
 		}
 	}
-
 }
