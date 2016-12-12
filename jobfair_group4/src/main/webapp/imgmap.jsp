@@ -45,17 +45,12 @@
 				</c:when>
 				<c:otherwise>
 		       		<c:forEach var="b" items="${bezet}">
-		       			<c:choose>
-							<c:when test="${h.id==b.spotID}">
-		       					title="${b.user.companyName}"
-		       					href=""
-		       					class="bezet"
-		       				</c:when>
-		       				<c:otherwise>
-		       					href="Controller?action=showopt&id=${h.id}"
-		       				</c:otherwise>
-		       			</c:choose>
+		       			<c:if test="${h.id==b.spotID}">
+		       				title="${b.user.companyName}"
+		       				class="bezet"
+		       			</c:if>
 		       		</c:forEach>
+   					href="Controller?action=showopt&id=${h.id}"
 		       	</c:otherwise>
 			</c:choose>>
 	</c:forEach>
@@ -80,17 +75,12 @@
                 </c:when>
 				<c:otherwise>
 		       		<c:forEach var="b" items="${bezet}">
-		       			<c:choose>
-							<c:when test="${h.id==b.spotID}">
-		       					title="${b.user.companyName}"
-		       					href=""
-		       					class="bezet"
-		       				</c:when>
-		       				<c:otherwise>
-		       					href="Controller?action=showopt&id=${h.id}"
-		       				</c:otherwise>
-		       			</c:choose>
+		       			<c:if test="${h.id==b.spotID}">
+		       				title="${b.user.companyName}"
+		       				class="bezet"
+		       			</c:if>
 		       		</c:forEach>
+   					href="Controller?action=showopt&id=${h.id}"
 		       	</c:otherwise>
 			</c:choose>>
 	</c:forEach>
