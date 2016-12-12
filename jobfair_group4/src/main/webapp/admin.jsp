@@ -67,6 +67,11 @@
 	<a class="btn btn-primary" href = "Controller?action=companies">Lijst met alle bedrijven</a>
 	<a class="btn btn-primary" href = "Controller?action=download">Download lijst met alle bedrijven</a>
 	</div>
+	<legend>Handleiding</legend>
+		<div class="form-group form-inline">
+			<a class="btn btn-primary" href="Controller?action=readme" target="_blank">Bekijk de handleiding</a>
+		</div>
 	</div></div></div>
+	
 </body>
 </html>
