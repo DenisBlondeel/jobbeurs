@@ -1,6 +1,7 @@
 package ui.controller.handler;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.mail.MessagingException;
 import javax.servlet.ServletException;
@@ -8,13 +9,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import domain.model.EmailSender;
+import domain.model.User;
 
 public class QuestionMailHandler extends RequestHandler{
 
 	@Override
 	public void handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String to = service.getUser(request.getParameter("adminID")).getEmail();
+		String to = "";
+		String admin = request.getParameter("name");
+		List<User> admins = service.getAdmins();
+		for(User ad : admins){
+			if(ad.getContactName().equals(admin)){
+				to = ad.getEmail();
+			}
+		}
 		String from = request.getParameter("name");
 		String subj = request.getParameter("subject");
 		String msg =  request.getParameter("message");

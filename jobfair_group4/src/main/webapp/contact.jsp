@@ -35,18 +35,19 @@
 	<form method="POST" action="Controller?action=questionmail" novalidate="novalidate">
 		<fieldset><legend>Vragen / Opmerkingen</legend>
 			<div class="form-group">
-				<label for="adminID">Selecteer een beheerder: </label>
+				<label for="adminID">Selecteer een beheerder * </label>
 				<select class="form-control" name="adminID" id="adminID">
 					<c:forEach var="admin" items="${admins}">
-						<option value="<c:out value="${admin.contactName}"/>"><c:out value="${admin.contactName}"/></option>
+						<option value="<c:out value="${admin.contactName}"/>"><c:out value="${admin.userID}"/></option>
 					</c:forEach>
 				</select>
-				<label for="subject">Onderwerp: </label>
+				<label for="subject">Onderwerp * </label>
 				<input class="form-control" type="text" name="subject" value="${subject}" placeholder="Onderwerp">
-				<label for="name">Naam: </label>
+				<label for="name">Naam * </label>
 				<input class="form-control" type="text" name="name" value="${from}">
-				<label for="message">Je bericht: </label>
+				<label for="message">Je bericht * </label>
 				<textarea class="form-control" name="message" class="form-control" rows="3" value="${msg}" placeholder="Vragen / Opmerkingen"></textarea>
+				<p> * Deze velden zijn verplicht.</p>
 				<input type="submit" class="btn btn-primary" value="Verzenden">
 			</div>
 		</fieldset>
