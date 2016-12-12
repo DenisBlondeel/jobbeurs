@@ -18,7 +18,7 @@ public class QuestionMailHandler extends RequestHandler{
 		String from = request.getParameter("name");
 		String subj = request.getParameter("subject");
 		String msg =  request.getParameter("message");
-		if(to == null || from == null || subj == null || msg == null){
+		if(to.trim().isEmpty() || from.trim().isEmpty() || subj.trim().isEmpty() || msg.trim().isEmpty()){
 			request.setAttribute("errors", "Gelieve alle velden in te vullen");
 			request.setAttribute("from", from);
 			request.setAttribute("subj", subj);
