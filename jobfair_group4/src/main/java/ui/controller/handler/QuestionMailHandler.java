@@ -1,15 +1,12 @@
 package ui.controller.handler;
 
 import java.io.IOException;
-import java.util.List;
-
 import javax.mail.MessagingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import domain.model.EmailSender;
-import domain.model.User;
 import ui.controller.VerifyRecaptcha;
 
 public class QuestionMailHandler extends RequestHandler{
@@ -25,8 +22,14 @@ public class QuestionMailHandler extends RequestHandler{
 		boolean verify = VerifyRecaptcha.verify(captcha);
 		if(to.trim().isEmpty() || from.trim().isEmpty() || subj.trim().isEmpty() || msg.trim().isEmpty()){
 			request.setAttribute("errors", "Gelieve alle velden in te vullen");
+			request.setAttribute("from", from);
+			request.setAttribute("subj", subj);
+			request.setAttribute("msg", msg);
 		} else if(!verify){
 			request.setAttribute("errors", "Vergeet de captcha niet aan te vinken.");
+			request.setAttribute("from", from);
+			request.setAttribute("subj", subj);
+			request.setAttribute("msg", msg);
 		} else {
 			EmailSender es = new EmailSender();
 			try{
@@ -36,9 +39,6 @@ public class QuestionMailHandler extends RequestHandler{
 				throw new ServletException(e.getMessage(), e);
 			}
 		}
-		request.setAttribute("from", from);
-		request.setAttribute("subj", subj);
-		request.setAttribute("msg", msg);
 		request.getRequestDispatcher("Controller?action=contact").forward(request, response);
 	}
 }
