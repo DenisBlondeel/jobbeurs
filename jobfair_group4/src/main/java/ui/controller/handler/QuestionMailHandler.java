@@ -23,7 +23,6 @@ public class QuestionMailHandler extends RequestHandler{
 			request.setAttribute("from", from);
 			request.setAttribute("subj", subj);
 			request.setAttribute("msg", msg);
-			request.getRequestDispatcher("Controller?action=contact").forward(request, response);
 		} else {
 			EmailSender es = new EmailSender();
 			try{
@@ -31,8 +30,7 @@ public class QuestionMailHandler extends RequestHandler{
 			} catch (MessagingException e){
 				
 			}
-			request.setAttribute("success", "Uw vraag / opmerking werd verzonden.");
-			request.getRequestDispatcher("contact.jsp").forward(request, response);
 		}
+		request.getRequestDispatcher("Controller?action=contact").forward(request, response);
 	}
 }
