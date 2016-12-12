@@ -36,6 +36,7 @@ public class QuestionMailHandler extends RequestHandler{
 			EmailSender es = new EmailSender();
 			try{
 				es.sendQuestionMail(to, from, subj, msg);
+				request.setAttribute("success", "Je vraag werd verzonden");
 			} catch (MessagingException e){
 				throw new ServletException(e.getMessage(), e);
 			}
