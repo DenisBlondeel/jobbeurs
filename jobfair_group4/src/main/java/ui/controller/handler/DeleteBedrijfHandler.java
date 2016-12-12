@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import domain.model.RoleEnum;
+import domain.model.Spot;
 import domain.model.User;
 
 public class DeleteBedrijfHandler extends RequestHandler {
@@ -26,7 +27,11 @@ public class DeleteBedrijfHandler extends RequestHandler {
 		{
 			try
 			{
-				service.deleteUser(bedrijf);
+				Spot spot = getService().getSpotFromUser(bedrijf);
+				if (spot != null) {
+					getService().removeUserFromSpot(spot.getSpotID());
+				}
+				getService().deleteUser(bedrijf);
 				request.setAttribute("success", "Het bedrijf " + bedrijf + " is verwijderd");
 				request.getRequestDispatcher("admin.jsp").forward(request, response);
 			} catch (IllegalArgumentException e)
