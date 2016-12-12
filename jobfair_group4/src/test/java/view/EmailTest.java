@@ -61,6 +61,17 @@ public class EmailTest {
 		receivers.add(recipient);
 		receivers.add(recipient);
 		receivers.add(recipient);
+		receivers.add(recipient);
+		receivers.add(recipient);
+		receivers.add(recipient);
+		receivers.add(recipient);
+		receivers.add(recipient);
+		receivers.add(recipient);
+		receivers.add(recipient);
+		receivers.add(recipient);
+		receivers.add(recipient);
+		receivers.add(recipient);
+		receivers.add(recipient);
 
 //		sender.sendAlmostSoldOutMail(receivers);
 	}
