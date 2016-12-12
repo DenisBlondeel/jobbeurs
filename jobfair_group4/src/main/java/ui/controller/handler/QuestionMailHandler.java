@@ -32,9 +32,6 @@ public class QuestionMailHandler extends RequestHandler{
 		boolean verify = VerifyRecaptcha.verify(captcha);
 		if(to.trim().isEmpty() || from.trim().isEmpty() || subj.trim().isEmpty() || msg.trim().isEmpty()){
 			request.setAttribute("errors", "Gelieve alle velden in te vullen");
-			request.setAttribute("from", from);
-			request.setAttribute("subj", subj);
-			request.setAttribute("msg", msg);
 		} else if(!verify){
 			request.setAttribute("errors", "Vergeet de captcha niet aan te vinken.");
 		} else {
@@ -46,6 +43,9 @@ public class QuestionMailHandler extends RequestHandler{
 				throw new ServletException(e.getMessage(), e);
 			}
 		}
+		request.setAttribute("from", from);
+		request.setAttribute("subj", subj);
+		request.setAttribute("msg", msg);
 		request.getRequestDispatcher("Controller?action=contact").forward(request, response);
 	}
 }
