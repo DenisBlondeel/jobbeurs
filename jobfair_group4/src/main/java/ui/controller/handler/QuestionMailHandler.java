@@ -17,14 +17,7 @@ public class QuestionMailHandler extends RequestHandler{
 	@Override
 	public void handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String to = "";
-		String admin = request.getParameter("admin");
-		List<User> admins = service.getAdmins();
-		for(User ad : admins){
-			if(ad.getContactName().equals(admin)){
-				to = ad.getEmail();
-			}
-		}
+		String to = "scrumbags.06@gmail.com";
 		String from = request.getParameter("name");
 		String subj = request.getParameter("subject");
 		String msg =  request.getParameter("message");
@@ -34,9 +27,6 @@ public class QuestionMailHandler extends RequestHandler{
 			request.setAttribute("errors", "Gelieve alle velden in te vullen");
 		} else if(!verify){
 			request.setAttribute("errors", "Vergeet de captcha niet aan te vinken.");
-			request.setAttribute("from", from);
-			request.setAttribute("subj", subj);
-			request.setAttribute("msg", msg);
 		} else {
 			EmailSender es = new EmailSender();
 			try{
@@ -46,6 +36,9 @@ public class QuestionMailHandler extends RequestHandler{
 				throw new ServletException(e.getMessage(), e);
 			}
 		}
+		request.setAttribute("from", from);
+		request.setAttribute("subj", subj);
+		request.setAttribute("msg", msg);
 		request.getRequestDispatcher("Controller?action=contact").forward(request, response);
 	}
 }

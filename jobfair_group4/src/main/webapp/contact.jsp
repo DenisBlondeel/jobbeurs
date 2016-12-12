@@ -35,20 +35,14 @@
 	<form method="POST" action="Controller?action=questionmail" novalidate="novalidate">
 		<fieldset><legend>Vragen / Opmerkingen</legend>
 			<div class="form-group">
-				<label for="adminID">Selecteer een beheerder * </label>
-				<select class="form-control" name="admin" id="admin">
-					<c:forEach var="admin" items="${admins}">
-						<option value="<c:out value="${admin.contactName}"/>"><c:out value="${admin.contactName}"/></option>
-					</c:forEach>
-				</select>
 				<label for="subject">Onderwerp * </label>
-				<input class="form-control" type="text" name="subject" placeholder="Onderwerp" value="${subject}">
+				<input class="form-control" type="text" name="subject" placeholder="Onderwerp" value="${subj}">
 				<label for="name">Naam * </label>
 				<input class="form-control" type="text" name="name" placeholder="Naam" value="${from}">
 				<label for="message">Je bericht * </label>
-				<textarea class="form-control" name="message" class="form-control" rows="3" placeholder="Vragen / Opmerkingen" value="${msg}"></textarea>
+				<textarea class="form-control" name="message" class="form-control" rows="3" placeholder="Vragen / Opmerkingen">${msg}</textarea>
 				<div class="g-recaptcha" data-sitekey="6LftmQ4UAAAAAH1SFuSsQkbU9BYViukh6HjUvcqr"></div>
-				<p> * Deze velden zijn verplicht.</p>
+				<p class="form-control"> * Deze velden zijn verplicht.</p>
 				<input type="submit" class="btn btn-primary" value="Verzenden">
 			</div>
 		</fieldset>
