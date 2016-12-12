@@ -36,7 +36,7 @@
 		<fieldset><legend>Vragen / Opmerkingen</legend>
 			<div class="form-group">
 				<label for="adminID">Selecteer een beheerder * </label>
-				<select class="form-control" name="adminID" id="adminID">
+				<select class="form-control" name="admin" id="admin">
 					<c:forEach var="admin" items="${admins}">
 						<option value="<c:out value="${admin.contactName}"/>"><c:out value="${admin.contactName}"/></option>
 					</c:forEach>

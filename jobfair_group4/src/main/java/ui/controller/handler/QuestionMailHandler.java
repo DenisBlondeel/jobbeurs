@@ -17,7 +17,7 @@ public class QuestionMailHandler extends RequestHandler{
 	public void handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String to = "";
-		String admin = request.getParameter("name");
+		String admin = request.getParameter("admin");
 		List<User> admins = service.getAdmins();
 		for(User ad : admins){
 			if(ad.getContactName().equals(admin)){
@@ -37,7 +37,7 @@ public class QuestionMailHandler extends RequestHandler{
 			try{
 				es.sendQuestionMail(to, from, subj, msg);
 			} catch (MessagingException e){
-				
+				throw new ServletException(e.getMessage(), e);
 			}
 		}
 		request.getRequestDispatcher("Controller?action=contact").forward(request, response);
