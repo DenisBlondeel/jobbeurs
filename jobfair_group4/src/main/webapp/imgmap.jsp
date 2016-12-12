@@ -152,8 +152,16 @@ window.onresize = function(){
 setTimeout(function(){
     imageMap.resize();
     imageMap1.resize();  }
-    , 200);
+    , 500);
 }
+
+
+
+
+window.setInterval(function(){
+  imageMap.resize();
+    imageMap1.resize();
+}, 5000);
 
     
      jQuery(function()
