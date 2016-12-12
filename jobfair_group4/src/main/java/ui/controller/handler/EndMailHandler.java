@@ -13,6 +13,7 @@ import domain.model.EmailSender;
 import domain.model.RoleEnum;
 
 public class EndMailHandler extends RequestHandler {
+	private EmailSender emailSender = new EmailSender();
 
 	@Override
 	public void handleRequest(HttpServletRequest request, HttpServletResponse response)
@@ -21,7 +22,7 @@ public class EndMailHandler extends RequestHandler {
 		Calendar deadline = (Calendar)session.getAttribute("deadline");
 		this.getService().getEmailFromUsersWithoutSpot();
 		try {
-			new EmailSender().sendEndOfRegistrationMail(deadline, this.getService().getEmailFromUsersWithoutSpot());
+			emailSender.sendEndOfRegistrationMail(deadline, this.getService().getEmailFromUsersWithoutSpot());
 			request.setAttribute("success", "Je mails werden verstuurd");
 		} catch (MessagingException e) {
 			throw new ServletException();

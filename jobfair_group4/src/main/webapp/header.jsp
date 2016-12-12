@@ -3,6 +3,7 @@
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<script src='https://www.google.com/recaptcha/api.js'></script>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta charset="UTF-8" content="">
@@ -56,7 +57,7 @@
 					                <li id="${param.admin}"><a href="Controller?action=admin"><i class="fa fa-cog"></i> Admin</a></li>
 				                </c:when>
 				                </c:choose>
-			                <!--<li id="${param.myaccount}"><a href="Controller?action=home">Mijn account</a></li>-->
+			                <li><a href="Controller?action=contact"><i class="fa fa-info-circle"></i> Contact</a></li>
 			            </ul>
 			            
 			            <ul class="nav navbar-nav navbar-right">	
@@ -64,10 +65,10 @@
 							<c:choose>
 								<c:when test="${sessionScope.user!=null}">
 					                <li><a href="Controller?action=myaccount&id=${sessionScope.user.userID}"><i class="fa fa-user-circle"></i> <c:out value="${sessionScope.user.userID}"/></a></li>
-					                <li><a href="Controller?action=logOut">uitloggen</a></li>
+					                <li><a href="Controller?action=logOut"><i class="fa fa-sign-out"></i> Uitloggen</a></li>
 				                </c:when>
 				                <c:otherwise>
-					                <li><a href="login.jsp">Login</a></li>
+					                <li><a href="login.jsp"><i class="fa fa-sign-in" ></i> Login</a></li>
 				                </c:otherwise>
 			                </c:choose>
 			            </ul>

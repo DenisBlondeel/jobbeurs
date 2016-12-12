@@ -40,17 +40,22 @@ public class SpotOptionsHandler extends RequestHandler {
 		} catch (MessagingException e) {
 			throw new ServletException(e.getMessage(), e);
 		}
-		
-		if (this.getEnoughSpots() && this.getService().getFreeSpots().size() < 10) {
-			this.setEnoughSpots(false);
-			try {
-				new EmailSender().sendAlmostSoldOutMail(this.getService().getAdminEmails());
-			} catch (MessagingException e) {
-				throw new ServletException(e.getMessage(), e);
+
+		if (this.getService().getFreeSpots().size() < 10) {
+			String enoughSpots = (String) session.getAttribute("enoughSpots");
+			
+			if (enoughSpots==null) {
+				session.setAttribute("enoughSpots", "enoughSpots");
+				try {
+					new EmailSender().sendAlmostSoldOutMail(this.getService().getAdminEmails());
+				} catch (MessagingException e) {
+					throw new ServletException(e.getMessage(), e);
+				}
 			}
 		} else {
-			this.setEnoughSpots(true);
+			session.setAttribute("enoughSpots", null);
 		}
+
 		if (user!=null) {
 			request.setAttribute("userid", user.getUserID());
 		}

@@ -42,4 +42,7 @@
 	<entry key="myaccount">ui.controller.handler.MyAccountHandler</entry>
 	<entry key="deletebedrijf">ui.controller.handler.DeleteBedrijfHandler</entry>
 	<entry key="updateaccount">ui.controller.handler.UpdateAccountHandler</entry>
+	<entry key="updatepassword">ui.controller.handler.UpdatePasswordHandler</entry>
+	<entry key="contact">ui.controller.handler.ContactHandler</entry>
+	<entry key="questionmail">ui.controller.handler.QuestionMailHandler</entry>
 </properties>
