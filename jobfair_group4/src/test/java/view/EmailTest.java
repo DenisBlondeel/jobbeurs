@@ -75,4 +75,9 @@ public class EmailTest {
 
 //		sender.sendAlmostSoldOutMail(receivers);
 	}
+
+	@Test
+	public void sendUserLinkedToSpotTest() throws Exception {
+//		sender.sendUserLinkedToSpotMail("ךכûüשאיט", company, recipient);
+	}
 }
