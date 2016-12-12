@@ -5,15 +5,19 @@
 <jsp:include page="header.jsp">
 	<jsp:param value="Confirm" name="title"/>
 </jsp:include>
-<h3>Reservering van plaats ${spotnr} voor ${user.companyName} annuleren?</h3>
-<form method="POST" action="Controller?action=confirmdelete">
-	<div class="form-group">
-	<p>	<input type="hidden" name="spotnr" value="${spotnr }">
-		<input type="submit" name="submit" value="ja" class="btn btn-primary"> 
-		<input type="submit" name="submit" value="neen" class="btn btn-primary">
-	</p>
-	</div>
-</form>
 
-</body>
-</html>
+<div class="row">
+	<div class="col-xs-12 col-sm-12 col-md-8 col-lg-6">
+		<h3>Reservering van plaats ${spotnr} voor ${user.companyName} annuleren?</h3>
+		<form method="POST" action="Controller?action=confirmdelete">
+			<div class="form-group">
+				<input type="hidden" name="spotnr" value="${spotnr }">
+				<input type="submit" name="submit" value="ja" class="btn btn-primary"> 
+				<input type="submit" name="submit" value="neen" class="btn btn-primary">
+			</div>
+		</form>
+	</div>
+</div>
+
+
+<jsp:include page="footer.jsp"/>

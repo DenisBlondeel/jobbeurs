@@ -26,7 +26,6 @@
         <script type="text/javascript" src="js/imageMapResizer.js"></script>
 
 	
-    <div class="container">
     <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 <img src="img/Standplaatsen jobbeurs 2016-bedrijven-def-1.png" usemap="#image-map-hemis" id="hemis" class="img-responsive respmap">
@@ -95,7 +94,7 @@
 			</c:choose>>
 	</c:forEach>
 </map>
-</div></div></div>
+</div></div>
 
 
  <script type="text/javascript">
@@ -190,5 +189,3 @@ window.setInterval(function(){
 </script>
 
 		
-	</body>
-</html>

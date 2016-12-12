@@ -75,6 +75,10 @@
 			        </div><!-- /.navbar-collapse -->
 			    </div>
 			</nav>
+		</header>
+		<main>
+		<div class="container">
+   		<div class="row">
 
 		<h2>${param.h2}</h2>
 		<c:if test="${errors!=null}">
@@ -95,5 +99,7 @@
 				</ul>
 			</div>
 		</c:if>
+
 		
-	</header>
+
+
