@@ -48,6 +48,7 @@
 				<label for="message">Je bericht * </label>
 				<textarea class="form-control" name="message" class="form-control" rows="3" value="${msg}" placeholder="Vragen / Opmerkingen"></textarea>
 				<p> * Deze velden zijn verplicht.</p>
+				<div class="g-recaptcha" data-sitekey="6LftmQ4UAAAAAH1SFuSsQkbU9BYViukh6HjUvcqr"></div>
 				<input type="submit" class="btn btn-primary" value="Verzenden">
 			</div>
 		</fieldset>

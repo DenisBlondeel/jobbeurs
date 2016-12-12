@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import domain.model.EmailSender;
 import domain.model.User;
+import ui.controller.VerifyRecaptcha;
 
 public class QuestionMailHandler extends RequestHandler{
 
@@ -27,11 +28,15 @@ public class QuestionMailHandler extends RequestHandler{
 		String from = request.getParameter("name");
 		String subj = request.getParameter("subject");
 		String msg =  request.getParameter("message");
+		String captcha = request.getParameter("g-recaptcha-response");
+		boolean verify = VerifyRecaptcha.verify(captcha);
 		if(to.trim().isEmpty() || from.trim().isEmpty() || subj.trim().isEmpty() || msg.trim().isEmpty()){
 			request.setAttribute("errors", "Gelieve alle velden in te vullen");
 			request.setAttribute("from", from);
 			request.setAttribute("subj", subj);
 			request.setAttribute("msg", msg);
+		} else if(!verify){
+			request.setAttribute("errors", "Vergeet de captcha niet aan te vinken.");
 		} else {
 			EmailSender es = new EmailSender();
 			try{
