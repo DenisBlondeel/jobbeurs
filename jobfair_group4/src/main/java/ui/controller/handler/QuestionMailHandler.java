@@ -24,15 +24,15 @@ public class QuestionMailHandler extends RequestHandler{
 			request.setAttribute("subj", subj);
 			request.setAttribute("msg", msg);
 			request.getRequestDispatcher("Controller?action=contact").forward(request, response);
+		} else {
+			EmailSender es = new EmailSender();
+			try{
+				es.sendQuestionMail(to, from, subj, msg);
+			} catch (MessagingException e){
+				
+			}
+			request.setAttribute("success", "Uw vraag / opmerking werd verzonden.");
+			request.getRequestDispatcher("contact.jsp").forward(request, response);
 		}
-		EmailSender es = new EmailSender();
-		try{
-			es.sendQuestionMail(to, from, subj, msg);
-		} catch (MessagingException e){
-			
-		}
-		request.setAttribute("success", "Uw vraag / opmerking werd verzonden.");
-		request.getRequestDispatcher("contact.jsp").forward(request, response);
 	}
-
 }
