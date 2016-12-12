@@ -35,6 +35,7 @@ public class CsvReader {
 			users.add(user);
 			mailList.put(user, tempPass);
 		}
+		users.remove(0);
 
 		try {
 			emailSender.sendNewCompanyMail(mailList);
