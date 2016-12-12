@@ -42,11 +42,11 @@
 					</c:forEach>
 				</select>
 				<label for="subject">Onderwerp * </label>
-				<input class="form-control" type="text" name="subject" value="${subject}" placeholder="Onderwerp">
+				<input class="form-control" type="text" name="subject" placeholder="Onderwerp" value="${subject}">
 				<label for="name">Naam * </label>
-				<input class="form-control" type="text" name="name" value="${from}">
+				<input class="form-control" type="text" name="name" placeholder="Naam" value="${from}">
 				<label for="message">Je bericht * </label>
-				<textarea class="form-control" name="message" class="form-control" rows="3" value="${msg}" placeholder="Vragen / Opmerkingen"></textarea>
+				<textarea class="form-control" name="message" class="form-control" rows="3" placeholder="Vragen / Opmerkingen" value="${msg}"></textarea>
 				<div class="g-recaptcha" data-sitekey="6LftmQ4UAAAAAH1SFuSsQkbU9BYViukh6HjUvcqr"></div>
 				<p> * Deze velden zijn verplicht.</p>
 				<input type="submit" class="btn btn-primary" value="Verzenden">
