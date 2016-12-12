@@ -20,10 +20,18 @@ public class ConfirmUpdateHandler extends RequestHandler	{
 		String spotnr = request.getParameter("spotnr");
 		Spot spot = service.getSpot(spotnr);
 
+		System.out.println(request.getParameter("tables"));
+		
 		int chairs = Integer.parseInt(request.getParameter("chairs"));
 		int tables = Integer.parseInt(request.getParameter("tables"));
 		boolean electricity = request.getParameter("electricity") != null;
 		String extra = request.getParameter("extra");
+		System.out.println(spotnr);
+		System.out.println(spot);
+		System.out.println(chairs);
+		System.out.println(tables);
+		System.out.println(electricity);
+		System.out.println(extra);
 
 		spot.setAmountChairs(chairs);
 		spot.setAmountTables(tables);

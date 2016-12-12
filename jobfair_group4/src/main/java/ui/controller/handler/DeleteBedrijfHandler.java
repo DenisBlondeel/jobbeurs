@@ -16,7 +16,7 @@ public class DeleteBedrijfHandler extends RequestHandler {
 	public void handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException
 	{
-		String bedrijf = request.getParameter("companyName");
+		String bedrijf = request.getParameter("companyID");
 		String password = request.getParameter("password");
 
 		HttpSession session = request.getSession();
