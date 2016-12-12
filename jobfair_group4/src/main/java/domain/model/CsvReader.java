@@ -17,13 +17,15 @@ public class CsvReader {
 	public List<User> read(InputStream in) throws MessagingException{
 		List<User> users = new ArrayList<User>();
 		Map<User, String> mailList = new HashMap<>();
+
 		Scanner inputStream;
-		inputStream = new Scanner(in);
+		inputStream = new Scanner(in, "ISO-8859-1");
 		while(inputStream.hasNextLine()){
 			String line = inputStream.nextLine();
 			String[] data = line.split(";");
 			User user = new User();
 			String companyName = data[0];
+			System.out.println(companyName);
 			user.setCompanyName(companyName);
 			String contactName = data[1];
 			user.setContactName(contactName);
