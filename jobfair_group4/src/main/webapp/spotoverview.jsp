@@ -28,7 +28,7 @@
 	</tr>
 	<c:forEach var="spot" items="${spots}">
 		<tr>
-			<td>${spot.spotID}</td>
+			<td><a href="Controller?action=showopt&id=<c:out value="${spot.spotID}"/>">${spot.spotID}</a></td>
 			<td>${spot.user.companyName}</td>
 			<td></td>
 			<td></td>
