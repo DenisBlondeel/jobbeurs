@@ -69,7 +69,7 @@
 	</div>
 	<legend>Handleiding</legend>
 		<div class="form-group form-inline">
-			<a class="btn btn-primary" href="Controller?action=readme" target="_blank">Bekijk de handleiding</a>
+			<a class="btn btn-primary" href="files/Readme.pdf" target="_blank">Bekijk de handleiding</a>
 		</div>
 	</div></div></div>
 	

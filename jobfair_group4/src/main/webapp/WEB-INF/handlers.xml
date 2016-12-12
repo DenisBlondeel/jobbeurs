@@ -45,5 +45,4 @@
 	<entry key="updatepassword">ui.controller.handler.UpdatePasswordHandler</entry>
 	<entry key="contact">ui.controller.handler.ContactHandler</entry>
 	<entry key="questionmail">ui.controller.handler.QuestionMailHandler</entry>
-	<entry key="readme">ui.controller.handler.ReadmeHandler</entry>
 </properties>
