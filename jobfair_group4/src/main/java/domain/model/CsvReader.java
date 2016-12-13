@@ -28,7 +28,7 @@ public class CsvReader {
 			user.setCompanyName(companyName);
 			String contactName = data[1];
 			user.setContactName(contactName);
-			String email = data[3];
+			String email = data[2];
 			user.setEmail(email);
 			user.generateUserId(companyName);
 			String tempPass = user.generatePassword();

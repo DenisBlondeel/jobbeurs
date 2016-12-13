@@ -17,6 +17,7 @@ public class EmailSender {
 
 	private String username = "scrumbags.06", password = "tttttttt";
 	private String messageHeader = "<meta charset=\"ISO-8859-1\">";
+	private String indexPage = "http://ipajax.cyclone2.khleuven.be:38033/jobfair_group4/";
 	private Properties properties;
 
 
@@ -72,7 +73,7 @@ public class EmailSender {
 		String subject = "Jobbeurs 2017 - UCLL Leuven";
 		String message = messageHeader;
 		message += "Beste,<br><br>We mogen je met veel plezier melden dat je vanaf nu een plaats kunt reserveren voor onze jobbeurs.<br>"
-				+ "Inloggen doe je <a href=\"http://java.cyclone2.khleuven.be:38034/jobfair_group4/\">hier</a> met volgende login-gegevens:<br>"
+				+ "Inloggen doe je <a href=\""+indexPage+"login.jsp\">hier</a> met volgende login-gegevens:<br>"
 				+ "UserID: " + userID + "<br>"
 				+ "Wachtwoord: " + password + "<br><br>"
 				+ "--<br>"
@@ -85,7 +86,8 @@ public class EmailSender {
 		String subject = "Beheerder website Jobbeurs - UCLL Leuven";
 		String message = messageHeader;
 		message += "Beste,<br><br>Vanaf heden heeft u de toestemming gekregen om als beheerder in te loggen op onze website.<br>"
-				+ "Inloggen doe je <a href=\"http://java.cyclone2.khleuven.be:38034/jobfair_group4/\">hier</a> met volgende login-gegevens:<br>"
+				+ "Bekijk <a href=\""+indexPage+"files/Readme.pdf\">hier</a> de handleiding voor beheerders.<br>"
+				+ "Inloggen doe je <a href=\""+indexPage+"login.jsp\">hier</a> met volgende login-gegevens:<br>"
 				+ "UserID: " + userID + "<br>"
 				+ "Wachtwoord: " + password + "<br><br>"
 				+ "--<br>"
@@ -229,7 +231,7 @@ public class EmailSender {
 		for(User user : mailList.keySet()) {
 			String body = messageHeader
 					+ "Beste,<br><br>We mogen je met veel plezier melden dat je vanaf nu een plaats kunt reserveren voor onze jobbeurs.<br>"
-					+ "Inloggen doe je <a href=\"http://java.cyclone2.khleuven.be:38034/jobfair_group4/\">hier</a> met volgende login-gegevens:<br>"
+					+ "Inloggen doe je <a href=\""+indexPage+"\">hier</a> met volgende login-gegevens:<br>"
 					+ "UserID: " + user.getUserID() + "<br>"
 					+ "Wachtwoord: " + mailList.get(user) + "<br><br>"
 					+ "--<br>"
