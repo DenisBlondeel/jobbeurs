@@ -249,7 +249,7 @@ public class SpotRepository {
 		if (spotID.isEmpty()) {
 			throw new DbException("Niets te vinden !");
 		}
-		String sql = "UPDATE jobfair_group4.spots SET userID = NULL WHERE spotID = ?";
+		String sql = "UPDATE jobfair_group4.spots SET amounttables=1, amountchairs=2, electricity=TRUE, remarks=null, userID=null WHERE spotID = ?";
 
 		try {
 			statement = connection.prepareStatement(sql);
@@ -298,7 +298,7 @@ public class SpotRepository {
 	
 	public void removeAllUsersFromSpots()
 	{
-		String sql = "UPDATE jobfair_group4.spots SET userid = NULL ";
+		String sql = "UPDATE jobfair_group4.spots SET amounttables=1, amountchairs=2, electricity=TRUE, remarks=null, userid=null";
 
 		try {
 			statement = connection.prepareStatement(sql);
