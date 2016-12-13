@@ -22,6 +22,7 @@ public class CsvReader {
 
 		Scanner inputStream;
 		inputStream = new Scanner(in, "ISO-8859-1");
+		inputStream.nextLine();
 		while(inputStream.hasNextLine()){
 			String line = inputStream.nextLine();
 			String[] data = line.split(";");
@@ -29,9 +30,9 @@ public class CsvReader {
 			String companyName = data[0];
 			String contactName = data[1];
 			String email = data[2];
-			if(companyName.equals("Bedrijfsnaam") || contactName.equals("Naam contactpersoon") || email.equals("E-mailadres contactpersoon")){
-				continue;
-			}
+//			if(companyName.equals("Bedrijfsnaam") || contactName.equals("Naam contactpersoon") || email.equals("E-mailadres contactpersoon")){
+//				continue;
+//			}
 			user.setCompanyName(companyName);
 			user.setContactName(contactName);
 			user.setEmail(email);
