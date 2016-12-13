@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 import javax.mail.MessagingException;
+import javax.swing.JOptionPane;
 
 import domain.service.Service;
 
@@ -42,10 +43,14 @@ public class CsvReader {
 		}
 		inputStream.close();
 		
+		JOptionPane.showMessageDialog(null, "Start adding to DB");
 		service.addUsers(users);
+		JOptionPane.showMessageDialog(null, "End adding to DB");
 
 		try {
+			JOptionPane.showMessageDialog(null, "Start sending mails");
 			emailSender.sendNewCompanyMail(mailList);
+			JOptionPane.showMessageDialog(null, "End sending mails");
 		} catch (MessagingException e) {
 			throw new MessagingException(e.getMessage(), e);
 		}
