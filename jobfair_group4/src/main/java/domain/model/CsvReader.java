@@ -16,7 +16,7 @@ public class CsvReader {
 	@SuppressWarnings("resource")
 	public List<User> read(InputStream in) throws MessagingException{
 		List<User> users = new ArrayList<User>();
-		Map<User, String> mailList = new HashMap<>();
+//		Map<User, String> mailList = new HashMap<>();
 
 		Scanner inputStream;
 		inputStream = new Scanner(in, "ISO-8859-1");
@@ -34,15 +34,20 @@ public class CsvReader {
 				user.generateUserId(companyName);
 				String tempPass = user.generatePassword();
 				users.add(user);
-				mailList.put(user, tempPass);
+				try {
+					emailSender.sendNewCompanyMail(user.getUserID(), tempPass, email);
+				} catch (MessagingException e) {
+					throw new MessagingException(e.getMessage(), e);
+				}
+//				mailList.put(user, tempPass);
 			}
 		}
 
-		try {
-			emailSender.sendNewCompanyMail(mailList);
-		} catch (MessagingException e) {
-			throw new MessagingException(e.getMessage(), e);
-		}
+//		try {
+//			emailSender.sendNewCompanyMail(mailList);
+//		} catch (MessagingException e) {
+//			throw new MessagingException(e.getMessage(), e);
+//		}
 
 		inputStream.close();
 		return users;
