@@ -2,7 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="header.jsp">
-	<jsp:param value="Delete bedrijf" name="title" />
+	<jsp:param value="Jobbeurs - Verwijder Bedrijf" name="title" />
 	<jsp:param value="Verwijder bedrijf" name="h2" />
 </jsp:include>
 <div class="row">

@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="header.jsp">
-	<jsp:param value="Jobbeurs - contact" name="title"/>
+	<jsp:param value="Jobbeurs - Contact" name="title"/>
 </jsp:include>
 <div class="row">
 	<div class="col-xs-12 col-sm-12 col-md-8 col-lg-6">

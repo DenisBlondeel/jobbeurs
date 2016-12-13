@@ -29,7 +29,7 @@
         		<area  alt="${h.id}" id="${h.id}" coords="${h.coords}" shape="${h.shape}"
         			<c:choose>
         				<c:when test="${h.id==mine}">
-        					title="My spot"
+        					title="Mijn plaats"
         					href="Controller?action=myspot"
         					class="mine"
         				</c:when>

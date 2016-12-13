@@ -3,7 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <jsp:include page="header.jsp">
-	<jsp:param value="Spot ${spotnr}" name="title"/>
+	<jsp:param value="Jobbeurs - Plaats ${spotnr}" name="title"/>
 </jsp:include>
 
 <div class="row">

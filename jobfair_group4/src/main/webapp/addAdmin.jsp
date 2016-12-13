@@ -3,7 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="header.jsp">
 	<jsp:param value="admin" name="type" />
-	<jsp:param value="Beheerder toevoegen" name="title" />
+	<jsp:param value="Jobbeurs - Voeg Admin Toe" name="title" />
 	<jsp:param value="Beheerder toevoegen" name="h2" />
 </jsp:include>
 

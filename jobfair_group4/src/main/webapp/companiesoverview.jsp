@@ -3,7 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="header.jsp">
 	<jsp:param value="current" name="companiesoverview" />
-	<jsp:param value="Overzicht" name="title"/>
+	<jsp:param value="Jobbeurs - Overzicht Bedrijven" name="title"/>
 	<jsp:param value="Overzicht van alle bedrijven" name="h2" />
 </jsp:include>
 

@@ -12,7 +12,7 @@
 	<div class="col-xs-12 col-sm-12 col-md-8 col-lg-6">
 
 		<c:if test="${sessionScope.user!=null}">
-			<h3>Instellingen voor ${sessionScope.user.companyName}</h3>
+			<h3>Instellingen voor ${sessionScope.user.userID}</h3>
 				<fieldset>
 				<h4 class="bordboth4">Gebruikersnaam</h4>
 					<div class="form-group">
