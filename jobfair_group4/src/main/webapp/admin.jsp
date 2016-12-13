@@ -58,7 +58,7 @@
 
 <div class="row">
 	<div class="col-xs-12 col-sm-12 col-md-8 col-lg-6">
-		<h4 class="bordboth4"><i class="fa fa-lock"></i>Beheerders</h4>
+		<h4 class="bordboth4"><i class="fa fa-lock"></i> Beheerders</h4>
 		<p>Gebruik deze tool om nieuwe beheerders toe te voegen of om een beheerder te verwijderen</p>
 		<a class="btn btn-primary" href = "Controller?action=toAddAdmin">Voeg een beheerder toe</a>
 		<a class="btn btn-danger" href = "Controller?action=getAdmin">Verwijder een beheerder</a>
@@ -83,7 +83,7 @@
 		<h4 class="bordboth4"><i class="fa fa-list-ul"></i> Alle bedrijven</h4>
 		<p>Deze tool toont u een overzicht van alle bedrijven en biedt ook de mogelijkheid om een '.csv' bestand te downloaden in hetzelfde formaat dat u nodig heeft voor de upload-tool.</p>
 		<a class="btn btn-primary" href = "Controller?action=companies">Lijst met alle bedrijven</a>
-		<a class="btn btn-primary" href = "Controller?action=download"><i class="fa fa-download">Download lijst</a>
+		<a class="btn btn-primary" href = "Controller?action=download"><i class="fa fa-download"></i> Download lijst</a>
 	</div>
 </div>
 <div class="row">
