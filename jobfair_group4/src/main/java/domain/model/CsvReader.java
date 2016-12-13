@@ -40,9 +40,9 @@ public class CsvReader {
 			users.add(user);
 			mailList.put(user, tempPass);
 		}
-		service.addUsers(users);
-
 		inputStream.close();
+		
+		service.addUsers(users);
 
 		try {
 			emailSender.sendNewCompanyMail(mailList);
