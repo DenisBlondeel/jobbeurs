@@ -23,11 +23,13 @@
 		<legend><i class="fa fa-upload"></i> Bedrijven importeren</legend>
 		<div class="form-group form-inline">
 			<p>Gebruik deze tool om meerdere bedrijven tegelijk te importeren uit een '.csv' bestand.</p>
-			<p>Kijk ook na of het juist is ingedeeld; 'bedrijfsnaam;contactpersoon;email;...' 
+			<p>Kijk ook na of het juist is ingedeeld; 'bedrijfsnaam;contactpersoon;email;...'  met kolomhoofdingen 'Bedrijfsnaam;Naam contactpersoon;E-mailadres contactpersoon' 
 				(deze indeling is vereist voor het correct weergeven van de informatie op deze website).</p>
+				<a href="files/csvexample.csv">Voorbeeld</a>
 			<label for="file">Bestand: </label>
 			<input type="file" class="form-control" id="file" name="file" value="Bestand uploaden">
 			<button type="submit" class="btn btn-primary" value="Bestand uploaden"><i class="fa fa-upload"></i> Bestand uploaden</button>
+			<p>Dit kan even duren - tijd voor een pauze? <i class="fa fa-coffee"></i></p>
 		</div>
 	</form>
 </div>
