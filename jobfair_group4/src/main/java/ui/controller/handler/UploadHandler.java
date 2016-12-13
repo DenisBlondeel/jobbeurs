@@ -29,8 +29,10 @@ public class UploadHandler extends RequestHandler{
 		} catch (MessagingException e) {
 			throw new ServletException(e.getMessage(), e);
 		}
-		if (errors != null) {
+		if (errors != null && !errors.isEmpty()) {
 			request.setAttribute("errors", errors);
+		} else {
+			request.setAttribute("succes", "De bedrijven werden toegevoegd.");
 		}
 	    request.getRequestDispatcher("Controller?action=admin").forward(request, response);
 	}
