@@ -40,14 +40,18 @@ public class JobfairDataRepository {
 			statement.setString(1, name);
 			ResultSet results = statement.executeQuery();
 			if(results.next());{
-				calendar = Calendar.getInstance();
-				calendar.setTime(results.getDate("deadline"));
+				if (results.getDate("deadline") == null) {
+					return null;
+				} else {
+					calendar = Calendar.getInstance();
+					calendar.setTime(results.getDate("deadline"));
+					return calendar;
+				}
 			}
 		} catch (SQLException e) {
 			throw new DbException(e.getMessage(), e);
 		}
 
-		return calendar;
 	}
 	
 
