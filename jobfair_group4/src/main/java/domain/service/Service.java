@@ -51,6 +51,10 @@ public class Service {
 		getUserRepository().add(user);
 	}
 
+	public void addUsers(List<User> users) {
+		getUserRepository().addAll(users);
+	}
+
 	public void deleteUser(String userID) {
 		getUserRepository().delete(userID);
 	}

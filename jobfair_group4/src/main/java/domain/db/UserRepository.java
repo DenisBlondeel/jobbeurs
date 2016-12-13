@@ -233,6 +233,34 @@ public class UserRepository {
 		}
 	}
 
+	public void addAll(List<User> users) {
+		if (users == null || users.isEmpty()) {
+			throw new DbException("Niets om toe te voegen.");
+		}
+		String sql = "INSERT INTO jobfair_group4.users (userid, companyname, contactname, email, password, salt, role) VALUES"
+				+ "(?, ?, ?, ?, ?, ?, ?)";
+		for (int i = 1; i < users.size(); i++) {
+			sql += ",(?, ?, ?, ?, ?, ?, ?)";
+		}
+		try {
+			statement = connection.prepareStatement(sql);
+
+			for (int i = 0; i < users.size(); i++) {
+				statement.setString(7*i+1, users.get(i).getUserID());
+				statement.setString(7*i+2, users.get(i).getCompanyName());
+				statement.setString(7*i+3, users.get(i).getContactName());
+				statement.setString(7*i+4, users.get(i).getEmail());
+				statement.setString(7*i+5, users.get(i).getPassword());
+				statement.setString(7*i+6, users.get(i).getSalt());
+				statement.setString(7*i+7, users.get(i).getRole().toString());
+			}
+
+			statement.executeUpdate();
+		} catch (SQLException e) {
+			throw new DbException(e.getMessage(), e);
+		}
+	}
+
 	public void deleteAdmin(String userID) {
 		if (userID == null) {
 			throw new DbException("Nothing to delete.");
