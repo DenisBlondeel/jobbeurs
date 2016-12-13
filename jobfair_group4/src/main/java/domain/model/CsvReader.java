@@ -1,7 +1,9 @@
 package domain.model;
 
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -14,6 +16,7 @@ public class CsvReader {
 	private EmailSender emailSender = new EmailSender();
 	
 	public void read(InputStream in, Service service) throws MessagingException{
+		List<User> users = new ArrayList<>();
 		Map<User, String> mailList = new HashMap<>();
 
 		Scanner inputStream;
@@ -33,9 +36,11 @@ public class CsvReader {
 			user.setEmail(email);
 			user.generateUserId(companyName);
 			String tempPass = user.generatePassword();
-			service.addUser(user);
+
+			users.add(user);
 			mailList.put(user, tempPass);
 		}
+		service.addUsers(users);
 
 		inputStream.close();
 
