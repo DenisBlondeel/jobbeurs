@@ -65,29 +65,30 @@ public class CsvReader {
 //		}
 //	}
 
-	public void read(InputStream in, Service service) throws MessagingException{
+	public void read(List<String> errors, InputStream in, Service service) throws MessagingException{
 		List<User> users = new ArrayList<>();
 		Map<User, String> mailList = new HashMap<>();
 
 		List<String[]> allRows = parser.parseAll(in, "ISO-8859-1");
 		System.out.println(allRows.size());
-		for (int i = 0; i < allRows.size(); i++) {
+		for (int i = 1; i < allRows.size(); i++) {
 			String[] data = allRows.get(i);
 			User user = new User();
 			String companyName = data[0];
 			String contactName = data[1];
 			String email = data[2];
-			if(companyName.equals("Bedrijfsnaam") || contactName.equals("Naam contactpersoon") || email.equals("E-mailadres contactpersoon")){
-				continue;
+			try {
+				user.setCompanyName(companyName);
+				user.setContactName(contactName);
+				user.setEmail(email);
+				user.generateUserId(companyName);
+				String tempPass = user.generatePassword();
+	
+				users.add(user);
+				mailList.put(user, tempPass);
+			} catch (Exception e) {
+				errors.add(user.getCompanyName() + " kon niet worden toegevoegd door: " + e.getMessage());
 			}
-			user.setCompanyName(companyName);
-			user.setContactName(contactName);
-			user.setEmail(email);
-			user.generateUserId(companyName);
-			String tempPass = user.generatePassword();
-
-			users.add(user);
-			mailList.put(user, tempPass);
 		}
 		service.addUsers(users);
 
