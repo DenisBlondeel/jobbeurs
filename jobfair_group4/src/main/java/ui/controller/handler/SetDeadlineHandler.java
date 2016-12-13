@@ -10,7 +10,6 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import domain.model.RoleEnum;
 
@@ -26,9 +25,7 @@ public class SetDeadlineHandler extends RequestHandler{
 		if (errors.size() > 0) {
 			request.setAttribute("errors", errors);
 		} else {
-			HttpSession session = request.getSession();
-			session.removeAttribute("deadline");
-			session.setAttribute("deadline", deadline);
+			getService().setDeadline("JobbeursUcllLeuven2017", deadline);
 
 			Date date = deadline.getTime();
 			String dateStr = new SimpleDateFormat("EEEE").format(date) + " "
