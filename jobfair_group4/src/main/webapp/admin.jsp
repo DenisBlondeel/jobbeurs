@@ -45,7 +45,7 @@
 				Na afloop van de jobbeurs kunnen ook alle bedrijven verwijderd worden.</p>
 		<a class="btn btn-primary" href = "Controller?action=gotosignup">Voeg Bedrijf toe</a>
 		<a class="btn btn-danger" href = "Controller?action=getBedrijven">Verwijder Bedrijf</a>
-		<a class="btn btn-danger" href="Controller?action=drop">Verwijder alle Bedrijven</a>
+		<a class="btn btn-danger" href="confirmdeleteAll.jsp">Verwijder alle Bedrijven</a>
 	</div>
 </div>
 <div class="row">
