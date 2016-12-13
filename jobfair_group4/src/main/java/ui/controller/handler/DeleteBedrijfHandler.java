@@ -28,7 +28,9 @@ public class DeleteBedrijfHandler extends RequestHandler {
 			try
 			{
 				Spot spot = getService().getSpotFromUser(bedrijf);
-				getService().removeUserFromSpot(spot.getSpotID());
+				if (spot != null) {
+					getService().removeUserFromSpot(spot.getSpotID());
+				}
 				getService().deleteUser(bedrijf);
 				request.setAttribute("success", "Het bedrijf " + bedrijf + " is verwijderd");
 				request.getRequestDispatcher("admin.jsp").forward(request, response);
