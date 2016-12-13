@@ -34,7 +34,7 @@ public class JobfairDataRepository {
 		}
 
 		Calendar calendar = null;
-		String sql = "SELECT * FROM jobfair_group4.jobfairdata WHERE name = ?;";
+		String sql = "SELECT * FROM jobfair_group4.jobfairdata WHERE naam = ?;";
 		try {
 			statement = connection.prepareStatement(sql);
 			statement.setString(1, name);
@@ -59,7 +59,7 @@ public class JobfairDataRepository {
 			return;
 		}
 
-		String sql = "UPDATE jobfair_group4.jobfairdata SET deadline = ? WHERE name = ?;";
+		String sql = "UPDATE jobfair_group4.jobfairdata SET deadline = ? WHERE naam = ?;";
 		try {
 			statement = connection.prepareStatement(sql);
 			statement.setDate(1, new Date(deadline.getTimeInMillis()));
