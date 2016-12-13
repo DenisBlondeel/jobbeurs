@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" session="true"%>
-    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <script src='https://www.google.com/recaptcha/api.js'></script>
 <head>
@@ -77,28 +76,27 @@
 			</nav>
 		</header>
 		<main>
-		<div class="container">
-   		<div class="row">
-
-		<h2>${param.h2}</h2>
-		<c:if test="${errors!=null}">
-			<div class="alert alert-danger">
-				<ul>
-					<c:forEach var="error" items="${errors}">
-						<li><c:out value="${error}"/></li>
-					</c:forEach>
-				</ul>
-			</div>
-		</c:if>
-		<c:if test="${success!=null}">
-			<div class="alert alert-success">
-				<ul>
-				<c:forEach var="succes" items="${success}">
-					<li><c:out value="${succes}"/></li>
-				</c:forEach>
-				</ul>
-			</div>
-		</c:if>
+			<div class="container">
+		   		<div class="row">
+					<h2>${param.h2}</h2>
+					<c:if test="${errors!=null}">
+						<div class="alert alert-danger">
+							<ul>
+								<c:forEach var="error" items="${errors}">
+									<li><c:out value="${error}"/></li>
+								</c:forEach>
+							</ul>
+						</div>
+					</c:if>
+					<c:if test="${success!=null}">
+						<div class="alert alert-success">
+							<ul>
+							<c:forEach var="succes" items="${success}">
+								<li><c:out value="${succes}"/></li>
+							</c:forEach>
+							</ul>
+						</div>
+					</c:if>
 
 		
 
