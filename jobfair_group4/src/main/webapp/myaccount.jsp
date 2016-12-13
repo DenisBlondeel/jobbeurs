@@ -32,15 +32,15 @@
 				<legend>Contactpersoon</legend>
 					<div class="form-group">
 						<label for="contactname">Naam</label>
-						<input type="text" id="contactname" name="contactname" value="${sessionScope.user.contactName}">
+						<input type="text" id="contactname" class="form-control" name="contactname" value="${sessionScope.user.contactName}">
 					</div>
 					<div class="form-group">
 						<label for="email">Email</label>
-						<input type="text" id="email" name="email" value="${sessionScope.user.email}">
+						<input type="text" id="email" name="email"  class="form-control" value="${sessionScope.user.email}">
 					</div>
 					<div class="form-group">
 						<label for="password">Wachtwoord ter bevestiging</label>
-						<input type="password" id="password" name="password" value="">
+						<input type="password" id="password" name="password" class="form-control" value="">
 					</div>
 				
 					<input type="submit" class="btn btn-primary" name="submit" value="Wijzigingen opslaan">
@@ -51,15 +51,15 @@
 					<legend>Wachtwoord wijzigen</legend>
 					<div class="form-group">
 						<label for="currpass">Huidige wachtwoord</label>
-						<input type="password" name="currpass" value="">
+						<input type="password"  class="form-control" name="currpass" value="">
 					</div>
 					<div class="form-group">
 						<label for="newpass">Nieuw wachtwoord</label>
-						<input type="password" name="newpass" value="">
+						<input type="password" class="form-control" name="newpass" value="">
 					</div>
 					<div class="form-group">
 						<label for="reppass">Herhaal nieuwe wachtwoord</label>
-						<input type="password" name="reppass" value="">
+						<input type="password" class="form-control" name="reppass" value="">
 					</div>
 				
 					<input type="submit" class="btn btn-primary" name="submit" value="Wijziging wachtwoord">
@@ -68,7 +68,5 @@
 		</c:if>
 
 		
-	</div></div></div>
-
-</body>
-</html>
+	</div></div>
+<jsp:include page="footer.jsp"/>
