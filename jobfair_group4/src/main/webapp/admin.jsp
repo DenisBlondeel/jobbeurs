@@ -14,11 +14,13 @@
 			<legend><i class="fa fa-upload"></i> Bedrijven importeren</legend>
 			<div class="form-group form-inline">
 				<p>Gebruik deze tool om meerdere bedrijven tegelijk te importeren uit een '.csv' bestand.</p>
-				<p>Kijk ook na of het juist is ingedeeld; 'bedrijfsnaam;contactpersoon;email;...' 
+			<p>Kijk ook na of het juist is ingedeeld; 'bedrijfsnaam;contactpersoon;email;...'  met kolomhoofdingen 'Bedrijfsnaam;Naam contactpersoon;E-mailadres contactpersoon' 
 				(deze indeling is vereist voor het correct weergeven van de informatie op deze website).</p>
+				<p><a href="files/csvexample.csv">Voorbeeld</a></p>
 				<label for="file">Bestand: </label>
 				<input type="file" class="form-control" id="file" name="file" value="Upload file">
 				<button type="submit" class="btn btn-primary" value="Bestand uploaden"><i class="fa fa-upload"></i> Bestand uploaden</button>
+				<p>Dit kan even duren - tijd voor een pauze? <i class="fa fa-coffee"></i></p>
 			</div>
 		</form>
 	</div>
@@ -56,7 +58,7 @@
 
 <div class="row">
 	<div class="col-xs-12 col-sm-12 col-md-8 col-lg-6">
-		<h4 class="bordboth4"><i class="fa fa-lock">Beheerders</h4>
+		<h4 class="bordboth4"><i class="fa fa-lock"></i>Beheerders</h4>
 		<p>Gebruik deze tool om nieuwe beheerders toe te voegen of om een beheerder te verwijderen</p>
 		<a class="btn btn-primary" href = "Controller?action=toAddAdmin">Voeg een beheerder toe</a>
 		<a class="btn btn-danger" href = "Controller?action=getAdmin">Verwijder een beheerder</a>

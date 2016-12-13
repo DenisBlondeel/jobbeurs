@@ -27,7 +27,7 @@ public class CsvReader {
 			String companyName = data[0];
 			String contactName = data[1];
 			String email = data[2];
-			if(!companyName.equals("Bedrijfsnaam") && !contactName.equals("Naam contactpersoon") && !email.equals("Email contactpersoon")){
+			if(!companyName.equals("Bedrijfsnaam") && !contactName.equals("Naam contactpersoon") && !email.equals("E-mailadres contactpersoon")){
 				user.setCompanyName(companyName);
 				user.setContactName(contactName);
 				user.setEmail(email);
