@@ -80,7 +80,7 @@
 
 <div class="row">
 	<div class="col-xs-12 col-sm-12 col-md-8 col-lg-6">
-		<h4 class="bordboth4"<i class="fa fa-list-ul"></i> Alle bedrijven</h4>
+		<h4 class="bordboth4"><i class="fa fa-list-ul"></i> Alle bedrijven</h4>
 		<p>Deze tool toont u een overzicht van alle bedrijven en biedt ook de mogelijkheid om een '.csv' bestand te downloaden in hetzelfde formaat dat u nodig heeft voor de upload-tool.</p>
 		<a class="btn btn-primary" href = "Controller?action=companies">Lijst met alle bedrijven</a>
 		<a class="btn btn-primary" href = "Controller?action=download"><i class="fa fa-download">Download lijst</a>
