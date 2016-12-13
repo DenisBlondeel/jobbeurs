@@ -24,8 +24,11 @@ th,td {
 legend{
     margin-top: 10px; 
 }
-
+main {
+    min-height: calc(100% - 150px);
+}
 footer {
+    
     margin-top: 20px;
   padding: 1em;
   background-color: #efefef;

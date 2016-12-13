@@ -24,8 +24,6 @@
 			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 		<![endif]-->
 </head>
-<body>
-	<div>
 		<header>
 			<nav class="navbar navbar-default" role="navigation">
 			    <div class="container-fluid">
