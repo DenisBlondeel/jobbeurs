@@ -50,7 +50,7 @@
 </div>
 <div class="row">
 	<div class="col-xs-12 col-sm-12 col-md-8 col-lg-6">
-		<h4 class="bordboth4"><i class="fa fa-link"></i>Link bedrijven aan vrije plaatsen</h4>
+		<h4 class="bordboth4"><i class="fa fa-link"></i> Link bedrijven aan vrije plaatsen</h4>
 		<p>Met deze tool kan je een bedrijf zonder plaats een plaats toekennen.</p>
 		<a class="btn btn-primary" href = "Controller?action=linkSpot">Link bedrijven aan vrije plaatsen</a>
 	</div>

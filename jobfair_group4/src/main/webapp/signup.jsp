@@ -4,14 +4,14 @@
 
 <jsp:include page="header.jsp">
 	<jsp:param value="admin" name="type"/>
-	<jsp:param value="sign up" name="title"/>
-	<jsp:param value="Sign Up" name="h2"/>
+	<jsp:param value="Jobbeurs - Registreer" name="title"/>
+	<jsp:param value="Registreer bedrijf" name="h2"/>
 </jsp:include>
 
 <div class="row">	
 	<div class="col-xs-12 col-sm-12 col-md-8 col-lg-6">
 		<form method="POST" action="Controller?action=signup" novalidate="novalidate" role="form">
-			<legend class="sr-only">Sign up</legend>
+			<legend class="sr-only">Registreer bedrijf</legend>
 			<div class="form-group">
 				<label for="companyName">Naam van bedrijf: </label>
 				<input type="text" class="form-control" id="companyName" name="companyName" value="<c:out value="${prevCompany}"/>">
