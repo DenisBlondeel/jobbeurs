@@ -196,7 +196,34 @@ public class UserRepository {
 		return list;
 	}
 
-	public void add(User user) {
+	public List<User> getAll(){
+		
+		List<User> list = new ArrayList<User>();
+		String sql = "SELECT * FROM jobfair_group4.users;";
+		try {
+			statement = connection.prepareStatement(sql);
+			ResultSet results = statement.executeQuery();
+
+			while (results.next()) {
+				User user = new User();
+				user.setUserID(results.getString("userid"));
+				user.setCompanyNameFromDb(results.getString("companyName"));
+				user.setContactNameFromDb(results.getString("contactName"));
+				user.setEmail(results.getString("email"));
+				user.setPassword(results.getString("password"));
+				user.setRole(results.getString("role"));
+				user.setSalt(results.getString("salt"));
+				list.add(user);
+			}
+		} catch (SQLException e) {
+			throw new DbException(e.getMessage(), e);
+		}
+
+		return list;
+		
+	}
+	
+ 	public void add(User user) {
 		if (user == null) {
 			throw new DbException("Niets om toe te voegen.");
 		}
@@ -232,6 +259,8 @@ public class UserRepository {
 			throw new DbException(e.getMessage(), e);
 		}
 	}
+	
+
 
 	public void deleteAdmin(String userID) {
 		if (userID == null) {
