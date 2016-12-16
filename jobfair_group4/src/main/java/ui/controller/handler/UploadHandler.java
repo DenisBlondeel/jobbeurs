@@ -1,6 +1,8 @@
 package ui.controller.handler;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.mail.MessagingException;
 import javax.servlet.ServletException;
@@ -20,11 +22,17 @@ public class UploadHandler extends RequestHandler{
 			throws ServletException, IOException {
 		//String description = request.getParameter("description"); // Retrieves <input type="text" name="description">
 	    Part filePart = request.getPart("file"); // Retrieves <input type="file" name="file">
+	    List<String> errors = new ArrayList<>();
 	    
 		try {
-			reader.read(filePart.getInputStream(), getService());
+			reader.read(errors, filePart.getInputStream(), getService());
 		} catch (MessagingException e) {
 			throw new ServletException(e.getMessage(), e);
+		}
+		if (errors != null && !errors.isEmpty()) {
+			request.setAttribute("errors", errors);
+		} else {
+			request.setAttribute("succes", "De bedrijven werden toegevoegd.");
 		}
 	    request.getRequestDispatcher("Controller?action=admin").forward(request, response);
 	}

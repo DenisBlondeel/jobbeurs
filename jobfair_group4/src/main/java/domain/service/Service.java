@@ -1,8 +1,10 @@
 package domain.service;
 
+import java.util.Calendar;
 import java.util.List;
 import java.util.Properties;
 
+import domain.db.JobfairDataRepository;
 import domain.db.SpotDataRepository;
 import domain.db.SpotRepository;
 import domain.db.UserRepository;
@@ -15,16 +17,20 @@ public class Service {
 	private SpotRepository spotDB;
 	private UserRepository userDB;
 	private SpotDataRepository dataDB;
+	private JobfairDataRepository jobfairDB;
 
 	public Service(Properties properties) {
 		spotDB = new SpotRepository(properties);
 		userDB = new UserRepository(properties);
 		dataDB = new SpotDataRepository(properties);
+		jobfairDB = new JobfairDataRepository(properties);
 	}
 
 	public void close() {
 		spotDB.close();
 		userDB.close();
+		dataDB.close();
+		jobfairDB.close();
 	}
 
 	public User getUser(String userID) {
@@ -49,6 +55,10 @@ public class Service {
 
 	public void addUser(User user) {
 		getUserRepository().add(user);
+	}
+
+	public void addUsers(List<User> users) {
+		getUserRepository().addAll(users);
 	}
 
 	public void deleteUser(String userID) {
@@ -143,5 +153,16 @@ public class Service {
 	{
 		return dataDB.getAtriumData();
 	}
-	
+
+	public Calendar getDeadline(String name) {
+		return getJobfairDataRepository().getDeadline(name);
+	}
+
+	public void setDeadline(String name, Calendar deadline) {
+		getJobfairDataRepository().setDeadline(name, deadline);
+	}
+
+	public JobfairDataRepository getJobfairDataRepository() {
+		return jobfairDB;
+	}
 }

@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="header.jsp">
+	<jsp:param value="Jobbeurs - Alle Plaatsen" name="title"/>
 	<jsp:param value="current" name="spotoverview" />
 	<jsp:param value="Overzicht van alle plaatsen" name="h2" />
 </jsp:include>

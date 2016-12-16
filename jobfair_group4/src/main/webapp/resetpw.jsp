@@ -3,7 +3,7 @@
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 	<jsp:include page="header.jsp">
-		<jsp:param value="Wachtwoord vergeten" name="title"/>
+		<jsp:param value="Jobbeurs - Reset" name="title"/>
 		<jsp:param value="Wachtwoord vergeten" name="h2"/>
 	</jsp:include>
 

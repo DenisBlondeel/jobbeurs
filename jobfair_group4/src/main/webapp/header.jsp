@@ -51,7 +51,7 @@
 				                </c:choose>
 				                 <c:choose>
 								<c:when test="${sessionScope.user.role.toString() eq 'ADMIN'}">
-					                <li id="${param.admin}"><a href="Controller?action=admin"><i class="fa fa-cog"></i> Admin</a></li>
+					                <li id="${param.admin}"><a href="Controller?action=admin"><i class="fa fa-cog"></i> Admin Tools</a></li>
 				                </c:when>
 				                </c:choose>
 			                <li><a href="Controller?action=contact"><i class="fa fa-info-circle"></i> Contact</a></li>

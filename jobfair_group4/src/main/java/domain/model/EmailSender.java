@@ -173,11 +173,13 @@ public class EmailSender {
 		this.sendFromGMail(subject, message, emailreceiver);
 	}
 
-	public void sendQuestionMail(String to, String from, String subj, String msg) throws MessagingException {
+	public void sendQuestionMail(List<String> to, String from, String subj, String msg) throws MessagingException {
 		String subject = "Jobbeurs - Vraag van " + from + " - " + subj;
 		String message = messageHeader;
 		message += msg + "<br><br>--<br>Deze vraag werd verzonden vanaf de jobbeurs-webapp.<br><br>Team Scrumbags----";
-		this.sendFromGMail(subject, message, to);
+		for(String rec : to){
+			this.sendFromGMail(subject, message, rec);
+		}
 	}
 
 	private void sendFromGMail(String subject, String body, String to) throws MessagingException {

@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="header.jsp">
-	<jsp:param value="Link plaats aan bedrijf" name="title"/>
+	<jsp:param value="Jobbeurs - Link" name="title"/>
 	<jsp:param value="Link een vrije plaats aan een bedrijf" name="h2"/>
 </jsp:include>
 <div class="row">
@@ -10,7 +10,7 @@
 		<form method="POST" action="Controller?action=confirmLink" role="form">
 			<legend class="sr-only">Sign up</legend>
 			<div class="form-group">
-				<label for="spotID">Lege spot: </label>
+				<label for="spotID">Lege plaats: </label>
 				<select class="form-control" name="spotID" id="spotID">
 					<c:forEach var="freeSpot" items="${freeSpots}">
 						<option value="<c:out value="${freeSpot.spotID}"/>"><c:out value="${freeSpot.spotID}"/></option>

@@ -55,8 +55,7 @@ public abstract class RequestHandler {
 	
 	public void checkDate(HttpServletRequest request)
 	{
-		HttpSession session = request.getSession();
-		Calendar deadline = (Calendar)session.getAttribute("deadline");
+		Calendar deadline = getService().getDeadline("JobbeursUcllLeuven2017");
 		if(deadline == null) {
 			timeHasCome = false;
 			return;
@@ -65,13 +64,6 @@ public abstract class RequestHandler {
 			timeHasCome = true;
 		}
 	}
-
-//	private void resetSomeSessions(HttpServletRequest request) {
-//		HttpSession session = request.getSession();
-//		session.removeAttribute("success");
-//		session.removeAttribute("errors");
-//	}
-
 
 	/*********************
 	 * Getters & Setters *

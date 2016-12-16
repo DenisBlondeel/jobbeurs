@@ -3,7 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="header.jsp">
 	<jsp:param value="admin" name="type" />
-	<jsp:param value="Delete admin" name="title" />
+	<jsp:param value="Jobbeurs - Verwijder admin" name="title" />
 	<jsp:param value="Verwijder beheerder" name="h2" />
 </jsp:include>
 
@@ -12,7 +12,7 @@
 		<p>Selecteer hieronder de beheerder die je wenst te verwijderen.</p>
 		<form method="POST" action="Controller?action=deleteAdmin">
 			<div class="form-group">
-				<label for="adminID">Beheerders: </label>
+				<label for="adminID">Beheerder: </label>
 				<select class="form-control" name="adminID" id="adminID">
 					<c:forEach var="admin" items="${admins}">
 						<option value="<c:out value="${admin.userID}"/>"><c:out value="${admin.userID}"/></option>
